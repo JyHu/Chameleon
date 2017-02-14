@@ -1,0 +1,25 @@
+{
+  "colors": {
+    "com.auu.themecolor.background": "0xffffff",
+      "com.auu.themecolor.textcolor" : "0x000000",
+      "com.auu.themecolor.color1" : "0xffff00",
+      "com.auu.themecolor.color2" : "0xff0000",
+      "com.auu.themecolor.color3" : "0x00ffff",
+      "com.auu.themecolor.color4" : "0x0000ff"
+  },
+  "images": {
+      "com.auu.themeimage.head1": {
+          "type": 0,
+          "name": "22.jpg",
+          "width": 72,
+          "height": 90
+      },
+      "com.auu.themeimage.head2": {
+          "type": 1,
+          "name": "33.jpg",
+          "width": 72,
+          "height": 90
+      }
+      
+  }
+}
