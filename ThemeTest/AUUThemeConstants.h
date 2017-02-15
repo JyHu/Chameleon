@@ -12,11 +12,16 @@
 
 @end
 
-extern NSString *const AUUThemeColorTextColor;
-extern NSString *const AUUThemeColorBackground;
-extern NSString *const AUUThemeColorColor1;
-extern NSString *const AUUThemeColorColor2;
-extern NSString *const AUUThemeColorColor3;
-extern NSString *const AUUThemeColorColor4;
-extern NSString *const AUUThemeImageHead1;
-extern NSString *const AUUThemeImageHead2;
+extern NSString *const AUUThemeColorDefault;
+extern NSString *const AUUColorBackground;
+extern NSString *const AUUColorBackgroundVC;
+extern NSString *const AUUColorText;
+extern NSString *const AUUColorTextLabel;
+extern NSString *const AUUColorTest1;
+extern NSString *const AUUColorTest2;
+extern NSString *const AUUColorTest3;
+extern NSString *const AUUColorTest4;
+
+extern NSString *const AUUImageDefault;
+extern NSString *const AUUImageHeadTest1;
+extern NSString *const AUUImageHeadTest2;

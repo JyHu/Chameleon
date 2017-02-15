@@ -33,26 +33,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self.view setBackgroundColorWithIdentifier:AUUThemeColorBackground];
+    [self.view setBackgroundColorWithIdentifier:AUUColorBackgroundVC];
     
-    [self.switchkit setOnTintColorWithIdentifier:AUUThemeColorColor1];
-    [self.switchkit setTintColorWithIdentifier:AUUThemeColorColor2];
-    [self.switchkit setBackgroundColorWithIdentifier:AUUThemeColorColor3];
+    [self.switchkit setOnTintColorWithIdentifier:AUUColorTest1];
+    [self.switchkit setTintColorWithIdentifier:AUUColorTest2];
+    [self.switchkit setBackgroundColorWithIdentifier:AUUColorTest3];
     
-    [self.label setTextColorWithIdentifier:AUUThemeColorTextColor];
+    [self.label setTextColorWithIdentifier:AUUColorTextLabel];
     self.label.backgroundColor = [UIColor clearColor];
     
-    [self.segmentcontrol setTintColorWithIdentifier:AUUThemeColorTextColor];
+    [self.segmentcontrol setTintColorWithIdentifier:AUUColorTextLabel];
     [self.segmentcontrol addTarget:self action:@selector(segchanged:) forControlEvents:UIControlEventValueChanged];
     
-    [self.textview setTextColorWithIdentifier:AUUThemeColorTextColor];
-    [self.textview setBackgroundColorWithIdentifier:AUUThemeColorColor4];
+    [self.textview setTextColorWithIdentifier:AUUColorTextLabel];
+    [self.textview setBackgroundColorWithIdentifier:AUUColorBackgroundVC];
     
     self.image1.contentMode = UIViewContentModeScaleAspectFit;
     self.image2.contentMode = UIViewContentModeScaleAspectFit;
     
-    [self.image1 setImageWithIdentifier:AUUThemeImageHead1];
-    [self.image2 setImageWithIdentifier:AUUThemeImageHead2];
+    [self.image1 setImageWithIdentifier:AUUImageHeadTest1];
+    [self.image2 setImageWithIdentifier:AUUImageHeadTest2];
+    
+    NSString *test = @"test";
+    
+    NSLog(@"test : --- >  %@ ", test ?: @"haha");
 }
 
 - (void)segchanged:(UISegmentedControl *)seg

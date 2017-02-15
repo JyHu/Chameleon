@@ -8,16 +8,55 @@
 
 #import "UIImage+AUUTheme.h"
 #import "AUUThemeManager.h"
+#import "NSString+_AUUPrivateHelper.h"
 
 @implementation UIImage (AUUTheme)
 
 + (UIImage *)imageWithIdentifier:(NSString *)identifier
 {
-    NSDictionary *imageInfo = [AUUThemeManager sharedManager].themeInfos[@"images"][identifier];
-    if (imageInfo) {
+    NSDictionary *images = [AUUThemeManager sharedManager].themeInfos[@"images"];
+    
+    if (images)
+    {
+        NSDictionary *imageInfo = images[identifier];
+        
+        if (!(imageInfo && imageInfo[@"name"]))
+        {
+            NSString *superIdentfier = [identifier superIdentifier];
+          
+            if (superIdentfier)
+            {
+                return [UIImage imageWithIdentifier:superIdentfier];
+            }
+            else
+            {
+                NSDictionary *defaultImageInfo = images[@"__default__"];
+                
+                if (defaultImageInfo && defaultImageInfo[@"name"])
+                {
+                    return [UIImage imageWithImageInfo:defaultImageInfo];
+                }
+            }
+        }
+        else
+        {
+            return [UIImage imageWithImageInfo:imageInfo];
+        }
+    }
+    
+    return [AUUThemeManager sharedManager].defaultImage;
+}
+
++ (UIImage *)imageWithImageInfo:(NSDictionary *)imageInfo
+{
+    if (imageInfo)
+    {
         NSInteger type = [imageInfo[@"type"] integerValue];
+        
         NSString *imgId = imageInfo[@"name"];
-        switch (type) {
+        
+        switch (type)
+        {
             case 1:
                 return [UIImage imageNamed:imgId];
                 

@@ -59,7 +59,7 @@ void const *notificationRegisteredAssociateKey = (void *)@"notificationRegistere
     Method              method          = class_getInstanceMethod([self class], sel);
     NSMethodSignature   *signature      = [[self class] instanceMethodSignatureForSelector:sel];
     NSInvocation        *invocation     = [NSInvocation invocationWithMethodSignature:signature];
-    NSMutableArray      *tempArguments  = [[NSMutableArray alloc] init];  // 避免zombie
+    NSMutableArray      *tempArguments  = [[NSMutableArray alloc] init];  // 暂存一些对象，避免zombie
     
     invocation.selector = sel;
     
@@ -209,8 +209,10 @@ void const *notificationRegisteredAssociateKey = (void *)@"notificationRegistere
      */
     NSMutableArray *cachedParams = [self.themeProperties objectForKey:selName];
     
-    if (!cachedParams) {
+    if (!cachedParams)
+    {
         cachedParams = [[NSMutableArray alloc] init];
+        
         [self.themeProperties setObject:cachedParams forKey:selName];
     }
     
@@ -244,5 +246,6 @@ void const *notificationRegisteredAssociateKey = (void *)@"notificationRegistere
                                                    object:nil];
     }
 }
+
 
 @end

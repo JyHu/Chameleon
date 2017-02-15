@@ -13,12 +13,16 @@
 @end
 
 
+NSString *const AUUThemeColorDefault = @"__default__";
+NSString *const AUUColorBackground = @"color.background";
+NSString *const AUUColorBackgroundVC = @"color.background.viewcontrolle";
+NSString *const AUUColorText = @"color.text";
+NSString *const AUUColorTextLabel = @"color.text.label";
+NSString *const AUUColorTest1 = @"color.test.test1";
+NSString *const AUUColorTest2 = @"color.test.test2";
+NSString *const AUUColorTest3 = @"color.test.test3";
+NSString *const AUUColorTest4 = @"color.test.test4";
 
-NSString *const AUUThemeColorTextColor = @"com.auu.themecolor.textcolor";
-NSString *const AUUThemeColorBackground = @"com.auu.themecolor.background";
-NSString *const AUUThemeColorColor1 = @"com.auu.themecolor.color1";
-NSString *const AUUThemeColorColor2 = @"com.auu.themecolor.color2";
-NSString *const AUUThemeColorColor3 = @"com.auu.themecolor.color3";
-NSString *const AUUThemeColorColor4 = @"com.auu.themecolor.color4";
-NSString *const AUUThemeImageHead1 = @"com.auu.themeimage.head1";
-NSString *const AUUThemeImageHead2 = @"com.auu.themeimage.head2";
+NSString *const AUUImageDefault = @"__default__";
+NSString *const AUUImageHeadTest1 = @"image.head.head1";
+NSString *const AUUImageHeadTest2 = @"image.head.head2";

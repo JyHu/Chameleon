@@ -50,6 +50,7 @@ const char *kThemeTransferTypeAssociateKey = (void *)@"kThemeTransferTypeAssocia
         return nil;
     }
     
+    // 第一个匹配到的结果
     NSTextCheckingResult *textCheckingResult = [regularExpression firstMatchInString:self options:NSMatchingReportCompletion range:NSMakeRange(0, self.length)];
     
     if (textCheckingResult.numberOfRanges > 0)
@@ -59,6 +60,26 @@ const char *kThemeTransferTypeAssociateKey = (void *)@"kThemeTransferTypeAssocia
         if (range.location != NSNotFound && range.length <= self.length)
         {
             return [self substringWithRange:range];
+        }
+    }
+    
+    return nil;
+}
+
+- (NSString *)superIdentifier
+{
+    if (self && [self isKindOfClass:[NSString class]])
+    {
+        NSString *tinyIdentifier = [self stringByReplacingOccurrencesOfString:@" " withString:@""];
+        
+        if (tinyIdentifier.length > 0)
+        {
+            NSRange range = [tinyIdentifier rangeOfString:@"." options:NSBackwardsSearch];
+            
+            if (range.location != NSNotFound)
+            {
+                return [tinyIdentifier substringToIndex:range.location];
+            }
         }
     }
     

@@ -1,20 +1,27 @@
 {
   "colors": {
-    "com.auu.themecolor.background": "0x000000",
-    "com.auu.themecolor.textcolor": "0xFFFFFF",
-      "com.auu.themecolor.color1" : "0x00ffff",
-      "com.auu.themecolor.color2" : "0x0000ff",
-      "com.auu.themecolor.color3" : "0xff0000",
-      "com.auu.themecolor.color4" : "0xffff00"
+    "__default__" : "0xf0f0f0",
+    "color.background" : "0x111111",
+    "color.background.viewcontroller": "0x000000",
+    "color.text" : "0xaaaaaa",
+    "color.text.label": "0xFFFFFF",
+    "color.test.test1" : "0x00ffff",
+    "color.test.test2" : "0x0000ff",
+    "color.test.test3" : "0xff0000",
+    "color.test.test4" : "0xffff00"
   },
   "images": {
-      "com.auu.themeimage.head1": {
+      "__default" : {
+          "type" : 1,
+          "name" : "tt.jpg"
+      },
+      "image.head.head1": {
           "type": 0,
           "name": "00.jpg",
           "width": 72,
           "height": 90
       },
-      "com.auu.themeimage.head2": {
+      "image.head.head2": {
           "type": 1,
           "name": "11.jpg",
           "width": 72,

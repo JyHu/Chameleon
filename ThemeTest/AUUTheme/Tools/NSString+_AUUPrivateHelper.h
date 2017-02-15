@@ -33,6 +33,13 @@
  */
 - (NSString *)matchResultWithPattern:(NSString *)pattern;
 
+/**
+ 返回上一级的标识符
+
+ @return 标识符
+ */
+- (NSString *)superIdentifier;
+
 @end
 
 
