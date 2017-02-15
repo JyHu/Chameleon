@@ -62,6 +62,11 @@ singleton_m(Manager)
     {
         [self loadThemeInfoWithIdentifier:themeIdentifier];
     }
+    else
+    {
+        // 如果之前没有设置过主题的话，就用默认的白色主题
+        [self loadThemeInfoWithIdentifier:@"com.jyhu.theme.white"];
+    }
 }
 
 - (BOOL)loadThemeInfoWithIdentifier:(NSString *)identifier
