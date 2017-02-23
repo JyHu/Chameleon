@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "AUUThemeConstants.h"
-#import "AUUThemeManager.h"
+#import "AUUTestThemeManager.h"
 #import "AUUThemeKits.h"
 
 @interface ViewController ()
@@ -33,30 +33,28 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self.view setBackgroundColorWithIdentifier:AUUColorBackgroundVC];
+    [self.view setBackgroundColorIdentifier:AUUColorBackgroundVC];
     
-    [self.switchkit setOnTintColorWithIdentifier:AUUColorTest1];
-    [self.switchkit setTintColorWithIdentifier:AUUColorTest2];
-    [self.switchkit setBackgroundColorWithIdentifier:AUUColorTest3];
+    self.switchkit.onTintColorIdentifier = AUUColorTest1;
+    self.switchkit.tintColorIdentifier = AUUColorTest2;
+    self.switchkit.backgroundColorIdentifier = AUUColorTest3;
     
-    [self.label setTextColorWithIdentifier:AUUColorTextLabel];
+    self.label.textColorIdentifier = AUUColorTextLabel;
     self.label.backgroundColor = [UIColor clearColor];
     
-    [self.segmentcontrol setTintColorWithIdentifier:AUUColorTextLabel];
+    self.segmentcontrol.tintColorIdentifier = AUUColorTextLabel;
     [self.segmentcontrol addTarget:self action:@selector(segchanged:) forControlEvents:UIControlEventValueChanged];
     
-    [self.textview setTextColorWithIdentifier:AUUColorTextLabel];
-    [self.textview setBackgroundColorWithIdentifier:AUUColorBackgroundVC];
+    self.textview.textColorIdentifier = AUUColorTextLabel;
+    self.textview.backgroundColorIdentifier = AUUColorBackgroundVC;
     
     self.image1.contentMode = UIViewContentModeScaleAspectFit;
     self.image2.contentMode = UIViewContentModeScaleAspectFit;
     
-    [self.image1 setImageWithIdentifier:AUUImageHeadTest1];
-    [self.image2 setImageWithIdentifier:AUUImageHeadTest2];
+    [self.image1 setImageIdentifier:AUUImageHeadTest1];
+    [self.image2 setImageIdentifier:AUUImageHeadTest2];
     
-    NSString *test = @"test";
-    
-    NSLog(@"test : --- >  %@ ", test ?: @"haha");
+    NSLog(@"test non property : %@", self.label.backgroundColorIdentifier);
 }
 
 - (void)segchanged:(UISegmentedControl *)seg
@@ -73,12 +71,12 @@
 
 - (void)changeBlackTheme
 {
-    [[AUUThemeManager sharedManager] changeThemeWithIdentifier:@"com.jyhu.theme.black"];
+    [[AUUTestThemeManager sharedManager] changeThemeWithIdentifier:@"com.jyhu.theme.black"];
 }
 
 - (void)changeWhiteTheme
 {
-    [[AUUThemeManager sharedManager] changeThemeWithIdentifier:@"com.jyhu.theme.white"];
+    [[AUUTestThemeManager sharedManager] changeThemeWithIdentifier:@"com.jyhu.theme.white"];
 }
 
 - (void)didReceiveMemoryWarning {

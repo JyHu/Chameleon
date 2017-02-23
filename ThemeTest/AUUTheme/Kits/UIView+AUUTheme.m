@@ -8,14 +8,19 @@
 
 #import "UIView+AUUTheme.h"
 #import "NSObject+AUUTheme.h"
-#import "NSString+_AUUPrivateHelper.h"
+#import "NSString+AUUTheme.h"
 #import "AUUThemeManager.h"
 
 @implementation UIView (AUUTheme)
 
-- (void)setBackgroundColorWithIdentifier:(NSString *)identifier
+- (void)setBackgroundColorIdentifier:(NSString *)backgroundColorIdentifier
 {
-    [self cacheParams:@[identifier.colorType] forSelector:NSStringFromSelector(@selector(setBackgroundColor:))];
+    [self cacheParams:@[backgroundColorIdentifier.colorType] forSelector:@selector(setBackgroundColor:)];
+}
+
+- (NSString *)backgroundColorIdentifier
+{
+    return [[[self cachedParamsForSelector:@selector(setBackgroundColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
 }
 
 - (void)dealloc

@@ -1,17 +1,15 @@
 //
-//  UITextView+AUUTheme.h
+//  UITableViewHeaderFooterView+AUUTheme.h
 //  ThemeTest
 //
-//  Created by JyHu on 2017/2/14.
+//  Created by 胡金友 on 2017/2/23.
 //  Copyright © 2017年 JyHu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface UITextView (AUUTheme)
+@interface UITableViewHeaderFooterView (AUUTheme)
 
 @property (retain, nonatomic, setter=setTintColorIdentifier:) NSString *tintColorIdentifier;
-
-@property (retain, nonatomic, setter=setTextColorIdentifier:) NSString *textColorIdentifier;
 
 @end

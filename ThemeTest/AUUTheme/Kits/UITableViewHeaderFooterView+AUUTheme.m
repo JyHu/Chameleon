@@ -1,17 +1,17 @@
 //
-//  UITextView+AUUTheme.m
+//  UITableViewHeaderFooterView+AUUTheme.m
 //  ThemeTest
 //
-//  Created by JyHu on 2017/2/14.
+//  Created by 胡金友 on 2017/2/23.
 //  Copyright © 2017年 JyHu. All rights reserved.
 //
 
-#import "UITextView+AUUTheme.h"
+#import "UITableViewHeaderFooterView+AUUTheme.h"
 #import "NSObject+AUUTheme.h"
 #import "NSString+AUUTheme.h"
 #import "AUUThemeManager.h"
 
-@implementation UITextView (AUUTheme)
+@implementation UITableViewHeaderFooterView (AUUTheme)
 
 - (void)setTintColorIdentifier:(NSString *)tintColorIdentifier
 {
@@ -23,21 +23,12 @@
     return [[[self cachedParamsForSelector:@selector(setTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
 }
 
-- (void)setTextColorIdentifier:(NSString *)textColorIdentifier
-{
-    [self cacheParams:@[textColorIdentifier.colorType] forSelector:@selector(setTextColor:)];
-}
-
-- (NSString *)textColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
 - (void)dealloc
 {
     self.notificationRegistered = NO;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
 }
+
 
 @end

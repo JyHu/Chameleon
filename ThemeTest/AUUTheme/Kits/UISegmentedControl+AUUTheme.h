@@ -10,12 +10,22 @@
 
 @interface UISegmentedControl (AUUTheme)
 
-- (void)setTintColorWithIdentifier:(NSString *)tintColorIdentifier;
+@property (retain, nonatomic, setter=setTintColorIdentifier:) NSString *tintColorIdentifier;
 
-- (void)setImageWithIdentifier:(NSString *)imageIdentifier forSegmentAtIndex:(NSUInteger)segment;
+- (void)setImageWithIdentifier:(NSString *)imageIdentifier
+             forSegmentAtIndex:(NSUInteger)segment;
 
-- (void)setBackgroundImageWithIdentifier:(NSString *)backgroundImageIdentifier forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;
+@property (retain, nonatomic, readonly) NSArray *imageIdentifiersForSegments;
 
-- (void)setDividerImageWithIdentifier:(NSString *)dividerImageIdentifier forLeftSegmentState:(UIControlState)leftState rightSegmentState:(UIControlState)rightState barMetrics:(UIBarMetrics)barMetrics;
+- (void)setBackgroundImageWithIdentifier:(NSString *)backgroundImageIdentifier
+                                forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;
+
+@property (retain, nonatomic, readonly) NSArray *backgroundImageIdentifiers;
+
+- (void)setDividerImageWithIdentifier:(NSString *)dividerImageIdentifier
+                  forLeftSegmentState:(UIControlState)leftState
+                    rightSegmentState:(UIControlState)rightState barMetrics:(UIBarMetrics)barMetrics;
+
+@property (retain, nonatomic, readonly) NSArray *dividerImageIdentifies;
 
 @end

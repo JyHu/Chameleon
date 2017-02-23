@@ -10,6 +10,6 @@
 
 @interface UILabel (AUUTheme)
 
-- (void)setTextColorWithIdentifier:(NSString *)identifier;
+@property (retain, nonatomic, setter=setTextColorIdentifier:) NSString *textColorIdentifier;
 
 @end

@@ -10,8 +10,10 @@
 
 @interface UIImageView (AUUTheme)
 
-- (void)setImageWithIdentifier:(NSString *)imageIdentifier;
+@property (retain, nonatomic, setter=setImageIdentifier:) NSString *imageIdentifier;
 
-- (void)setHighlightedImageWithIdentifier:(NSString *)highlightedImageIdentifier;
+@property (retain, nonatomic, setter=setImageColorIdentifier:) NSString *imageColorIdentifier;
+
+@property (retain, nonatomic, setter=setHighlightedImageIdentifier:) NSString *highlightedImageIdentifier;
 
 @end

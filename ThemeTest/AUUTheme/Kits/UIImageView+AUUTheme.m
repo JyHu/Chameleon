@@ -8,19 +8,48 @@
 
 #import "UIImageView+AUUTheme.h"
 #import "NSObject+AUUTheme.h"
-#import "NSString+_AUUPrivateHelper.h"
+#import "NSString+AUUTheme.h"
 #import "AUUThemeManager.h"
+#import "UIImage+AUUTheme.h"
 
 @implementation UIImageView (AUUTheme)
 
-- (void)setImageWithIdentifier:(NSString *)imageIdentifier
+- (void)setImageIdentifier:(NSString *)imageIdentifier
 {
-    [self cacheParams:@[imageIdentifier.imageType] forSelector:NSStringFromSelector(@selector(setImage:))];
+    [self cacheParams:@[imageIdentifier.imageType] forSelector:@selector(setImage:)];
 }
 
-- (void)setHighlightedImageWithIdentifier:(NSString *)highlightedImageIdentifier
+- (NSString *)imageIdentifier
 {
-    [self cacheParams:@[highlightedImageIdentifier.imageType] forSelector:NSStringFromSelector(@selector(setHighlightedImage:))];
+    return [[[self cachedParamsForSelector:@selector(setImage:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+}
+
+- (void)setHighlightedImageIdentifier:(NSString *)highlightedImageIdentifier
+{
+    [self cacheParams:@[highlightedImageIdentifier.imageType] forSelector:@selector(setHighlightedImage:)];
+}
+
+- (NSString *)highlightedImageIdentifier
+{
+    return [[[self cachedParamsForSelector:@selector(setHighlightedImage:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+}
+
+- (void)setImageColorIdentifier:(NSString *)colorIdentifier
+{
+    [self cacheParams:@[colorIdentifier.colorType] forSelector:@selector(setImageColor:)];
+}
+
+- (NSString *)imageColorIdentifier
+{
+    return [[[self cachedParamsForSelector:@selector(setImageColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+}
+
+- (void)setImageColor:(UIColor *)color
+{
+    if (color)
+    {
+        self.image = [UIImage imageWithColor:color];
+    }
 }
 
 - (void)dealloc

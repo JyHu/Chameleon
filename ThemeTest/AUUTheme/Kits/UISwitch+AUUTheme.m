@@ -8,34 +8,59 @@
 
 #import "UISwitch+AUUTheme.h"
 #import "NSObject+AUUTheme.h"
-#import "NSString+_AUUPrivateHelper.h"
+#import "NSString+AUUTheme.h"
 #import "AUUThemeManager.h"
 
 @implementation UISwitch (AUUTheme)
 
-- (void)setTintColorWithIdentifier:(NSString *)tintColorIdentifier
+- (void)setTintColorIdentifier:(NSString *)tintColorIdentifier
 {
-    [self cacheParams:@[tintColorIdentifier.colorType] forSelector:NSStringFromSelector(@selector(setTintColor:))];
+    [self cacheParams:@[tintColorIdentifier.colorType] forSelector:@selector(setTintColor:)];
 }
 
-- (void)setOnTintColorWithIdentifier:(NSString *)onTintColorIdentifier
+- (NSString *)tintColorIdentifier
 {
-    [self cacheParams:@[onTintColorIdentifier.colorType] forSelector:NSStringFromSelector(@selector(setOnTintColor:))];
+    return [[[self cachedParamsForSelector:@selector(setTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
 }
 
-- (void)setThumbTintColorWithIdentifier:(NSString *)thumbTintColorIdentifier
+- (void)setOnTintColorIdentifier:(NSString *)onTintColorIdentifier
 {
-    [self cacheParams:@[thumbTintColorIdentifier.colorType] forSelector:NSStringFromSelector(@selector(setThumbTintColor:))];
+    [self cacheParams:@[onTintColorIdentifier.colorType] forSelector:@selector(setOnTintColor:)];
 }
 
-- (void)setOnImageWithIdentifier:(NSString *)onImageIdentifier
+- (NSString *)onTintColorIdentifier
 {
-    [self cacheParams:@[onImageIdentifier.imageType] forSelector:NSStringFromSelector(@selector(setOnImage:))];
+    return [[[self cachedParamsForSelector:@selector(setOnTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
 }
 
-- (void)setOffImageWithIdentifier:(NSString *)offImageIdentifier
+- (void)setThumbTintColorIdentifier:(NSString *)thumbTintColorIdentifier
 {
-    [self cacheParams:@[offImageIdentifier.imageType] forSelector:NSStringFromSelector(@selector(setOffImage:))];
+    [self cacheParams:@[thumbTintColorIdentifier.colorType] forSelector:@selector(setThumbTintColor:)];
+}
+
+- (NSString *)thumbTintColorIdentifier
+{
+    return [[[self cachedParamsForSelector:@selector(setThumbTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+}
+
+- (void)setOnImageIdentifier:(NSString *)onImageIdentifier
+{
+    [self cacheParams:@[onImageIdentifier.imageType] forSelector:@selector(setOnImage:)];
+}
+
+- (NSString *)onImageIdentifier
+{
+    return [[[self cachedParamsForSelector:@selector(setOnImage:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+}
+
+- (void)setOffImageIdentifier:(NSString *)offImageIdentifier
+{
+    [self cacheParams:@[offImageIdentifier.imageType] forSelector:@selector(setOffImage:)];
+}
+
+- (NSString *)offImageIdentifier
+{
+    return [[[self cachedParamsForSelector:@selector(setOffImage:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
 }
 
 - (void)dealloc

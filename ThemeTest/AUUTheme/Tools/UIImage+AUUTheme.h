@@ -18,4 +18,12 @@
  */
 + (UIImage *)imageWithIdentifier:(NSString *)identifier;
 
+/**
+ 根据给定的颜色，返回一张纯色的照片
+
+ @param color UIColor
+ @return 纯色的图片
+ */
++ (UIImage *)imageWithColor:(UIColor *)color;
+
 @end

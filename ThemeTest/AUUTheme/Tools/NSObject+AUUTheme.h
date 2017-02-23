@@ -7,34 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSObject+AUUMethodCache.h"
+
+#define AUUNoneIdentifierTips [self showNoneIdentifierTips]
 
 @interface NSObject (AUUTheme)
 
 /**
- 缓存一下当前组件所有设置图片、颜色的方法及参数
+ method swizzing
+
+ @param originSelector original selector
+ @param swizedSelector swized selector
  */
-@property (retain, nonatomic) NSMutableDictionary *themeProperties;
++ (void)methodExchangeImplementationsWithOriginSelector:(SEL)originSelector swizedSelector:(SEL)swizedSelector;
 
 /**
  记录当前对象是否设置了通知
  */
 @property (assign, nonatomic) BOOL notificationRegistered;
-
-/**
- 使用NSInvocation，根据给定的方法名、参数来执行
-
- @param selName 方法名
- @param params 参数列表
- */
-- (void)performSelectorWithName:(NSString *)selName params:(NSArray *)params;
-
-/**
- 缓存当前的设定方法
-
- @param params 方法的参数
- @param selName 方法名
- */
-- (void)cacheParams:(NSArray *)params forSelector:(NSString *)selName;
 
 /**
  更换主题颜色、图片
@@ -45,5 +35,12 @@
  注册主题改动的通知，所有的UIKit类有颜色、图片改动的都需要设定
  */
 - (void)registerThemeChangeNotification;
+
+/**
+ 用于显示没有设置identifier却去读取的log提示
+
+ @return nil
+ */
+- (id)showNoneIdentifierTips;
 
 @end

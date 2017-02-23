@@ -8,7 +8,7 @@
 
 #import "UIColor+AUUTheme.h"
 #import "AUUThemeManager.h"
-#import "NSString+_AUUPrivateHelper.h"
+#import "NSString+AUUTheme.h"
 
 @implementation UIColor (AUUTheme)
 

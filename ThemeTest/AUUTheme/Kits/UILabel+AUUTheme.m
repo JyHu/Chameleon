@@ -8,14 +8,19 @@
 
 #import "UILabel+AUUTheme.h"
 #import "NSObject+AUUTheme.h"
-#import "NSString+_AUUPrivateHelper.h"
+#import "NSString+AUUTheme.h"
 #import "AUUThemeManager.h"
 
 @implementation UILabel (AUUTheme)
 
-- (void)setTextColorWithIdentifier:(NSString *)identifier
+- (void)setTextColorIdentifier:(NSString *)textColorIdentifier
 {    
-    [self cacheParams:@[identifier.colorType] forSelector:NSStringFromSelector(@selector(setTextColor:))];
+    [self cacheParams:@[textColorIdentifier.colorType] forSelector:@selector(setTextColor:)];
+}
+
+- (NSString *)textColorIdentifier
+{
+    return [[[self cachedParamsForSelector:@selector(setTextColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
 }
 
 - (void)dealloc

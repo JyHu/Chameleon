@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C9050421E5C939B00B95641 /* NSObject+AUUMethodCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9050411E5C939B00B95641 /* NSObject+AUUMethodCache.m */; };
+		1C9050481E5DDFF800B95641 /* NSString+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9050471E5DDFF800B95641 /* NSString+AUUTheme.m */; };
+		1C90504B1E5DF60400B95641 /* UIToolbar+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90504A1E5DF60400B95641 /* UIToolbar+AUUTheme.m */; };
+		1C90504E1E5F1FA500B95641 /* UITableViewHeaderFooterView+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90504D1E5F1FA500B95641 /* UITableViewHeaderFooterView+AUUTheme.m */; };
+		1C9050571E5F269300B95641 /* UITabBar+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9050561E5F269300B95641 /* UITabBar+AUUTheme.m */; };
+		1C90505B1E5F391200B95641 /* AUUTestThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90505A1E5F391200B95641 /* AUUTestThemeManager.m */; };
+		1C90505E1E5F39AF00B95641 /* AUUThemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90505D1E5F39AF00B95641 /* AUUThemeModel.m */; };
+		1C9050601E5F449500B95641 /* UIImageView+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90505F1E5F449500B95641 /* UIImageView+AUUTheme.m */; };
+		1C9050621E5F44B500B95641 /* UITextField+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9050611E5F44B500B95641 /* UITextField+AUUTheme.m */; };
 		1CF0449C1E51A6CF00D836F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF0449B1E51A6CF00D836F5 /* main.m */; };
 		1CF0449F1E51A6CF00D836F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF0449E1E51A6CF00D836F5 /* AppDelegate.m */; };
 		1CF044A21E51A6CF00D836F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF044A11E51A6CF00D836F5 /* ViewController.m */; };
@@ -16,22 +25,17 @@
 		1CF044B51E51A6CF00D836F5 /* ThemeTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF044B41E51A6CF00D836F5 /* ThemeTestUITests.m */; };
 		1CF044C41E51A7A800D836F5 /* AUUThemeConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF044C31E51A7A800D836F5 /* AUUThemeConstants.m */; };
 		1CF044C81E51A7D600D836F5 /* AUUThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF044C71E51A7D600D836F5 /* AUUThemeManager.m */; };
-		1CF044CD1E51A85200D836F5 /* AUUThemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF044CC1E51A85200D836F5 /* AUUThemeModel.m */; };
 		1CF0453B1E51B7A700D836F5 /* LocalBlackTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CF045391E51B7A700D836F5 /* LocalBlackTheme.bundle */; };
 		1CF0453C1E51B7A700D836F5 /* LocalWhiteTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CF0453A1E51B7A700D836F5 /* LocalWhiteTheme.bundle */; };
-		1CF045571E52CE0000D836F5 /* NSString+_AUUPrivateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF0454D1E52CE0000D836F5 /* NSString+_AUUPrivateHelper.m */; };
 		1CF0455D1E52CEF200D836F5 /* UIView+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF0455C1E52CEF200D836F5 /* UIView+AUUTheme.m */; };
 		1CF045601E52CF0200D836F5 /* UILabel+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF0455F1E52CF0200D836F5 /* UILabel+AUUTheme.m */; };
 		1CF045631E52CF0E00D836F5 /* UIButton+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF045621E52CF0E00D836F5 /* UIButton+AUUTheme.m */; };
 		1CF045661E52CF2200D836F5 /* UISegmentedControl+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF045651E52CF2200D836F5 /* UISegmentedControl+AUUTheme.m */; };
-		1CF045691E52CF5600D836F5 /* UITextField+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF045681E52CF5600D836F5 /* UITextField+AUUTheme.m */; };
 		1CF0456C1E52CF6300D836F5 /* UITextView+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF0456B1E52CF6300D836F5 /* UITextView+AUUTheme.m */; };
-		1CF0456F1E52CF7F00D836F5 /* UIWebView+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF0456E1E52CF7F00D836F5 /* UIWebView+AUUTheme.m */; };
 		1CF045721E52CF9D00D836F5 /* UISwitch+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF045711E52CF9D00D836F5 /* UISwitch+AUUTheme.m */; };
 		1CF045751E52D03800D836F5 /* UIImage+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF045741E52D03800D836F5 /* UIImage+AUUTheme.m */; };
 		1CF045781E52D06000D836F5 /* UIColor+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF045771E52D06000D836F5 /* UIColor+AUUTheme.m */; };
 		1CF0457B1E52D0CB00D836F5 /* NSObject+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF0457A1E52D0CB00D836F5 /* NSObject+AUUTheme.m */; };
-		1CF045821E52EEE400D836F5 /* UIImageView+AUUTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF045811E52EEE400D836F5 /* UIImageView+AUUTheme.m */; };
 		1CF0458D1E52F2FA00D836F5 /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1CF0458B1E52F2FA00D836F5 /* 11.jpg */; };
 		1CF0458E1E52F2FA00D836F5 /* 33.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1CF0458C1E52F2FA00D836F5 /* 33.jpg */; };
 /* End PBXBuildFile section */
@@ -47,6 +51,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C9050401E5C939B00B95641 /* NSObject+AUUMethodCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AUUMethodCache.h"; sourceTree = "<group>"; };
+		1C9050411E5C939B00B95641 /* NSObject+AUUMethodCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AUUMethodCache.m"; sourceTree = "<group>"; };
+		1C9050461E5DDFF800B95641 /* NSString+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AUUTheme.h"; sourceTree = "<group>"; };
+		1C9050471E5DDFF800B95641 /* NSString+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AUUTheme.m"; sourceTree = "<group>"; };
+		1C9050491E5DF60400B95641 /* UIToolbar+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+AUUTheme.h"; sourceTree = "<group>"; };
+		1C90504A1E5DF60400B95641 /* UIToolbar+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+AUUTheme.m"; sourceTree = "<group>"; };
+		1C90504C1E5F1FA500B95641 /* UITableViewHeaderFooterView+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewHeaderFooterView+AUUTheme.h"; sourceTree = "<group>"; };
+		1C90504D1E5F1FA500B95641 /* UITableViewHeaderFooterView+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewHeaderFooterView+AUUTheme.m"; sourceTree = "<group>"; };
+		1C9050551E5F269300B95641 /* UITabBar+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+AUUTheme.h"; sourceTree = "<group>"; };
+		1C9050561E5F269300B95641 /* UITabBar+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+AUUTheme.m"; sourceTree = "<group>"; };
+		1C9050591E5F391200B95641 /* AUUTestThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUUTestThemeManager.h; sourceTree = "<group>"; };
+		1C90505A1E5F391200B95641 /* AUUTestThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUUTestThemeManager.m; sourceTree = "<group>"; };
+		1C90505C1E5F39AF00B95641 /* AUUThemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUUThemeModel.h; sourceTree = "<group>"; };
+		1C90505D1E5F39AF00B95641 /* AUUThemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUUThemeModel.m; sourceTree = "<group>"; };
+		1C90505F1E5F449500B95641 /* UIImageView+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AUUTheme.m"; sourceTree = "<group>"; };
+		1C9050611E5F44B500B95641 /* UITextField+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+AUUTheme.m"; sourceTree = "<group>"; };
 		1CF044971E51A6CF00D836F5 /* ThemeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThemeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF0449B1E51A6CF00D836F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CF0449D1E51A6CF00D836F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -64,14 +84,9 @@
 		1CF044C31E51A7A800D836F5 /* AUUThemeConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUUThemeConstants.m; sourceTree = "<group>"; };
 		1CF044C61E51A7D600D836F5 /* AUUThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUUThemeManager.h; sourceTree = "<group>"; };
 		1CF044C71E51A7D600D836F5 /* AUUThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUUThemeManager.m; sourceTree = "<group>"; };
-		1CF044C91E51A7E700D836F5 /* AUUSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AUUSingleton.h; sourceTree = "<group>"; };
 		1CF044CA1E51A7FD00D836F5 /* AUUThemeKits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AUUThemeKits.h; sourceTree = "<group>"; };
-		1CF044CB1E51A85200D836F5 /* AUUThemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUUThemeModel.h; sourceTree = "<group>"; };
-		1CF044CC1E51A85200D836F5 /* AUUThemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUUThemeModel.m; sourceTree = "<group>"; };
 		1CF045391E51B7A700D836F5 /* LocalBlackTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LocalBlackTheme.bundle; sourceTree = "<group>"; };
 		1CF0453A1E51B7A700D836F5 /* LocalWhiteTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LocalWhiteTheme.bundle; sourceTree = "<group>"; };
-		1CF0454C1E52CE0000D836F5 /* NSString+_AUUPrivateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+_AUUPrivateHelper.h"; sourceTree = "<group>"; };
-		1CF0454D1E52CE0000D836F5 /* NSString+_AUUPrivateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+_AUUPrivateHelper.m"; sourceTree = "<group>"; };
 		1CF0455B1E52CEF200D836F5 /* UIView+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AUUTheme.h"; sourceTree = "<group>"; };
 		1CF0455C1E52CEF200D836F5 /* UIView+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AUUTheme.m"; sourceTree = "<group>"; };
 		1CF0455E1E52CF0200D836F5 /* UILabel+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+AUUTheme.h"; sourceTree = "<group>"; };
@@ -81,11 +96,8 @@
 		1CF045641E52CF2200D836F5 /* UISegmentedControl+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+AUUTheme.h"; sourceTree = "<group>"; };
 		1CF045651E52CF2200D836F5 /* UISegmentedControl+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+AUUTheme.m"; sourceTree = "<group>"; };
 		1CF045671E52CF5600D836F5 /* UITextField+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+AUUTheme.h"; sourceTree = "<group>"; };
-		1CF045681E52CF5600D836F5 /* UITextField+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+AUUTheme.m"; sourceTree = "<group>"; };
 		1CF0456A1E52CF6300D836F5 /* UITextView+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+AUUTheme.h"; sourceTree = "<group>"; };
 		1CF0456B1E52CF6300D836F5 /* UITextView+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AUUTheme.m"; sourceTree = "<group>"; };
-		1CF0456D1E52CF7F00D836F5 /* UIWebView+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AUUTheme.h"; sourceTree = "<group>"; };
-		1CF0456E1E52CF7F00D836F5 /* UIWebView+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AUUTheme.m"; sourceTree = "<group>"; };
 		1CF045701E52CF9D00D836F5 /* UISwitch+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+AUUTheme.h"; sourceTree = "<group>"; };
 		1CF045711E52CF9D00D836F5 /* UISwitch+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+AUUTheme.m"; sourceTree = "<group>"; };
 		1CF045731E52D03800D836F5 /* UIImage+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AUUTheme.h"; sourceTree = "<group>"; };
@@ -95,7 +107,6 @@
 		1CF045791E52D0CB00D836F5 /* NSObject+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AUUTheme.h"; sourceTree = "<group>"; };
 		1CF0457A1E52D0CB00D836F5 /* NSObject+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AUUTheme.m"; sourceTree = "<group>"; };
 		1CF045801E52EEE400D836F5 /* UIImageView+AUUTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AUUTheme.h"; sourceTree = "<group>"; };
-		1CF045811E52EEE400D836F5 /* UIImageView+AUUTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AUUTheme.m"; sourceTree = "<group>"; };
 		1CF0458B1E52F2FA00D836F5 /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
 		1CF0458C1E52F2FA00D836F5 /* 33.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 33.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +156,10 @@
 				1CF044A11E51A6CF00D836F5 /* ViewController.m */,
 				1CF044C21E51A7A800D836F5 /* AUUThemeConstants.h */,
 				1CF044C31E51A7A800D836F5 /* AUUThemeConstants.m */,
+				1C9050591E5F391200B95641 /* AUUTestThemeManager.h */,
+				1C90505A1E5F391200B95641 /* AUUTestThemeManager.m */,
+				1C90505C1E5F39AF00B95641 /* AUUThemeModel.h */,
+				1C90505D1E5F39AF00B95641 /* AUUThemeModel.m */,
 				1CF0458B1E52F2FA00D836F5 /* 11.jpg */,
 				1CF0458C1E52F2FA00D836F5 /* 33.jpg */,
 				1CF045381E51B7A700D836F5 /* Themes */,
@@ -178,12 +193,9 @@
 		1CF044BF1E51A78A00D836F5 /* AUUTheme */ = {
 			isa = PBXGroup;
 			children = (
-				1CF044C91E51A7E700D836F5 /* AUUSingleton.h */,
 				1CF044CA1E51A7FD00D836F5 /* AUUThemeKits.h */,
 				1CF044C61E51A7D600D836F5 /* AUUThemeManager.h */,
 				1CF044C71E51A7D600D836F5 /* AUUThemeManager.m */,
-				1CF044CB1E51A85200D836F5 /* AUUThemeModel.h */,
-				1CF044CC1E51A85200D836F5 /* AUUThemeModel.m */,
 				1CF045441E52CE0000D836F5 /* Kits */,
 				1CF045491E52CE0000D836F5 /* ThemeTools */,
 			);
@@ -211,15 +223,19 @@
 				1CF045641E52CF2200D836F5 /* UISegmentedControl+AUUTheme.h */,
 				1CF045651E52CF2200D836F5 /* UISegmentedControl+AUUTheme.m */,
 				1CF045671E52CF5600D836F5 /* UITextField+AUUTheme.h */,
-				1CF045681E52CF5600D836F5 /* UITextField+AUUTheme.m */,
+				1C9050611E5F44B500B95641 /* UITextField+AUUTheme.m */,
 				1CF0456A1E52CF6300D836F5 /* UITextView+AUUTheme.h */,
 				1CF0456B1E52CF6300D836F5 /* UITextView+AUUTheme.m */,
-				1CF0456D1E52CF7F00D836F5 /* UIWebView+AUUTheme.h */,
-				1CF0456E1E52CF7F00D836F5 /* UIWebView+AUUTheme.m */,
 				1CF045701E52CF9D00D836F5 /* UISwitch+AUUTheme.h */,
 				1CF045711E52CF9D00D836F5 /* UISwitch+AUUTheme.m */,
 				1CF045801E52EEE400D836F5 /* UIImageView+AUUTheme.h */,
-				1CF045811E52EEE400D836F5 /* UIImageView+AUUTheme.m */,
+				1C90505F1E5F449500B95641 /* UIImageView+AUUTheme.m */,
+				1C9050491E5DF60400B95641 /* UIToolbar+AUUTheme.h */,
+				1C90504A1E5DF60400B95641 /* UIToolbar+AUUTheme.m */,
+				1C90504C1E5F1FA500B95641 /* UITableViewHeaderFooterView+AUUTheme.h */,
+				1C90504D1E5F1FA500B95641 /* UITableViewHeaderFooterView+AUUTheme.m */,
+				1C9050551E5F269300B95641 /* UITabBar+AUUTheme.h */,
+				1C9050561E5F269300B95641 /* UITabBar+AUUTheme.m */,
 			);
 			path = Kits;
 			sourceTree = "<group>";
@@ -229,12 +245,14 @@
 			children = (
 				1CF045791E52D0CB00D836F5 /* NSObject+AUUTheme.h */,
 				1CF0457A1E52D0CB00D836F5 /* NSObject+AUUTheme.m */,
-				1CF0454C1E52CE0000D836F5 /* NSString+_AUUPrivateHelper.h */,
-				1CF0454D1E52CE0000D836F5 /* NSString+_AUUPrivateHelper.m */,
+				1C9050461E5DDFF800B95641 /* NSString+AUUTheme.h */,
+				1C9050471E5DDFF800B95641 /* NSString+AUUTheme.m */,
 				1CF045731E52D03800D836F5 /* UIImage+AUUTheme.h */,
 				1CF045741E52D03800D836F5 /* UIImage+AUUTheme.m */,
 				1CF045761E52D06000D836F5 /* UIColor+AUUTheme.h */,
 				1CF045771E52D06000D836F5 /* UIColor+AUUTheme.m */,
+				1C9050401E5C939B00B95641 /* NSObject+AUUMethodCache.h */,
+				1C9050411E5C939B00B95641 /* NSObject+AUUMethodCache.m */,
 			);
 			name = ThemeTools;
 			path = Tools;
@@ -347,20 +365,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CF045781E52D06000D836F5 /* UIColor+AUUTheme.m in Sources */,
+				1C90505B1E5F391200B95641 /* AUUTestThemeManager.m in Sources */,
+				1C9050571E5F269300B95641 /* UITabBar+AUUTheme.m in Sources */,
 				1CF044C81E51A7D600D836F5 /* AUUThemeManager.m in Sources */,
+				1C90504E1E5F1FA500B95641 /* UITableViewHeaderFooterView+AUUTheme.m in Sources */,
+				1C90505E1E5F39AF00B95641 /* AUUThemeModel.m in Sources */,
+				1C9050481E5DDFF800B95641 /* NSString+AUUTheme.m in Sources */,
 				1CF044A21E51A6CF00D836F5 /* ViewController.m in Sources */,
 				1CF045631E52CF0E00D836F5 /* UIButton+AUUTheme.m in Sources */,
-				1CF0456F1E52CF7F00D836F5 /* UIWebView+AUUTheme.m in Sources */,
 				1CF044C41E51A7A800D836F5 /* AUUThemeConstants.m in Sources */,
+				1C90504B1E5DF60400B95641 /* UIToolbar+AUUTheme.m in Sources */,
+				1C9050621E5F44B500B95641 /* UITextField+AUUTheme.m in Sources */,
 				1CF045601E52CF0200D836F5 /* UILabel+AUUTheme.m in Sources */,
-				1CF045571E52CE0000D836F5 /* NSString+_AUUPrivateHelper.m in Sources */,
-				1CF044CD1E51A85200D836F5 /* AUUThemeModel.m in Sources */,
-				1CF045821E52EEE400D836F5 /* UIImageView+AUUTheme.m in Sources */,
 				1CF0449F1E51A6CF00D836F5 /* AppDelegate.m in Sources */,
+				1C9050421E5C939B00B95641 /* NSObject+AUUMethodCache.m in Sources */,
 				1CF0457B1E52D0CB00D836F5 /* NSObject+AUUTheme.m in Sources */,
 				1CF045661E52CF2200D836F5 /* UISegmentedControl+AUUTheme.m in Sources */,
 				1CF0455D1E52CEF200D836F5 /* UIView+AUUTheme.m in Sources */,
-				1CF045691E52CF5600D836F5 /* UITextField+AUUTheme.m in Sources */,
+				1C9050601E5F449500B95641 /* UIImageView+AUUTheme.m in Sources */,
 				1CF0449C1E51A6CF00D836F5 /* main.m in Sources */,
 				1CF045751E52D03800D836F5 /* UIImage+AUUTheme.m in Sources */,
 				1CF0456C1E52CF6300D836F5 /* UITextView+AUUTheme.m in Sources */,
@@ -446,7 +468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -488,7 +510,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -501,6 +523,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ThemeTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jyhu.ThemeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -512,6 +535,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ThemeTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jyhu.ThemeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -559,6 +583,7 @@
 				1CF044BB1E51A6CF00D836F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1CF044BC1E51A6CF00D836F5 /* Build configuration list for PBXNativeTarget "ThemeTestUITests" */ = {
 			isa = XCConfigurationList;
@@ -567,6 +592,7 @@
 				1CF044BE1E51A6CF00D836F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

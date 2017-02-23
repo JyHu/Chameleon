@@ -7,23 +7,42 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AUUSingleton.h"
 #import <UIKit/UIKit.h>
 
 @class AUUThemeModel;
 
 @interface AUUThemeManager : NSObject
 
-// 通过宏的方式设置单例
+/**
+ 单例
 
-singleton_h(Manager)
+ @return self
+ */
++ (instancetype)sharedManager;
+
+
+
+
+#pragma mark - theme handle methods
 
 /**
- 通过给定的标识来切换主题
+ 更换主题
 
- @param themeIdentifier 主题的标识
+ @param sourcePath 主题资源的目录
+ @param themeInfo 主题的详细信息
  */
-- (void)changeThemeWithIdentifier:(NSString *)themeIdentifier;
+- (BOOL)changeThemeWithSourcePath:(NSString *)sourcePath themeInfo:(NSDictionary *)themeInfo;
+
+/**
+ 注册一个通知，用于监听主题改变
+
+ @param notificationName 通知
+ */
+- (void)registerThemeChangeNotification:(NSString *)notificationName;
+
+
+
+#pragma mark - cached the readonly properties
 
 /**
  主题切换的通知
@@ -31,32 +50,19 @@ singleton_h(Manager)
 @property (retain, nonatomic, readonly) NSString *changeThemeNotification;
 
 /**
- 当前主题的标识
+ 主题信息
  */
-@property (retain, nonatomic, readonly) NSString *currentThemeIdentifier;
+@property (retain, nonatomic, readonly) NSDictionary *themeInfos;
 
 /**
  当前主题的资源地址
  */
 @property (retain, nonatomic, readonly) NSString *currentThemeSourcePath;
 
-/**
- 根据给定的标识来获取主题的信息
 
- @param identifier 主题的标识
- @return 主题model
- */
-- (AUUThemeModel *)getThemeWithIdentifier:(NSString *)identifier;
 
-/**
- 当前所有的主题列表
- */
-@property (retain, nonatomic) NSMutableArray *themeList;
 
-/**
- 主题信息
- */
-@property (retain, nonatomic) NSDictionary *themeInfos;
+#pragma mark - Default setting properties
 
 /**
  默认的颜色

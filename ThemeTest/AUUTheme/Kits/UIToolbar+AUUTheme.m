@@ -1,17 +1,17 @@
 //
-//  UITextView+AUUTheme.m
+//  UIToolbar+AUUTheme.m
 //  ThemeTest
 //
-//  Created by JyHu on 2017/2/14.
+//  Created by 胡金友 on 2017/2/23.
 //  Copyright © 2017年 JyHu. All rights reserved.
 //
 
-#import "UITextView+AUUTheme.h"
+#import "UIToolbar+AUUTheme.h"
 #import "NSObject+AUUTheme.h"
 #import "NSString+AUUTheme.h"
 #import "AUUThemeManager.h"
 
-@implementation UITextView (AUUTheme)
+@implementation UIToolbar (AUUTheme)
 
 - (void)setTintColorIdentifier:(NSString *)tintColorIdentifier
 {
@@ -23,14 +23,14 @@
     return [[[self cachedParamsForSelector:@selector(setTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
 }
 
-- (void)setTextColorIdentifier:(NSString *)textColorIdentifier
+- (void)setBarTintColorIdentifier:(NSString *)barTintColorIdentifier
 {
-    [self cacheParams:@[textColorIdentifier.colorType] forSelector:@selector(setTextColor:)];
+    [self cacheParams:@[barTintColorIdentifier.colorType] forSelector:@selector(setBarTintColor:)];
 }
 
-- (NSString *)textColorIdentifier
+- (NSString *)barTintColorIdentifier
 {
-    return [[[self cachedParamsForSelector:@selector(setTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+    return [[[self cachedParamsForSelector:@selector(setBarTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
 }
 
 - (void)dealloc
@@ -39,5 +39,6 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
 }
+
 
 @end

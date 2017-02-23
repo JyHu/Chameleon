@@ -1,17 +1,17 @@
 //
-//  NSString+_AUUPrivateHelper.m
+//  NSString+AUUTheme.m
 //  ThemeTest
 //
-//  Created by JyHu on 2017/2/13.
+//  Created by 胡金友 on 2017/2/22.
 //  Copyright © 2017年 JyHu. All rights reserved.
 //
 
-#import "NSString+_AUUPrivateHelper.h"
+#import "NSString+AUUTheme.h"
 #import <objc/runtime.h>
 #import <UIKit/UIColor.h>
 #import <UIKit/UIImage.h>
 
-@implementation NSString (_AUUPrivateHelper)
+@implementation NSString (AUUTheme)
 
 const char *kThemeTransferTypeAssociateKey = (void *)@"kThemeTransferTypeAssociateKey";
 
@@ -34,6 +34,7 @@ const char *kThemeTransferTypeAssociateKey = (void *)@"kThemeTransferTypeAssocia
 
 - (NSString *)imageType
 {
+    
     [self setThemeTransferType:NSStringFromClass([UIImage class])];
     
     return self;

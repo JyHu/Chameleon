@@ -10,14 +10,14 @@
 
 @interface UISwitch (AUUTheme)
 
-- (void)setTintColorWithIdentifier:(NSString *)tintColorIdentifier;
+@property (retain, nonatomic, setter=setTintColorIdentifier:) NSString *tintColorIdentifier;
 
-- (void)setOnTintColorWithIdentifier:(NSString *)onTintColorIdentifier;
+@property (retain, nonatomic, setter=setOnTintColorIdentifier:) NSString *onTintColorIdentifier;
 
-- (void)setThumbTintColorWithIdentifier:(NSString *)thumbTintColorIdentifier;
+@property (retain, nonatomic, setter=setThumbTintColorIdentifier:) NSString *thumbTintColorIdentifier;
 
-- (void)setOnImageWithIdentifier:(NSString *)onImageIdentifier;
+@property (retain, nonatomic, setter=setOnImageIdentifier:) NSString *onImageIdentifier;
 
-- (void)setOffImageWithIdentifier:(NSString *)offImageIdentifier;
+@property (retain, nonatomic, setter=setOffImageIdentifier:) NSString *offImageIdentifier;
 
 @end

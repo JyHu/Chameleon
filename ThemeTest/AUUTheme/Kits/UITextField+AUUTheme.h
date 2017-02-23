@@ -10,8 +10,12 @@
 
 @interface UITextField (AUUTheme)
 
-- (void)setTintColorWithIdentifier:(NSString *)tintColorIdentifier;
+@property (retain, nonatomic, setter=setTintColorIdentifier:) NSString *tintColorIdentifier;
 
-- (void)setTextColorWithIdentifier:(NSString *)textColorIdentifier;
+@property (retain, nonatomic, setter=setTextColorIdentifier:) NSString *textColorIdentifier;
+
+@property (retain, nonatomic, setter=setBackgroundIdentifier:) NSString *backgroundIdentifier;
+
+@property (retain, nonatomic, setter=setDisabledBackgroundIdentifier:) NSString *disabledBackgroundIdentifier;
 
 @end

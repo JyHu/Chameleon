@@ -7,144 +7,74 @@
 //
 
 #import "AUUThemeManager.h"
-#import "AUUThemeModel.h"
 
 @interface AUUThemeManager()
 
 @property (retain, nonatomic) NSString *pri_changeThemeNotification;
 
-@property (retain, nonatomic) NSString *pri_currentThemeIdentifier;
+@property (retain, nonatomic) NSDictionary *pri_themeInfo;
+
+@property (retain, nonatomic) NSString *pri_currentThemeSourcePath;
 
 @end
 
 @implementation AUUThemeManager
 
-singleton_m(Manager)
++ (instancetype)sharedManager
+{
+    static AUUThemeManager *manager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [[AUUThemeManager alloc] init];
+    });
+    return manager;
+}
 
 - (instancetype)init
 {
-    self = [super init];
-    
-    if (self)
+    if ((self = [super init]))
     {
         self.defaultColor = [UIColor redColor];
         self.defaultImage = [UIImage new];
-        [self loadThemes];
-        [self loadSettingTheme];
     }
     
     return self;
 }
 
-- (void)loadThemes
+- (void)registerThemeChangeNotification:(NSString *)notificationName
 {
-    self.pri_changeThemeNotification = @"com.jyhu.notification.themechanged";
-    
-    NSString *localBlack = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"LocalBlackTheme.bundle"];
-    NSString *localWhite = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"LocalWhiteTheme.bundle"];
-    
-    // 本地的主题，默认是以bundle的形式存放在本地
-    
-    [self.themeList addObject:[AUUThemeModel themeWithName:@"白色主题"
-                                                      path:[localWhite stringByAppendingPathComponent:@"Contents/Resources"]
-                                                identifier:@"com.jyhu.theme.white" type:AUUThemeTypeLocal]];
-    
-    [self.themeList addObject:[AUUThemeModel themeWithName:@"黑色主题"
-                                                      path:[localBlack stringByAppendingPathComponent:@"Contents/Resources"]
-                                                identifier:@"com.jyhu.theme.black" type:AUUThemeTypeLocal]];
+    NSAssert(notificationName && [notificationName isKindOfClass:[NSString class]] &&
+             [notificationName stringByReplacingOccurrencesOfString:@" " withString:@""].length > 0,
+             @"无效的主题更换通知");
+    self.pri_changeThemeNotification = notificationName;
 }
 
-- (void)loadSettingTheme
+- (BOOL)changeThemeWithSourcePath:(NSString *)sourcePath themeInfo:(NSDictionary *)themeInfo
 {
-    NSString *themeIdentifier = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.jyhu.cachedThemeIdentifier"];
+#warning - judge the theme info
     
-    if (themeIdentifier)
-    {
-        [self loadThemeInfoWithIdentifier:themeIdentifier];
-    }
-    else
-    {
-        // 如果之前没有设置过主题的话，就用默认的白色主题
-        [self loadThemeInfoWithIdentifier:@"com.jyhu.theme.white"];
-    }
-}
-
-- (BOOL)loadThemeInfoWithIdentifier:(NSString *)identifier
-{
-    NSString *jsonPath = [[self getThemeWithIdentifier:identifier].themePath stringByAppendingPathComponent:@"theme.json"];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:jsonPath])
-    {
-        NSLog(@"file not exists");
-        return NO;
-    }
-    
-    self.pri_currentThemeIdentifier = identifier;
-    
-    NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
-    NSError *error;
-    self.themeInfos = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+    self.pri_currentThemeSourcePath = sourcePath;
+    self.pri_themeInfo = themeInfo;
+    [[NSNotificationCenter defaultCenter] postNotificationName:self.pri_changeThemeNotification object:nil];
     
     return YES;
 }
 
-- (void)changeThemeWithIdentifier:(NSString *)themeIdentifier
-{
-    if (themeIdentifier && self.pri_currentThemeIdentifier && [themeIdentifier isEqualToString:self.pri_currentThemeIdentifier])
-    {
-        return;
-    }
-    
-    if (![self loadThemeInfoWithIdentifier:themeIdentifier])
-    {
-        NSLog(@"file not exists");
-        return;
-    }
-
-    [[NSUserDefaults standardUserDefaults] setObject:themeIdentifier forKey:@"com.jyhu.cachedThemeIdentifier"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:self.pri_changeThemeNotification object:nil];
-}
-
-- (AUUThemeModel *)getThemeWithIdentifier:(NSString *)identifier
-{
-    for (AUUThemeModel *themeModel in self.themeList)
-    {
-        if ([themeModel.themeIdentifier isEqualToString:identifier])
-        {
-            return themeModel;
-        }
-    }
-    
-    return nil;
-}
-
 #pragma mark - getter
-
-- (NSMutableArray *)themeList
-{
-    if (!_themeList)
-    {
-        _themeList = [[NSMutableArray alloc] init];
-    }
-    
-    return _themeList;
-}
 
 - (NSString *)changeThemeNotification
 {
     return self.pri_changeThemeNotification;
 }
 
-- (NSString *)currentThemeIdentifier
+- (NSDictionary *)themeInfos
 {
-    return self.pri_currentThemeIdentifier;
+    return self.pri_themeInfo;
 }
 
 - (NSString *)currentThemeSourcePath
 {
-    return [self getThemeWithIdentifier:self.currentThemeIdentifier].themePath;
+    return self.pri_currentThemeSourcePath;
 }
 
 @end

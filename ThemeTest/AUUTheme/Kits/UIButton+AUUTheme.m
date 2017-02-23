@@ -8,24 +8,40 @@
 
 #import "UIButton+AUUTheme.h"
 #import "NSObject+AUUTheme.h"
-#import "NSString+_AUUPrivateHelper.h"
+#import "NSString+AUUTheme.h"
 #import "AUUThemeManager.h"
 
 @implementation UIButton (AUUTheme)
 
 - (void)setTitleColorWithIdentifier:(NSString *)identifier forState:(UIControlState)state
 {    
-    [self cacheParams:@[identifier.colorType, @(state)] forSelector:NSStringFromSelector(@selector(setTitleColor:forState:))];
+    [self cacheParams:@[identifier.colorType, @(state)]
+          forSelector:@selector(setTitleColor:forState:)];
+}
+
+- (NSArray *)titleColorIdentifiers
+{
+    return [self cachedParamsForSelector:@selector(setTitleColor:forState:)] ?: AUUNoneIdentifierTips;
 }
 
 - (void)setImageWithIdentifier:(NSString *)identifier forState:(UIControlState)state
 {
-    [self cacheParams:@[identifier.imageType, @(state)] forSelector:NSStringFromSelector(@selector(setImage:forState:))];
+    [self cacheParams:@[identifier.imageType, @(state)] forSelector:@selector(setImage:forState:)];
+}
+
+- (NSArray *)imageIdentifiers
+{
+    return [self cachedParamsForSelector:@selector(setImage:forState:)] ?: AUUNoneIdentifierTips;
 }
 
 - (void)setBackgroundImageWithIdentifier:(NSString *)identifier forState:(UIControlState)state
 {
-    [self cacheParams:@[identifier.imageType, @(state)] forSelector:NSStringFromSelector(@selector(setBackgroundImage:forState:))];
+    [self cacheParams:@[identifier.imageType, @(state)] forSelector:@selector(setBackgroundImage:forState:)];
+}
+
+- (NSArray *)backgroundImageIdentifiers
+{
+    return [self cachedParamsForSelector:@selector(setBackgroundImage:forState:)] ?: AUUNoneIdentifierTips;
 }
 
 - (void)dealloc

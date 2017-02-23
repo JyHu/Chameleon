@@ -51,29 +51,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ThemeTest/AUUTheme/AUUThemeManager.m"
-            timestampString = "508829708.077089"
+            filePath = "ThemeTest/AUUTheme/Kits/UIView+AUUTheme.m"
+            timestampString = "509474028.630849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "-changeThemeWithIdentifier:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ThemeTest/AUUTheme/Tools/UIColor+AUUTheme.m"
-            timestampString = "508818655.118939"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "+colorWithIdentifier:"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "-setBackgroundColorIdentifier:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

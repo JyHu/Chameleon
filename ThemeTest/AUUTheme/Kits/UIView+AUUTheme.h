@@ -10,6 +10,6 @@
 
 @interface UIView (AUUTheme)
 
-- (void)setBackgroundColorWithIdentifier:(NSString *)identifier;
+@property (retain, nonatomic, setter=setBackgroundColorIdentifier:) NSString *backgroundColorIdentifier;
 
 @end

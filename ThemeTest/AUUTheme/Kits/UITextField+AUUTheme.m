@@ -8,19 +8,49 @@
 
 #import "UITextField+AUUTheme.h"
 #import "NSObject+AUUTheme.h"
-#import "NSString+_AUUPrivateHelper.h"
+#import "NSString+AUUTheme.h"
 #import "AUUThemeManager.h"
 
 @implementation UITextField (AUUTheme)
 
-- (void)setTintColorWithIdentifier:(NSString *)tintColorIdentifier
+- (void)setTintColorIdentifier:(NSString *)tintColorIdentifier
 {
-    [self cacheParams:@[tintColorIdentifier.colorType] forSelector:NSStringFromSelector(@selector(setTintColor:))];
+    [self cacheParams:@[tintColorIdentifier.colorType] forSelector:@selector(setTintColor:)];
 }
 
-- (void)setTextColorWithIdentifier:(NSString *)textColorIdentifier
+- (NSString *)tintColorIdentifier
 {
-    [self cacheParams:@[textColorIdentifier.colorType] forSelector:NSStringFromSelector(@selector(setTextColor:))];
+    return [[[self cachedParamsForSelector:@selector(setTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+}
+
+- (void)setTextColorIdentifier:(NSString *)textColorIdentifier
+{
+    [self cacheParams:@[textColorIdentifier.colorType] forSelector:@selector(setTextColor:)];
+}
+
+- (NSString *)textColorIdentifier
+{
+    return [[[self cachedParamsForSelector:@selector(setTextColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+}
+
+- (void)setBackgroundIdentifier:(NSString *)backgroundIdentifier
+{
+    [self cacheParams:@[backgroundIdentifier.imageType] forSelector:@selector(setBackground:)];
+}
+
+- (NSString *)backgroundIdentifier
+{
+    return [[[self cachedParamsForSelector:@selector(setBackground:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+}
+
+- (void)setDisabledBackgroundIdentifier:(NSString *)disabledBackgroundIdentifier
+{
+    [self cacheParams:@[disabledBackgroundIdentifier.imageType] forSelector:@selector(setDisabledBackground:)];
+}
+
+- (NSString *)disabledBackgroundIdentifier
+{
+    return [[[self cachedParamsForSelector:@selector(setDisabledBackground:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
 }
      
 - (void)dealloc
