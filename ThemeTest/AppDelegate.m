@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "AUUTestThemeManager.h"
+#import "AUUMainViewController.h"
+#import "AUNavigationController.h"
+#import <SDWebImage/SDImageCache.h>
 
 @interface AppDelegate ()
 
@@ -18,7 +21,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [AUUTestThemeManager sharedManager];
+    [[AUUTestThemeManager sharedManager] changeThemeWithIdentifier:@"com.jyhu.theme.white"];
+    
+    [[SDImageCache sharedImageCache] clearMemory];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = [[AUNavigationController alloc] initWithRootViewController:[[AUUMainViewController alloc] init]];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

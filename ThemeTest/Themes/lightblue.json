@@ -1,0 +1,49 @@
+{
+    "colors": {
+        "color" : "c6ddfa",
+        "color.background" : "c6ddfa",
+        "color.background.viewcontroller": "c6ddfa",
+        "color.background.tableview": "c6ddfa",
+        "color.text" : "4a4a4a",
+        "color.text.normal": "4a4a4a",
+        "color.text.hightlighted" : "f17775",
+        "color.text.selected" : "f17775",
+        "color.text.title" : "4e4e4f",
+        "color.text.subtitle" : "6b6b6d"
+    },
+    "images": {
+        "image": {
+            "type": 0,
+            "name": "3.jpg"
+        },
+        "image.background.navbar" : {
+            "type": 2,
+            "color": "c6ddfa"
+        },
+        "image.refresh.arrow" : {
+            "color": "f17775",
+            "type": 2
+        },
+        "image.head.head1": {
+            "type": 0,
+            "name": "1.jpeg"
+        },
+        "image.head.head2": {
+            "type": 0,
+            "name": "2.jpeg"
+        },
+        "image.head.head3": {
+            "type" : 3,
+            "path" : "http://www.qqjia.com/z/09/tu10292_19.jpg"
+        }
+    },
+    "appearance" : {
+        "appearance.segment" : {
+            "background" : "c6ddfa",
+            "titlecolor" : "4a4a4a",
+            "indicatorColor" : "4a4a4a",
+            "selectedTitleColor" : "f17775",
+            "bottomBorder" : "4a4a4a"
+        }
+    }
+}

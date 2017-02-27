@@ -1,0 +1,50 @@
+{
+    "colors": {
+        "color" : "fb708f",
+        "color.background" : "fb708f",
+        "color.background.viewcontroller": "fb708f",
+        "color.background.tableview": "fb708f",
+        "color.text" : "f1f3fb",
+        "color.text.normal": "4a4a4a",
+        "color.text.hightlighted" : "8431ca",
+        "color.text.selected" : "8431ca",
+        "color.text.title" : "f2f4fb",
+        "color.text.subtitle" : "fccdf"
+    },
+    "images": {
+        "image": {
+            "type": 0,
+            "name": "3.jpg"
+        },
+        "image.background.navbar" : {
+            "type": 2,
+            "color": "fb708f"
+        },
+        "image.refresh.arrow" : {
+            "color": "8431ca",
+            "type": 2
+        },
+        "image.head.head1": {
+            "type": 0,
+            "name": "3.jpeg"
+        },
+        "image.head.head2": {
+            "type": 0,
+            "name": "4.jpeg"
+        },
+        "image.head.head3": {
+            "type" : 3,
+            "path" : "http://www.qqtouxiang.com/d/file/qinglv/20170212/c7a21bc98316c93c4eec72159cda0e45.jpg"
+        }
+    },
+    "appearance" : {
+        "appearance.segment" : {
+            "background" : "fb708f",
+            "titlecolor" : "f1f3fb",
+            "indicatorColor" : "f1f3fb",
+            "selectedTitleColor" : "8431ca",
+            "bottomBorder" : "f1f3fb"
+        }
+    }
+}
+

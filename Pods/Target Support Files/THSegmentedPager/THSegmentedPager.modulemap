@@ -1,0 +1,6 @@
+framework module THSegmentedPager {
+  umbrella header "THSegmentedPager-umbrella.h"
+
+  export *
+  module * { export * }
+}
