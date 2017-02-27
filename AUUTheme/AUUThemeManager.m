@@ -64,7 +64,12 @@
 
 - (NSString *)changeThemeNotification
 {
-    return self.pri_changeThemeNotification;
+    if (self.pri_changeThemeNotification)
+    {
+        return self.pri_changeThemeNotification;
+    }
+    
+    return @"com.jyhu.notification.changeTheme";
 }
 
 - (NSDictionary *)themeInfos

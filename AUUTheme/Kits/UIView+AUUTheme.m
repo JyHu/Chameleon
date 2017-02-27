@@ -14,10 +14,6 @@
 - (void)setBackgroundColorIdentifier:(NSString *)backgroundColorIdentifier
 {
     [self cacheParams:@[backgroundColorIdentifier.colorType] forSelector:@selector(setBackgroundColor:)];
-    
-    [self cacheParams:@[] forSelector:@selector(self) argTransfer:^id(id object, SEL sel, id arg, NSUInteger argIndex, BOOL *skip) {
-        return nil;
-    }];
 }
 
 - (NSString *)backgroundColorIdentifier
