@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1CEEF38D1E66686B00EF15C0"
-               BuildableName = "EasyTheme.framework"
-               BlueprintName = "EasyTheme"
+               BlueprintIdentifier = "1CEEF5191E66929500EF15C0"
+               BuildableName = "ThemeKit.framework"
+               BlueprintName = "ThemeKit"
                ReferencedContainer = "container:EasyTheme.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1CEEF3961E66686C00EF15C0"
-               BuildableName = "EasyThemeTests.xctest"
-               BlueprintName = "EasyThemeTests"
-               ReferencedContainer = "container:EasyTheme.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1CEEF38D1E66686B00EF15C0"
-            BuildableName = "EasyTheme.framework"
-            BlueprintName = "EasyTheme"
-            ReferencedContainer = "container:EasyTheme.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -64,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1CEEF38D1E66686B00EF15C0"
-            BuildableName = "EasyTheme.framework"
-            BlueprintName = "EasyTheme"
+            BlueprintIdentifier = "1CEEF5191E66929500EF15C0"
+            BuildableName = "ThemeKit.framework"
+            BlueprintName = "ThemeKit"
             ReferencedContainer = "container:EasyTheme.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1CEEF38D1E66686B00EF15C0"
-            BuildableName = "EasyTheme.framework"
-            BlueprintName = "EasyTheme"
+            BlueprintIdentifier = "1CEEF5191E66929500EF15C0"
+            BuildableName = "ThemeKit.framework"
+            BlueprintName = "ThemeKit"
             ReferencedContainer = "container:EasyTheme.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

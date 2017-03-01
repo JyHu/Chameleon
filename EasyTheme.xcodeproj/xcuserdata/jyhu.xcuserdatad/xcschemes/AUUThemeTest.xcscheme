@@ -58,6 +58,16 @@
                ReferencedContainer = "container:EasyTheme.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1CEEF5211E66929500EF15C0"
+               BuildableName = "ThemeKitTests.xctest"
+               BlueprintName = "ThemeKitTests"
+               ReferencedContainer = "container:EasyTheme.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

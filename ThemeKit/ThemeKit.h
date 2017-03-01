@@ -1,13 +1,12 @@
 //
-//  EasyTheme.h
-//  EasyTheme
+//  ThemeKit.h
+//  ThemeKit
 //
 //  Created by JyHu on 2017/3/1.
 //
 //
 
 #import <UIKit/UIKit.h>
-
 //************************************************************************************************************************
 //***************************   已经添加主题扩展的类
 //************************************************************************************************************************
@@ -46,12 +45,15 @@
 
 #import "AUUThemeManager.h"
 
-//! Project version number for EasyTheme.
-FOUNDATION_EXPORT double EasyThemeVersionNumber;
 
-//! Project version string for EasyTheme.
-FOUNDATION_EXPORT const unsigned char EasyThemeVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <EasyTheme/PublicHeader.h>
+
+//! Project version number for ThemeKit.
+FOUNDATION_EXPORT double ThemeKitVersionNumber;
+
+//! Project version string for ThemeKit.
+FOUNDATION_EXPORT const unsigned char ThemeKitVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <ThemeKit/PublicHeader.h>
 
 

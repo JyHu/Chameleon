@@ -14,7 +14,7 @@ pod 'SDWebImage', '~> 4.0.0'
 
 end
 
-target 'EasyTheme' do
+target 'ThemeKit' do
 
 pod 'SDWebImage', '~> 4.0.0'
 

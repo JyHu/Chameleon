@@ -1,6 +1,6 @@
 //
-//  EasyThemeTests.m
-//  EasyThemeTests
+//  ThemeKitTests.m
+//  ThemeKitTests
 //
 //  Created by JyHu on 2017/3/1.
 //
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface EasyThemeTests : XCTestCase
+@interface ThemeKitTests : XCTestCase
 
 @end
 
-@implementation EasyThemeTests
+@implementation ThemeKitTests
 
 - (void)setUp {
     [super setUp];
