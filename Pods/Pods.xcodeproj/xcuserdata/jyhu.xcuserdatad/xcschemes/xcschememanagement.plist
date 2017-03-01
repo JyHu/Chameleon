@@ -8,41 +8,64 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Nimbus.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
-		<key>Pods-ThemeTest.xcscheme</key>
+		<key>Pods-AUUThemeTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>Pods-EasyTheme.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>THSegmentedPager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>UIView+Borders.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -52,12 +75,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>15BCC6F104CF5571DDEC2BD9F1143A07</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5DD52A2CACC20FF4FC5E02555E419359</key>
+		<key>5162E4405C4B754F96EA74717A928AB1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +85,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D83D0F2386F6BBBBF3ADA79FE14FF8D</key>
+		<key>BBF517AFFF850AE0E026E70564B11F8B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>809BCAFB3F3054C6E84C5AF43090011A</key>
+		<key>C879264F52366B2355289D8B897F9A43</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -83,6 +101,16 @@
 			<true/>
 		</dict>
 		<key>E14A62900910444707A5504D25EC98DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E683C578619897CC7175B216B5794A27</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE6758603F914BC8F8551784F062B55F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

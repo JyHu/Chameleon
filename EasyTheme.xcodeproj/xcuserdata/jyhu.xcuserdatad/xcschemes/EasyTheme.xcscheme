@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FE6758603F914BC8F8551784F062B55F"
-               BuildableName = "UIView_Borders.framework"
-               BlueprintName = "UIView+Borders"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "1CEEF38D1E66686B00EF15C0"
+               BuildableName = "EasyTheme.framework"
+               BlueprintName = "EasyTheme"
+               ReferencedContainer = "container:EasyTheme.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1CEEF3961E66686C00EF15C0"
+               BuildableName = "EasyThemeTests.xctest"
+               BlueprintName = "EasyThemeTests"
+               ReferencedContainer = "container:EasyTheme.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1CEEF38D1E66686B00EF15C0"
+            BuildableName = "EasyTheme.framework"
+            BlueprintName = "EasyTheme"
+            ReferencedContainer = "container:EasyTheme.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,10 +64,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FE6758603F914BC8F8551784F062B55F"
-            BuildableName = "UIView_Borders.framework"
-            BlueprintName = "UIView+Borders"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "1CEEF38D1E66686B00EF15C0"
+            BuildableName = "EasyTheme.framework"
+            BlueprintName = "EasyTheme"
+            ReferencedContainer = "container:EasyTheme.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,6 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1CEEF38D1E66686B00EF15C0"
+            BuildableName = "EasyTheme.framework"
+            BlueprintName = "EasyTheme"
+            ReferencedContainer = "container:EasyTheme.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
