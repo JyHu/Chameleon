@@ -1,6 +1,0 @@
-framework module UIView_Borders {
-  umbrella header "UIView+Borders-umbrella.h"
-
-  export *
-  module * { export * }
-}

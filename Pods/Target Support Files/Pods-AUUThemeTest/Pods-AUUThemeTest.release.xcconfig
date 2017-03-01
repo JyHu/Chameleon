@@ -1,8 +1,0 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/HMSegmentedControl" "$PODS_CONFIGURATION_BUILD_DIR/MJRefresh" "$PODS_CONFIGURATION_BUILD_DIR/Masonry" "$PODS_CONFIGURATION_BUILD_DIR/Nimbus" "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage" "$PODS_CONFIGURATION_BUILD_DIR/THSegmentedPager" "$PODS_CONFIGURATION_BUILD_DIR/UIView+Borders"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/HMSegmentedControl/HMSegmentedControl.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/MJRefresh/MJRefresh.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Masonry/Masonry.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Nimbus/Nimbus.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage/SDWebImage.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/THSegmentedPager/THSegmentedPager.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/UIView+Borders/UIView_Borders.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "HMSegmentedControl" -framework "MJRefresh" -framework "Masonry" -framework "Nimbus" -framework "SDWebImage" -framework "THSegmentedPager" -framework "UIView_Borders"
-PODS_BUILD_DIR = $BUILD_DIR
-PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
-PODS_ROOT = ${SRCROOT}/Pods
