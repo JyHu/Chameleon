@@ -11,21 +11,8 @@
 
 @implementation UITableView (AUUTheme)
 
-- (void)setSeparatorColorIdentifier:(NSString *)separatorColorIdentifier
-{
-    [self cacheThemeParams:@[separatorColorIdentifier.colorType] forSelector:@selector(setSeparatorColor:)];
-}
-
-- (NSString *)separatorColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setSeparatorColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)dealloc
-{
-    self.notificationRegistered = NO;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
+- (void)setApp_separatorColor:(UIColor *)app_separatorColor {
+    [self cacheThemeParams:@[app_separatorColor] forSelector:@selector(setSeparatorColor:)];
 }
 
 @end

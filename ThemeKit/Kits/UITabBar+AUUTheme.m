@@ -11,81 +11,32 @@
 
 @implementation UITabBar (AUUTheme)
 
-- (void)setTintColorIdentifier:(NSString *)tintColorIdentifier
-{
-    [self cacheThemeParams:@[tintColorIdentifier.colorType] forSelector:@selector(setTintColor:)];
+- (void)setApp_tintColor:(UIColor *)app_tintColor {
+    [self cacheThemeParams:@[app_tintColor] forSelector:@selector(setTintColor:)];
 }
 
-- (NSString *)tintColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+- (void)setApp_barTintColor:(UIColor *)app_barTintColor {
+    [self cacheThemeParams:@[app_barTintColor] forSelector:@selector(setBarTintColor:)];
 }
 
-- (void)setBarTintColorIdentifier:(NSString *)barTintColorIdentifier
-{
-    [self cacheThemeParams:@[barTintColorIdentifier.colorType] forSelector:@selector(setBarTintColor:)];
+- (void)setApp_unselectedItemTintColor:(UIColor *)app_unselectedItemTintColor {
+    [self cacheThemeParams:@[app_unselectedItemTintColor] forSelector:@selector(setUnselectedItemTintColor:)];
 }
 
-- (NSString *)barTintColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setBarTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+- (void)setApp_selectedImageTintColor:(UIColor *)app_selectedImageTintColor {
+    [self cacheThemeParams:@[app_selectedImageTintColor] forSelector:@selector(setSelectedImageTintColor:)];
 }
 
-- (void)setUnselectedItemTintColorIdentifier:(NSString *)unselectedItemTintColorIdentifier
-{
-    [self cacheThemeParams:@[unselectedItemTintColorIdentifier.colorType] forSelector:@selector(setUnselectedItemTintColor:)];
+- (void)setApp_backgroundImage:(UIImage *)app_backgroundImage {
+    [self cacheThemeParams:@[app_backgroundImage] forSelector:@selector(setBackgroundImage:)];
 }
 
-- (NSString *)unselectedItemTintColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setUnselectedItemTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+- (void)setApp_selectionIndicatorImage:(UIImage *)app_selectionIndicatorImage {
+    [self cacheThemeParams:@[app_selectionIndicatorImage] forSelector:@selector(setSelectionIndicatorImage:)];
 }
 
-- (void)setSelectedImageTintColorIdentifier:(NSString *)selectedImageTintColorIdentifier
-{
-    [self cacheThemeParams:@[selectedImageTintColorIdentifier.colorType] forSelector:@selector(setSelectedImageTintColor:)];
-}
-
-- (NSString *)selectedImageTintColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setSelectedImageTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)setBackgroundImageIdentifier:(NSString *)backgroundImageIdentifier
-{
-    [self cacheThemeParams:@[backgroundImageIdentifier.imageType] forSelector:@selector(setBackgroundImage:)];
-}
-
-- (NSString *)backgroundImageIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setBackgroundImage:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)setSelectionIndicatorImageIdentifier:(NSString *)selectionIndicatorImageIdentifier
-{
-    [self cacheThemeParams:@[selectionIndicatorImageIdentifier.imageType] forSelector:@selector(setSelectionIndicatorImage:)];
-}
-
-- (NSString *)selectionIndicatorImageIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setSelectionIndicatorImage:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)setShadowImageIdentifier:(NSString *)shadowImageIdentifier
-{
-    [self cacheThemeParams:@[shadowImageIdentifier.imageType] forSelector:@selector(setShadowImage:)];
-}
-
-- (NSString *)shadowImageIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setShadowImage:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)dealloc
-{
-    self.notificationRegistered = NO;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
+- (void)setApp_shadowImage:(UIImage *)app_shadowImage {
+    [self cacheThemeParams:@[app_shadowImage] forSelector:@selector(setShadowImage:)];
 }
 
 @end

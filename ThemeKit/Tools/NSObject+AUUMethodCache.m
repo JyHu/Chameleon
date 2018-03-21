@@ -8,7 +8,6 @@
 
 #import "NSObject+AUUMethodCache.h"
 #import <objc/runtime.h>
-#import "NSObject+__AUUPrivate.h"
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //                  private mode for method cache
@@ -16,17 +15,15 @@
 @interface _AUUMethodsInfo : NSObject
 
 + (instancetype)infoWithParams:(NSArray *)params argTransfer:(AUUArgumentTransfer)argTransfer;
-
+// 缓存的参数
 @property (retain, nonatomic) NSArray *params;
-
+// 参数的类型转换
 @property (copy, nonatomic) AUUArgumentTransfer argTransfer;
-
 @end
 
 @implementation _AUUMethodsInfo
 
-+ (instancetype)infoWithParams:(NSArray *)params argTransfer:(AUUArgumentTransfer)argTransfer
-{
++ (instancetype)infoWithParams:(NSArray *)params argTransfer:(AUUArgumentTransfer)argTransfer {
     _AUUMethodsInfo *info = [[_AUUMethodsInfo alloc] init];
     
     info.params = params;
@@ -43,7 +40,7 @@
 
 @interface NSObject (_AUUPrivate)
 
-@property (retain, nonatomic) NSMutableDictionary *cachedMethods;
+@property (retain, nonatomic, readonly) NSMutableDictionary *cachedMethods;
 
 @end
 
@@ -51,12 +48,12 @@
 
 @implementation NSObject (AUUMethodCache)
 
-- (id)cacheParams:(NSArray *)params forSelector:(SEL)sel
+- (void)cacheParams:(NSArray *)params forSelector:(SEL)sel
 {
-    return [self cacheParams:params forSelector:sel argTransfer:nil];
+    [self cacheParams:params forSelector:sel argTransfer:nil];
 }
 
-- (id)cacheParams:(NSArray *)params forSelector:(SEL)sel argTransfer:(AUUArgumentTransfer)transfer
+- (void)cacheParams:(NSArray *)params forSelector:(SEL)sel argTransfer:(AUUArgumentTransfer)transfer
 {
     NSMutableDictionary *cachedParams = [self.cachedMethods objectForKey:NSStringFromSelector(sel)];
     
@@ -76,56 +73,44 @@
      }
      }
      */
-    NSString *hashKey = [self hashKeyForParams:params];
     
-    [cachedParams setObject:[_AUUMethodsInfo infoWithParams:params argTransfer:transfer] forKey:hashKey];
+    [cachedParams setObject:[_AUUMethodsInfo infoWithParams:params argTransfer:transfer] forKey:[self hashKeyForParams:params]];
     
-    return [@{NSStringFromSelector(sel) : params} setPerformerWithTarget:self];
+    [self performSelector:sel params:params argTransfer:transfer];
 }
 
-- (void)performSelector:(SEL)sel params:(NSArray *)params
-{
+- (void)performSelector:(SEL)sel params:(NSArray *)params {
     [self performSelector:sel params:params hashCode:[self hashKeyForParams:params]];
 }
 
-- (void)performSelector:(SEL)sel params:(NSArray *)params hashCode:(NSString *)hashCode
-{
+- (void)performSelector:(SEL)sel params:(NSArray *)params hashCode:(NSString *)hashCode {
     NSDictionary *sels = self.cachedMethods[NSStringFromSelector(sel)];
     _AUUMethodsInfo *methodInfo = sels ? sels[hashCode] : nil;
     [self performSelector:sel params:params argTransfer: methodInfo ? methodInfo.argTransfer : nil];
 }
 
-- (void)performAllCachedSelector
-{
+- (void)performAllCachedSelector {
     [self performAllCachedSelectorWithArgumentTransfer:nil];
 }
 
-- (void)performAllCachedSelectorWithArgumentTransfer:(AUUArgumentTransfer)transfer
-{
-    for (NSString *selName in [self.cachedMethods allKeys])
-    {
-        for (_AUUMethodsInfo *info in [self.cachedMethods[selName] allValues])
-        {
+- (void)performAllCachedSelectorWithArgumentTransfer:(AUUArgumentTransfer)transfer {
+    for (NSString *selName in [self.cachedMethods allKeys]) {
+        for (_AUUMethodsInfo *info in [self.cachedMethods[selName] allValues]) {
             [self performSelector:NSSelectorFromString(selName) params:info.params argTransfer:info.argTransfer];
         }
     }
 }
 
-- (void)performSelector:(SEL)sel params:(NSArray *)params argTransfer:(AUUArgumentTransfer)transfer
-{
+- (void)performSelector:(SEL)sel params:(NSArray *)params argTransfer:(AUUArgumentTransfer)transfer {
     // https://opensource.apple.com/source/objc4/objc4-706/runtime/runtime.h.auto.html
     
-    Method              method          = class_getInstanceMethod([self class], sel);
     NSMethodSignature   *signature      = [[self class] instanceMethodSignatureForSelector:sel];
     NSInvocation        *invocation     = [NSInvocation invocationWithMethodSignature:signature];
     NSMutableArray      *tempArguments  = [[NSMutableArray alloc] init];  // 暂存一些对象，避免zombie
     
     invocation.selector = sel;
     
-    for (unsigned int i = 0; i < params.count; i ++)
-    {
-        char type[256]; // 方法参数的类型
-        
+    for (unsigned int i = 0; i < params.count; i ++) {
         /*
          用于获取方法的参数类型
          方法原型：
@@ -136,13 +121,11 @@
          http://www.auu.space/2016/04/30/iOS方法调用之NSInvocation/
          
          */
-        method_getArgumentType(method, i + 2, type, 256);
         
         id correctArgument = params[i];
         
-        if (transfer)
-        {
-            __weak id weakSelf = self;
+        if (transfer) {
+            __weak typeof(self) weakSelf = self;
             BOOL skip = NO;
             correctArgument = transfer(weakSelf, sel, params, i, &skip);
             if (skip) {
@@ -151,85 +134,84 @@
             [tempArguments addObject:correctArgument];
         }
         
-        // 顾虑掉无效的空白部分
-        NSString *octype = [[NSString stringWithUTF8String:type] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
+        const char *type = [signature getArgumentTypeAtIndex:i + 2];
         
-        if ([octype isEqualToString:@"#"])          // Class
+        if (strcmp(type, "#") == 0)          // Class
         {
             Class argumentCls = NSClassFromString(correctArgument);
             [invocation setArgument:&argumentCls atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@":"])     // Selector
+        else if (strcmp(type, ":") == 0)     // Selector
         {
             SEL argumentSEL = NSSelectorFromString(correctArgument);
             [invocation setArgument:&argumentSEL atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"c"])     // Char
+        else if (strcmp(type, "c") == 0)     // Char
         {
             char argumentC = [correctArgument charValue];
             [invocation setArgument:&argumentC atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"C"])
+        else if (strcmp(type, "C") == 0)
         {
             unsigned char argumentUC = [correctArgument unsignedCharValue];
             [invocation setArgument:&argumentUC atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"s"])
+        else if (strcmp(type, "s") == 0)
         {
             short argumentS = [correctArgument shortValue];
             [invocation setArgument:&argumentS atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"S"])
+        else if (strcmp(type, "S") == 0)
         {
             unsigned short argumentUS = [correctArgument unsignedShortValue];
             [invocation setArgument:&argumentUS atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"i"])
+        else if (strcmp(type, "i") == 0)
         {
             int argumentI = [correctArgument intValue];
             [invocation setArgument:&argumentI atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"I"])
+        else if (strcmp(type, "I") == 0)
         {
             NSUInteger argumentUI = [correctArgument unsignedIntegerValue];
             [invocation setArgument:&argumentUI atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"l"])
+        else if (strcmp(type, "l") == 0)
         {
             long argumentL = [correctArgument longValue];
             [invocation setArgument:&argumentL atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"L"])
+        else if (strcmp(type, "L") == 0)
         {
             unsigned long argumentUL = [correctArgument unsignedLongValue];
             [invocation setArgument:&argumentUL atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"q"])
+        else if (strcmp(type, "q") == 0)
         {
             long long argumentLL = [correctArgument longLongValue];
             [invocation setArgument:&argumentLL atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"Q"])
+        else if (strcmp(type, "Q") == 0)
         {
             unsigned long long argumentULL = [correctArgument unsignedLongLongValue];
             [invocation setArgument:&argumentULL atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"f"])
+        else if (strcmp(type, "f") == 0)
         {
             float argumentF = [correctArgument floatValue];
             [invocation setArgument:&argumentF atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"d"])
+        else if (strcmp(type, "d") == 0)
         {
             double argumentD = [correctArgument doubleValue];
             [invocation setArgument:&argumentD atIndex:2 + i];
         }
-        else if ([octype isEqualToString:@"b"] || [octype isEqualToString:@"B"])
+        else if (strcmp(type, "b") == 0 || strcmp(type, "B") == 0)
         {
             BOOL argumentB = [correctArgument boolValue];
             [invocation setArgument:&argumentB atIndex:2 + i];
         }
-        else if (octype && octype.length > 0)   // 是对象或其他数据类型
+        else if (type && sizeof(type) / sizeof(const char *) > 0)   // 是对象或其他数据类型
         {
             [invocation setArgument:&correctArgument atIndex:2 + i];
         }
@@ -239,51 +221,27 @@
     [invocation invokeWithTarget:self];
 }
 
-- (NSArray *)cachedParamsForSelector:(SEL)sel
-{
-    NSDictionary *paramsDict = self.cachedMethods[NSStringFromSelector(sel)];
-    NSMutableArray *params = [NSMutableArray new];
+- (NSString *)hashKeyForParams:(NSArray *)params {
+    NSUInteger hashValue = 0;
     
-    for (_AUUMethodsInfo *info in [paramsDict allValues])
-    {
-        [params addObject:info.params];
+    for (id param in params) {
+        hashValue += [param hash];
     }
     
-    return params;
+    return [NSString stringWithFormat:@"%@", @(hashValue)];
 }
 
 #pragma mark - associated getter and setter
 
-const char *kCachedMethodsAssociatedKey = (void *)@"kcachedMethodsAssociatedKey";
+const char *kCachedMethodsAssociatedKey = (void *)@"com.jyhu.kcachedMethodsAssociatedKey";
 
-- (void)setCachedMethods:(NSMutableDictionary *)cachedMethods
-{
-    objc_setAssociatedObject(self, kCachedMethodsAssociatedKey, cachedMethods, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSMutableDictionary *)cachedMethods
-{
+- (NSMutableDictionary *)cachedMethods {
     NSMutableDictionary *mutableDictionary = objc_getAssociatedObject(self, kCachedMethodsAssociatedKey);
-    
-    if (!mutableDictionary)
-    {
+    if (!mutableDictionary) {
         mutableDictionary = [[NSMutableDictionary alloc] init];
-        [self setCachedMethods:mutableDictionary];
+        objc_setAssociatedObject(self, kCachedMethodsAssociatedKey, mutableDictionary, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
-    
     return mutableDictionary;
-}
-
-const char *kCachedPropertiesAssociatedKey = (void *)@"kCachedPropertiesAssociatedKey";
-
-- (void)setCachedProperties:(id)cachedProperties
-{
-    objc_setAssociatedObject(self, kCachedMethodsAssociatedKey, cachedProperties, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (id)cachedProperties
-{
-    return objc_getAssociatedObject(self, kCachedMethodsAssociatedKey);
 }
 
 @end

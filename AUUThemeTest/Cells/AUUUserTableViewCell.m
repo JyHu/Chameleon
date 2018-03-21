@@ -35,14 +35,14 @@
 
 - (void)initlization
 {
-    self.contentView.backgroundColorIdentifier = AUUColorBackground;
+    self.contentView.app_backgroundColor = [UIColor backgroundColor];
     
     self.usersIconImageView = [[UIImageView alloc] init];
-    self.usersIconImageView.backgroundColor = [UIColor clearColor];
+    self.usersIconImageView.app_backgroundColor = [UIColor clearColor];
     [self addSubview:self.usersIconImageView];
     
     self.userNameLabel = [[UILabel alloc] init];
-    self.userNameLabel.textColorIdentifier = AUUColorTextTitle;
+    self.userNameLabel.app_textColor = [UIColor textTitleColor];
     self.userNameLabel.font = [UIFont systemFontOfSize:18];
     [self addSubview:self.userNameLabel];
     
@@ -70,7 +70,7 @@
 {
     [super shouldUpdateCellWithObject:object];
     AUUUserModel *model = ((NICellObject *)object).userInfo;
-    self.usersIconImageView.imageIdentifier = model.imageIdentifier;
+    self.usersIconImageView.app_image = [[UIImage imageWithColor:[UIColor randomColor]] apperanceIdentifier:model.imageIdentifier];
     self.usersIconImageView.backgroundColor = [UIColor greenColor];
     self.userNameLabel.text = @"test";
     return YES;

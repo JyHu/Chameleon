@@ -28,4 +28,28 @@
     return image;
 }
 
++ (instancetype)defaultImage {
+    return [[UIImage imageWithColor:[UIColor redColor]] apperanceIdentifier:AUUImageDefault];
+}
+
++ (instancetype)navbarBackgroundImage {
+    return [[UIImage imageWithColor:[UIColor whiteColor]] apperanceIdentifier:AUUImageBackgroundNavbar];
+}
+
++ (instancetype)referArrowImage {
+    return [[UIImage imageWithColor:[UIColor purpleColor]] apperanceIdentifier:AUUImageRefreshArrow];
+}
+
++ (instancetype)head1Image {
+    return [[UIImage imageWithColor:[UIColor randomColor]] apperanceIdentifier:AUUImageHeadHead1];
+}
+
++ (instancetype)head2Image {
+    return [[UIImage imageWithColor:[UIColor randomColor]] apperanceIdentifier:AUUImageHeadHead2];
+}
+
++ (instancetype)head3Image {
+    return [[UIImage imageWithColor:[UIColor randomColor]] apperanceIdentifier:AUUImageHeadHead3];
+}
+
 @end

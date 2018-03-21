@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIColorApperanceProtocol;
+
 @interface UIToolbar (AUUTheme)
 
-@property (retain, nonatomic, setter=setTintColorIdentifier:) NSString *tintColorIdentifier;
-
-@property (retain, nonatomic, setter=setBarTintColorIdentifier:)NSString *barTintColorIdentifier;
+@property (nonatomic, strong) UIColor *app_tintColor;
+@property (nonatomic, strong) UIColor *app_barTintColor;
 
 @end

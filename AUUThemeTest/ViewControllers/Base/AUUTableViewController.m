@@ -87,7 +87,7 @@
         _pri_tableView.backgroundColor = [UIColor clearColor];
         _pri_tableView.tableFooterView = [UIView new];
         _pri_tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        _pri_tableView.separatorColorIdentifier = AUUColorText;
+        _pri_tableView.app_separatorColor = [UIColor textColor];
         _pri_tableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 10);
     }
     

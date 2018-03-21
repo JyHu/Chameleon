@@ -9,7 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class AUUThemeModel;
+
+extern NSString *const ThemeApperanceChangeNotification;
+
+
+@protocol AUUThemeManagerProtocol
+
+@property (nonatomic, readonly) NSDictionary *themeInfo;
+@property (nonatomic, copy, readonly) NSString *currentThemePath;
+
+@property (nonatomic, strong) UIColor *defaultColor;
+@property (nonatomic, strong) UIColor *defaultImage;
+
+@end
+
 
 @interface AUUThemeManager : NSObject
 
@@ -33,21 +46,7 @@
  */
 - (BOOL)changeThemeWithSourcePath:(NSString *)sourcePath themeInfo:(NSDictionary *)themeInfo;
 
-/**
- 注册一个通知，用于监听主题改变
-
- @param notificationName 通知
- */
-- (void)registerThemeChangeNotification:(NSString *)notificationName;
-
-
-
 #pragma mark - cached the readonly properties
-
-/**
- 主题切换的通知
- */
-@property (retain, nonatomic, readonly) NSString *changeThemeNotification;
 
 /**
  主题信息

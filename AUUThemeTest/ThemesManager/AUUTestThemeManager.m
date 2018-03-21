@@ -20,6 +20,11 @@
 
 @implementation AUUTestThemeManager
 
++ (void)load {
+    [[self sharedManager] loadThemes];
+    [[self sharedManager] loadSettingTheme];
+}
+
 + (instancetype)sharedManager
 {
     static AUUTestThemeManager *manager = nil;
@@ -35,9 +40,6 @@
     if ((self = [super init]))
     {
         self.pri_themesDict = [[NSMutableDictionary alloc] init];
-        [[AUUThemeManager sharedManager] registerThemeChangeNotification:@"themeChangeNotification"];
-        [self loadThemes];
-        [self loadSettingTheme];
     }
     
     return self;
@@ -87,10 +89,8 @@
     }
     
     NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
-    NSError *error;
-    [[AUUThemeManager sharedManager] changeThemeWithSourcePath:themeModel.themePath
-                                                     themeInfo:[NSJSONSerialization JSONObjectWithData:jsonData
-                                                                                               options:NSJSONReadingMutableContainers error:&error]];
+    NSDictionary *theme = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+    [[AUUThemeManager sharedManager] changeThemeWithSourcePath:themeModel.themePath themeInfo:theme];
     
     return YES;
 }

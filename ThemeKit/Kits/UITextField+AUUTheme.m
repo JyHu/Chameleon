@@ -11,51 +11,20 @@
 
 @implementation UITextField (AUUTheme)
 
-- (void)setTintColorIdentifier:(NSString *)tintColorIdentifier
-{
-    [self cacheThemeParams:@[tintColorIdentifier.colorType] forSelector:@selector(setTintColor:)];
+- (void)setApp_tintColor:(UIColor *)app_tintColor {
+    [self cacheThemeParams:@[app_tintColor] forSelector:@selector(setTintColor:)];
 }
 
-- (NSString *)tintColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+- (void)setApp_textColor:(UIColor *)app_textColor {
+    [self cacheThemeParams:@[app_textColor] forSelector:@selector(setTextColor:)];
 }
 
-- (void)setTextColorIdentifier:(NSString *)textColorIdentifier
-{
-    [self cacheThemeParams:@[textColorIdentifier.colorType] forSelector:@selector(setTextColor:)];
+- (void)setApp_background:(UIImage *)app_background {
+    [self cacheThemeParams:@[app_background] forSelector:@selector(setBackground:)];
 }
 
-- (NSString *)textColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setTextColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)setBackgroundIdentifier:(NSString *)backgroundIdentifier
-{
-    [self cacheThemeParams:@[backgroundIdentifier.imageType] forSelector:@selector(setBackground:)];
-}
-
-- (NSString *)backgroundIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setBackground:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)setDisabledBackgroundIdentifier:(NSString *)disabledBackgroundIdentifier
-{
-    [self cacheThemeParams:@[disabledBackgroundIdentifier.imageType] forSelector:@selector(setDisabledBackground:)];
-}
-
-- (NSString *)disabledBackgroundIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setDisabledBackground:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+- (void)setApp_disabledBackground:(UIImage *)app_disabledBackground {
+    [self cacheThemeParams:@[app_disabledBackground] forSelector:@selector(setDisabledBackground:)];
 }
      
-- (void)dealloc
-{
-    self.notificationRegistered = NO;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
-}
-
 @end

@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIColorApperanceProtocol;
+@protocol UIImageApperanceProtocol;
+
 @interface UINavigationBar (AUUTheme)
 
-@property (retain, nonatomic) NSString *titleColorIdentifier;
+@property (nonatomic, strong) UIColor *app_titleColor;
 
-- (void)setBackgroundImageIdentifier:(NSString *)backgroundImageIdentifier forBarMetrics:(UIBarMetrics)barMetrics;
+- (void)setApp_BackgroundImage:(UIImage *)image forBarMetrics:(UIBarMetrics)barMetrics;
 
 @end

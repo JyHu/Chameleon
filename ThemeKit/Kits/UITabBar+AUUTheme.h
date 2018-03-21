@@ -8,20 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIColorApperanceProtocol;
+@protocol UIImageApperanceProtocol;
+
 @interface UITabBar (AUUTheme)
 
-@property (retain, nonatomic) NSString *tintColorIdentifier;
-
-@property (retain, nonatomic) NSString *barTintColorIdentifier;
-
-@property (retain, nonatomic) NSString *unselectedItemTintColorIdentifier;
-
-@property (retain, nonatomic) NSString *selectedImageTintColorIdentifier;
-
-@property (retain, nonatomic) NSString *backgroundImageIdentifier;
-
-@property (retain, nonatomic) NSString *selectionIndicatorImageIdentifier;
-
-@property (retain, nonatomic) NSString *shadowImageIdentifier;
+@property (nonatomic, strong) UIColor *app_tintColor;
+@property (nonatomic, strong) UIColor *app_barTintColor;
+@property (nonatomic, strong) UIColor *app_unselectedItemTintColor;
+@property (nonatomic, strong) UIColor *app_selectedImageTintColor;
+@property (nonatomic, strong) UIImage *app_backgroundImage;
+@property (nonatomic, strong) UIImage *app_selectionIndicatorImage;
+@property (nonatomic, strong) UIImage *app_shadowImage;
 
 @end

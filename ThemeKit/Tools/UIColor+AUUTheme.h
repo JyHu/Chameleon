@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#ifndef RGBA
-#define RGBA(R,G,B,A) ((UIColor*)[UIColor colorWithRed:((R)/255.0) green:((G)/255.0) blue:((B)/255.0) alpha:(A)])
-#endif
-
-#ifndef RGB
-#define RGB(R,G,B) RGBA(R,G,B,1)
-#endif
-
 @interface UIColor (AUUTheme)
 
 /**

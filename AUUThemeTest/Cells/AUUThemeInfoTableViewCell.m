@@ -9,6 +9,7 @@
 #import "AUUThemeInfoTableViewCell.h"
 #import <Masonry/Masonry.h>
 #import "AUUThemeModel.h"
+#import "UIColor+Helper.h"
 
 
 @interface AUUThemeInfoTableViewCell()
@@ -18,6 +19,8 @@
 @property (retain, nonatomic) UILabel *identifierLabel;
 
 @property (retain, nonatomic) UILabel *pathLabel;
+
+@property (retain, nonatomic) UIButton *tbutton;
 
 @end
 
@@ -38,24 +41,31 @@
 
 - (void)initlization
 {
-    self.contentView.backgroundColorIdentifier = AUUColorBackground;
+//    self.contentView.backgroundColorIdentifier = AUUColorBackground;
+    self.contentView.app_backgroundColor = [[UIColor whiteColor] apperanceIdentifier:AUUColorBackground];
     
     self.nameLabel = [[UILabel alloc] init];
-    self.nameLabel.textColorIdentifier = AUUColorTextTitle;
+    self.nameLabel.app_textColor = [UIColor textTitleColor];
     self.nameLabel.font = [UIFont systemFontOfSize:18];
     [self addSubview:self.nameLabel];
     
     self.identifierLabel = [[UILabel alloc] init];
-    self.identifierLabel.textColorIdentifier = AUUColorTextSubtitle;
+    self.identifierLabel.app_textColor = [[UIColor blackColor] apperanceIdentifier:AUUColorTextSubtitle];
     self.identifierLabel.font = [UIFont systemFontOfSize:15];
     [self addSubview:self.identifierLabel];
     
     self.pathLabel = [[UILabel alloc] init];
-    self.pathLabel.textColorIdentifier = AUUColorTextSubtitle;
+    self.pathLabel.app_textColor = [UIColor subtitleColor];
     self.pathLabel.font = [UIFont systemFontOfSize:12];
     self.pathLabel.lineBreakMode = NSLineBreakByCharWrapping;
     self.pathLabel.numberOfLines = 0;
     [self addSubview:self.pathLabel];
+    
+    self.tbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.tbutton setTitle:@"test button" forState:UIControlStateNormal];
+    [self.tbutton setApp_TitleColor:[UIColor backgroundColor] forState:UIControlStateNormal];
+    [self.tbutton setApp_backgroundColor:[UIColor textTitleColor]];
+    [self addSubview:self.tbutton];
     
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left).offset(10);
@@ -72,6 +82,10 @@
         make.left.equalTo(self.nameLabel.mas_left);
         make.right.equalTo(self.mas_right).offset(-10);
         make.bottom.equalTo(self.mas_bottom).offset(-5);
+    }];
+    
+    [self.tbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.equalTo(self);
     }];
 }
 

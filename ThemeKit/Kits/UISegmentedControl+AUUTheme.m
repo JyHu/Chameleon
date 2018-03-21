@@ -11,56 +11,26 @@
 
 @implementation UISegmentedControl (AUUTheme)
 
-- (void)setTintColorIdentifier:(NSString *)tintColorIdentifier
-{
-    [self cacheThemeParams:@[tintColorIdentifier.colorType] forSelector:@selector(setTintColor:)];
+- (void)setApp_tintColor:(UIColor *)app_tintColor {
+    [self cacheThemeParams:@[app_tintColor] forSelector:@selector(setTintColor:)];
 }
 
-- (NSString *)tintColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+- (void)setApp_Image:(UIImage *)image forSegmentAtIndex:(NSUInteger)segment {
+    [self cacheThemeParams:@[image, @(segment)] forSelector:@selector(setImage:forSegmentAtIndex:)];
 }
 
-- (void)setImageWithIdentifier:(NSString *)imageIdentifier forSegmentAtIndex:(NSUInteger)segment
-{
-    [self cacheThemeParams:@[imageIdentifier.imageType, @(segment)]
-          forSelector:@selector(setImage:forSegmentAtIndex:)];
+- (void)setApp_BackgroundImage:(UIImage *)backgroundImage
+                      forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics {
+    [self cacheThemeParams:@[backgroundImage, @(state), @(barMetrics)]
+               forSelector:@selector(setBackgroundImage:forState:barMetrics:)];
 }
 
-- (NSArray *)imageIdentifiersForSegments
-{
-    return [self cachedParamsForSelector:@selector(setImage:forSegmentAtIndex:)] ?: AUUNoneIdentifierTips;
-}
-
-- (void)setBackgroundImageWithIdentifier:(NSString *)backgroundImageIdentifier
-                                forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics
-{
-    [self cacheThemeParams:@[backgroundImageIdentifier.imageType, @(state), @(barMetrics)]
-          forSelector:@selector(setBackgroundImage:forState:barMetrics:)];
-}
-
-- (NSArray *)backgroundImageIdentifiers
-{
-    return [self cachedParamsForSelector:@selector(setBackgroundImage:forState:barMetrics:)] ?: AUUNoneIdentifierTips;
-}
-
-- (void)setDividerImageWithIdentifier:(NSString *)dividerImageIdentifier forLeftSegmentState:(UIControlState)leftState
-                    rightSegmentState:(UIControlState)rightState barMetrics:(UIBarMetrics)barMetrics
-{
-    [self cacheThemeParams:@[dividerImageIdentifier.imageType, @(leftState), @(rightState), @(barMetrics)]
-          forSelector:@selector(setDividerImage:forLeftSegmentState:rightSegmentState:barMetrics:)];
-}
-
-- (NSArray *)dividerImageIdentifies
-{
-    return [self cachedParamsForSelector:@selector(setDividerImage:forLeftSegmentState:rightSegmentState:barMetrics:)];
-}
-
-- (void)dealloc
-{
-    self.notificationRegistered = NO;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
+- (void)setApp_DividerImage:(UIImage *)dividerImage
+        forLeftSegmentState:(UIControlState)leftState
+          rightSegmentState:(UIControlState)rightState
+                 barMetrics:(UIBarMetrics)barMetrics {
+    [self cacheThemeParams:@[dividerImage, @(leftState), @(rightState), @(barMetrics)]
+               forSelector:@selector(setDividerImage:forLeftSegmentState:rightSegmentState:barMetrics:)];
 }
 
 @end

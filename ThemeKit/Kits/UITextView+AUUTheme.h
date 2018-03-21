@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIColorApperanceProtocol;
+
 @interface UITextView (AUUTheme)
 
-@property (retain, nonatomic, setter=setTintColorIdentifier:) NSString *tintColorIdentifier;
-
-@property (retain, nonatomic, setter=setTextColorIdentifier:) NSString *textColorIdentifier;
+@property (nonatomic, strong) UIColor *app_tintColor;
+@property (nonatomic, strong) UIColor *app_textColor;
 
 @end

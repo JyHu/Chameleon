@@ -11,38 +11,20 @@
 
 @implementation UINavigationBar (AUUTheme)
 
-- (void)setTitleColorIdentifier:(NSString *)titleColorIdentifier
-{
-    [self cacheThemeParams:@[titleColorIdentifier.colorType] forSelector:@selector(_setNavibarTitleColor:)];
+- (void)setApp_titleColor:(UIColor *)app_titleColor {
+    [self cacheThemeParams:@[app_titleColor] forSelector:@selector(_setNavibarTitleColor:)];
 }
 
-- (NSString *)titleColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(_setNavibarTitleColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+- (void)setApp_BackgroundImage:(UIImage *)image forBarMetrics:(UIBarMetrics)barMetrics {
+    [self cacheThemeParams:@[image, @(barMetrics)] forSelector:@selector(setBackgroundImage:forBarMetrics:)];
 }
 
-- (void)setBackgroundImageIdentifier:(NSString *)backgroundImageIdentifier forBarMetrics:(UIBarMetrics)barMetrics
-{
-    [self cacheThemeParams:@[backgroundImageIdentifier.imageType, @(barMetrics)] forSelector:@selector(setBackgroundImage:forBarMetrics:)];
-}
-
-- (void)_setNavibarTitleColor:(UIColor *)titleColor
-{
+- (void)_setNavibarTitleColor:(UIColor *)titleColor {
     NSMutableDictionary *titleAttributes = [self.titleTextAttributes mutableCopy];
-    
-    if (titleColor)
-    {
+    if (titleColor) {
         [titleAttributes setObject:titleColor forKey:NSForegroundColorAttributeName];
-        
         self.titleTextAttributes = titleAttributes;
     }
-}
-
-- (void)dealloc
-{
-    self.notificationRegistered = NO;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
 }
 
 @end

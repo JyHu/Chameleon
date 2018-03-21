@@ -11,22 +11,8 @@
 
 @implementation UILabel (AUUTheme)
 
-- (void)setTextColorIdentifier:(NSString *)textColorIdentifier
-{    
-    [self cacheThemeParams:@[textColorIdentifier.colorType] forSelector:@selector(setTextColor:)];
+- (void)setApp_textColor:(UIColor *)app_textColor {
+    [self cacheThemeParams:@[app_textColor] forSelector:@selector(setTextColor:)];
 }
-
-- (NSString *)textColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setTextColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)dealloc
-{
-    self.notificationRegistered = NO;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
-}
-
 
 @end

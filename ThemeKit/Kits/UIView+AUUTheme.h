@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIColorApperanceProtocol;
+
 @interface UIView (AUUTheme)
 
-@property (retain, nonatomic, setter=setBackgroundColorIdentifier:) NSString *backgroundColorIdentifier;
+@property (retain, nonatomic) UIColor *app_backgroundColor;
+@property (retain, nonatomic) UIColor *app_layerBackgroundColor;
 
 @end

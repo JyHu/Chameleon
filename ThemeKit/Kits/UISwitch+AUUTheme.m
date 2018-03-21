@@ -11,62 +11,30 @@
 
 @implementation UISwitch (AUUTheme)
 
-- (void)setTintColorIdentifier:(NSString *)tintColorIdentifier
-{
-    [self cacheThemeParams:@[tintColorIdentifier.colorType] forSelector:@selector(setTintColor:)];
+@dynamic app_tintColor;
+@dynamic app_onTintColor;
+@dynamic app_thumbTintColor;
+@dynamic app_onImage;
+@dynamic app_offImage;
+
+- (void)setApp_tintColor:(UIColor *)app_tintColor {
+    [self cacheThemeParams:@[app_tintColor] forSelector:@selector(setTintColor:)];
 }
 
-- (NSString *)tintColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+- (void)setApp_onTintColor:(UIColor *)app_onTintColor {
+    [self cacheThemeParams:@[app_onTintColor] forSelector:@selector(setOnTintColor:)];
 }
 
-- (void)setOnTintColorIdentifier:(NSString *)onTintColorIdentifier
-{
-    [self cacheThemeParams:@[onTintColorIdentifier.colorType] forSelector:@selector(setOnTintColor:)];
+- (void)setApp_thumbTintColor:(UIColor *)app_thumbTintColor {
+    [self cacheThemeParams:@[app_thumbTintColor] forSelector:@selector(setThumbTintColor:)];
 }
 
-- (NSString *)onTintColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setOnTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+- (void)setApp_onImage:(UIImage *)app_onImage {
+    [self cacheThemeParams:@[app_onImage] forSelector:@selector(setOnImage:)];
 }
 
-- (void)setThumbTintColorIdentifier:(NSString *)thumbTintColorIdentifier
-{
-    [self cacheThemeParams:@[thumbTintColorIdentifier.colorType] forSelector:@selector(setThumbTintColor:)];
+- (void)setApp_offImage:(UIImage *)app_offImage {
+    [self cacheThemeParams:@[app_offImage] forSelector:@selector(setOffImage:)];
 }
-
-- (NSString *)thumbTintColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setThumbTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)setOnImageIdentifier:(NSString *)onImageIdentifier
-{
-    [self cacheThemeParams:@[onImageIdentifier.imageType] forSelector:@selector(setOnImage:)];
-}
-
-- (NSString *)onImageIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setOnImage:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)setOffImageIdentifier:(NSString *)offImageIdentifier
-{
-    [self cacheThemeParams:@[offImageIdentifier.imageType] forSelector:@selector(setOffImage:)];
-}
-
-- (NSString *)offImageIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setOffImage:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)dealloc
-{
-    self.notificationRegistered = NO;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
-}
-
 
 @end

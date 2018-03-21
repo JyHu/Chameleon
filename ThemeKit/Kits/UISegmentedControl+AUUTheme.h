@@ -8,24 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIColorApperanceProtocol;
+@protocol UIImageApperanceProtocol;
+
 @interface UISegmentedControl (AUUTheme)
 
-@property (retain, nonatomic, setter=setTintColorIdentifier:) NSString *tintColorIdentifier;
+@property (nonatomic, strong) UIColor *app_tintColor;
 
-- (void)setImageWithIdentifier:(NSString *)imageIdentifier
-             forSegmentAtIndex:(NSUInteger)segment;
+- (void)setApp_Image:(UIImage *)image forSegmentAtIndex:(NSUInteger)segment;
 
-@property (retain, nonatomic, readonly) NSArray *imageIdentifiersForSegments;
+- (void)setApp_BackgroundImage:(UIImage *)backgroundImage
+                      forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;
 
-- (void)setBackgroundImageWithIdentifier:(NSString *)backgroundImageIdentifier
-                                forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;
-
-@property (retain, nonatomic, readonly) NSArray *backgroundImageIdentifiers;
-
-- (void)setDividerImageWithIdentifier:(NSString *)dividerImageIdentifier
-                  forLeftSegmentState:(UIControlState)leftState
-                    rightSegmentState:(UIControlState)rightState barMetrics:(UIBarMetrics)barMetrics;
-
-@property (retain, nonatomic, readonly) NSArray *dividerImageIdentifies;
+- (void)setApp_DividerImage:(UIImage *)dividerImage
+        forLeftSegmentState:(UIControlState)leftState
+          rightSegmentState:(UIControlState)rightState
+                 barMetrics:(UIBarMetrics)barMetrics;
 
 @end

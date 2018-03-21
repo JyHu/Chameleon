@@ -10,9 +10,9 @@
 #import "UIColor+AUUTheme.h"
 #import "UIImage+AUUTheme.h"
 
-@interface AUUThemeManager()
+NSString *const ThemeApperanceChangeNotification = @"com.jyhu.ThemeApperanceChangeNotification";
 
-@property (retain, nonatomic) NSString *pri_changeThemeNotification;
+@interface AUUThemeManager()
 
 @property (retain, nonatomic) NSDictionary *pri_themeInfo;
 
@@ -43,35 +43,17 @@
     return self;
 }
 
-- (void)registerThemeChangeNotification:(NSString *)notificationName
-{
-    NSAssert(notificationName && [notificationName isKindOfClass:[NSString class]] &&
-             [notificationName stringByReplacingOccurrencesOfString:@" " withString:@""].length > 0,
-             @"无效的主题更换通知");
-    self.pri_changeThemeNotification = notificationName;
-}
-
 - (BOOL)changeThemeWithSourcePath:(NSString *)sourcePath themeInfo:(NSDictionary *)themeInfo
 {
 // MARK: 添加对themeInfo的判断
     self.pri_currentThemeSourcePath = sourcePath;
     self.pri_themeInfo = themeInfo;
-    [[NSNotificationCenter defaultCenter] postNotificationName:self.pri_changeThemeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ThemeApperanceChangeNotification object:nil];
     
     return YES;
 }
 
 #pragma mark - getter
-
-- (NSString *)changeThemeNotification
-{
-    if (self.pri_changeThemeNotification)
-    {
-        return self.pri_changeThemeNotification;
-    }
-    
-    return @"com.jyhu.notification.changeTheme";
-}
 
 - (NSDictionary *)themeInfos
 {

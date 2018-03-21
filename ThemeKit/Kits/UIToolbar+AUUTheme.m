@@ -11,32 +11,12 @@
 
 @implementation UIToolbar (AUUTheme)
 
-- (void)setTintColorIdentifier:(NSString *)tintColorIdentifier
-{
-    [self cacheThemeParams:@[tintColorIdentifier.colorType] forSelector:@selector(setTintColor:)];
+- (void)setApp_tintColor:(UIColor *)app_tintColor {
+    [self cacheThemeParams:@[app_tintColor] forSelector:@selector(setTintColor:)];
 }
 
-- (NSString *)tintColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+- (void)setApp_barTintColor:(UIColor *)app_barTintColor {
+    [self cacheThemeParams:@[app_barTintColor] forSelector:@selector(setBarTintColor:)];
 }
-
-- (void)setBarTintColorIdentifier:(NSString *)barTintColorIdentifier
-{
-    [self cacheThemeParams:@[barTintColorIdentifier.colorType] forSelector:@selector(setBarTintColor:)];
-}
-
-- (NSString *)barTintColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setBarTintColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
-}
-
-- (void)dealloc
-{
-    self.notificationRegistered = NO;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
-}
-
 
 @end

@@ -15,5 +15,6 @@
 #import "ThemeKit.h"
 #import "AUUThemeConstants.h"
 #import "HMSegmentedControl+AUUHelper.h"
+#import "UIColor+Helper.h"
 
 #endif /* AUUThemeTest_pch */

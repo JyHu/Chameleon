@@ -8,21 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIColorApperanceProtocol;
+@protocol UIImageApperanceProtocol;
+
 @interface UIButton (AUUTheme)
 
-
-
-@property (retain, nonatomic, readonly) NSArray *titleColorIdentifiers;
-- (void)setTitleColorWithIdentifier:(NSString *)identifier forState:(UIControlState)state;
-
-
-
-@property (retain, nonatomic, readonly) NSArray *imageIdentifiers;
-- (void)setImageWithIdentifier:(NSString *)identifier forState:(UIControlState)state;
-
-
-
-@property (retain, nonatomic, readonly) NSArray *backgroundImageIdentifiers;
-- (void)setBackgroundImageWithIdentifier:(NSString *)identifier forState:(UIControlState)state;
+- (void)setApp_TitleColor:(UIColor *)color forState:(UIControlState)state;
+- (void)setApp_Image:(UIImage *)image forState:(UIControlState)state;
+- (void)setApp_BackgroundImage:(UIImage *)image forState:(UIControlState)state;
 
 @end

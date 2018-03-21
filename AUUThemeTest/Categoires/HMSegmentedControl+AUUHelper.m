@@ -12,14 +12,11 @@
 
 @implementation HMSegmentedControl (AUUHelper)
 
+@dynamic appearanceIdentifier;
+
 - (void)setAppearanceIdentifier:(NSString *)appearanceIdentifier
 {
-    [self cacheThemeParams:@[appearanceIdentifier.apperanceType] forSelector:@selector(setAppearance:)];
-}
-
-- (NSString *)appearanceIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setAppearance:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+    [self cacheThemeParams:@[[AUUApperanceModel apperanceIdentifier:appearanceIdentifier defaultValue:nil]] forSelector:@selector(setAppearance:)];
 }
 
 - (void)setAppearance:(NSDictionary *)appearance
@@ -31,13 +28,5 @@
     [self addBottomBorderWithHeight:(1.0 / [UIScreen mainScreen].scale) andColor:[UIColor colorWithHexString:appearance[@"bottomBorder"]]];
     [self setNeedsDisplay];
 }
-
-- (void)dealloc
-{
-    self.notificationRegistered = NO;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
-}
-
 
 @end

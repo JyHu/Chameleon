@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIColorApperanceProtocol;
+
 @interface UITableViewHeaderFooterView (AUUTheme)
 
-@property (retain, nonatomic, setter=setTintColorIdentifier:) NSString *tintColorIdentifier;
+@property (nonatomic, strong) UIColor *app_tintColor;
 
 @end

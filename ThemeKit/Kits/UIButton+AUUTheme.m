@@ -11,42 +11,19 @@
 
 @implementation UIButton (AUUTheme)
 
-- (void)setTitleColorWithIdentifier:(NSString *)identifier forState:(UIControlState)state
-{    
-    [self cacheThemeParams:@[identifier.colorType, @(state)]
-          forSelector:@selector(setTitleColor:forState:)];
+- (void)setApp_TitleColor:(UIColor *)color forState:(UIControlState)state {
+    NSAssert(color, @"Button标题颜色设置不能为空");
+    [self cacheThemeParams:@[color, @(state)] forSelector:@selector(setTitleColor:forState:)];
 }
 
-- (NSArray *)titleColorIdentifiers
-{
-    return [self cachedParamsForSelector:@selector(setTitleColor:forState:)] ?: AUUNoneIdentifierTips;
+- (void)setApp_Image:(UIImage *)image forState:(UIControlState)state {
+    NSAssert(image, @"Button状态图片设置不能为空");
+    [self cacheThemeParams:@[image, @(state)] forSelector:@selector(setImage:forState:)];
 }
 
-- (void)setImageWithIdentifier:(NSString *)identifier forState:(UIControlState)state
-{
-    [self cacheThemeParams:@[identifier.imageType, @(state)] forSelector:@selector(setImage:forState:)];
-}
-
-- (NSArray *)imageIdentifiers
-{
-    return [self cachedParamsForSelector:@selector(setImage:forState:)] ?: AUUNoneIdentifierTips;
-}
-
-- (void)setBackgroundImageWithIdentifier:(NSString *)identifier forState:(UIControlState)state
-{
-    [self cacheThemeParams:@[identifier.imageType, @(state)] forSelector:@selector(setBackgroundImage:forState:)];
-}
-
-- (NSArray *)backgroundImageIdentifiers
-{
-    return [self cachedParamsForSelector:@selector(setBackgroundImage:forState:)] ?: AUUNoneIdentifierTips;
-}
-
-- (void)dealloc
-{
-    self.notificationRegistered = NO;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
+- (void)setApp_BackgroundImage:(UIImage *)image forState:(UIControlState)state {
+    NSAssert(image, @"Button背景图片设置不能为空");
+    [self cacheThemeParams:@[image, @(state)] forSelector:@selector(setApp_BackgroundImage:forState:)];
 }
 
 @end

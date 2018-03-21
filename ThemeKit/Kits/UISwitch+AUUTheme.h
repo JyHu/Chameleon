@@ -8,16 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIColorApperanceProtocol;
+@protocol UIImageApperanceProtocol;
+
 @interface UISwitch (AUUTheme)
 
-@property (retain, nonatomic, setter=setTintColorIdentifier:) NSString *tintColorIdentifier;
-
-@property (retain, nonatomic, setter=setOnTintColorIdentifier:) NSString *onTintColorIdentifier;
-
-@property (retain, nonatomic, setter=setThumbTintColorIdentifier:) NSString *thumbTintColorIdentifier;
-
-@property (retain, nonatomic, setter=setOnImageIdentifier:) NSString *onImageIdentifier;
-
-@property (retain, nonatomic, setter=setOffImageIdentifier:) NSString *offImageIdentifier;
+@property (nonatomic, strong) UIColor *app_tintColor;
+@property (nonatomic, strong) UIColor *app_onTintColor;
+@property (nonatomic, strong) UIColor *app_thumbTintColor;
+@property (nonatomic, strong) UIImage *app_onImage;
+@property (nonatomic, strong) UIImage *app_offImage;
 
 @end

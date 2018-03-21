@@ -17,10 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColorIdentifier = AUUColorBackground;
+    self.view.app_backgroundColor = [UIColor backgroundColor];
     self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    self.navigationBar.titleColorIdentifier = AUUColorTextTitle;
-    [self.navigationBar setBackgroundImageIdentifier:AUUImageBackgroundNavbar forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.app_titleColor = [UIColor textTitleColor];
+    [self.navigationBar setApp_BackgroundImage:[UIImage navbarBackgroundImage] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning {

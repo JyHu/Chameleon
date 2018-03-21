@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface UIImage (AUUHelper)
 
 + (UIImage *)imageWithColor:(UIColor *)color;
 
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
+
++ (instancetype)defaultImage;
++ (instancetype)navbarBackgroundImage;
++ (instancetype)referArrowImage;
++ (instancetype)head1Image;
++ (instancetype)head2Image;
++ (instancetype)head3Image;
 
 @end

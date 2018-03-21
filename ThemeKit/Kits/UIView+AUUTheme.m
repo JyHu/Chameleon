@@ -11,21 +11,21 @@
 
 @implementation UIView (AUUTheme)
 
-- (void)setBackgroundColorIdentifier:(NSString *)backgroundColorIdentifier
-{
-    [self cacheThemeParams:@[backgroundColorIdentifier.colorType] forSelector:@selector(setBackgroundColor:)];
+@dynamic app_backgroundColor;
+@dynamic app_layerBackgroundColor;
+
+- (void)setApp_backgroundColor:(UIColor *)app_backgroundColor {
+    [self cacheThemeParams:@[app_backgroundColor] forSelector:@selector(setBackgroundColor:)];
 }
 
-- (NSString *)backgroundColorIdentifier
-{
-    return [[[self cachedParamsForSelector:@selector(setBackgroundColor:)] firstObject] firstObject] ?: AUUNoneIdentifierTips;
+
+
+- (void)setApp_layerBackgroundColor:(UIColor *)app_layerBackgroundColor {
+    [self cacheThemeParams:@[app_layerBackgroundColor] forSelector:@selector(setLayerBackgroundColor:)];
 }
 
-- (void)dealloc
-{
-    self.notificationRegistered = NO;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[AUUThemeManager sharedManager].changeThemeNotification object:nil];
+- (void)setLayerBackgroundColor:(UIColor *)color {
+    self.layer.backgroundColor = color.CGColor;
 }
 
 @end

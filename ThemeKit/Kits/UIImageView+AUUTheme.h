@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIImageApperanceProtocol;
+
 @interface UIImageView (AUUTheme)
 
-@property (retain, nonatomic, setter=setImageIdentifier:) NSString *imageIdentifier;
-
-@property (retain, nonatomic, setter=setImageColorIdentifier:) NSString *imageColorIdentifier;
-
-@property (retain, nonatomic, setter=setHighlightedImageIdentifier:) NSString *highlightedImageIdentifier;
+@property (nonatomic, strong) UIImage *app_image;
+@property (nonatomic, strong) UIImage *app_highlightedImage;
 
 @end

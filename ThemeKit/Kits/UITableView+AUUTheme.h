@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIColorApperanceProtocol;
+
 @interface UITableView (AUUTheme)
 
-@property (retain, nonatomic) NSString *separatorColorIdentifier;
+@property (nonatomic, strong) UIColor *app_separatorColor;
 
 @end

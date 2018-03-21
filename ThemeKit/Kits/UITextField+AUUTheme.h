@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UIColorApperanceProtocol;
+@protocol UIImageApperanceProtocol;
+
 @interface UITextField (AUUTheme)
 
-@property (retain, nonatomic, setter=setTintColorIdentifier:) NSString *tintColorIdentifier;
-
-@property (retain, nonatomic, setter=setTextColorIdentifier:) NSString *textColorIdentifier;
-
-@property (retain, nonatomic, setter=setBackgroundIdentifier:) NSString *backgroundIdentifier;
-
-@property (retain, nonatomic, setter=setDisabledBackgroundIdentifier:) NSString *disabledBackgroundIdentifier;
+@property (nonatomic, strong) UIColor *app_tintColor;
+@property (nonatomic, strong) UIColor *app_textColor;
+@property (nonatomic, strong) UIImage *app_background;
+@property (nonatomic, strong) UIImage *app_disabledBackground;
 
 @end

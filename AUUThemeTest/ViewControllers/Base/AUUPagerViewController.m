@@ -61,7 +61,7 @@
     self.pageControl.selectionIndicatorHeight = 2;
     self.pageControl.appearanceIdentifier = AUUAppearanceSegment;
     
-    self.view.backgroundColorIdentifier = AUUColorBackground;
+    self.view.app_backgroundColor = [UIColor backgroundColor];
 }
 
 - (void)didReceiveMemoryWarning {

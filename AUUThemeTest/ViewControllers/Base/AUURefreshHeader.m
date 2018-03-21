@@ -33,17 +33,17 @@
     
     self.tipsLabel = [[UILabel alloc] init];
     self.tipsLabel.backgroundColor = [UIColor clearColor];
-    self.tipsLabel.textColorIdentifier = AUUColorTextTitle;
+    self.tipsLabel.app_textColor = [UIColor textTitleColor];
     self.tipsLabel.text = @"下拉可以刷新";
     [self addSubview:self.tipsLabel];
     
     self.updateTimeLabel = [[UILabel alloc] init];
     self.updateTimeLabel.backgroundColor = [UIColor clearColor];
-    self.updateTimeLabel.textColorIdentifier = AUUColorTextTitle;
+    self.updateTimeLabel.app_textColor = [UIColor textTitleColor];
     [self addSubview:self.updateTimeLabel];
     
     self.directionArrowImageView = [[UIImageView alloc] init];
-    self.directionArrowImageView.imageIdentifier = AUUImageRefreshArrow;
+    self.directionArrowImageView.app_image = [UIImage referArrowImage];
     [self addSubview:self.directionArrowImageView];
     
     [self.tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {

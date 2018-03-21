@@ -21,12 +21,6 @@ typedef id (^AUUArgumentTransfer)(id object, SEL sel, NSArray *params, NSUIntege
 
 @interface NSObject (AUUMethodCache)
 
-/**
- 在缓存参数的时候，如果想对参数加一些识别标识等，可以设置这个参数
- */
-@property (assign, nonatomic) id cachedProperties;
-
-
 #pragma mark - cache methods
 
 /**
@@ -36,8 +30,8 @@ typedef id (^AUUArgumentTransfer)(id object, SEL sel, NSArray *params, NSUIntege
  @param sel 方法名
  @param transfer Transfer
  */
-- (id)cacheParams:(NSArray *)params forSelector:(SEL)sel argTransfer:(AUUArgumentTransfer)transfer;
-- (id)cacheParams:(NSArray *)params forSelector:(SEL)sel;
+- (void)cacheParams:(NSArray *)params forSelector:(SEL)sel argTransfer:(AUUArgumentTransfer)transfer;
+- (void)cacheParams:(NSArray *)params forSelector:(SEL)sel;
 
 #pragma mark - perform selector methods
 
@@ -50,7 +44,9 @@ typedef id (^AUUArgumentTransfer)(id object, SEL sel, NSArray *params, NSUIntege
  @param transfer Transfer
  */
 - (void)performSelector:(SEL)sel params:(NSArray *)params argTransfer:(AUUArgumentTransfer)transfer;
+- (void)performSelector:(SEL)sel params:(NSArray *)params hashCode:(NSString *)hashCode;
 - (void)performSelector:(SEL)sel params:(NSArray *)params;
+
 
 /**
  重新设置所有缓存的属性
@@ -60,6 +56,12 @@ typedef id (^AUUArgumentTransfer)(id object, SEL sel, NSArray *params, NSUIntege
 - (void)performAllCachedSelectorWithArgumentTransfer:(AUUArgumentTransfer)transfer;
 - (void)performAllCachedSelector;
 
-- (NSArray *)cachedParamsForSelector:(SEL)sel;
+/**
+ 获取一个参数列表的hashCode
+ 
+ @param params 参数列表
+ @return hashCode
+ */
+- (NSString *)hashKeyForParams:(NSArray *)params;
 
 @end
