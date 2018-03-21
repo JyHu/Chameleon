@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol UIColorApperanceProtocol;
-@protocol UIImageApperanceProtocol;
 
 @interface UITabBar (AUUTheme)
 

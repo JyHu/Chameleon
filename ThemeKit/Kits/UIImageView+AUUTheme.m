@@ -15,8 +15,16 @@
     [self cacheThemeParams:@[app_image] forSelector:@selector(setImage:)];
 }
 
+- (UIImage *)app_image {
+    return [self cachedParamForSelector:@selector(setImage:)];
+}
+
 - (void)setApp_highlightedImage:(UIImage *)app_highlightedImage {
     [self cacheThemeParams:@[app_highlightedImage] forSelector:@selector(setHighlightedImage:)];
+}
+
+- (UIImage *)app_highlightedImage {
+    return [self cachedParamForSelector:@selector(setHighlightedImage:)];
 }
 
 @end

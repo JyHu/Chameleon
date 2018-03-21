@@ -15,4 +15,8 @@
     [self cacheThemeParams:@[app_textColor] forSelector:@selector(setTextColor:)];
 }
 
+- (UIColor *)app_textColor {
+    return [self cachedParamForSelector:@selector(setTextColor:)];
+}
+
 @end

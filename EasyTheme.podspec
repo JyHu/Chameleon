@@ -15,13 +15,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/JyHu/EasyTheme.git", :tag => s.version }
   s.requires_arc = true
 
-  s.subspec 'MethodsCache' do |ss|
-    ss.source_files = 'MethodsCache/*.{h,m}'
-  end
+  s.source_files = 'ThemeKit/**/*.{h,m}'
+  s.dependency 'SDWebImage'
 
-  s.subspec 'ThemeKit' do |ss|
-  	ss.source_files = 'ThemeKit/**/*.{h,m}'
-  	ss.dependency 'SDWebImage'
-  	ss.dependency 'EasyTheme/MethodsCache'
-  end
 end

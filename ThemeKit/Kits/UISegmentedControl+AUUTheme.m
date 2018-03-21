@@ -15,6 +15,10 @@
     [self cacheThemeParams:@[app_tintColor] forSelector:@selector(setTintColor:)];
 }
 
+- (UIColor *)app_tintColor {
+    return [self cachedParamForSelector:@selector(setTintColor:)];
+}
+
 - (void)setApp_Image:(UIImage *)image forSegmentAtIndex:(NSUInteger)segment {
     [self cacheThemeParams:@[image, @(segment)] forSelector:@selector(setImage:forSegmentAtIndex:)];
 }

@@ -15,4 +15,8 @@
     [self cacheThemeParams:@[app_tintColor] forSelector:@selector(setTintColor:)];
 }
 
+- (UIColor *)app_tintColor {
+    return [self cachedParamForSelector:@selector(setTintColor:)];
+}
+
 @end

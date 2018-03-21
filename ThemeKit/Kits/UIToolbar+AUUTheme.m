@@ -15,8 +15,16 @@
     [self cacheThemeParams:@[app_tintColor] forSelector:@selector(setTintColor:)];
 }
 
+- (UIColor *)app_tintColor {
+    return [self cachedParamForSelector:@selector(setTintColor:)];
+}
+
 - (void)setApp_barTintColor:(UIColor *)app_barTintColor {
     [self cacheThemeParams:@[app_barTintColor] forSelector:@selector(setBarTintColor:)];
+}
+
+- (UIColor *)app_barTintColor {
+    return [self cachedParamForSelector:@selector(setBarTintColor:)];
 }
 
 @end

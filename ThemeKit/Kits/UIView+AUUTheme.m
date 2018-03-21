@@ -11,17 +11,21 @@
 
 @implementation UIView (AUUTheme)
 
-@dynamic app_backgroundColor;
-@dynamic app_layerBackgroundColor;
-
 - (void)setApp_backgroundColor:(UIColor *)app_backgroundColor {
     [self cacheThemeParams:@[app_backgroundColor] forSelector:@selector(setBackgroundColor:)];
 }
 
+- (UIColor *)app_backgroundColor {
+    return [self cachedParamForSelector:@selector(setBackgroundColor:)];
+}
 
 
 - (void)setApp_layerBackgroundColor:(UIColor *)app_layerBackgroundColor {
     [self cacheThemeParams:@[app_layerBackgroundColor] forSelector:@selector(setLayerBackgroundColor:)];
+}
+
+- (UIColor *)app_layerBackgroundColor {
+    return [self cachedParamForSelector:@selector(setLayerBackgroundColor:)];
 }
 
 - (void)setLayerBackgroundColor:(UIColor *)color {

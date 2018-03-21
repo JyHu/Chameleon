@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol UIImageApperanceProtocol;
-
 @interface UIImageView (AUUTheme)
 
 @property (nonatomic, strong) UIImage *app_image;

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C1148942060092200C11608 /* NSObject+AUUMethodCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEF4C91E6679DE00EF15C0 /* NSObject+AUUMethodCache.m */; };
-		1C1148952060095600C11608 /* NSObject+AUUMethodCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CEEF4C81E6679DE00EF15C0 /* NSObject+AUUMethodCache.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		1C11489820601A8000C11608 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C11489720601A8000C11608 /* UIColor+Helper.m */; };
 		1C11489B2061501A00C11608 /* NSObject+DeallocObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C1148992061501A00C11608 /* NSObject+DeallocObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C11489C2061501A00C11608 /* NSObject+DeallocObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C11489A2061501A00C11608 /* NSObject+DeallocObserver.m */; };
@@ -240,8 +238,6 @@
 		1CEEF4951E666A9C00EF15C0 /* THSegmentedPager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = THSegmentedPager.framework; path = "../../../Library/Developer/Xcode/DerivedData/EasyTheme-cworwygtrgxwigcaqkfdvkxwmisk/Build/Products/Debug-iphonesimulator/THSegmentedPager/THSegmentedPager.framework"; sourceTree = "<group>"; };
 		1CEEF4961E666A9C00EF15C0 /* UIView_Borders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIView_Borders.framework; path = "../../../Library/Developer/Xcode/DerivedData/EasyTheme-cworwygtrgxwigcaqkfdvkxwmisk/Build/Products/Debug-iphonesimulator/UIView+Borders/UIView_Borders.framework"; sourceTree = "<group>"; };
 		1CEEF49E1E666ADB00EF15C0 /* AUUThemeTest.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AUUThemeTest.pch; sourceTree = "<group>"; };
-		1CEEF4C81E6679DE00EF15C0 /* NSObject+AUUMethodCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AUUMethodCache.h"; sourceTree = "<group>"; };
-		1CEEF4C91E6679DE00EF15C0 /* NSObject+AUUMethodCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AUUMethodCache.m"; sourceTree = "<group>"; };
 		1CEEF4D11E6688C300EF15C0 /* EasyTheme.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = EasyTheme.podspec; sourceTree = "<group>"; };
 		1CEEF51A1E66929500EF15C0 /* ThemeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ThemeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEEF51C1E66929500EF15C0 /* ThemeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeKit.h; sourceTree = "<group>"; };
@@ -617,8 +613,6 @@
 				1CEEF55B1E6692B200EF15C0 /* UIColor+AUUTheme.m */,
 				1CEEF55C1E6692B200EF15C0 /* UIImage+AUUTheme.h */,
 				1CEEF55D1E6692B200EF15C0 /* UIImage+AUUTheme.m */,
-				1CEEF4C81E6679DE00EF15C0 /* NSObject+AUUMethodCache.h */,
-				1CEEF4C91E6679DE00EF15C0 /* NSObject+AUUMethodCache.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -681,7 +675,6 @@
 				1C11489B2061501A00C11608 /* NSObject+DeallocObserver.h in Headers */,
 				1CEEF57C1E6692B300EF15C0 /* NSString+AUUTheme.h in Headers */,
 				1CEEF52C1E66929500EF15C0 /* ThemeKit.h in Headers */,
-				1C1148952060095600C11608 /* NSObject+AUUMethodCache.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,7 +1025,6 @@
 				1C285810205F9BA500E8936F /* NSObject+Apperance.m in Sources */,
 				1CEEF5711E6692B300EF15C0 /* UITableViewHeaderFooterView+AUUTheme.m in Sources */,
 				1CEEF5731E6692B300EF15C0 /* UITextField+AUUTheme.m in Sources */,
-				1C1148942060092200C11608 /* NSObject+AUUMethodCache.m in Sources */,
 				1CEEF5791E6692B300EF15C0 /* UIView+AUUTheme.m in Sources */,
 				1CEEF5651E6692B200EF15C0 /* UILabel+AUUTheme.m in Sources */,
 				1CEEF55F1E6692B200EF15C0 /* AUUThemeManager.m in Sources */,

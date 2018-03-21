@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol UIColorApperanceProtocol;
 
 @interface UITableViewHeaderFooterView (AUUTheme)
 

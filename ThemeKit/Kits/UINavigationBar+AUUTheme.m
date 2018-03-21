@@ -15,6 +15,10 @@
     [self cacheThemeParams:@[app_titleColor] forSelector:@selector(_setNavibarTitleColor:)];
 }
 
+- (UIColor *)app_titleColor {
+    return [self cachedParamForSelector:@selector(_setNavibarTitleColor:)];
+}
+
 - (void)setApp_BackgroundImage:(UIImage *)image forBarMetrics:(UIBarMetrics)barMetrics {
     [self cacheThemeParams:@[image, @(barMetrics)] forSelector:@selector(setBackgroundImage:forBarMetrics:)];
 }

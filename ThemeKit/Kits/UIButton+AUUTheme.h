@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol UIColorApperanceProtocol;
-@protocol UIImageApperanceProtocol;
-
 @interface UIButton (AUUTheme)
 
 - (void)setApp_TitleColor:(UIColor *)color forState:(UIControlState)state;

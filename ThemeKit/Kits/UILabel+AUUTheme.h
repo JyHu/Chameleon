@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol UIColorApperanceProtocol;
-
 @interface UILabel (AUUTheme)
 
 @property (nonatomic, strong) UIColor *app_textColor;

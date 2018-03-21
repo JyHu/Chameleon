@@ -32,6 +32,8 @@
     [button setTitle:@"title" forState:UIControlStateNormal];
     [button setApp_TitleColor:[UIColor textTitleColor] forState:UIControlStateNormal];
     [self.view addSubview:button];
+    
+    NSLog(@"%@", self.view.app_backgroundColor);
 }
 
 - (void)tttmethod {

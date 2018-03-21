@@ -15,4 +15,8 @@
     [self cacheThemeParams:@[app_separatorColor] forSelector:@selector(setSeparatorColor:)];
 }
 
+- (UIColor *)app_separatorColor {
+    return [self cachedParamForSelector:@selector(setSeparatorColor:)];
+}
+
 @end

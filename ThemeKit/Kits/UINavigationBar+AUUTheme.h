@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol UIColorApperanceProtocol;
-@protocol UIImageApperanceProtocol;
-
 @interface UINavigationBar (AUUTheme)
 
 @property (nonatomic, strong) UIColor *app_titleColor;
