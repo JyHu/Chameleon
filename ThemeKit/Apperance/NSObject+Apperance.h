@@ -22,5 +22,7 @@
 @interface AUUApperanceModel : NSObject
 + (instancetype)apperanceIdentifier:(NSString *)identifier defaultValue:(id)value;
 @property (nonatomic, weak, readonly) id defaultApperanceValue;
+
+- (id)correctParam;
 @end
 

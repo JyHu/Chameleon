@@ -7,6 +7,7 @@
 
 #import "NSObject+Apperance.h"
 #import <objc/runtime.h>
+#import "AUUThemeManager.h"
 
 @interface NSObject (_Apperance)
 
@@ -63,5 +64,9 @@
     AUUApperanceModel *apperanceModel = [[[self alloc] init] apperanceIdentifier:identifier];
     apperanceModel.defaultApperanceValue = value;
     return apperanceModel;
+}
+
+- (id)correctParam {
+    return [AUUThemeManager sharedManager].themeInfos[@"appearance"][self.apperanceIdentifier] ?: self.defaultApperanceValue;
 }
 @end

@@ -15,11 +15,13 @@ extern NSString *const ThemeApperanceChangeNotification;
 
 @protocol AUUThemeManagerProtocol
 
+@required
+
 @property (nonatomic, readonly) NSDictionary *themeInfo;
 @property (nonatomic, copy, readonly) NSString *currentThemePath;
 
-@property (nonatomic, strong) UIColor *defaultColor;
-@property (nonatomic, strong) UIColor *defaultImage;
+@property (nonatomic, strong, readonly) UIColor *defaultColor;
+@property (nonatomic, strong, readonly) UIColor *defaultImage;
 
 @end
 

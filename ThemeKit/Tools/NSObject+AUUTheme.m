@@ -31,18 +31,16 @@
 //                  private mode for method cache
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 @interface _AUUMethodsInfo : NSObject
-
-+ (instancetype)infoWithParams:(NSArray *)params argTransfer:(AUUArgumentTransfer)argTransfer;
 // 缓存的参数
 @property (retain, nonatomic) NSArray *params;
 // 参数的类型转换
-@property (copy, nonatomic) AUUArgumentTransfer argTransfer;
+@property (nonatomic) SEL invokeSelector;
 @end
 @implementation _AUUMethodsInfo
-+ (instancetype)infoWithParams:(NSArray *)params argTransfer:(AUUArgumentTransfer)argTransfer {
++ (instancetype)infoWithParams:(NSArray *)params manualInvokeSelector:(SEL)invokeSelector {
     _AUUMethodsInfo *info = [[_AUUMethodsInfo alloc] init];
     info.params = params;
-    info.argTransfer = [argTransfer copy];
+    info.invokeSelector = invokeSelector;
     return info;
 }
 @end
@@ -62,14 +60,14 @@
 
 - (void)cacheThemeParams:(NSArray *)params forSelector:(SEL)sel {
     [self registerThemeChangeNotification];
-    [self cacheThemeParams:params forSelector:sel argumentTransfer:nil];
+    [self cacheThemeParams:params forSelector:sel manualInvokeSelector:nil];
 }
 
-- (void)cacheThemeParams:(NSArray *)params forSelector:(SEL)sel argumentTransfer:(AUUArgumentTransfer)transfer {
-    NSMutableDictionary *cachedParams = [self.cachedMethods objectForKey:NSStringFromSelector(sel)];
+- (void)cacheThemeParams:(NSArray *)params forSelector:(SEL)sel manualInvokeSelector:(SEL)invokeSelector {
+    NSMutableArray *cachedParams = [self.cachedMethods objectForKey:NSStringFromSelector(sel)];
     
     if (!cachedParams) {
-        cachedParams = [[NSMutableDictionary alloc] init];
+        cachedParams = [[NSMutableArray alloc] init];
         [self.cachedMethods setObject:cachedParams forKey:NSStringFromSelector(sel)];
     }
     
@@ -78,41 +76,53 @@
      {
          selname : {
             // 其中某个方法的参数列表，比如UIButton设置标题颜色，根据不同的状态，这个方法可以有好几种参数列表
-             hash : <<[p1, p2, p3], transfer>>,
-             hash : <<[p1, p2], transfer>>
+            <<[p1, p2, p3], invokeSelector>>,
+            <<[p1, p2], invokeSelector>>
          }
      }
      */
     
-    [cachedParams setObject:[_AUUMethodsInfo infoWithParams:params argTransfer:transfer] forKey:[self hashKeyForParams:params]];
+    [cachedParams addObject:[_AUUMethodsInfo infoWithParams:params manualInvokeSelector:invokeSelector]];
     
-    [self performSelector:sel params:params argTransfer:transfer];
-}
-
-- (void)performSelector:(SEL)sel params:(NSArray *)params hashCode:(NSString *)hashCode {
-    NSDictionary *sels = self.cachedMethods[NSStringFromSelector(sel)];
-    _AUUMethodsInfo *methodInfo = sels ? sels[hashCode] : nil;
-    [self performSelector:sel params:params argTransfer: methodInfo ? methodInfo.argTransfer : nil];
+    [self performSelector:sel params:params manualInvokeSelector:invokeSelector];
 }
 
 - (void)performAllCachedSelector {
-    [self performAllCachedSelectorWithArgumentTransfer:nil];
-}
-
-- (void)performAllCachedSelectorWithArgumentTransfer:(AUUArgumentTransfer)transfer {
     for (NSString *selName in [self.cachedMethods allKeys]) {
-        for (_AUUMethodsInfo *info in [self.cachedMethods[selName] allValues]) {
-            [self performSelector:NSSelectorFromString(selName) params:info.params argTransfer:info.argTransfer];
+        for (_AUUMethodsInfo *info in self.cachedMethods[selName]) {
+            [self performSelector:NSSelectorFromString(selName) params:info.params
+             manualInvokeSelector:info.invokeSelector];
         }
     }
 }
 
-- (void)performSelector:(SEL)sel params:(NSArray *)params argTransfer:(AUUArgumentTransfer)transfer {
+- (void)performSelector:(SEL)sel params:(NSArray *)params manualInvokeSelector:(SEL)invokeSelector {
+    
+    if (invokeSelector) {
+        NSMethodSignature *signature = [[self class] instanceMethodSignatureForSelector:invokeSelector];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+        invocation.selector = invokeSelector;
+        
+        if ([signature numberOfArguments] >= 3) {
+            [invocation setArgument:&sel atIndex:2];
+        }
+        
+        if ([signature numberOfArguments] >= 4) {
+            [invocation setArgument:&params atIndex:3];
+        }
+        
+        [invocation invokeWithTarget:self];
+        
+        return;
+    }
+    
     // https://opensource.apple.com/source/objc4/objc4-706/runtime/runtime.h.auto.html
     
     NSMethodSignature   *signature      = [[self class] instanceMethodSignatureForSelector:sel];
     NSInvocation        *invocation     = [NSInvocation invocationWithMethodSignature:signature];
     NSMutableArray      *tempArguments  = [[NSMutableArray alloc] init];  // 暂存一些对象，避免zombie
+    
+    
     
     invocation.selector = sel;
     
@@ -130,19 +140,12 @@
         id correctArgument = params[i];
         
         {
-            __weak typeof(self) weakSelf = self;
             BOOL skip = NO;
-            id tempArg = nil;
             
-            if (transfer) {
-                tempArg = transfer(weakSelf, sel, params, i, &skip);
-            } else {
-                tempArg = [self correctParamInSelector:sel params:params argIndex:i skip:&skip];
-            }
+            id tempArg = [self correctParamInSelector:sel params:params argIndex:i skip:&skip
+                                 manualInvokeSelector:invokeSelector];
             
-            if (tempArg) {
-                correctArgument = tempArg;
-            }
+            correctArgument = tempArg ?: correctArgument;
             
             if (skip) {
                 return;
@@ -222,7 +225,10 @@
     [invocation invokeWithTarget:self];
 }
 
-- (id)correctParamInSelector:(SEL)sel params:(NSArray *)params argIndex:(NSUInteger)index skip:(BOOL *)skip {
+- (id)correctParamInSelector:(SEL)sel params:(NSArray *)params
+                    argIndex:(NSUInteger)index skip:(BOOL *)skip
+        manualInvokeSelector:(SEL)invokeSelector {
+    
     if (!params || params.count == 0) {
         return nil;
     }
@@ -264,14 +270,16 @@
                     NSMutableArray *mutableParams = [params mutableCopy];
                     [mutableParams replaceObjectAtIndex:index withObject:destImage];
                     
-                    [strongSelf performSelector:sel params:mutableParams hashCode:[strongSelf hashKeyForParams:params]];
+                    [strongSelf performSelector:sel params:mutableParams manualInvokeSelector:invokeSelector];
                 };
                 
-                [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:imagePath]
-                                                                      options:SDWebImageDownloaderHighPriority
-                                                                     progress:nil
-                                                                    completed:completeBlock];
-                
+                SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+
+                [downloader downloadImageWithURL:[NSURL URLWithString:imagePath]
+                                         options:SDWebImageDownloaderHighPriority
+                                        progress:nil
+                                       completed:completeBlock];
+ 
                 return nil;
             } else {
                 return currentArgument;
@@ -282,25 +290,10 @@
     }
     
     if ([currentArgument isKindOfClass:[AUUApperanceModel class]]) {
-        AUUApperanceModel *apperanceModel = (AUUApperanceModel *)currentArgument;
-        return [AUUThemeManager sharedManager].themeInfos[@"appearance"][apperanceModel.apperanceIdentifier] ?: apperanceModel.defaultApperanceValue;
-    }
-    
-    if ([currentArgument isKindOfClass:[NSString class]]) {
-        return [AUUThemeManager sharedManager].themeInfos[@"appearance"][currentArgument] ?: currentArgument;
+        return [currentArgument correctParam];
     }
     
     return currentArgument;
-}
-
-- (NSString *)hashKeyForParams:(NSArray *)params {
-    NSUInteger hashValue = 0;
-    
-    for (id param in params) {
-        hashValue += [param hash];
-    }
-    
-    return [NSString stringWithFormat:@"%@", @(hashValue)];
 }
 
 - (void)registerThemeChangeNotification {
@@ -312,8 +305,8 @@
 }
 
 - (id)cachedParamForSelector:(SEL)selector {
-    NSDictionary *params = [self.cachedMethods objectForKey:NSStringFromSelector(selector)];
-    _AUUMethodsInfo *methodInfo = [[params allValues] firstObject];
+    NSArray *params = [self.cachedMethods objectForKey:NSStringFromSelector(selector)];
+    _AUUMethodsInfo *methodInfo = [params firstObject];
     return [methodInfo.params firstObject];
 }
 
