@@ -18,7 +18,7 @@
         return [AUUThemeManager sharedManager].defaultImage;
     }
     
-    NSDictionary *images = [AUUThemeManager sharedManager].themeInfos[@"images"];
+    NSDictionary *images = [AUUThemeManager sharedManager].imagesInfo;
     
     if (images) {
         NSDictionary *imageInfo = images[identifier];
@@ -42,7 +42,7 @@
                 return [UIImage imageNamed:imageInfo[@"name"]];
                 
             case 1:
-                return [UIImage imageWithContentsOfFile:[[AUUThemeManager sharedManager].currentThemeSourcePath stringByAppendingPathComponent:imageInfo[@"name"]]];
+                return [UIImage imageWithContentsOfFile:[[AUUThemeManager sharedManager].currentThemePath stringByAppendingPathComponent:imageInfo[@"name"]]];
             
             case 2:
                 return [UIImage imageWithColor:[UIColor colorWithHexString:imageInfo[@"color"]]];

@@ -13,20 +13,23 @@
 extern NSString *const ThemeApperanceChangeNotification;
 
 
-@protocol AUUThemeManagerProtocol
+@protocol AUUThemeManagerDelegate <NSObject>
 
 @required
 
-@property (nonatomic, readonly) NSDictionary *themeInfo;
+@property (nonatomic, strong, readonly) NSDictionary *colorsInfo;
+@property (nonatomic, strong, readonly) NSDictionary *imagesInfo;
+@property (nonatomic, strong, readonly) NSDictionary *apperancesInfo;
+
 @property (nonatomic, copy, readonly) NSString *currentThemePath;
 
 @property (nonatomic, strong, readonly) UIColor *defaultColor;
-@property (nonatomic, strong, readonly) UIColor *defaultImage;
+@property (nonatomic, strong, readonly) UIImage *defaultImage;
 
 @end
 
 
-@interface AUUThemeManager : NSObject
+@interface AUUThemeManager : NSObject <AUUThemeManagerDelegate>
 
 /**
  单例
@@ -35,7 +38,7 @@ extern NSString *const ThemeApperanceChangeNotification;
  */
 + (instancetype)sharedManager;
 
-
+@property (weak, nonatomic) id <AUUThemeManagerDelegate> themeDelegate;
 
 
 #pragma mark - theme handle methods
@@ -48,31 +51,8 @@ extern NSString *const ThemeApperanceChangeNotification;
  */
 - (BOOL)changeThemeWithSourcePath:(NSString *)sourcePath themeInfo:(NSDictionary *)themeInfo;
 
-#pragma mark - cached the readonly properties
+- (void)registerDefaultImage:(UIImage *)image;
+- (void)registerDefaultColor:(UIColor *)color;
 
-/**
- 主题信息
- */
-@property (retain, nonatomic, readonly) NSDictionary *themeInfos;
-
-/**
- 当前主题的资源地址
- */
-@property (retain, nonatomic, readonly) NSString *currentThemeSourcePath;
-
-
-
-
-#pragma mark - Default setting properties
-
-/**
- 默认的颜色
- */
-@property (retain, nonatomic) UIColor *defaultColor;
-
-/**
- 默认的图片
- */
-@property (retain, nonatomic) UIImage *defaultImage;
 
 @end

@@ -12,9 +12,12 @@
 
 @interface AUUTestThemeManager()
 
-@property (retain, nonatomic) NSMutableDictionary *pri_themesDict;
+@property (retain, nonatomic, readwrite) NSMutableDictionary *themeListDict;
 
 @property (retain, nonatomic) NSString *pri_currentThemeIdentifier;
+
+@property (strong, nonatomic) AUUThemeModel *themeModel;
+@property (strong, nonatomic) NSDictionary *currentThemeInfo;
 
 @end
 
@@ -35,32 +38,29 @@
     return manager;
 }
 
-- (instancetype)init
-{
-    if ((self = [super init]))
-    {
-        self.pri_themesDict = [[NSMutableDictionary alloc] init];
+- (instancetype)init {
+    if ((self = [super init])) {
+        self.themeListDict = [[NSMutableDictionary alloc] init];
     }
     
     return self;
 }
 
-- (void)loadThemes
-{
+- (void)loadThemes {
     // 本地的主题，默认是以bundle的形式存放在本地
-    [self.pri_themesDict setObject:[AUUThemeModel modelWithName:@"白色主题"
+    [(NSMutableDictionary *)self.themeListDict setObject:[AUUThemeModel modelWithName:@"白色主题"
                                                        path:[[NSBundle mainBundle] pathForResource:@"white" ofType:@"json"]
                                                  identifier:@"com.jyhu.theme.white"] forKey:@"com.jyhu.theme.white"];
     
-    [self.pri_themesDict setObject:[AUUThemeModel modelWithName:@"紫色主题"
+    [(NSMutableDictionary *)self.themeListDict setObject:[AUUThemeModel modelWithName:@"紫色主题"
                                                        path:[[NSBundle mainBundle] pathForResource:@"pupurse" ofType:@"json"]
                                                  identifier:@"com.jyhu.theme.black"] forKey:@"com.jyhu.theme.black"];
     
-    [self.pri_themesDict setObject:[AUUThemeModel modelWithName:@"粉红主题"
+    [(NSMutableDictionary *)self.themeListDict setObject:[AUUThemeModel modelWithName:@"粉红主题"
                                                            path:[[NSBundle mainBundle] pathForResource:@"lightred" ofType:@"json"]
                                                      identifier:@"com.jyhu.lightred"] forKey:@"com.jyhu.lightred"];
     
-    [self.pri_themesDict setObject:[AUUThemeModel modelWithName:@"淡蓝主题"
+    [(NSMutableDictionary *)self.themeListDict setObject:[AUUThemeModel modelWithName:@"淡蓝主题"
                                                            path:[[NSBundle mainBundle] pathForResource:@"lightblue" ofType:@"json"]
                                                      identifier:@"com.jyhu.lightblue"] forKey:@"com.jyhu.lightblue"];
 }
@@ -79,7 +79,7 @@
 
 - (BOOL)loadThemeInfoWithIdentifier:(NSString *)identifier
 {
-    AUUThemeModel *themeModel = self.pri_themesDict[identifier];
+    AUUThemeModel *themeModel = self.themeListDict[identifier];
     NSString *jsonPath = themeModel.themePath;
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:jsonPath])
@@ -89,21 +89,20 @@
     }
     
     NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
-    NSDictionary *theme = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-    [[AUUThemeManager sharedManager] changeThemeWithSourcePath:themeModel.themePath themeInfo:theme];
+//    self.currentThemeInfo = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+//    self.themeModel = themeModel;
+    
+    [[AUUThemeManager sharedManager] changeThemeWithSourcePath:jsonPath themeInfo:[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil]];
     
     return YES;
 }
 
-- (void)changeThemeWithIdentifier:(NSString *)themeIdentifier
-{
-    if (!themeIdentifier || (themeIdentifier && self.pri_currentThemeIdentifier && [themeIdentifier isEqualToString:self.pri_currentThemeIdentifier]))
-    {
+- (void)changeThemeWithIdentifier:(NSString *)themeIdentifier {
+    if (!themeIdentifier || (themeIdentifier && self.pri_currentThemeIdentifier && [themeIdentifier isEqualToString:self.pri_currentThemeIdentifier])) {
         return;
     }
     
-    if (![self loadThemeInfoWithIdentifier:themeIdentifier])
-    {
+    if (![self loadThemeInfoWithIdentifier:themeIdentifier]) {
         NSLog(@"file not exists");
         return;
     }
@@ -112,9 +111,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSDictionary *)themesDict
-{
-    return self.pri_themesDict;
-}
+#pragma mark - delegate
+
 
 @end

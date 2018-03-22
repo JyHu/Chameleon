@@ -14,9 +14,6 @@
 
 - (void)changeThemeWithIdentifier:(NSString *)themeIdentifier;
 
-@property (retain, nonatomic) NSDictionary *themesDict;
-
-@property (nonatomic, copy) UIColor * (^colorInspector)(NSString *identifier);
-@property (nonatomic, copy) UIImage * (^imageInspector)(NSString *identifier);
+@property (retain, nonatomic, readonly) NSDictionary *themeListDict;
 
 @end

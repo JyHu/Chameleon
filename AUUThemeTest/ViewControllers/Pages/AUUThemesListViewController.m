@@ -35,7 +35,7 @@
         }
         
         NSMutableArray *themesObject = [[NSMutableArray alloc] init];
-        for (AUUThemeModel *model in [[AUUTestThemeManager sharedManager].themesDict allValues]) {
+        for (AUUThemeModel *model in [[AUUTestThemeManager sharedManager].themeListDict allValues]) {
             NICellObject *object = [NICellObject objectWithCellClass:[AUUThemeInfoTableViewCell class] userInfo:model];
             [themesObject addObject:[self.tableActions attachToObject:object tapBlock:^BOOL(id object, id target, NSIndexPath *indexPath) {
                 AUUThemeModel *themeModel = ((NICellObject *)object).userInfo;

@@ -67,6 +67,6 @@
 }
 
 - (id)correctParam {
-    return [AUUThemeManager sharedManager].themeInfos[@"appearance"][self.apperanceIdentifier] ?: self.defaultApperanceValue;
+    return [AUUThemeManager sharedManager].apperancesInfo[self.apperanceIdentifier] ?: self.defaultApperanceValue;
 }
 @end

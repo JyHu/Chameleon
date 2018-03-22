@@ -13,7 +13,7 @@
 @implementation UIColor (AUUTheme)
 
 + (UIColor *)colorWithIdentifier:(NSString *)identifier {
-    NSDictionary *colors = [AUUThemeManager sharedManager].themeInfos[@"colors"];
+    NSDictionary *colors = [AUUThemeManager sharedManager].colorsInfo;
     
     if (colors) {  // 主题信息
         // 从主题中找到颜色信息
@@ -72,7 +72,6 @@
 
 + (UIColor *)colorWithHexString:(NSString *)hexString {
     // 截取有效地颜色值
-    
     NSString *colorHexString = [hexString matchResultWithPattern:@"((?<=0[xX])[0-9a-fA-F]{6,8})|((?<=#)[0-9a-fA-F]{6,8})|(^[0-9a-fA-F]{6,8})"];
     
     if (colorHexString) {
