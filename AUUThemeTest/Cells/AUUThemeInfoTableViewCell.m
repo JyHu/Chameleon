@@ -41,8 +41,7 @@
 
 - (void)initlization
 {
-//    self.contentView.backgroundColorIdentifier = AUUColorBackground;
-    self.contentView.app_backgroundColor = [[UIColor whiteColor] apperanceIdentifier:AUUColorBackground];
+    self.contentView.app_backgroundColor = [[UIColor whiteColor] appearanceIdentifier:AUUColorBackground];
     
     self.nameLabel = [[UILabel alloc] init];
     self.nameLabel.app_textColor = [UIColor textTitleColor];
@@ -50,7 +49,7 @@
     [self addSubview:self.nameLabel];
     
     self.identifierLabel = [[UILabel alloc] init];
-    self.identifierLabel.app_textColor = [[UIColor blackColor] apperanceIdentifier:AUUColorTextSubtitle];
+    self.identifierLabel.app_textColor = [[UIColor blackColor] appearanceIdentifier:AUUColorTextSubtitle];
     self.identifierLabel.font = [UIFont systemFontOfSize:15];
     [self addSubview:self.identifierLabel];
     

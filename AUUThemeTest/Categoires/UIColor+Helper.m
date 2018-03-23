@@ -6,44 +6,43 @@
 //
 
 #import "UIColor+Helper.h"
-#import "ThemeKit.h"
 
 @implementation UIColor (Helper)
 
 + (instancetype)textTitleColor {
-    return [[UIColor blackColor] apperanceIdentifier:AUUColorTextTitle];
+    return [[UIColor blackColor] appearanceIdentifier:AUUColorTextTitle];
 }
 
 + (instancetype)backgroundColor {
-    return [[UIColor whiteColor] apperanceIdentifier:AUUColorBackground];
+    return [[UIColor whiteColor] appearanceIdentifier:AUUColorBackground];
 }
 
 + (instancetype)vcBackgroundColor {
-    return [[UIColor whiteColor] apperanceIdentifier:AUUColorBackgroundVC];
+    return [[UIColor whiteColor] appearanceIdentifier:AUUColorBackgroundVC];
 }
 
 + (instancetype)tableBackgroundColor {
-    return [[UIColor whiteColor] apperanceIdentifier:AUUColorBackgroundTable];
+    return [[UIColor whiteColor] appearanceIdentifier:AUUColorBackgroundTable];
 }
 
 + (instancetype)textColor {
-    return [[UIColor blackColor] apperanceIdentifier:AUUColorText];
+    return [[UIColor blackColor] appearanceIdentifier:AUUColorText];
 }
 
 + (instancetype)normalTextColor {
-    return [[UIColor grayColor] apperanceIdentifier:AUUColorTextNormal];
+    return [[UIColor grayColor] appearanceIdentifier:AUUColorTextNormal];
 }
 
 + (instancetype)hightlightedTextColor {
-    return [[UIColor redColor] apperanceIdentifier:AUUColorTextHighlighted];
+    return [[UIColor redColor] appearanceIdentifier:AUUColorTextHighlighted];
 }
 
 + (instancetype)selectedTextColor {
-    return [[UIColor greenColor] apperanceIdentifier:AUUColorTextSelected];
+    return [[UIColor greenColor] appearanceIdentifier:AUUColorTextSelected];
 }
 
 + (instancetype)subtitleColor {
-    return [[UIColor darkGrayColor] apperanceIdentifier:AUUColorTextSubtitle];
+    return [[UIColor darkGrayColor] appearanceIdentifier:AUUColorTextSubtitle];
 }
 
 @end

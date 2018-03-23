@@ -17,6 +17,10 @@
 
 @interface AUUUsersViewController ()
 
+@property (nonatomic, strong) NSMapTable *mapTable;
+
+@property (nonatomic, strong) NSMutableArray *testStrongRefrence;
+
 @end
 
 @implementation AUUUsersViewController
@@ -25,6 +29,9 @@
     [super viewDidLoad];
     self.needRefreshHeader = YES;
     [self triggerToRefresh];
+    
+    self.testStrongRefrence = [[NSMutableArray alloc] init];
+    self.mapTable = [[NSMapTable alloc] initWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory capacity:10];
     
     [self.tableActions attachToClass:[NICellObject class] tapSelector:@selector(userAction:indexPath:)];
 }
@@ -57,20 +64,10 @@
 }
 
 - (void)userAction:(NICellObject *)object indexPath:(NSIndexPath *)indexPath {
-//    NSArray *themes = [[AUUTestThemeManager sharedManager].themesDict allValues];
-//    AUUThemeModel *themeModel = [themes objectAtIndex:indexPath.row % themes.count];
-//    [[AUUTestThemeManager sharedManager] changeThemeWithIdentifier:themeModel.themeIdentifier];
-    
     AUUSubViewController *subvc = [[AUUSubViewController alloc] init];
-    [subvc subscribeDealloc:^(__unsafe_unretained id self) {
-        NSLog(@"page dealloc %@", self);
-    }];
-    [subvc subscribeDealloc:^(__unsafe_unretained id self) {
-        NSLog(@"page dealloc 2 %@", self);
-    }];
-    [subvc.testView subscribeDealloc:^(__unsafe_unretained id self) {
-        NSLog(@"test view dealloc %@", self);
-    }];
+    [self.testStrongRefrence addObject:subvc];
+    NSString *key = [NSString stringWithFormat:@"%@_%@", NSStringFromClass([subvc class]), @([subvc hash])];
+    [self.mapTable setObject:subvc forKey:key];
     [self.navigationController pushViewController:subvc animated:YES];
 }
 

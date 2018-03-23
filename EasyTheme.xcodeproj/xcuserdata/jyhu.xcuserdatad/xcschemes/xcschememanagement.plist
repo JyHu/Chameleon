@@ -7,9 +7,9 @@
 		<key>AUUThemeTest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
-		<key>ThemeKit.xcscheme</key>
+		<key>DynamicTheme.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>12</integer>

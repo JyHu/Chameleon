@@ -62,7 +62,6 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    self.usersIconImageView.image = nil;
     self.userNameLabel.text = @"";
 }
 
@@ -70,7 +69,7 @@
 {
     [super shouldUpdateCellWithObject:object];
     AUUUserModel *model = ((NICellObject *)object).userInfo;
-    self.usersIconImageView.app_image = [[UIImage imageWithColor:[UIColor randomColor]] apperanceIdentifier:model.imageIdentifier];
+    self.usersIconImageView.app_image = [[UIImage app_imageWithColor:[UIColor app_randomColor]] appearanceIdentifier:model.imageIdentifier];
     self.usersIconImageView.backgroundColor = [UIColor greenColor];
     self.userNameLabel.text = @"test";
     return YES;

@@ -8,7 +8,6 @@
 
 #import "AUUTestThemeManager.h"
 #import "AUUThemeModel.h"
-#import "AUUThemeManager.h"
 
 @interface AUUTestThemeManager()
 
@@ -92,7 +91,7 @@
 //    self.currentThemeInfo = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
 //    self.themeModel = themeModel;
     
-    [[AUUThemeManager sharedManager] changeThemeWithSourcePath:jsonPath themeInfo:[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil]];
+    [[APPAppearanceManager sharedManager] changeThemeWithSourcePath:jsonPath themeInfo:[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil]];
     
     return YES;
 }

@@ -10,46 +10,28 @@
 
 @implementation UIImage (AUUHelper)
 
-+ (UIImage *)imageWithColor:(UIColor *)color
-{
-    return [self imageWithColor:color size:CGSizeMake(1, 1)];
-}
-
-+ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
-{
-    CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, color.CGColor);
-    CGContextFillRect(context, rect);
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
-
 + (instancetype)defaultImage {
-    return [[UIImage imageWithColor:[UIColor redColor]] apperanceIdentifier:AUUImageDefault];
+    return [[UIImage app_imageWithColor:[UIColor redColor]] appearanceIdentifier:AUUImageDefault];
 }
 
 + (instancetype)navbarBackgroundImage {
-    return [[UIImage imageWithColor:[UIColor whiteColor]] apperanceIdentifier:AUUImageBackgroundNavbar];
+    return [[UIImage app_imageWithColor:[UIColor whiteColor]] appearanceIdentifier:AUUImageBackgroundNavbar];
 }
 
 + (instancetype)referArrowImage {
-    return [[UIImage imageWithColor:[UIColor purpleColor]] apperanceIdentifier:AUUImageRefreshArrow];
+    return [[UIImage app_imageWithColor:[UIColor purpleColor]] appearanceIdentifier:AUUImageRefreshArrow];
 }
 
 + (instancetype)head1Image {
-    return [[UIImage imageWithColor:[UIColor randomColor]] apperanceIdentifier:AUUImageHeadHead1];
+    return [[UIImage app_imageWithColor:[UIColor app_randomColor]] appearanceIdentifier:AUUImageHeadHead1];
 }
 
 + (instancetype)head2Image {
-    return [[UIImage imageWithColor:[UIColor randomColor]] apperanceIdentifier:AUUImageHeadHead2];
+    return [[UIImage app_imageWithColor:[UIColor app_randomColor]] appearanceIdentifier:AUUImageHeadHead2];
 }
 
 + (instancetype)head3Image {
-    return [[UIImage imageWithColor:[UIColor randomColor]] apperanceIdentifier:AUUImageHeadHead3];
+    return [[UIImage app_imageWithColor:[UIColor app_randomColor]] appearanceIdentifier:AUUImageHeadHead3];
 }
 
 @end

@@ -11,10 +11,6 @@
 
 @interface UIImage (AUUHelper)
 
-+ (UIImage *)imageWithColor:(UIColor *)color;
-
-+ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
-
 + (instancetype)defaultImage;
 + (instancetype)navbarBackgroundImage;
 + (instancetype)referArrowImage;

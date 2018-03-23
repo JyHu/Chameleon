@@ -20,4 +20,7 @@ pod 'SDWebImage', '~> 4.0.0'
 
 end
 
+target 'DynamicTheme' do
+pod 'SDWebImage', '~> 4.0.0'
+end
 
