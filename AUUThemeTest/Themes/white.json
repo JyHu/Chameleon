@@ -13,27 +13,21 @@
     },
     "images": {
         "image": {
-            "type": 0,
             "name": "3.jpg"
         },
         "image.background.navbar" : {
-            "type": 2,
             "color": "ffffff"
         },
         "image.refresh.arrow" : {
             "color": "a040ad",
-            "type": 2
         },
         "image.head.head1": {
-            "type": 0,
             "name": "7.jpeg"
         },
         "image.head.head2": {
-            "type": 0,
             "name": "8.jpg"
         },
         "image.head.head3": {
-            "type" : 3,
             "path" : "http://diy.qqjay.com/u2/2014/0610/dd7df7e069995cf7dcdf5971592632d2.jpg"
         }
     },

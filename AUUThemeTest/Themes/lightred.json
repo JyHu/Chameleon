@@ -13,27 +13,21 @@
     },
     "images": {
         "image": {
-            "type": 0,
             "name": "3.jpg"
         },
         "image.background.navbar" : {
-            "type": 2,
             "color": "fb708f"
         },
         "image.refresh.arrow" : {
             "color": "8431ca",
-            "type": 2
         },
         "image.head.head1": {
-            "type": 0,
             "name": "3.jpeg"
         },
         "image.head.head2": {
-            "type": 0,
             "name": "4.jpeg"
         },
         "image.head.head3": {
-            "type" : 3,
             "path" : "http://www.qqtouxiang.com/d/file/qinglv/20170212/c7a21bc98316c93c4eec72159cda0e45.jpg"
         }
     },

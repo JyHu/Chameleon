@@ -10,6 +10,8 @@
 
 @implementation UITextView (APPAppearance)
 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
+
 - (void)setApp_tintColor:(UIColor *)app_tintColor {
     APPColorParamAssert(app_tintColor)
     [self cacheThemeParams:@[app_tintColor] forSelector:@selector(setTintColor:)];
@@ -19,6 +21,8 @@
     return [self cachedParamForSelector:@selector(setTintColor:)];
 }
 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
+
 - (void)setApp_textColor:(UIColor *)app_textColor {
     APPColorParamAssert(app_textColor)
     [self cacheThemeParams:@[app_textColor] forSelector:@selector(setTextColor:)];
@@ -27,5 +31,7 @@
 - (UIColor *)app_textColor {
     return [self cachedParamForSelector:@selector(setTextColor:)];
 }
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
 
 @end

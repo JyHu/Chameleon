@@ -28,6 +28,7 @@
 #import "UITextView+APPAppearance.h"
 #import "UIToolbar+APPAppearance.h"
 #import "UIView+APPAppearance.h"
+#import "CALayer+AUUAppearance.h"
 
 //! Project version number for DynamicTheme.
 FOUNDATION_EXPORT double DynamicThemeVersionNumber;

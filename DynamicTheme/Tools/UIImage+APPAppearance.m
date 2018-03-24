@@ -33,47 +33,35 @@
         return [self imageWithIdentifier:[identifier superIdentifier] imageURLPath:urlPath];
     }
     
-    NSInteger type = [imageInfo[@"type"] integerValue];
+    // 本地图片
+    NSString *imgName = imageInfo[@"name"];
+    if (imgName) {
+        return [UIImage imageNamed:imgName];
+    }
     
-    switch (type) {
-            
-        case 0: {
-            NSString *imgName = imageInfo[@"name"];
-            if (imgName) {
-                return [UIImage imageNamed:imgName];
-            }
+    // 大图片，或者是在打包的bundle里的图片
+    NSString *imgFile = imageInfo[@"file"];
+    if (imgName) {
+        NSString *imgPath =[[APPAppearanceManager sharedManager].currentThemePath stringByAppendingPathComponent:imgFile];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:imgPath]) {
+            return [UIImage imageWithContentsOfFile:imgPath];
         }
-            break;
-            
-        case 1: {
-            NSString *imgName = imageInfo[@"name"];
-            if (imgName) {
-                NSString *imgPath =[[APPAppearanceManager sharedManager].currentThemePath stringByAppendingPathComponent:imgName];
-                if ([[NSFileManager defaultManager] fileExistsAtPath:imgPath]) {
-                    return [UIImage imageWithContentsOfFile:imgPath];
-                }
-            }
+    }
+    
+    // 纯色图片，可以只给色值，然后代码生成
+    NSString *hexColorString = imageInfo[@"color"];
+    if (hexColorString) {
+        UIColor *color = [UIColor app_colorWithHexString:hexColorString];
+        if (color) {
+            return [UIImage app_imageWithColor:color];
         }
-            break;
-            
-        case 2: {
-            NSString *hexColorString = imageInfo[@"color"];
-            if (hexColorString) {
-                UIColor *color = [UIColor app_colorWithHexString:hexColorString];
-                if (color) {
-                    return [UIImage app_imageWithColor:color];
-                }
-            }
-        }
-            break;
-            
-        case 3: {
-            *urlPath = imageInfo[@"path"];
-            return nil;
-        }
-            
-        default:
-            break;
+    }
+    
+    // 网络图片，可以下载
+    NSString *imgPath = imageInfo[@"path"];
+    if (imgPath) {
+        *urlPath = imgPath;
+        return nil;
     }
     
     return self;

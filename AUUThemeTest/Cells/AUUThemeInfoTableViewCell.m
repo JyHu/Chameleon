@@ -55,6 +55,7 @@
     
     self.pathLabel = [[UILabel alloc] init];
     self.pathLabel.app_textColor = [UIColor subtitleColor];
+    self.pathLabel.layer.app_borderColor = [UIColor textTitleColor];
     self.pathLabel.font = [UIFont systemFontOfSize:12];
     self.pathLabel.lineBreakMode = NSLineBreakByCharWrapping;
     self.pathLabel.numberOfLines = 0;

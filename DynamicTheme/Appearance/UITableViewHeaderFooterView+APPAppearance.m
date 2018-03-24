@@ -10,6 +10,8 @@
 
 @implementation UITableViewHeaderFooterView (APPAppearance)
 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
+
 - (void)setApp_tintColor:(UIColor *)app_tintColor {
     APPColorParamAssert(app_tintColor)
     [self cacheThemeParams:@[app_tintColor] forSelector:@selector(setTintColor:)];
@@ -18,5 +20,7 @@
 - (UIColor *)app_tintColor {
     return [self cachedParamForSelector:@selector(setTintColor:)];
 }
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
 
 @end

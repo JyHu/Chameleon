@@ -15,16 +15,6 @@
 
 #import <objc/runtime.h>
 
-#if defined(__has_include) && __has_include(<SDWebImage/SDWebImageDownloader.h>)  // 防止外部是使用动态库添加的
-#define HasSD
-#import <SDWebImage/SDWebImageDownloader.h>
-#elif defined(__has_include) && __has_include("SDWebImageDownloader.h")  // 防止外部是直接拷贝到项目中去的
-#define HasSD
-#import "SDWebImageDownloader.h"
-#else
-#error "没有添加SDWebImage，添加SDWebImage以后，error自动消失"
-#endif
-
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 @interface _APPMethodsInfo : NSObject
@@ -132,7 +122,12 @@
     
     invocation.selector = sel;
     
-    for (unsigned int i = 0; i < params.count; i ++) {
+    for (unsigned int i = 2; i < [signature numberOfArguments]; i ++) {
+        
+        if (i >= params.count + 2) {
+            continue;
+        }
+        
         /*
          用于获取方法的参数类型
          方法原型：
@@ -145,7 +140,7 @@
         
         BOOL skip = NO;
         
-        id correctArgument = [self correctParamInSelector:sel params:params argIndex:i skip:&skip
+        id correctArgument = [self correctParamInSelector:sel params:params argIndex:i - 2 skip:&skip
                                   manualInvokeSelector:invokeSelector];
         
         if (skip) {
@@ -158,70 +153,72 @@
             continue;
         }
         
-        const char *type = [signature getArgumentTypeAtIndex:i + 2];
+        const char *type = [signature getArgumentTypeAtIndex:i];
+        
+        // https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html#//apple_ref/doc/uid/TP40008048-CH100-SW1
         
         if (strcmp(type, "#") == 0) {          // Class
             Class argumentCls = NSClassFromString(correctArgument);
-            [invocation setArgument:&argumentCls atIndex:2 + i];
+            [invocation setArgument:&argumentCls atIndex:i];
         }
         else if (strcmp(type, ":") == 0) {     // Selector
             SEL argumentSEL = NSSelectorFromString(correctArgument);
-            [invocation setArgument:&argumentSEL atIndex:2 + i];
+            [invocation setArgument:&argumentSEL atIndex:i];
         }
         else if (strcmp(type, "c") == 0) {    // Char
             char argumentC = [correctArgument charValue];
-            [invocation setArgument:&argumentC atIndex:2 + i];
+            [invocation setArgument:&argumentC atIndex:i];
         }
         else if (strcmp(type, "C") == 0) {
             unsigned char argumentUC = [correctArgument unsignedCharValue];
-            [invocation setArgument:&argumentUC atIndex:2 + i];
+            [invocation setArgument:&argumentUC atIndex:i];
         }
         else if (strcmp(type, "s") == 0) {
             short argumentS = [correctArgument shortValue];
-            [invocation setArgument:&argumentS atIndex:2 + i];
+            [invocation setArgument:&argumentS atIndex:i];
         }
         else if (strcmp(type, "S") == 0) {
             unsigned short argumentUS = [correctArgument unsignedShortValue];
-            [invocation setArgument:&argumentUS atIndex:2 + i];
+            [invocation setArgument:&argumentUS atIndex:i];
         }
         else if (strcmp(type, "i") == 0) {
             int argumentI = [correctArgument intValue];
-            [invocation setArgument:&argumentI atIndex:2 + i];
+            [invocation setArgument:&argumentI atIndex:i];
         }
         else if (strcmp(type, "I") == 0) {
             NSUInteger argumentUI = [correctArgument unsignedIntegerValue];
-            [invocation setArgument:&argumentUI atIndex:2 + i];
+            [invocation setArgument:&argumentUI atIndex:i];
         }
         else if (strcmp(type, "l") == 0) {
             long argumentL = [correctArgument longValue];
-            [invocation setArgument:&argumentL atIndex:2 + i];
+            [invocation setArgument:&argumentL atIndex:i];
         }
         else if (strcmp(type, "L") == 0) {
             unsigned long argumentUL = [correctArgument unsignedLongValue];
-            [invocation setArgument:&argumentUL atIndex:2 + i];
+            [invocation setArgument:&argumentUL atIndex:i];
         }
         else if (strcmp(type, "q") == 0) {
             long long argumentLL = [correctArgument longLongValue];
-            [invocation setArgument:&argumentLL atIndex:2 + i];
+            [invocation setArgument:&argumentLL atIndex:i];
         }
         else if (strcmp(type, "Q") == 0) {
             unsigned long long argumentULL = [correctArgument unsignedLongLongValue];
-            [invocation setArgument:&argumentULL atIndex:2 + i];
+            [invocation setArgument:&argumentULL atIndex:i];
         }
         else if (strcmp(type, "f") == 0) {
             float argumentF = [correctArgument floatValue];
-            [invocation setArgument:&argumentF atIndex:2 + i];
+            [invocation setArgument:&argumentF atIndex:i];
         }
         else if (strcmp(type, "d") == 0) {
             double argumentD = [correctArgument doubleValue];
-            [invocation setArgument:&argumentD atIndex:2 + i];
+            [invocation setArgument:&argumentD atIndex:i];
         }
         else if (strcmp(type, "b") == 0 || strcmp(type, "B") == 0) {
             BOOL argumentB = [correctArgument boolValue];
-            [invocation setArgument:&argumentB atIndex:2 + i];
+            [invocation setArgument:&argumentB atIndex:i];
         }
         else if (type && sizeof(type) / sizeof(const char *) > 0) {  // 是对象或其他数据类型
-            [invocation setArgument:&correctArgument atIndex:2 + i];
+            [invocation setArgument:&correctArgument atIndex:i];
         }
     }
     
@@ -250,10 +247,12 @@
         NSString *imagePath = nil;
         UIImage *tempImage = [currentArgument correctImageWithURLString:&imagePath];
         
+        // 找到了正确的图片可以直接返回
         if (tempImage) {
             return tempImage;
         }
         
+        // 如果没有正确的图片且没有图片的url地址，则把当前的图片返回过去
         if (!imagePath) {
             return currentArgument;
         }
@@ -262,29 +261,19 @@
         *skip = YES;
         
         __weak typeof(self) weakSelf = self;
-        
-        // 使用SDWebImage去下载图片
-        SDWebImageDownloaderCompletedBlock completeBlock = ^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+        // 下载图片
+        [[APPAppearanceManager sharedManager] webImageWithURLString:imagePath downloadCompletion:^(UIImage *image) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            
-            UIImage *destImage = image;
-            if (!destImage) {
-                destImage = currentArgument;
+            if (image) {
+                // 图片下载完成以后再次的执行设置方法
+                NSMutableArray *mutableParams = [params mutableCopy];
+                [mutableParams replaceObjectAtIndex:index withObject:image];
+                
+                [strongSelf performSelector:sel params:mutableParams manualInvokeSelector:invokeSelector];
             }
-            NSMutableArray *mutableParams = [params mutableCopy];
-            [mutableParams replaceObjectAtIndex:index withObject:destImage];
-            
-            [strongSelf performSelector:sel params:mutableParams manualInvokeSelector:invokeSelector];
-        };
+        }];
         
-        SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
-        
-        [downloader downloadImageWithURL:[NSURL URLWithString:imagePath]
-                                 options:SDWebImageDownloaderHighPriority
-                                progress:nil
-                               completed:completeBlock];
-        
-        return currentArgument;
+        return nil;
     }
     
     if ([currentArgument isKindOfClass:[APPCustomAppearanceModel class]]) {

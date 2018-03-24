@@ -10,6 +10,8 @@
 
 @implementation UITableView (APPAppearance)
 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
+
 - (void)setApp_separatorColor:(UIColor *)app_separatorColor {
     APPColorParamAssert(app_separatorColor)
     [self cacheThemeParams:@[app_separatorColor] forSelector:@selector(setSeparatorColor:)];
@@ -18,5 +20,7 @@
 - (UIColor *)app_separatorColor {
     return [self cachedParamForSelector:@selector(setSeparatorColor:)];
 }
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
 
 @end

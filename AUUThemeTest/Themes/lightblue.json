@@ -13,27 +13,21 @@
     },
     "images": {
         "image": {
-            "type": 0,
             "name": "3.jpg"
         },
         "image.background.navbar" : {
-            "type": 2,
             "color": "c6ddfa"
         },
         "image.refresh.arrow" : {
             "color": "f17775",
-            "type": 2
         },
         "image.head.head1": {
-            "type": 0,
             "name": "1.jpeg"
         },
         "image.head.head2": {
-            "type": 0,
             "name": "2.jpeg"
         },
         "image.head.head3": {
-            "type" : 3,
             "path" : "http://www.qqjia.com/z/09/tu10292_19.jpg"
         }
     },

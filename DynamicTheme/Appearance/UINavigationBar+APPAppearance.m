@@ -10,6 +10,8 @@
 
 @implementation UINavigationBar (APPAppearance)
 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
+
 - (void)setApp_titleColor:(UIColor *)app_titleColor {
     APPColorParamAssert(app_titleColor)
     [self cacheThemeParams:@[app_titleColor] forSelector:@selector(_setNavibarTitleColor:)];
@@ -19,10 +21,14 @@
     return [self cachedParamForSelector:@selector(_setNavibarTitleColor:)];
 }
 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
+
 - (void)setApp_BackgroundImage:(UIImage *)image forBarMetrics:(UIBarMetrics)barMetrics {
     APPImageParamAssert(image)
     [self cacheThemeParams:@[image, @(barMetrics)] forSelector:@selector(setBackgroundImage:forBarMetrics:)];
 }
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
 
 - (void)_setNavibarTitleColor:(UIColor *)titleColor {
     NSMutableDictionary *titleAttributes = [self.titleTextAttributes mutableCopy];
@@ -31,5 +37,7 @@
         self.titleTextAttributes = titleAttributes;
     }
 }
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
 
 @end

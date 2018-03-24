@@ -10,6 +10,17 @@
 #import "UIColor+AUUAppearance.h"
 #import "NSObject+APPAppearance.h"
 
+
+#if defined(__has_include) && __has_include(<SDWebImage/SDWebImageDownloader.h>)  // 防止外部是使用动态库添加的
+#define HasSD
+#import <SDWebImage/SDWebImageDownloader.h>
+#elif defined(__has_include) && __has_include("SDWebImageDownloader.h")  // 防止外部是直接拷贝到项目中去的
+#define HasSD
+#import "SDWebImageDownloader.h"
+#else
+#error "没有添加SDWebImage，添加SDWebImage以后，error自动消失"
+#endif
+
 NSString *const APPThemeChangeNotification = @"com.jyhu.APPThemeChangeNotification";
 
 
@@ -37,7 +48,7 @@ NSString *const APPThemeChangeNotification = @"com.jyhu.APPThemeChangeNotificati
 - (instancetype)init {
     if ((self = [super init])) {
         self.defaultColor = [UIColor app_randomColor];
-        self.defaultImage = [UIImage new];
+        self.defaultImage = nil;
     }
     
     return self;
@@ -48,6 +59,12 @@ NSString *const APPThemeChangeNotification = @"com.jyhu.APPThemeChangeNotificati
     self.cachedThemeSourcePath = sourcePath;
     self.cachedThemeInfoDict = themeInfo;
     
+    [self performThemeChanged];
+    
+    return YES;
+}
+
+- (void)performThemeChanged {
     // iOS 9以下的通知中心不支持自动释放，所以使用MapTable，只有在iOS9以后才使用通知
     if (@available(iOS 9.0, *)) {
         [[NSNotificationCenter defaultCenter] postNotificationName:APPThemeChangeNotification object:nil];
@@ -56,8 +73,33 @@ NSString *const APPThemeChangeNotification = @"com.jyhu.APPThemeChangeNotificati
             [appKit performAllCachedSelector];
         }
     }
+}
+
+- (void)webImageWithURLString:(NSString *)imgURLString
+           downloadCompletion:(void (^)(UIImage *))completion {
     
-    return YES;
+    if (!imgURLString) {
+        return;
+    }
+    
+    if (self.appearanceDelegate && [self.appearanceDelegate respondsToSelector:@selector(webImageWithURLString:downloadCompletion:)]) {
+        
+        [self.appearanceDelegate webImageWithURLString:imgURLString downloadCompletion:completion];
+    } else {
+        // 使用SDWebImage去下载图片
+        SDWebImageDownloaderCompletedBlock completeBlock =
+        ^(UIImage * _Nullable image, NSData * _Nullable data,
+          NSError * _Nullable error, BOOL finished) {
+            completion(image);
+        };
+        
+        SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+        
+        [downloader downloadImageWithURL:[NSURL URLWithString:imgURLString]
+                                 options:SDWebImageDownloaderHighPriority
+                                progress:nil
+                               completed:completeBlock];
+    }
 }
 
 - (void)registerDefaultColor:(UIColor *)color {

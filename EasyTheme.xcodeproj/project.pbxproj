@@ -52,6 +52,9 @@
 		1C53006320650CF300827C25 /* UIToolbar+APPAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C53006120650CF300827C25 /* UIToolbar+APPAppearance.m */; };
 		1C53006620650D1E00827C25 /* UIView+APPAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C53006420650D1E00827C25 /* UIView+APPAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C53006720650D1E00827C25 /* UIView+APPAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C53006520650D1E00827C25 /* UIView+APPAppearance.m */; };
+		1C53006D20663DD700827C25 /* useage.md in Resources */ = {isa = PBXBuildFile; fileRef = 1C53006C20663DD700827C25 /* useage.md */; };
+		1C530070206645D500827C25 /* CALayer+AUUAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C53006E206645D500827C25 /* CALayer+AUUAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C530071206645D500827C25 /* CALayer+AUUAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C53006F206645D500827C25 /* CALayer+AUUAppearance.m */; };
 		1CEEF4061E6668DE00EF15C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEF4051E6668DE00EF15C0 /* main.m */; };
 		1CEEF4091E6668DE00EF15C0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEF4081E6668DE00EF15C0 /* AppDelegate.m */; };
 		1CEEF40F1E6668DE00EF15C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CEEF40D1E6668DE00EF15C0 /* Main.storyboard */; };
@@ -74,7 +77,6 @@
 		1CEEF47E1E666A7100EF15C0 /* lightblue.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CEEF44D1E666A7100EF15C0 /* lightblue.json */; };
 		1CEEF47F1E666A7100EF15C0 /* lightred.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CEEF44E1E666A7100EF15C0 /* lightred.json */; };
 		1CEEF4801E666A7100EF15C0 /* pupurse.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CEEF44F1E666A7100EF15C0 /* pupurse.json */; };
-		1CEEF4811E666A7100EF15C0 /* statement.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1CEEF4501E666A7100EF15C0 /* statement.txt */; };
 		1CEEF4821E666A7100EF15C0 /* white.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CEEF4511E666A7100EF15C0 /* white.json */; };
 		1CEEF4831E666A7100EF15C0 /* AUUTestThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEF4541E666A7100EF15C0 /* AUUTestThemeManager.m */; };
 		1CEEF4841E666A7100EF15C0 /* AUUThemeConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEF4561E666A7100EF15C0 /* AUUThemeConstants.m */; };
@@ -173,6 +175,9 @@
 		1C53006120650CF300827C25 /* UIToolbar+APPAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+APPAppearance.m"; sourceTree = "<group>"; };
 		1C53006420650D1E00827C25 /* UIView+APPAppearance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+APPAppearance.h"; sourceTree = "<group>"; };
 		1C53006520650D1E00827C25 /* UIView+APPAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+APPAppearance.m"; sourceTree = "<group>"; };
+		1C53006C20663DD700827C25 /* useage.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = useage.md; sourceTree = "<group>"; };
+		1C53006E206645D500827C25 /* CALayer+AUUAppearance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+AUUAppearance.h"; sourceTree = "<group>"; };
+		1C53006F206645D500827C25 /* CALayer+AUUAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+AUUAppearance.m"; sourceTree = "<group>"; };
 		1CEEF4021E6668DE00EF15C0 /* AUUThemeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AUUThemeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEEF4051E6668DE00EF15C0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CEEF4071E6668DE00EF15C0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -203,7 +208,6 @@
 		1CEEF44D1E666A7100EF15C0 /* lightblue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lightblue.json; sourceTree = "<group>"; };
 		1CEEF44E1E666A7100EF15C0 /* lightred.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lightred.json; sourceTree = "<group>"; };
 		1CEEF44F1E666A7100EF15C0 /* pupurse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pupurse.json; sourceTree = "<group>"; };
-		1CEEF4501E666A7100EF15C0 /* statement.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = statement.txt; sourceTree = "<group>"; };
 		1CEEF4511E666A7100EF15C0 /* white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = white.json; sourceTree = "<group>"; };
 		1CEEF4531E666A7100EF15C0 /* AUUTestThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUUTestThemeManager.h; sourceTree = "<group>"; };
 		1CEEF4541E666A7100EF15C0 /* AUUTestThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUUTestThemeManager.m; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				1C5300072065022000827C25 /* DynamicTheme.h */,
+				1C53006C20663DD700827C25 /* useage.md */,
 				1C5300132065026700827C25 /* Manager */,
 				1C5300122065025E00827C25 /* Tools */,
 				1C5300112065023900827C25 /* Appearance */,
@@ -321,6 +326,8 @@
 				1C53006120650CF300827C25 /* UIToolbar+APPAppearance.m */,
 				1C53006420650D1E00827C25 /* UIView+APPAppearance.h */,
 				1C53006520650D1E00827C25 /* UIView+APPAppearance.m */,
+				1C53006E206645D500827C25 /* CALayer+AUUAppearance.h */,
+				1C53006F206645D500827C25 /* CALayer+AUUAppearance.m */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -458,7 +465,6 @@
 				1CEEF44D1E666A7100EF15C0 /* lightblue.json */,
 				1CEEF44E1E666A7100EF15C0 /* lightred.json */,
 				1CEEF44F1E666A7100EF15C0 /* pupurse.json */,
-				1CEEF4501E666A7100EF15C0 /* statement.txt */,
 				1CEEF4511E666A7100EF15C0 /* white.json */,
 			);
 			path = Themes;
@@ -581,6 +587,7 @@
 				1C53004620650BAE00827C25 /* UISegmentedControl+APPAppearance.h in Headers */,
 				1C53002C2065071100827C25 /* UIImage+APPAppearance.h in Headers */,
 				1C530030206507E100827C25 /* APPCustomAppearanceModel.h in Headers */,
+				1C530070206645D500827C25 /* CALayer+AUUAppearance.h in Headers */,
 				1C5300242065060C00827C25 /* NSObject+APPAppearance.h in Headers */,
 				1C5300092065022000827C25 /* DynamicTheme.h in Headers */,
 				1C530019206502E700827C25 /* APPAppearanceManager+_Private.h in Headers */,
@@ -676,6 +683,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C53006D20663DD700827C25 /* useage.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,7 +691,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CEEF4811E666A7100EF15C0 /* statement.txt in Resources */,
 				1CEEF47C1E666A7100EF15C0 /* 8.jpg in Resources */,
 				1CEEF4821E666A7100EF15C0 /* white.json in Resources */,
 				1CEEF4761E666A7100EF15C0 /* 2.jpeg in Resources */,
@@ -818,6 +825,7 @@
 				1C53004320650B7E00827C25 /* UINavigationBar+APPAppearance.m in Sources */,
 				1C53004F20650C1400827C25 /* UITabBar+APPAppearance.m in Sources */,
 				1C53004720650BAE00827C25 /* UISegmentedControl+APPAppearance.m in Sources */,
+				1C530071206645D500827C25 /* CALayer+AUUAppearance.m in Sources */,
 				1C530029206506AE00827C25 /* UIColor+AUUAppearance.m in Sources */,
 				1C530031206507E100827C25 /* APPCustomAppearanceModel.m in Sources */,
 				1C53005B20650CA200827C25 /* UITextField+APPAppearance.m in Sources */,

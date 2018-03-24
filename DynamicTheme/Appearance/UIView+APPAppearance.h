@@ -10,6 +10,5 @@
 @interface UIView (APPAppearance)
 
 @property (retain, nonatomic) UIColor *app_backgroundColor;
-@property (retain, nonatomic) UIColor *app_layerBackgroundColor;
 
 @end
