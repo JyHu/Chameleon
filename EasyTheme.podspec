@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "EasyTheme"
-  s.version      = "0.1.8"
+  s.version      = "0.2.0"
   s.summary      = "This is an easy framework for change your APP theme."
   s.description  = <<-DESC
   This is an easy framework for change your APP theme. You can follow my code and write your own colorful APP theme.
