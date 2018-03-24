@@ -1,14 +1,14 @@
 //
-//  UIColor+AUUAppearance.h
+//  UIColor+APPAppearance.h
 //  DynamicTheme
 //
-//  Created by 胡金友 on 2018/3/23.
+//  Created by 胡金友 on 2018/3/24.
 //
 
 #import <UIKit/UIKit.h>
 #import "APPAppearanceParamProtocol.h"
 
-@interface UIColor (AUUAppearance) <APPAppearanceParamProtocol>
+@interface UIColor (APPAppearance) <APPAppearanceParamProtocol>
 
 /**
  根据给定的颜色字符串，从主题内容中找到相对应的颜色值并生成颜色对象
@@ -41,3 +41,4 @@
 + (UIColor *)app_colorWithHexString:(NSString *)hexString;
 
 @end
+

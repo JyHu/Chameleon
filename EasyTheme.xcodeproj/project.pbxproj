@@ -19,8 +19,6 @@
 		1C530021206505F900827C25 /* NSString+APPAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C53001F206505F900827C25 /* NSString+APPAppearance.m */; };
 		1C5300242065060C00827C25 /* NSObject+APPAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C5300222065060C00827C25 /* NSObject+APPAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C5300252065060C00827C25 /* NSObject+APPAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5300232065060C00827C25 /* NSObject+APPAppearance.m */; };
-		1C530028206506AE00827C25 /* UIColor+AUUAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C530026206506AE00827C25 /* UIColor+AUUAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1C530029206506AE00827C25 /* UIColor+AUUAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C530027206506AE00827C25 /* UIColor+AUUAppearance.m */; };
 		1C53002C2065071100827C25 /* UIImage+APPAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C53002A2065071100827C25 /* UIImage+APPAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C53002D2065071100827C25 /* UIImage+APPAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C53002B2065071100827C25 /* UIImage+APPAppearance.m */; };
 		1C530030206507E100827C25 /* APPCustomAppearanceModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C53002E206507E100827C25 /* APPCustomAppearanceModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,8 +51,11 @@
 		1C53006620650D1E00827C25 /* UIView+APPAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C53006420650D1E00827C25 /* UIView+APPAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C53006720650D1E00827C25 /* UIView+APPAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C53006520650D1E00827C25 /* UIView+APPAppearance.m */; };
 		1C53006D20663DD700827C25 /* useage.md in Resources */ = {isa = PBXBuildFile; fileRef = 1C53006C20663DD700827C25 /* useage.md */; };
-		1C530070206645D500827C25 /* CALayer+AUUAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C53006E206645D500827C25 /* CALayer+AUUAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1C530071206645D500827C25 /* CALayer+AUUAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C53006F206645D500827C25 /* CALayer+AUUAppearance.m */; };
+		1C5300742066589000827C25 /* UIColor+APPAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C5300722066589000827C25 /* UIColor+APPAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C5300752066589000827C25 /* UIColor+APPAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5300732066589000827C25 /* UIColor+APPAppearance.m */; };
+		1C530078206658D400827C25 /* CALayer+APPAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C530076206658D400827C25 /* CALayer+APPAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C530079206658D400827C25 /* CALayer+APPAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C530077206658D400827C25 /* CALayer+APPAppearance.m */; };
+		1C53007B206659CB00827C25 /* EasyTheme.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 1C53007A206659CA00827C25 /* EasyTheme.podspec */; };
 		1CEEF4061E6668DE00EF15C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEF4051E6668DE00EF15C0 /* main.m */; };
 		1CEEF4091E6668DE00EF15C0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEF4081E6668DE00EF15C0 /* AppDelegate.m */; };
 		1CEEF40F1E6668DE00EF15C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CEEF40D1E6668DE00EF15C0 /* Main.storyboard */; };
@@ -142,8 +143,6 @@
 		1C53001F206505F900827C25 /* NSString+APPAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+APPAppearance.m"; sourceTree = "<group>"; };
 		1C5300222065060C00827C25 /* NSObject+APPAppearance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+APPAppearance.h"; sourceTree = "<group>"; };
 		1C5300232065060C00827C25 /* NSObject+APPAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+APPAppearance.m"; sourceTree = "<group>"; };
-		1C530026206506AE00827C25 /* UIColor+AUUAppearance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AUUAppearance.h"; sourceTree = "<group>"; };
-		1C530027206506AE00827C25 /* UIColor+AUUAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AUUAppearance.m"; sourceTree = "<group>"; };
 		1C53002A2065071100827C25 /* UIImage+APPAppearance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+APPAppearance.h"; sourceTree = "<group>"; };
 		1C53002B2065071100827C25 /* UIImage+APPAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+APPAppearance.m"; sourceTree = "<group>"; };
 		1C53002E206507E100827C25 /* APPCustomAppearanceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPCustomAppearanceModel.h; sourceTree = "<group>"; };
@@ -176,8 +175,11 @@
 		1C53006420650D1E00827C25 /* UIView+APPAppearance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+APPAppearance.h"; sourceTree = "<group>"; };
 		1C53006520650D1E00827C25 /* UIView+APPAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+APPAppearance.m"; sourceTree = "<group>"; };
 		1C53006C20663DD700827C25 /* useage.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = useage.md; sourceTree = "<group>"; };
-		1C53006E206645D500827C25 /* CALayer+AUUAppearance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+AUUAppearance.h"; sourceTree = "<group>"; };
-		1C53006F206645D500827C25 /* CALayer+AUUAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+AUUAppearance.m"; sourceTree = "<group>"; };
+		1C5300722066589000827C25 /* UIColor+APPAppearance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+APPAppearance.h"; sourceTree = "<group>"; };
+		1C5300732066589000827C25 /* UIColor+APPAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+APPAppearance.m"; sourceTree = "<group>"; };
+		1C530076206658D400827C25 /* CALayer+APPAppearance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+APPAppearance.h"; sourceTree = "<group>"; };
+		1C530077206658D400827C25 /* CALayer+APPAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+APPAppearance.m"; sourceTree = "<group>"; };
+		1C53007A206659CA00827C25 /* EasyTheme.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EasyTheme.podspec; sourceTree = "<group>"; };
 		1CEEF4021E6668DE00EF15C0 /* AUUThemeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AUUThemeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEEF4051E6668DE00EF15C0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CEEF4071E6668DE00EF15C0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -326,8 +328,8 @@
 				1C53006120650CF300827C25 /* UIToolbar+APPAppearance.m */,
 				1C53006420650D1E00827C25 /* UIView+APPAppearance.h */,
 				1C53006520650D1E00827C25 /* UIView+APPAppearance.m */,
-				1C53006E206645D500827C25 /* CALayer+AUUAppearance.h */,
-				1C53006F206645D500827C25 /* CALayer+AUUAppearance.m */,
+				1C530076206658D400827C25 /* CALayer+APPAppearance.h */,
+				1C530077206658D400827C25 /* CALayer+APPAppearance.m */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -339,8 +341,8 @@
 				1C5300232065060C00827C25 /* NSObject+APPAppearance.m */,
 				1C53001E206505F900827C25 /* NSString+APPAppearance.h */,
 				1C53001F206505F900827C25 /* NSString+APPAppearance.m */,
-				1C530026206506AE00827C25 /* UIColor+AUUAppearance.h */,
-				1C530027206506AE00827C25 /* UIColor+AUUAppearance.m */,
+				1C5300722066589000827C25 /* UIColor+APPAppearance.h */,
+				1C5300732066589000827C25 /* UIColor+APPAppearance.m */,
 				1C53002A2065071100827C25 /* UIImage+APPAppearance.h */,
 				1C53002B2065071100827C25 /* UIImage+APPAppearance.m */,
 				1C53002E206507E100827C25 /* APPCustomAppearanceModel.h */,
@@ -363,6 +365,7 @@
 		1CEEF3821E66683600EF15C0 = {
 			isa = PBXGroup;
 			children = (
+				1C53007A206659CA00827C25 /* EasyTheme.podspec */,
 				1C5300062065022000827C25 /* DynamicTheme */,
 				1CEEF4031E6668DE00EF15C0 /* AUUThemeTest */,
 				1CEEF38F1E66686B00EF15C0 /* Products */,
@@ -571,7 +574,6 @@
 				1C530020206505F900827C25 /* NSString+APPAppearance.h in Headers */,
 				1C530016206502AF00827C25 /* APPAppearanceManager.h in Headers */,
 				1C530033206507EF00827C25 /* APPAppearanceParamProtocol.h in Headers */,
-				1C530028206506AE00827C25 /* UIColor+AUUAppearance.h in Headers */,
 				1C53004A20650BE000827C25 /* UISwitch+APPAppearance.h in Headers */,
 				1C53005A20650CA200827C25 /* UITextField+APPAppearance.h in Headers */,
 				1C53004E20650C1400827C25 /* UITabBar+APPAppearance.h in Headers */,
@@ -587,7 +589,8 @@
 				1C53004620650BAE00827C25 /* UISegmentedControl+APPAppearance.h in Headers */,
 				1C53002C2065071100827C25 /* UIImage+APPAppearance.h in Headers */,
 				1C530030206507E100827C25 /* APPCustomAppearanceModel.h in Headers */,
-				1C530070206645D500827C25 /* CALayer+AUUAppearance.h in Headers */,
+				1C530078206658D400827C25 /* CALayer+APPAppearance.h in Headers */,
+				1C5300742066589000827C25 /* UIColor+APPAppearance.h in Headers */,
 				1C5300242065060C00827C25 /* NSObject+APPAppearance.h in Headers */,
 				1C5300092065022000827C25 /* DynamicTheme.h in Headers */,
 				1C530019206502E700827C25 /* APPAppearanceManager+_Private.h in Headers */,
@@ -683,6 +686,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C53007B206659CB00827C25 /* EasyTheme.podspec in Resources */,
 				1C53006D20663DD700827C25 /* useage.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -823,10 +827,9 @@
 				1C53005720650C7500827C25 /* UITableViewHeaderFooterView+APPAppearance.m in Sources */,
 				1C53003720650AD100827C25 /* UIButton+APPAppearance.m in Sources */,
 				1C53004320650B7E00827C25 /* UINavigationBar+APPAppearance.m in Sources */,
+				1C5300752066589000827C25 /* UIColor+APPAppearance.m in Sources */,
 				1C53004F20650C1400827C25 /* UITabBar+APPAppearance.m in Sources */,
 				1C53004720650BAE00827C25 /* UISegmentedControl+APPAppearance.m in Sources */,
-				1C530071206645D500827C25 /* CALayer+AUUAppearance.m in Sources */,
-				1C530029206506AE00827C25 /* UIColor+AUUAppearance.m in Sources */,
 				1C530031206507E100827C25 /* APPCustomAppearanceModel.m in Sources */,
 				1C53005B20650CA200827C25 /* UITextField+APPAppearance.m in Sources */,
 				1C53004B20650BE000827C25 /* UISwitch+APPAppearance.m in Sources */,
@@ -836,6 +839,7 @@
 				1C53006720650D1E00827C25 /* UIView+APPAppearance.m in Sources */,
 				1C5300252065060C00827C25 /* NSObject+APPAppearance.m in Sources */,
 				1C53005320650C4500827C25 /* UITableView+APPAppearance.m in Sources */,
+				1C530079206658D400827C25 /* CALayer+APPAppearance.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

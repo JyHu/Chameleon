@@ -8,7 +8,7 @@
 #import "UIImage+APPAppearance.h"
 #import "NSString+APPAppearance.h"
 #import "APPAppearanceManager.h"
-#import "UIColor+AUUAppearance.h"
+#import "UIColor+APPAppearance.h"
 #import <objc/runtime.h>
 
 @implementation UIImage (APPAppearance)

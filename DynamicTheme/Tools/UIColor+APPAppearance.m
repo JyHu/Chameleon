@@ -1,16 +1,16 @@
 //
-//  UIColor+AUUAppearance.m
+//  UIColor+APPAppearance.m
 //  DynamicTheme
 //
-//  Created by 胡金友 on 2018/3/23.
+//  Created by 胡金友 on 2018/3/24.
 //
 
-#import "UIColor+AUUAppearance.h"
+#import "UIColor+APPAppearance.h"
 #import "NSString+APPAppearance.h"
 #import "APPAppearanceManager.h"
 #import <objc/runtime.h>
 
-@implementation UIColor (AUUAppearance)
+@implementation UIColor (APPAppearance)
 
 - (UIColor *)correctColor {
     if (self.appearanceIdentifier) {
@@ -97,3 +97,4 @@
 }
 
 @end
+

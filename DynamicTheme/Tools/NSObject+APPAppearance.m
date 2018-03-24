@@ -9,7 +9,7 @@
 
 #import "APPAppearanceManager.h"
 #import "APPAppearanceManager+_Private.h"
-#import "UIColor+AUUAppearance.h"
+#import "UIColor+APPAppearance.h"
 #import "UIImage+APPAppearance.h"
 #import "APPCustomAppearanceModel.h"
 

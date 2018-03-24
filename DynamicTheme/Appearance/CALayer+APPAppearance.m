@@ -1,14 +1,14 @@
 //
-//  CALayer+AUUAppearance.m
+//  CALayer+APPAppearance.m
 //  DynamicTheme
 //
 //  Created by 胡金友 on 2018/3/24.
 //
 
-#import "CALayer+AUUAppearance.h"
+#import "CALayer+APPAppearance.h"
 #import "NSObject+APPAppearance.h"
 
-@implementation CALayer (AUUAppearance)
+@implementation CALayer (APPAppearance)
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
 
@@ -47,3 +47,4 @@
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
 
 @end
+
