@@ -15,10 +15,14 @@ extern NSString *const APPThemeChangeNotification;
 
 @required
 
+// 所有的颜色信息
 @property (nonatomic, strong, readonly) NSDictionary *colorsInfo;
+// 所有的图片信息
 @property (nonatomic, strong, readonly) NSDictionary *imagesInfo;
+// 所有的自定义属性的信息
 @property (nonatomic, strong, readonly) NSDictionary *appearancesInfo;
 
+// 当前的资源文件路径
 @property (nonatomic, copy, readonly) NSString *currentThemePath;
 
 @optional
@@ -26,6 +30,12 @@ extern NSString *const APPThemeChangeNotification;
 @property (nonatomic, strong, readonly) UIColor *defaultColor;
 @property (nonatomic, strong, readonly) UIImage *defaultImage;
 
+/**
+ 下载网络图片的方法
+
+ @param imgURLString 图片的url地址
+ @param completion 下载结束以后的回调
+ */
 - (void)webImageWithURLString:(NSString *)imgURLString
            downloadCompletion:(void (^)(UIImage *image))completion;
 
