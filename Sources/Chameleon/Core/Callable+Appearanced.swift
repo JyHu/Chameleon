@@ -8,91 +8,102 @@
 import Foundation
 
 public extension Callable {
+    enum NumType {
+        case int
+        case int8
+        case int16
+        case int32
+        case int64
+        
+        case uint
+        case uint8
+        case uint16
+        case uint32
+        case uing64
+        
+        case double
+        case cgfloat
+        
+        case number
+    }
+    
+    /// 当前换肤参数的类型
+    enum ClsType {
+        /// 颜色类型参数
+        case color
+        /// 图片类型参数
+        case image
+        /// 数值类型
+        case numeric(NumType)
+        /// 其他类型参数
+        case other
+    }
+    
+    private static func clsTypeOf(obj: Any) -> ClsType {
+        if obj is NSUIAppearanceColor { return .color }
+        if obj is NSUIAppearanceImage { return .image }
+        
+        if obj is Int { return .numeric(.int) }
+        if obj is Int8 { return .numeric(.int8)}
+        if obj is Int16 { return .numeric(.int16)}
+        if obj is Int32 { return .numeric(.int32)}
+        if obj is Int64 { return .numeric(.int64)}
+        if obj is UInt { return .numeric(.uint)}
+        if obj is UInt8 { return .numeric(.uint8)}
+        if obj is UInt16 { return .numeric(.uint16)}
+        if obj is UInt32 { return .numeric(.uint32)}
+        if obj is UInt64 { return .numeric(.uing64)}
+        if obj is Double { return .numeric(.double)}
+        if obj is CGFloat { return .numeric(.cgfloat)}
+        if obj is NSNumber { return .numeric(.number)}
+        
+        return .other
+    }
+    
     /// 对单个换肤参数的更高一层的包装，用于记录当前入参的一些通用属性
     struct Appearanced<T> {
-        /// 当前换肤参数的类型
-        enum ClsType {
-            /// 颜色类型参数
-            case color
-            /// 图片类型参数
-            case image
-            /// 其他类型参数
-            case other
-        }
-        
         /// 缓存的原始参数值
-        let original: Param<T>
+        public let original: T
         /// 换肤参数的标识符，用于从换肤资源中找到对应的换肤属性
-        let identifier: AppearanceCallableIdentifier?
+        public let identifier: AppearanceCallableIdentifier?
         /// 参数类型
-        let clsType: ClsType
+        public let clsType: ClsType
         
         /// 初始化方法
         /// - Parameter original: 原始的参数值
-        init(original: Param<T>) {
-            /// 获取原始值的换肤标识符和入参类型
-            func getIdentifier() -> (AppearanceCallableIdentifier?, ClsType) {
-                func idof(obj: Any?) -> (AppearanceCallableIdentifier?, ClsType) {
-                    if let color = obj as? NSUIAppearanceColor {
-                        return (color.appearanceIdentifier, .color)
-                    }
-                    
-                    if let image = obj as? NSUIAppearanceImage {
-                        return (image.appearanceIdentifier, .image)
-                    }
-                    
-                    return ((obj as? AppearancedParamProtocol)?.appearanceIdentifier, .other)
-                }
-                
-                switch original {
-                case .required(let val): return idof(obj: val)
-                case .optional(let val): return idof(obj: val)
-                }
-            }
-            
+        public init(original: T) {
             self.original = original
-            
-            (self.identifier, self.clsType) = getIdentifier()
+            self.identifier = (original as? AppearancedParamProtocol)?.appearanceIdentifier
+            self.clsType = Callable.clsTypeOf(obj: original)
+        }
+        
+        public init(original: T, identifier: AppearanceCallableIdentifier?, clsType: ClsType? = nil) {
+            self.original = original
+            self.identifier = identifier
+            self.clsType = clsType ?? Callable.clsTypeOf(obj: original)
         }
         
         /// 根据当前参数数据从换肤资源中获取对应有效的换肤数据
-        var correct: Param<T> {
+        public var correct: T {
             /// 如果不支持换肤，返回原始值
-            guard let identifier = identifier else {
-                return original
-            }
+            guard let identifier = identifier else { return original }
             
-            /// 根据入参的类型返回对应的数据类型
-            func appearancedValue(with searched: Any?) -> Param<T> {
-                guard let searched = searched as? T else { return original }
-                
-                switch original {
-                case .optional(_): return .optional(searched)
-                case .required(_): return .required(searched)
-                }
+            switch clsType {
+            case .color: return Chameleon.shared.color(with: identifier) as? T ?? original
+            case .image: return Chameleon.shared.image(with: identifier) as? T ?? original
+            case .numeric(let numType):
+                let numVal = (try? Chameleon.shared.appearanceInfo(with: identifier))
+                return matchedAppearancedNumValue(from: numVal, of: numType) ?? original
+            case .other: return (try? Chameleon.shared.appearanceInfo(with: identifier)) as? T ?? original
             }
-            
-            /// 返回其他类型的入参数据
-            if clsType == .other {
-                guard let info = try? Chameleon.shared.appearanceInfo(with: identifier) else {
-                    return original
-                }
-                
-                return appearancedValue(with: info)
-            }
-            
-            /// 返回颜色类型的入参数据
-            if clsType == .color {
-                let appearancedVal = Chameleon.shared.color(with: identifier)
-                return appearancedValue(with: appearancedVal)
-            }
-            
-            /// 返回原始值
-            return original
         }
         
-        static func appearanced(_ original: Callable.Param<T>) -> Appearanced<T> {
+        public static func appearanced(_ original: T) -> Appearanced<T> {
             return Appearanced(original: original)
+        }
+        
+        public static func appearanced(_ original: T, identifier: AppearanceCallableIdentifier?, clsType: ClsType? = nil) -> Appearanced<T> {
+            return Appearanced(original: original, identifier: identifier, clsType: clsType)
         }
     }
 }

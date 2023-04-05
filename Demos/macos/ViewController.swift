@@ -24,14 +24,17 @@ class ViewController: NSViewController {
         Chameleon.exchangeImplementations()
         Chameleon.shared.changeThemeWith(themeInfo: ThemeInfo.theme0)
         
-        testBox.borderWidth = 5
+        testBox.customized(color1: .C101, color2: .C103)
         
+        testBox.borderWidth = 5
+
         testView.app_layerBackgroundColor = .C101
         testView.app_layerBorderColor = .C108
         testView.layer?.borderWidth = 5
-        
+
         testBox.app_borderColor = .C001
         testBox.app_fillColor = .C002
+        testBox.app_borderWidth = 5
         testTextView.app_backgroundColor = .C003
         testTextView.app_textColor = .C004
         testTextField.app_backgroundColor = .C107

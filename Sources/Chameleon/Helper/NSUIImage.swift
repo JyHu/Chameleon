@@ -11,7 +11,7 @@ import Cocoa
 import UIKit
 #endif
 
-extension NSUIAppearanceImage {
+public extension NSUIAppearanceImage {
     static func imageWith(appearanceIdentifier: AppearanceCallableIdentifier) -> NSUIAppearanceImage? {
         return Chameleon.shared.image(with: appearanceIdentifier)
     }

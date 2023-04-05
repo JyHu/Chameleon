@@ -32,7 +32,9 @@ struct ThemeInfo {
             ]
         ],
         "others": [
-            "border": ["width: 5"]
+            "border": [
+                "width": 5
+            ]
         ]
     ]
     
@@ -60,7 +62,9 @@ struct ThemeInfo {
             ]
         ],
         "others": [
-            "border": ["width: 2"]
+            "border": [
+                "width": 2
+            ]
         ]
     ]
     
@@ -88,7 +92,9 @@ struct ThemeInfo {
             ]
         ],
         "others": [
-            "border": ["width: 10"]
+            "border": [
+                "width": 10
+            ]
         ]
     ]
 }

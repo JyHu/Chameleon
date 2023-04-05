@@ -14,7 +14,7 @@ public extension NSTextView {
     var app_insertionPointColor: NSColor {
         set {
             cache(
-                valA: .required(newValue),
+                valA: newValue,
                 identifier: "NSTextView.__setInsertionPointColor(_:)",
                 action: __setInsertionPointColor(_:)
             )
@@ -27,7 +27,7 @@ public extension NSTextView {
     var app_backgroundColor: NSColor {
         set {
             cache(
-                valA: .required(newValue),
+                valA: newValue,
                 identifier: "NSTextView.__setBackgroundColor(_:)",
                 action: __setBackgroundColor(_:)
             )
@@ -40,11 +40,15 @@ public extension NSTextView {
     
     var app_textColor: NSColor? {
         set {
-            cache(
-                valA: .optional(newValue),
-                identifier: "NSTextView.__setTextColor(_:)",
-                action: __setTextColor(_:)
-            )
+            if let newValue {
+                cache(
+                    valA: newValue,
+                    identifier: "NSTextView.__setTextColor(_:)",
+                    action: __setTextColor(_:)
+                )
+            } else {
+                __setTextColor(nil)
+            }
         }
         get {
             textColor
@@ -73,33 +77,33 @@ internal extension NSTextView {
 }
 
 private extension NSTextView {
-    func __setInsertionPointColor(_ insertionPointColor: Callable.Param<NSColor>) {
+    func __setInsertionPointColor(_ insertionPointColor: NSColor) {
         if __USING_SWIZZING__ {
-            swizzled_setInsertionPointColor(insertionPointColor.requiredValue)
+            swizzled_setInsertionPointColor(insertionPointColor)
         } else {
-            self.insertionPointColor = insertionPointColor.requiredValue
+            self.insertionPointColor = insertionPointColor
         }
     }
     
-    func __setBackgroundColor(_ backgroundColor: Callable.Param<NSColor>) {
+    func __setBackgroundColor(_ backgroundColor: NSColor) {
         if __USING_SWIZZING__ {
-            swizzled_setBackgroundColor(backgroundColor.requiredValue)
+            swizzled_setBackgroundColor(backgroundColor)
         } else {
-            self.backgroundColor = backgroundColor.requiredValue
+            self.backgroundColor = backgroundColor
         }
     }
     
-    func __setTextColor(_ textColor: Callable.Param<NSColor>) {
+    func __setTextColor(_ textColor: NSColor?) {
         if __USING_SWIZZING__ {
-            swizzled_setTextColor(textColor.optionalValue)
+            swizzled_setTextColor(textColor)
         } else {
-            self.textColor = textColor.optionalValue
+            self.textColor = textColor
         }
     }
     
     @objc func swizzled_setInsertionPointColor(_ insertionPointColor: NSColor) {
         cache(
-            valA: .required(insertionPointColor),
+            valA: insertionPointColor,
             identifier: "NSTextView.__setInsertionPointColor(_:)",
             action: __setInsertionPointColor(_:)
         )
@@ -107,15 +111,16 @@ private extension NSTextView {
     
     @objc func swizzled_setBackgroundColor(_ backgroundColor: NSColor) {
         cache(
-            valA: .required(backgroundColor),
+            valA: backgroundColor,
             identifier: "NSTextView.__setBackgroundColor(_:)",
             action: __setBackgroundColor(_:)
         )
     }
     
     @objc func swizzled_setTextColor(_ textColor: NSColor?) {
+        guard let textColor = textColor else { return }
         cache(
-            valA: .optional(textColor),
+            valA: textColor,
             identifier: "NSTextView.__setTextColor(_:)",
             action: __setTextColor(_:)
         )

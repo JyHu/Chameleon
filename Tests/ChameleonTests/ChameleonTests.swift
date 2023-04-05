@@ -21,7 +21,7 @@ final class ChameleonTests: XCTestCase {
         
 //        RunTimeKit.changeExchangeImplementations()
         
-        AppearanceImplementations.exchangeImplementations()
+        Chameleon.exchangeImplementations()
         
         let color = NSColor.red
         print(color)
@@ -33,5 +33,40 @@ final class ChameleonTests: XCTestCase {
         print(box.fillColor)
         
         #endif
+    }
+    
+    func testExecution() {
+        let color1 = NSUIAppearanceColor.red
+        let color2 = NSUIAppearanceColor.red
+        
+        testFunc1(color1)
+        testFunc2(color2)
+    }
+    
+    func testFunc1(_ color: NSUIAppearanceColor) {
+        Cacher(param: color, callback: callback1(_:)).execute()
+    }
+    
+    func testFunc2(_ color: NSUIAppearanceColor?) {
+        Cacher(param: color, callback: callback2(_:)).execute()
+    }
+    
+    func callback1(_ color: NSUIAppearanceColor) {
+        print(String(describing: color))
+    }
+    
+    func callback2(_ color: NSUIAppearanceColor?) {
+        print(String(describing: color))
+    }
+}
+
+struct Cacher<T> {
+    let param: T
+    let callback: ((T) -> Void)
+    
+    func execute() {
+        let a: Any = ""
+        a as? T
+        callback(param)
     }
 }

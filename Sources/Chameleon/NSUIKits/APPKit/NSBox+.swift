@@ -13,7 +13,7 @@ public extension NSBox {
     var app_fillColor: NSColor {
         set {
             cache(
-                valA: .required(newValue),
+                valA: newValue,
                 identifier: "NSBox.__setFillColor(_:)",
                 action: __setFillColor(_:)
             )
@@ -27,7 +27,7 @@ public extension NSBox {
     var app_borderColor: NSColor {
         set {
             cache(
-                valA: .required(newValue),
+                valA: newValue,
                 identifier: "NSBox.__setBorderColor(_:)",
                 action: __setBorderColor(_:)
             )
@@ -53,26 +53,26 @@ internal extension NSBox {
 }
 
 private extension NSBox {
-    func __setFillColor(_ fillColor: Callable.Param<NSColor>) {
+    func __setFillColor(_ fillColor: NSColor) {
         if __USING_SWIZZING__ {
-            swizzled_setFillColor(fillColor.requiredValue)
+            swizzled_setFillColor(fillColor)
         } else {
-            self.fillColor = fillColor.requiredValue
+            self.fillColor = fillColor
         }
     }
     
-    func __setBorderColor(_ borderColor: Callable.Param<NSColor>) {
+    func __setBorderColor(_ borderColor: NSColor) {
         if __USING_SWIZZING__ {
-            swizzled_setBorderColor(borderColor.requiredValue)
+            swizzled_setBorderColor(borderColor)
         } else {
-            self.borderColor = borderColor.requiredValue
+            self.borderColor = borderColor
         }
     }
     
     @objc func swizzled_setFillColor(_ fillColor: NSColor) {
         if fillColor.appearanceIdentifier != nil {
             cache(
-                valA: .required(fillColor),
+                valA: fillColor,
                 identifier: "NSBox.__setFillColor(_:)",
                 action: __setFillColor(_:)
             )
@@ -84,7 +84,7 @@ private extension NSBox {
     @objc func swizzled_setBorderColor(_ borderColor: NSColor) {
         if borderColor.appearanceIdentifier != nil {
             cache(
-                valA: .required(borderColor),
+                valA: borderColor,
                 identifier: "NSBox.__setBorderColor(_:)",
                 action: __setBorderColor(_:)
             )

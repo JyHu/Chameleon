@@ -12,11 +12,15 @@ import Cocoa
 public extension NSView {
     var app_layerBackgroundColor: NSColor? {
         set {
-            cache(
-                valA: .optional(newValue),
-                identifier: "NSView.__setLayerBackgroundColor(_:)",
-                action: __setLayerBackgroundColor(_:)
-            )
+            if let newValue {
+                cache(
+                    valA: newValue,
+                    identifier: "NSView.__setLayerBackgroundColor(_:)",
+                    action: __setLayerBackgroundColor(_:)
+                )
+            } else {
+                __setLayerBackgroundColor(nil)
+            }
         }
         get {
             if let cgColor = layer?.backgroundColor {
@@ -29,11 +33,15 @@ public extension NSView {
     
     var app_layerBorderColor: NSColor? {
         set {
-            cache(
-                valA: .optional(newValue),
-                identifier: "NSView.__setLayerBorderColor(_:)",
-                action: __setLayerBorderColor(_:)
-            )
+            if let newValue {
+                cache(
+                    valA: newValue,
+                    identifier: "NSView.__setLayerBorderColor(_:)",
+                    action: __setLayerBorderColor(_:)
+                )
+            } else {
+                __setLayerBorderColor(nil)
+            }
         }
         get {
             if let cgColor = layer?.borderColor {
@@ -46,20 +54,20 @@ public extension NSView {
 }
 
 private extension NSView {
-    func __setLayerBackgroundColor(_ layerBackgroundColor: Callable.Param<NSColor>) {
+    func __setLayerBackgroundColor(_ layerBackgroundColor: NSColor?) {
         if !self.wantsLayer {
             self.wantsLayer = true
         }
         
-        self.layer?.backgroundColor = layerBackgroundColor.optionalValue?.cgColor
+        self.layer?.backgroundColor = layerBackgroundColor?.cgColor
     }
     
-    func __setLayerBorderColor(_ layerBorderColor: Callable.Param<NSColor>) {
+    func __setLayerBorderColor(_ layerBorderColor: NSColor?) {
         if !self.wantsLayer {
             self.wantsLayer = true
         }
         
-        self.layer?.borderColor = layerBorderColor.optionalValue?.cgColor
+        self.layer?.borderColor = layerBorderColor?.cgColor
     }
 }
 

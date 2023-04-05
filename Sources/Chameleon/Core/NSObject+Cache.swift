@@ -31,21 +31,15 @@ private extension NSObject {
     }
 }
 
-public extension NSObject {
-    
-}
-
 /// 提供方便的缓存执行换肤方法的各项参数
 ///
 /// 目前最多支持6个入参
 public extension NSObject {
     @discardableResult
     func cache<A>(
-        valA: Callable.Param<A>,
+        valA: A,
         identifier: AppearanceCallableIdentifier,
-        action: @escaping ((
-            Callable.Param<A>
-        ) -> Void)
+        action: @escaping ((A) -> Void)
     ) -> Callable.One<A> {
         let callable = Callable.One(firstParam: valA, identifier: identifier, action: action)
         cache(appearanceCallable: callable)
@@ -54,13 +48,9 @@ public extension NSObject {
     
     @discardableResult
     func cache<A, B>(
-        valA: Callable.Param<A>,
-        valB: Callable.Param<B>,
+        valA: A, valB: B,
         identifier: AppearanceCallableIdentifier,
-        action: @escaping ((
-            Callable.Param<A>,
-            Callable.Param<B>
-        ) -> Void)
+        action: @escaping ((A, B) -> Void)
     ) -> Callable.Two<A, B> {
         let callable = Callable.Two(
             firstParam: valA,
@@ -74,40 +64,26 @@ public extension NSObject {
     
     @discardableResult
     func cache<A, B, C>(
-        valA: Callable.Param<A>,
-        valB: Callable.Param<B>,
-        valC: Callable.Param<C>,
+        valA: A, valB: B, valC: C,
         identifier: AppearanceCallableIdentifier,
-        action: @escaping ((
-            Callable.Param<A>,
-            Callable.Param<B>,
-            Callable.Param<C>
-        ) -> Void)
+        action: @escaping ((A, B, C) -> Void)
     ) -> Callable.Three<A, B, C> {
-            let callable = Callable.Three(
-                firstParam: valA,
-                secondParam: valB,
-                thirdParam: valC,
-                identifier: identifier,
-                action: action
-            )
+        let callable = Callable.Three(
+            firstParam: valA,
+            secondParam: valB,
+            thirdParam: valC,
+            identifier: identifier,
+            action: action
+        )
         cache(appearanceCallable:callable)
-            return callable
+        return callable
     }
-    
+
     @discardableResult
     func cache<A, B, C, D>(
-        valA: Callable.Param<A>,
-        valB: Callable.Param<B>,
-        valC: Callable.Param<C>,
-        valD: Callable.Param<D>,
+        valA: A, valB: B, valC: C, valD: D,
         identifier: AppearanceCallableIdentifier,
-        action: @escaping ((
-            Callable.Param<A>,
-            Callable.Param<B>,
-            Callable.Param<C>,
-            Callable.Param<D>
-        ) -> Void)
+        action: @escaping ((A, B, C, D) -> Void)
     ) -> Callable.Four<A, B, C, D> {
         let callable = Callable.Four(
             firstParam: valA,
@@ -120,22 +96,12 @@ public extension NSObject {
         cache(appearanceCallable:callable)
         return callable
     }
-    
+
     @discardableResult
     func cache<A, B, C, D, E>(
-        valA: Callable.Param<A>,
-        valB: Callable.Param<B>,
-        valC: Callable.Param<C>,
-        valD: Callable.Param<D>,
-        valE: Callable.Param<E>,
+        valA: A, valB: B, valC: C, valD: D, valE: E,
         identifier: AppearanceCallableIdentifier,
-        action: @escaping ((
-            Callable.Param<A>,
-            Callable.Param<B>,
-            Callable.Param<C>,
-            Callable.Param<D>,
-            Callable.Param<E>
-        ) -> Void)
+        action: @escaping ((A, B, C, D, E) -> Void)
     ) -> Callable.Five<A, B, C, D, E> {
         let callable = Callable.Five(
             firstParam: valA,
@@ -143,38 +109,6 @@ public extension NSObject {
             thirdParam: valC,
             fourthParam: valD,
             fifthParam: valE,
-            identifier: identifier,
-            action: action
-        )
-        cache(appearanceCallable:callable)
-        return callable
-    }
-    
-    @discardableResult
-    func cache<A, B, C, D, E, F>(
-        valA: Callable.Param<A>,
-        valB: Callable.Param<B>,
-        valC: Callable.Param<C>,
-        valD: Callable.Param<D>,
-        valE: Callable.Param<E>,
-        valF: Callable.Param<F>,
-        identifier: AppearanceCallableIdentifier,
-        action: @escaping ((
-            Callable.Param<A>,
-            Callable.Param<B>,
-            Callable.Param<C>,
-            Callable.Param<D>,
-            Callable.Param<E>,
-            Callable.Param<F>
-        ) -> Void)
-    ) -> Callable.Six<A, B, C, D, E, F> {
-        let callable = Callable.Six(
-            firstParam: valA,
-            secondParam: valB,
-            thirdParam: valC,
-            fourthParam: valD,
-            fifthParam: valE,
-            sixthParam: valF,
             identifier: identifier,
             action: action
         )

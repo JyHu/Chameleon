@@ -13,11 +13,15 @@ import Cocoa
 public extension NSTextField {
     var app_backgroundColor: NSColor? {
         set {
-            cache(
-                valA: .optional(newValue),
-                identifier: "NSTextField.__setBackGroundColor(_:)",
-                action: __setBackGroundColor(_:)
-            )
+            if let newValue {
+                cache(
+                    valA: newValue,
+                    identifier: "NSTextField.__setBackGroundColor(_:)",
+                    action: __setBackGroundColor(_:)
+                )
+            } else {
+                __setBackGroundColor(nil)
+            }
         }
         get {
             return backgroundColor
@@ -26,11 +30,15 @@ public extension NSTextField {
     
     var app_textColor: NSColor? {
         set {
-            cache(
-                valA: .optional(newValue),
-                identifier: "NSTextField.__setTextColor(_:)",
-                action: __setTextColor(_:)
-            )
+            if let newValue {
+                cache(
+                    valA: newValue,
+                    identifier: "NSTextField.__setTextColor(_:)",
+                    action: __setTextColor(_:)
+                )
+            } else {
+                __setTextColor(nil)
+            }
         }
         get {
             return textColor
@@ -53,33 +61,35 @@ internal extension NSTextField {
 }
 
 private extension NSTextField {
-    func __setBackGroundColor(_ backgroundColor: Callable.Param<NSColor>) {
+    func __setBackGroundColor(_ backgroundColor: NSColor?) {
         if __USING_SWIZZING__ {
-            swizzled_setBackGroundColor(backgroundColor.optionalValue)
+            swizzled_setBackGroundColor(backgroundColor)
         } else {
-            self.backgroundColor = backgroundColor.optionalValue
+            self.backgroundColor = backgroundColor
         }
     }
     
-    func __setTextColor(_ textColor: Callable.Param<NSColor>) {
+    func __setTextColor(_ textColor: NSColor?) {
         if __USING_SWIZZING__ {
-            swizzled_setTextColor(textColor.optionalValue)
+            swizzled_setTextColor(textColor)
         } else {
-            self.textColor = textColor.optionalValue
+            self.textColor = textColor
         }
     }
     
     @objc func swizzled_setBackGroundColor(_ backgroundColor: NSColor?) {
+        guard let backgroundColor = backgroundColor else { return }
         cache(
-            valA: .optional(backgroundColor),
+            valA: backgroundColor,
             identifier: "NSTextField.__setBackGroundColor(_:)",
             action: __setBackGroundColor(_:)
         )
     }
     
     @objc func swizzled_setTextColor(_ textColor: NSColor?) {
+        guard let textColor = textColor else { return }
         cache(
-            valA: .optional(textColor),
+            valA: textColor,
             identifier: "NSTextField.__setTextColor(_:)",
             action: __setTextColor(_:)
         )
