@@ -38,7 +38,7 @@ public extension NSUIAppearanceImage {
         }
         
         if let hexString = imageInfo["color"] as? String,
-            let color = NSUIAppearanceColor.app_colorWith(hexAString: hexString) {
+           let color = NSUIAppearanceColor.app_colorWith(hexAString: hexString) {
             return NSUIAppearanceImage.app_imageWith(color: color)
         }
         

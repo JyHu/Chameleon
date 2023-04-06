@@ -17,13 +17,23 @@ public extension AppearanceManager {
     static func exchangeImplementations() {
         shared.useSwizzing()
         
-        #if os(macOS)
+#if os(macOS)
         NSBox.silenceExchangeBoxImplementation()
+        NSButton.silenceExchangeButtonImplementation()
+        NSDatePicker.silenceExchangeDatePickerViewImplementation()
+        NSImageView.silenceExchangeImageViewImplementation()
+        NSScrollView.silenceExchangeScrollViewImplementation()
+        NSSlider.silenceExchangeSliderImplementation()
+        NSTableView.silenceExchangeTableViewImplementation()
         NSText.silenceExchangeTextImplementation()
         NSTextField.silenceExchangeTextFieldImplementation()
         NSTextView.silenceExchangeTextViewImplementation()
-        #elseif canImport(UIKit)
-        
-        #endif
+        /// NSView
+        NSWindow.silenceExchangeWindowImplementation()
+#elseif canImport(UIKit)
+        UIButton.silenceExchangeButtonImplementation()
+        UILabel.silenceExchangeLabelImplementation()
+        UIView.silenceExchangeViewImplementation()
+#endif
     }
 }

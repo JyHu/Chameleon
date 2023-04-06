@@ -33,7 +33,7 @@ public extension Callable {
         public let firstParam: Appearanced<A>
         public let action: (A) -> Void
         public let category: AppearanceCallableCategory
-
+        
         public init(
             firstParam: A,
             identifier: AppearanceCallableIdentifier,
@@ -144,7 +144,7 @@ public extension Callable {
             self.action = action
             self.category = category
         }
-
+        
         public func execute() {
             action(
                 firstParam.correct,
@@ -153,7 +153,7 @@ public extension Callable {
             )
         }
     }
-
+    
     /// 有四个入参的换肤方法
     struct Four<A, B, C, D>: CallableProtocol {
         public let identifier: AppearanceCallableIdentifier
@@ -163,7 +163,7 @@ public extension Callable {
         public let fourthParam: Appearanced<D>
         public let action: (A, B, C, D) -> Void
         public var category: AppearanceCallableCategory
-
+        
         init(
             firstParam: A,
             secondParam: B,
@@ -199,7 +199,7 @@ public extension Callable {
             self.action = action
             self.category = category
         }
-
+        
         public func execute() {
             action(
                 firstParam.correct,
@@ -209,7 +209,7 @@ public extension Callable {
             )
         }
     }
-
+    
     /// 有五个入参的换肤方法
     struct Five<A, B, C, D, E>: CallableProtocol {
         public let identifier: AppearanceCallableIdentifier
@@ -220,7 +220,7 @@ public extension Callable {
         public let fifthParam: Appearanced<E>
         public let action: (A, B, C, D, E) -> Void
         public var category: AppearanceCallableCategory
-
+        
         init(
             firstParam: A, secondParam: B, thirdParam: C, fourthParam: D, fifthParam: E,
             identifier: AppearanceCallableIdentifier,
@@ -256,7 +256,7 @@ public extension Callable {
             self.action = action
             self.category = category
         }
-
+        
         public func execute() {
             action(
                 firstParam.correct,

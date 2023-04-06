@@ -51,7 +51,7 @@ public extension NSDatePicker {
 }
 
 internal extension NSDatePicker {
-    static func silenceExchangeScrollViewImplementation() {
+    static func silenceExchangeDatePickerViewImplementation() {
         app_swizzing(
             originalSelector: #selector(setter: textColor),
             newSelector: #selector(swizzled_setTextColor(_:))

@@ -21,8 +21,8 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Chameleon.exchangeImplementations()
-        Chameleon.shared.changeThemeWith(themeInfo: ThemeInfo.theme0)
+        AppearanceManager.exchangeImplementations()
+        AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme0)
         
         testBox.customized(color1: .C101, color2: .C103)
         
@@ -49,11 +49,11 @@ class ViewController: NSViewController {
 
     @IBAction func switchThemeAction(_ sender: NSSegmentedControl) {
         if sender.indexOfSelectedItem == 0 {
-            Chameleon.shared.changeThemeWith(themeInfo: ThemeInfo.theme0)
+            AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme0)
         } else if sender.indexOfSelectedItem == 1 {
-            Chameleon.shared.changeThemeWith(themeInfo: ThemeInfo.theme1)
+            AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme1)
         } else if sender.indexOfSelectedItem == 2 {
-            Chameleon.shared.changeThemeWith(themeInfo: ThemeInfo.theme2)
+            AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme2)
         }
     }
 }

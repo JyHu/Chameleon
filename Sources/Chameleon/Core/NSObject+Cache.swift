@@ -82,7 +82,7 @@ public extension NSObject {
             category: category
         ))
     }
-
+    
     @discardableResult
     func cache<A, B, C, D>(
         valA: A, valB: B, valC: C, valD: D,
@@ -100,7 +100,7 @@ public extension NSObject {
             category: category
         ))
     }
-
+    
     @discardableResult
     func cache<A, B, C, D, E>(
         valA: A, valB: B, valC: C, valD: D, valE: E,

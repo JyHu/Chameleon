@@ -37,7 +37,7 @@ public extension NSImageView {
 }
 
 internal extension NSImageView {
-    static func silence_exchangeImageViewImplementation() {
+    static func silenceExchangeImageViewImplementation() {
         app_swizzing(
             originalSelector: #selector(setter: image),
             newSelector: #selector(swizzled_setImage(_:))

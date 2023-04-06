@@ -34,7 +34,7 @@ internal extension AppearanceManager {
     func postThemeChangeNotification() {
         notificationCenter.post(name: AppearanceManager.appearanceChanged, object: nil)
     }
-
+    
     /// 注册主题改变的通知
     /// - Parameters:
     ///   - observer: 要接收通知的对象

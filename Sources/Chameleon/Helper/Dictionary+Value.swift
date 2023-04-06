@@ -6,7 +6,7 @@
 //
 
 import Foundation
- 
+
 public extension Dictionary where Key == String {
     
     /// 根据给定的属性标识符，获取对应的属性信息

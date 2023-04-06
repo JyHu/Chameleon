@@ -33,7 +33,7 @@ public extension NSWindow {
 }
 
 internal extension NSWindow {
-    static func silenceExchangeScrollViewImplementation() {
+    static func silenceExchangeWindowImplementation() {
         app_swizzing(
             originalSelector: #selector(setter: backgroundColor),
             newSelector: #selector(swizzled_setBackgroundColor(_:))

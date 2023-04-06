@@ -37,7 +37,7 @@ public extension NSSlider {
 }
 
 internal extension NSSlider {
-    static func silenceExchangeImplementation() {
+    static func silenceExchangeSliderImplementation() {
         app_swizzing(
             originalSelector: #selector(setter: trackFillColor),
             newSelector: #selector(swizzled_setTrackFillColor(_:))
