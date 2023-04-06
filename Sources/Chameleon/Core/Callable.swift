@@ -21,30 +21,25 @@ public protocol CallableProtocol {
 }
 
 public extension CallableProtocol {
-    
     /// 将该协议方法处理成可选型
     var category: AppearanceCallableCategory {
         return "DefaultCategory"
     }
 }
 
+/// 可执行换肤方法对象的默认分组
+public let AppearanceDefaultCallableCategory = "DefaultCategory"
 
 public struct Callable { }
 
 public extension Callable {
+    
     /// 只有一个入参的换肤方法
     struct One<A>: CallableProtocol {
         public let identifier: AppearanceCallableIdentifier
-        /// 换肤方法的第一个参数
         public let firstParam: Appearanced<A>
-        /// 换肤时执行的方法
         public let action: (A) -> Void
-                
-        /// 初始化方法
-        /// - Parameters:
-        ///   - firstParam: 换肤方法的第一个参数
-        ///   - identifier: 唯一标识符
-        ///   - action: 换肤时执行的方法
+
         public init(
             firstParam: A,
             identifier: AppearanceCallableIdentifier,
@@ -73,19 +68,10 @@ public extension Callable {
     /// 有两个入参的换肤方法
     struct Two<A, B>: CallableProtocol {
         public let identifier: AppearanceCallableIdentifier
-        /// 换肤方法的第一个参数
         public let firstParam: Appearanced<A>
-        /// 换肤方法的第二个参数
         public let secondParam: Appearanced<B>
-        /// 换肤时执行的方法
         public let action: (A, B) -> Void
         
-        /// 初始化方法
-        /// - Parameters:
-        ///   - firstParam: 换肤方法的第一个参数
-        ///   - secondParam: 换肤方法的第二个参数
-        ///   - identifier: 唯一标识符
-        ///   - action: 换肤时执行的方法
         public init(
             firstParam: A,
             secondParam: B,
@@ -118,22 +104,11 @@ public extension Callable {
     /// 有三个入参的换肤方法
     struct Three<A, B, C>: CallableProtocol {
         public let identifier: AppearanceCallableIdentifier
-        /// 换肤方法的第一个参数
         public let firstParam: Appearanced<A>
-        /// 换肤方法的第二个参数
         public let secondParam: Appearanced<B>
-        /// 换肤方法的第三个参数
         public let thirdParam: Appearanced<C>
-        /// 换肤时执行的方法
         public let action: (A, B, C) -> Void
 
-        /// 初始化方法
-        /// - Parameters:
-        ///   - firstParam: 换肤方法的第一个参数
-        ///   - secondParam: 换肤方法的第二个参数
-        ///   - thirdParam: 换肤方法的第三个参数
-        ///   - identifier: 唯一标识符
-        ///   - action: 换肤时执行的方法
         init(
             firstParam: A,
             secondParam: B,
@@ -174,25 +149,12 @@ public extension Callable {
     /// 有四个入参的换肤方法
     struct Four<A, B, C, D>: CallableProtocol {
         public let identifier: AppearanceCallableIdentifier
-        /// 换肤方法的第一个参数
         public let firstParam: Appearanced<A>
-        /// 换肤方法的第二个参数
         public let secondParam: Appearanced<B>
-        /// 换肤方法的第三个参数
         public let thirdParam: Appearanced<C>
-        /// 换肤方法的第四个参数
         public let fourthParam: Appearanced<D>
-        /// 换肤时执行的方法
         public let action: (A, B, C, D) -> Void
 
-        /// 初始化方法
-        /// - Parameters:
-        ///   - firstParam: 换肤方法的第一个参数
-        ///   - secondParam: 换肤方法的第二个参数
-        ///   - thirdParam: 换肤方法的第三个参数
-        ///   - fourthParam: 换肤方法的第四个参数
-        ///   - identifier: 唯一标识符
-        ///   - action: 换肤时执行的方法
         init(
             firstParam: A,
             secondParam: B,
@@ -238,28 +200,13 @@ public extension Callable {
     /// 有五个入参的换肤方法
     struct Five<A, B, C, D, E>: CallableProtocol {
         public let identifier: AppearanceCallableIdentifier
-        /// 换肤方法的第一个参数
         public let firstParam: Appearanced<A>
-        /// 换肤方法的第二个参数
         public let secondParam: Appearanced<B>
-        /// 换肤方法的第三个参数
         public let thirdParam: Appearanced<C>
-        /// 换肤方法的第四个参数
         public let fourthParam: Appearanced<D>
-        /// 换肤方法的第五个参数
         public let fifthParam: Appearanced<E>
-        /// 换肤时执行的方法
         public let action: (A, B, C, D, E) -> Void
 
-        /// 初始化方法
-        /// - Parameters:
-        ///   - firstParam: 换肤方法的第一个参数
-        ///   - secondParam: 换肤方法的第二个参数
-        ///   - thirdParam: 换肤方法的第三个参数
-        ///   - fourthParam: 换肤方法的第四个参数
-        ///   - fifthParam: 换肤方法的第五个参数
-        ///   - identifier: 唯一标识符
-        ///   - action: 换肤时执行的方法
         init(
             firstParam: A, secondParam: B, thirdParam: C, fourthParam: D, fifthParam: E,
             identifier: AppearanceCallableIdentifier,
@@ -270,6 +217,24 @@ public extension Callable {
             self.thirdParam = Appearanced(original: thirdParam)
             self.fourthParam = Appearanced(original: fourthParam)
             self.fifthParam = Appearanced(original: fifthParam)
+            self.identifier = identifier
+            self.action = action
+        }
+        
+        init(
+            firstParam: Appearanced<A>,
+            secondParam: Appearanced<B>,
+            thirdParam: Appearanced<C>,
+            fourthParam: Appearanced<D>,
+            fifthParam: Appearanced<E>,
+            identifier: AppearanceCallableIdentifier,
+            action: @escaping (A, B, C, D, E) -> Void
+        ) {
+            self.firstParam = firstParam
+            self.secondParam = secondParam
+            self.thirdParam = thirdParam
+            self.fourthParam = fourthParam
+            self.fifthParam = fifthParam
             self.identifier = identifier
             self.action = action
         }

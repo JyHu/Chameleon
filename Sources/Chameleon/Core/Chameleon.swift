@@ -30,30 +30,26 @@ public class Chameleon: NSObject {
     private var cachedLegalObjects: [AppearanceCallableIdentifier: Any] = [:]
     private var resourcesPath: String?
     
-    /**
-     留给外部管理皮肤属性的代理，如果设置了这个属性，这里管理类将不会再管理任何属性信息，都交给外部处理
-     */
+    /// 留给外部管理皮肤属性的代理，如果设置了这个属性，这里管理类将不会再管理任何属性信息，都交给外部处理
     public weak var delegate: ChameleonProtocol?
     
+    /// 换肤相关的通知中心
     public let notificationCenter = NotificationCenter()
     
-    public var usingSwizzing: Bool = false
+    /// 是否使用了swizzing
+    private var usingSwizzing: Bool = false
     
-    /**
-     更换主题
-
-     @param sourcePath 主题资源的目录
-     @param themeInfo 主题的详细信息
-     */
+    /// 更换主题
+    /// - Parameters:
+    ///   - themeInfo: 主题资源的目录
+    ///   - sourcePath: 主题的详细信息
     public func changeThemeWith(themeInfo: [String: Any], sourcePath: String? = nil) {
         resourcesPath = sourcePath
         appearanceInfos = themeInfo
         performThemeChang()
     }
     
-    /**
-     如果设置了appearanceDelegate属性，那么需要调用这个方法来触发换肤
-     */
+    /// 如果设置了appearanceDelegate属性，那么需要调用这个方法来触发换肤
     public func performThemeChang() {
         cachedLegalObjects.removeAll()
         postThemeChangeNotification()
@@ -61,6 +57,10 @@ public class Chameleon: NSObject {
 }
 
 internal extension Chameleon {
+    func useSwizzing() {
+        self.usingSwizzing = true
+    }
+    
     func color(with identifier: AppearanceCallableIdentifier) -> NSUIAppearanceColor? {
         if let color = cachedLegalObjects[identifier] as? NSUIAppearanceColor {
             return color

@@ -10,14 +10,24 @@
 
 import Cocoa
 
+private extension AppearanceCallableIdentifier {
+    static let insertionPointColor = "NSTextView.__setInsertionPointColor(_:)"
+    static let backgroundColor = "NSTextView.__setBackgroundColor(_:)"
+    static let textColor = "NSTextView.__setTextColor(_:)"
+}
+
 public extension NSTextView {
     var app_insertionPointColor: NSColor {
         set {
-            cache(
-                valA: newValue,
-                identifier: "NSTextView.__setInsertionPointColor(_:)",
-                action: __setInsertionPointColor(_:)
-            )
+            if __USING_SWIZZING__ || newValue.appearanceIdentifier == nil {
+                insertionPointColor = newValue
+            } else {            
+                cache(
+                    valA: newValue,
+                    identifier: .insertionPointColor,
+                    action: __setInsertionPointColor(_:)
+                )
+            }
         }
         get {
             return insertionPointColor
@@ -26,11 +36,15 @@ public extension NSTextView {
     
     var app_backgroundColor: NSColor {
         set {
-            cache(
-                valA: newValue,
-                identifier: "NSTextView.__setBackgroundColor(_:)",
-                action: __setBackgroundColor(_:)
-            )
+            if __USING_SWIZZING__ || newValue.appearanceIdentifier == nil {
+                backgroundColor = newValue
+            } else {
+                cache(
+                    valA: newValue,
+                    identifier: .backgroundColor,
+                    action: __setBackgroundColor(_:)
+                )
+            }
         }
         
         get {
@@ -40,14 +54,18 @@ public extension NSTextView {
     
     var app_textColor: NSColor? {
         set {
-            if let newValue {
-                cache(
-                    valA: newValue,
-                    identifier: "NSTextView.__setTextColor(_:)",
-                    action: __setTextColor(_:)
-                )
+            if __USING_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+                textColor = newValue
             } else {
-                __setTextColor(nil)
+                if let newValue {
+                    cache(
+                        valA: newValue,
+                        identifier: .textColor,
+                        action: __setTextColor(_:)
+                    )
+                } else {
+                    __setTextColor(nil)
+                }
             }
         }
         get {
@@ -104,7 +122,7 @@ private extension NSTextView {
     @objc func swizzled_setInsertionPointColor(_ insertionPointColor: NSColor) {
         cache(
             valA: insertionPointColor,
-            identifier: "NSTextView.__setInsertionPointColor(_:)",
+            identifier: .insertionPointColor,
             action: __setInsertionPointColor(_:)
         )
     }
@@ -112,18 +130,21 @@ private extension NSTextView {
     @objc func swizzled_setBackgroundColor(_ backgroundColor: NSColor) {
         cache(
             valA: backgroundColor,
-            identifier: "NSTextView.__setBackgroundColor(_:)",
+            identifier: .backgroundColor,
             action: __setBackgroundColor(_:)
         )
     }
     
     @objc func swizzled_setTextColor(_ textColor: NSColor?) {
-        guard let textColor = textColor else { return }
-        cache(
-            valA: textColor,
-            identifier: "NSTextView.__setTextColor(_:)",
-            action: __setTextColor(_:)
-        )
+        if let textColor {
+            cache(
+                valA: textColor,
+                identifier: .textColor,
+                action: __setTextColor(_:)
+            )
+        } else {
+            swizzled_setTextColor(textColor)
+        }
     }
 }
 

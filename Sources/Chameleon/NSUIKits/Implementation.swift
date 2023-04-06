@@ -13,7 +13,7 @@ var __USING_SWIZZING__: Bool { Chameleon.shared.usingSwizzing }
 
 public extension Chameleon {
     static func exchangeImplementations() {
-        shared.usingSwizzing = true
+        shared.useSwizzing()
         
         NSBox.silenceExchangeBoxImplementation()
         NSText.silenceExchangeTextImplementation()

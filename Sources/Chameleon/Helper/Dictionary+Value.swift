@@ -9,18 +9,13 @@ import Foundation
  
 public extension Dictionary where Key == String {
     
-    /**
-     根据给定的属性标识符，获取对应的属性信息
-
-     遍历方式是类似于文件路径，一级一级的查找，如：
-
-     image/background/xxxxxx
-
-     会从当前字典中一层一层的查找
-
-     @param identifier 属性标识符
-     @return 皮肤信息
-     */
+    /// 根据给定的属性标识符，获取对应的属性信息
+    /// 遍历方式是类似于文件路径，一级一级的查找，如：
+    ///     image/background/xxxxxx
+    /// 会从当前字典中一层一层的查找
+    ///
+    /// - Parameter identifier: 属性标识符
+    /// - Returns: 换肤资源信息
     func appearanceInfo(with identifier: AppearanceCallableIdentifier) throws -> Any? {
         if !identifier.contains("/") {
             return self[identifier]

@@ -10,17 +10,26 @@
 
 import Cocoa
 
+private extension AppearanceCallableIdentifier {
+    static let backgroundColor = "NSTextField.__setBackGroundColor(_:)"
+    static let textColor = "NSTextField.__setTextColor(_:)"
+}
+
 public extension NSTextField {
     var app_backgroundColor: NSColor? {
         set {
-            if let newValue {
-                cache(
-                    valA: newValue,
-                    identifier: "NSTextField.__setBackGroundColor(_:)",
-                    action: __setBackGroundColor(_:)
-                )
+            if __USING_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+                backgroundColor = newValue
             } else {
-                __setBackGroundColor(nil)
+                if let newValue {
+                    cache(
+                        valA: newValue,
+                        identifier: .backgroundColor,
+                        action: __setBackGroundColor(_:)
+                    )
+                } else {
+                    __setBackGroundColor(nil)
+                }
             }
         }
         get {
@@ -30,14 +39,18 @@ public extension NSTextField {
     
     var app_textColor: NSColor? {
         set {
-            if let newValue {
-                cache(
-                    valA: newValue,
-                    identifier: "NSTextField.__setTextColor(_:)",
-                    action: __setTextColor(_:)
-                )
+            if __USING_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+                textColor = newValue
             } else {
-                __setTextColor(nil)
+                if let newValue {
+                    cache(
+                        valA: newValue,
+                        identifier: .textColor,
+                        action: __setTextColor(_:)
+                    )
+                } else {
+                    __setTextColor(nil)
+                }
             }
         }
         get {
@@ -78,21 +91,27 @@ private extension NSTextField {
     }
     
     @objc func swizzled_setBackGroundColor(_ backgroundColor: NSColor?) {
-        guard let backgroundColor = backgroundColor else { return }
-        cache(
-            valA: backgroundColor,
-            identifier: "NSTextField.__setBackGroundColor(_:)",
-            action: __setBackGroundColor(_:)
-        )
+        if let backgroundColor {
+            cache(
+                valA: backgroundColor,
+                identifier: .backgroundColor,
+                action: __setBackGroundColor(_:)
+            )
+        } else {
+            swizzled_setBackGroundColor(backgroundColor)
+        }
     }
     
     @objc func swizzled_setTextColor(_ textColor: NSColor?) {
-        guard let textColor = textColor else { return }
-        cache(
-            valA: textColor,
-            identifier: "NSTextField.__setTextColor(_:)",
-            action: __setTextColor(_:)
-        )
+        if let textColor {
+            cache(
+                valA: textColor,
+                identifier: .textColor,
+                action: __setTextColor(_:)
+            )
+        } else {
+            swizzled_setTextColor(textColor)
+        }
     }
 }
 

@@ -41,9 +41,7 @@ public extension NSObject {
         identifier: AppearanceCallableIdentifier,
         action: @escaping ((A) -> Void)
     ) -> Callable.One<A> {
-        let callable = Callable.One(firstParam: valA, identifier: identifier, action: action)
-        cache(appearanceCallable: callable)
-        return callable
+        return cache(appearanceCallable: Callable.One(firstParam: valA, identifier: identifier, action: action))
     }
     
     @discardableResult
@@ -52,14 +50,12 @@ public extension NSObject {
         identifier: AppearanceCallableIdentifier,
         action: @escaping ((A, B) -> Void)
     ) -> Callable.Two<A, B> {
-        let callable = Callable.Two(
+        return cache(appearanceCallable:Callable.Two(
             firstParam: valA,
             secondParam: valB,
             identifier: identifier,
             action: action
-        )
-        cache(appearanceCallable:callable)
-        return callable
+        ))
     }
     
     @discardableResult
@@ -68,15 +64,13 @@ public extension NSObject {
         identifier: AppearanceCallableIdentifier,
         action: @escaping ((A, B, C) -> Void)
     ) -> Callable.Three<A, B, C> {
-        let callable = Callable.Three(
+        return cache(appearanceCallable:Callable.Three(
             firstParam: valA,
             secondParam: valB,
             thirdParam: valC,
             identifier: identifier,
             action: action
-        )
-        cache(appearanceCallable:callable)
-        return callable
+        ))
     }
 
     @discardableResult
@@ -85,16 +79,14 @@ public extension NSObject {
         identifier: AppearanceCallableIdentifier,
         action: @escaping ((A, B, C, D) -> Void)
     ) -> Callable.Four<A, B, C, D> {
-        let callable = Callable.Four(
+        return cache(appearanceCallable:Callable.Four(
             firstParam: valA,
             secondParam: valB,
             thirdParam: valC,
             fourthParam: valD,
             identifier: identifier,
             action: action
-        )
-        cache(appearanceCallable:callable)
-        return callable
+        ))
     }
 
     @discardableResult
@@ -103,7 +95,7 @@ public extension NSObject {
         identifier: AppearanceCallableIdentifier,
         action: @escaping ((A, B, C, D, E) -> Void)
     ) -> Callable.Five<A, B, C, D, E> {
-        let callable = Callable.Five(
+        return cache(appearanceCallable:Callable.Five(
             firstParam: valA,
             secondParam: valB,
             thirdParam: valC,
@@ -111,15 +103,24 @@ public extension NSObject {
             fifthParam: valE,
             identifier: identifier,
             action: action
-        )
-        cache(appearanceCallable:callable)
-        return callable
+        ))
+    }
+}
+
+public extension NSObject {
+    func removeCallable(with identifier: AppearanceCallableIdentifier, category: String? = nil) {
+        cacher.cachedMethods[category ?? AppearanceDefaultCallableCategory]?.removeValue(forKey: identifier)
     }
 }
 
 public extension NSObject {
     @discardableResult
-    func cache(appearanceCallable: CallableProtocol) -> CallableProtocol {
+    func cache<T>(appearanceCallable: T) -> T where T: CallableProtocol {
+        if cacher.disableChameleon {
+            appearanceCallable.execute()
+            return appearanceCallable
+        }
+        
         var callables = cacher.cachedMethods[appearanceCallable.category] ?? [:]
         
         if callables[appearanceCallable.identifier] == nil {

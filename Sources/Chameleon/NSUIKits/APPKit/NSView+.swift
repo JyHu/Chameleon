@@ -9,13 +9,18 @@
 
 import Cocoa
 
+private extension AppearanceCallableIdentifier {
+    static let layerBackgroundColor = "NSView.__setLayerBackgroundColor(_:)"
+    static let layerBorderColor = "NSView.__setLayerBorderColor(_:)"
+}
+
 public extension NSView {
     var app_layerBackgroundColor: NSColor? {
         set {
-            if let newValue {
+            if let newValue, newValue.appearanceIdentifier != nil {
                 cache(
                     valA: newValue,
-                    identifier: "NSView.__setLayerBackgroundColor(_:)",
+                    identifier: .layerBackgroundColor,
                     action: __setLayerBackgroundColor(_:)
                 )
             } else {
@@ -33,10 +38,10 @@ public extension NSView {
     
     var app_layerBorderColor: NSColor? {
         set {
-            if let newValue {
+            if let newValue, newValue.appearanceIdentifier != nil {
                 cache(
                     valA: newValue,
-                    identifier: "NSView.__setLayerBorderColor(_:)",
+                    identifier: .layerBorderColor,
                     action: __setLayerBorderColor(_:)
                 )
             } else {

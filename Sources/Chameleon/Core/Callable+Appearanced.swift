@@ -8,6 +8,7 @@
 import Foundation
 
 public extension Callable {
+    /// 数值类型
     enum NumType {
         case int
         case int8
@@ -39,6 +40,7 @@ public extension Callable {
         case other
     }
     
+    /// 判断给定数据的类型
     private static func clsTypeOf(obj: Any) -> ClsType {
         if obj is NSUIAppearanceColor { return .color }
         if obj is NSUIAppearanceImage { return .image }

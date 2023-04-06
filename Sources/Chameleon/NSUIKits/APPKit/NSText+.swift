@@ -8,17 +8,27 @@
 #if os(macOS)
 import Cocoa
 
+private extension AppearanceCallableIdentifier {
+    static let textColor = "NSText.__text_setTextColor(_:)"
+    static let backgroundColor = "NSText.__text_setBackgroundColor(_:)"
+    static let textColorRange = "NSText.__setTextColor(_:range:)"
+}
+
 public extension NSText {
     var app_text_textColor: NSColor? {
         set {
-            if let newValue = newValue {
-                cache(
-                    valA: newValue,
-                    identifier: "NSText.__text_setTextColor(_:)",
-                    action: __text_setTextColor(_:)
-                )
+            if __USING_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+                textColor = newValue
             } else {
-                __text_setTextColor(nil)
+                if let newValue = newValue {
+                    cache(
+                        valA: newValue,
+                        identifier: .textColor,
+                        action: __text_setTextColor(_:)
+                    )
+                } else {
+                    __text_setTextColor(nil)
+                }
             }
         }
         get { textColor }
@@ -26,29 +36,37 @@ public extension NSText {
     
     var app_text_backgroundColor: NSColor? {
         set {
-            if let newValue = newValue {
-                cache(
-                    valA: newValue,
-                    identifier: "NSText.__text_setBackgroundColor(_:)",
-                    action: __text_setBackgroundColor(_:)
-                )
+            if __USING_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+                backgroundColor = newValue
             } else {
-                __text_setBackgroundColor(nil)
+                if let newValue = newValue {
+                    cache(
+                        valA: newValue,
+                        identifier: .backgroundColor,
+                        action: __text_setBackgroundColor(_:)
+                    )
+                } else {
+                    __text_setBackgroundColor(nil)
+                }
             }
         }
         get { backgroundColor }
     }
     
     func app_setTextColor(_ color: NSColor?, range: NSRange) {
-        if let color = color {
-            cache(
-                valA: color,
-                valB: range,
-                identifier: "NSText.__setTextColor(_:range:)",
-                action: __setTextColor(_:range:)
-            )
+        if __USING_SWIZZING__ || color?.appearanceIdentifier == nil {
+            setTextColor(color, range: range)
         } else {
-            __setTextColor(nil, range: range)
+            if let color = color {
+                cache(
+                    valA: color,
+                    valB: range,
+                    identifier: .textColorRange,
+                    action: __setTextColor(_:range:)
+                )
+            } else {
+                __setTextColor(nil, range: range)
+            }
         }
     }
     
@@ -101,31 +119,40 @@ private extension NSText {
     
     
     @objc func swizzled_text_setTextColor(_ textColor: NSColor?) {
-        guard let textColor = textColor else { return }
-        cache(
-            valA: textColor,
-            identifier: "NSText.__text_setTextColor(_:)",
-            action: __text_setTextColor(_:)
-        )
+        if let textColor = textColor {
+            cache(
+                valA: textColor,
+                identifier: .textColor,
+                action: __text_setTextColor(_:)
+            )
+        } else {
+            swizzled_text_setTextColor(textColor)
+        }
     }
     
     @objc func swizzled_text_setBackgroundColor(_ backgroundColor: NSColor?) {
-        guard let backgroundColor = backgroundColor else { return }
-        cache(
-            valA: backgroundColor,
-            identifier: "NSText.__text_setBackgroundColor(_:)",
-            action: __text_setBackgroundColor(_:)
-        )
+        if let backgroundColor = backgroundColor {
+            cache(
+                valA: backgroundColor,
+                identifier: .backgroundColor,
+                action: __text_setBackgroundColor(_:)
+            )
+        } else {
+            swizzled_text_setBackgroundColor(backgroundColor)
+        }
     }
     
     @objc func swizzled_setTextColor(_ color: NSColor?, range: NSRange) {
-        guard let color = color else { return }
-        cache(
-            valA: color,
-            valB: range,
-            identifier: "NSText.__setTextColor(_:range:)",
-            action: __setTextColor(_:range:)
-        )
+        if let color = color {
+            cache(
+                valA: color,
+                valB: range,
+                identifier: .textColorRange,
+                action: __setTextColor(_:range:)
+            )
+        } else {
+            swizzled_setTextColor(color, range: range)
+        }
     }
 }
 

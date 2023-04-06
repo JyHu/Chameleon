@@ -9,14 +9,23 @@
 
 import Cocoa
 
+private extension AppearanceCallableIdentifier {
+    static let fillColor = "NSBox.__setFillColor(_:)"
+    static let borderColor = "NSBox.__setBorderColor(_:)"
+}
+
 public extension NSBox {
     var app_fillColor: NSColor {
         set {
-            cache(
-                valA: newValue,
-                identifier: "NSBox.__setFillColor(_:)",
-                action: __setFillColor(_:)
-            )
+            if __USING_SWIZZING__ || newValue.appearanceIdentifier == nil {
+                fillColor = newValue
+            } else {
+                cache(
+                    valA: newValue,
+                    identifier: .fillColor,
+                    action: __setFillColor(_:)
+                )
+            }
         }
         
         get {
@@ -26,11 +35,15 @@ public extension NSBox {
     
     var app_borderColor: NSColor {
         set {
-            cache(
-                valA: newValue,
-                identifier: "NSBox.__setBorderColor(_:)",
-                action: __setBorderColor(_:)
-            )
+            if __USING_SWIZZING__ || newValue.appearanceIdentifier == nil {
+                borderColor = newValue
+            } else {
+                cache(
+                    valA: newValue,
+                    identifier: .borderColor,
+                    action: __setBorderColor(_:)
+                )
+            }
         }
         get {
             return borderColor
@@ -73,7 +86,7 @@ private extension NSBox {
         if fillColor.appearanceIdentifier != nil {
             cache(
                 valA: fillColor,
-                identifier: "NSBox.__setFillColor(_:)",
+                identifier: .fillColor,
                 action: __setFillColor(_:)
             )
         } else {
@@ -85,7 +98,7 @@ private extension NSBox {
         if borderColor.appearanceIdentifier != nil {
             cache(
                 valA: borderColor,
-                identifier: "NSBox.__setBorderColor(_:)",
+                identifier: .borderColor,
                 action: __setBorderColor(_:)
             )
         } else {
