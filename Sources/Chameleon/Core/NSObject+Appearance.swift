@@ -5,7 +5,11 @@
 //  Created by Jo on 2023/4/3.
 //
 
-import Foundation
+#if os(macOS)
+import Cocoa
+#else
+import UIKit
+#endif
 
 /// 换肤资源附加标识符的协议，用于唯一的标识这个属性，并用于从换肤资源中找到对应的源数据
 public protocol AppearancedParamProtocol {
@@ -32,6 +36,16 @@ extension NSObject: AppearancedParamProtocol {
     /// - Parameter identifier: 换肤的标识符
     /// - Returns: 原对象
     public func withAppearanceIdentifier(_ identifier: AppearanceCallableIdentifier) -> Self {
+        if self is NSUIAppearanceColor, let obj = NSUIAppearanceColor.colorWith(appearanceIdentifier: identifier) {
+            obj.appearanceIdentifier = identifier
+            return obj as! Self
+        }
+        
+        if self is NSUIAppearanceImage, let obj = NSUIAppearanceImage.imageWith(appearanceIdentifier: identifier) {
+            obj.appearanceIdentifier = identifier
+            return obj as! Self
+        }
+        
         appearanceIdentifier = identifier
         return self
     }

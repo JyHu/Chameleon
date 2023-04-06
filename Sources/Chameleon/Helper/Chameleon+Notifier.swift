@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension Chameleon {
+public extension AppearanceManager {
     /// 换肤后发送的通知
     static let appearanceChanged = Notification.Name("com.auu.chameleon.notification.appearanceChanged")
 }
@@ -29,10 +29,10 @@ private extension NSObject {
     }
 }
 
-internal extension Chameleon {
+internal extension AppearanceManager {
     /// 发送主题改变的通知，通知所有注册了主题监听的组件刷新
     func postThemeChangeNotification() {
-        notificationCenter.post(name: Chameleon.appearanceChanged, object: nil)
+        notificationCenter.post(name: AppearanceManager.appearanceChanged, object: nil)
     }
 
     /// 注册主题改变的通知
@@ -41,7 +41,7 @@ internal extension Chameleon {
     ///   - action: 接收通知后的操作方法
     func registerAppearanceObserver(_ observer: NSObject, action: Selector) {
         if !observer.hadRegisterThemeChangeNotification {
-            notificationCenter.addObserver(observer, selector: action, name: Chameleon.appearanceChanged, object: nil)
+            notificationCenter.addObserver(observer, selector: action, name: AppearanceManager.appearanceChanged, object: nil)
             observer.hadRegisterThemeChangeNotification = true
         }
     }

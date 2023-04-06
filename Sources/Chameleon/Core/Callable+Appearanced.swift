@@ -91,12 +91,12 @@ public extension Callable {
             guard let identifier = identifier else { return original }
             
             switch clsType {
-            case .color: return Chameleon.shared.color(with: identifier) as? T ?? original
-            case .image: return Chameleon.shared.image(with: identifier) as? T ?? original
+            case .color: return AppearanceManager.shared.color(with: identifier) as? T ?? original
+            case .image: return AppearanceManager.shared.image(with: identifier) as? T ?? original
             case .numeric(let numType):
-                let numVal = (try? Chameleon.shared.appearanceInfo(with: identifier))
+                let numVal = (try? AppearanceManager.shared.appearanceInfo(with: identifier))
                 return matchedAppearancedNumValue(from: numVal, of: numType) ?? original
-            case .other: return (try? Chameleon.shared.appearanceInfo(with: identifier)) as? T ?? original
+            case .other: return (try? AppearanceManager.shared.appearanceInfo(with: identifier)) as? T ?? original
             }
         }
         

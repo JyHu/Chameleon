@@ -159,7 +159,7 @@ extension UInt8: NumericAppearanceConvertProtocol {
     var app_numberValue: NSNumber { return NSNumber(value: self)}
 }
 
-extension uint16: NumericAppearanceConvertProtocol {
+extension UInt16: NumericAppearanceConvertProtocol {
     var app_int: Int { return Int(self) }
     var app_int8: Int8 { return Int8(self) }
     var app_int16: Int16 { return Int16(self) }

@@ -17,7 +17,7 @@ private extension AppearanceCallableIdentifier {
 public extension NSBox {
     var app_fillColor: NSColor {
         set {
-            if __USING_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
                 fillColor = newValue
             } else {
                 cache(
@@ -35,7 +35,7 @@ public extension NSBox {
     
     var app_borderColor: NSColor {
         set {
-            if __USING_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
                 borderColor = newValue
             } else {
                 cache(
@@ -67,7 +67,7 @@ internal extension NSBox {
 
 private extension NSBox {
     func __setFillColor(_ fillColor: NSColor) {
-        if __USING_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setFillColor(fillColor)
         } else {
             self.fillColor = fillColor
@@ -75,7 +75,7 @@ private extension NSBox {
     }
     
     func __setBorderColor(_ borderColor: NSColor) {
-        if __USING_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setBorderColor(borderColor)
         } else {
             self.borderColor = borderColor

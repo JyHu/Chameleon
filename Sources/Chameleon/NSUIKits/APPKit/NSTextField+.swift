@@ -18,7 +18,7 @@ private extension AppearanceCallableIdentifier {
 public extension NSTextField {
     var app_backgroundColor: NSColor? {
         set {
-            if __USING_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
                 backgroundColor = newValue
             } else {
                 if let newValue {
@@ -39,7 +39,7 @@ public extension NSTextField {
     
     var app_textColor: NSColor? {
         set {
-            if __USING_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
                 textColor = newValue
             } else {
                 if let newValue {
@@ -75,7 +75,7 @@ internal extension NSTextField {
 
 private extension NSTextField {
     func __setBackGroundColor(_ backgroundColor: NSColor?) {
-        if __USING_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setBackGroundColor(backgroundColor)
         } else {
             self.backgroundColor = backgroundColor
@@ -83,7 +83,7 @@ private extension NSTextField {
     }
     
     func __setTextColor(_ textColor: NSColor?) {
-        if __USING_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setTextColor(textColor)
         } else {
             self.textColor = textColor
@@ -91,7 +91,7 @@ private extension NSTextField {
     }
     
     @objc func swizzled_setBackGroundColor(_ backgroundColor: NSColor?) {
-        if let backgroundColor {
+        if let backgroundColor, backgroundColor.appearanceIdentifier != nil {
             cache(
                 valA: backgroundColor,
                 identifier: .backgroundColor,
@@ -103,7 +103,7 @@ private extension NSTextField {
     }
     
     @objc func swizzled_setTextColor(_ textColor: NSColor?) {
-        if let textColor {
+        if let textColor, textColor.appearanceIdentifier != nil {
             cache(
                 valA: textColor,
                 identifier: .textColor,

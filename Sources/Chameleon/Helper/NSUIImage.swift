@@ -13,7 +13,7 @@ import UIKit
 
 public extension NSUIAppearanceImage {
     static func imageWith(appearanceIdentifier: AppearanceCallableIdentifier) -> NSUIAppearanceImage? {
-        return Chameleon.shared.image(with: appearanceIdentifier)
+        return AppearanceManager.shared.image(with: appearanceIdentifier)
     }
     
     static func imageWith(appearancedValue: Any) throws -> NSUIAppearanceImage? {
@@ -70,7 +70,7 @@ private extension NSUIAppearanceImage {
     }
     
     static func app_imageWith(fileName: String?) -> NSUIAppearanceImage? {
-        guard let themePath = Chameleon.shared.currentThemePath, let fileName = fileName else { return nil }
+        guard let themePath = AppearanceManager.shared.currentThemePath, let fileName = fileName else { return nil }
         let imagePath = NSString(string: themePath).appendingPathComponent(fileName)
         
         guard FileManager.default.fileExists(atPath: imagePath) else {

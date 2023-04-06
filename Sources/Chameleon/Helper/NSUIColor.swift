@@ -14,7 +14,7 @@ import UIKit
 
 public extension NSUIAppearanceColor {
     static func colorWith(appearanceIdentifier: AppearanceCallableIdentifier) -> NSUIAppearanceColor? {
-        return Chameleon.shared.color(with: appearanceIdentifier)
+        return AppearanceManager.shared.color(with: appearanceIdentifier)
     }
     
     static func colorWith(appearancedValue: String) -> NSUIAppearanceColor? {

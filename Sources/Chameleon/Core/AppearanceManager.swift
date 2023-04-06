@@ -2,7 +2,7 @@
 //  File.swift
 //  
 //
-//  Created by Jo on 2023/4/2.
+//  Created by Jo on 2023/4/6.
 //
 
 #if canImport(Cocoa)
@@ -12,7 +12,7 @@ import UIKit
 #endif
 
 /// 换肤资源管理协议，用于将资源管理放到外部
-public protocol ChameleonProtocol: NSObjectProtocol {
+public protocol AppearanceManagerProtocol: NSObjectProtocol {
     
     /// 根据给定的换肤标识符获取对应换肤资源源数据
     /// - Parameter identifier: 换肤标识符
@@ -23,21 +23,21 @@ public protocol ChameleonProtocol: NSObjectProtocol {
     var currentThemePath: String? { get }
 }
 
-public class Chameleon: NSObject {
-    public static var shared = Chameleon()
+public class AppearanceManager: NSObject {
+    public static var shared = AppearanceManager()
     
     private var appearanceInfos: [String: Any] = [:]
     private var cachedLegalObjects: [AppearanceCallableIdentifier: Any] = [:]
     private var resourcesPath: String?
     
     /// 留给外部管理皮肤属性的代理，如果设置了这个属性，这里管理类将不会再管理任何属性信息，都交给外部处理
-    public weak var delegate: ChameleonProtocol?
+    public weak var delegate: AppearanceManagerProtocol?
     
     /// 换肤相关的通知中心
     public let notificationCenter = NotificationCenter()
     
     /// 是否使用了swizzing
-    private var usingSwizzing: Bool = false
+    internal private(set) var usingSwizzing: Bool = false
     
     /// 更换主题
     /// - Parameters:
@@ -56,7 +56,7 @@ public class Chameleon: NSObject {
     }
 }
 
-internal extension Chameleon {
+internal extension AppearanceManager {
     func useSwizzing() {
         self.usingSwizzing = true
     }
@@ -94,7 +94,7 @@ internal extension Chameleon {
     }
 }
 
-extension Chameleon: ChameleonProtocol {
+extension AppearanceManager: AppearanceManagerProtocol {
     public var currentThemePath: String? {
         return resourcesPath
     }
@@ -103,3 +103,4 @@ extension Chameleon: ChameleonProtocol {
         return try appearanceInfos.appearanceInfo(with: identifier)
     }
 }
+
