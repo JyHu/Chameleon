@@ -45,15 +45,11 @@ private extension UIView {
     }
     
     @objc func swizzled_setBackgroundColor(_ backgroundColor: UIColor?) {
-        if let backgroundColor, backgroundColor.appearanceIdentifier != nil {
-            cache(
-                valA: backgroundColor,
-                identifier: .backgroundColor,
-                action: __setBackgroundColor(_:)
-            )
-        } else {
-            __setBackgroundColor(backgroundColor)
-        }
+        cache(
+            valA: backgroundColor,
+            identifier: .backgroundColor,
+            action: __setBackgroundColor(_:)
+        )
     }
 }
 

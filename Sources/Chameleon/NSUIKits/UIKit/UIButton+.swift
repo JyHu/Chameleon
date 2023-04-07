@@ -48,17 +48,13 @@ private extension UIButton {
     }
     
     @objc func swizzled_setTitleColor(_ titleColor: UIColor?, for controlState: State) {
-        if let titleColor, titleColor.appearanceIdentifier != nil {
-            cache(
-                valA: titleColor,
-                valB: controlState,
-                identifier: .setTitleColorForControlState,
-                action: __setTitleColor(_:for:),
-                category: controlState.appearancedCategory
-            )
-        } else {
-            __setTitleColor(titleColor, for: controlState)
-        }
+        cache(
+            valA: titleColor,
+            valB: controlState,
+            identifier: .setTitleColorForControlState,
+            action: __setTitleColor(_:for:),
+            category: controlState.appearancedCategory
+        )
     }
 }
 

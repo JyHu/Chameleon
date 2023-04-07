@@ -94,40 +94,28 @@ private extension NSText {
     
     
     @objc func swizzled_text_setTextColor(_ textColor: NSColor?) {
-        if let textColor, textColor.appearanceIdentifier != nil {
-            cache(
-                valA: textColor,
-                identifier: .textColor,
-                action: __text_setTextColor(_:)
-            )
-        } else {
-            __text_setTextColor(textColor)
-        }
+        cache(
+            valA: textColor,
+            identifier: .textColor,
+            action: __text_setTextColor(_:)
+        )
     }
     
     @objc func swizzled_text_setBackgroundColor(_ backgroundColor: NSColor?) {
-        if let backgroundColor, backgroundColor.appearanceIdentifier != nil {
-            cache(
-                valA: backgroundColor,
-                identifier: .backgroundColor,
-                action: __text_setBackgroundColor(_:)
-            )
-        } else {
-            __text_setBackgroundColor(backgroundColor)
-        }
+        cache(
+            valA: backgroundColor,
+            identifier: .backgroundColor,
+            action: __text_setBackgroundColor(_:)
+        )
     }
     
     @objc func swizzled_setTextColor(_ color: NSColor?, range: NSRange) {
-        if let color, color.appearanceIdentifier != nil {
-            cache(
-                valA: color,
-                valB: range,
-                identifier: .textColorRange,
-                action: __setTextColor(_:range:)
-            )
-        } else {
-            __setTextColor(color, range: range)
-        }
+        cache(
+            valA: color,
+            valB: range,
+            identifier: .textColorRange,
+            action: __setTextColor(_:range:)
+        )
     }
 }
 

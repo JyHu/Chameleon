@@ -46,15 +46,11 @@ private extension NSImageView {
     
     
     @objc func swizzled_setImage(_ image: NSImage?) {
-        if let image, image.appearanceIdentifier != nil {
-            cache(
-                valA: image,
-                identifier: .image,
-                action: __setImage(_:)
-            )
-        } else {
-            __setImage(image)
-        }
+        cache(
+            valA: image,
+            identifier: .image,
+            action: __setImage(_:)
+        )
     }
 }
 

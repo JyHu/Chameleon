@@ -45,15 +45,11 @@ private extension NSWindow {
     }
     
     @objc func swizzled_setBackgroundColor(_ backgroundColor: NSColor) {
-        if backgroundColor.appearanceIdentifier != nil {
-            cache(
-                valA: backgroundColor,
-                identifier: .backgroundColor,
-                action: __setBackgroundColor(_:)
-            )
-        } else {
-            __setBackgroundColor(backgroundColor)
-        }
+        cache(
+            valA: backgroundColor,
+            identifier: .backgroundColor,
+            action: __setBackgroundColor(_:)
+        )
     }
 }
 

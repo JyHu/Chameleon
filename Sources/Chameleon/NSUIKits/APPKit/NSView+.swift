@@ -17,15 +17,11 @@ private extension AppearanceCallableIdentifier {
 public extension NSView {
     var app_layerBackgroundColor: NSColor? {
         set {
-            if let newValue, newValue.appearanceIdentifier != nil {
-                cache(
-                    valA: newValue,
-                    identifier: .layerBackgroundColor,
-                    action: __setLayerBackgroundColor(_:)
-                )
-            } else {
-                __setLayerBackgroundColor(nil)
-            }
+            cache(
+                valA: newValue,
+                identifier: .layerBackgroundColor,
+                action: __setLayerBackgroundColor(_:)
+            )
         }
         get {
             if let cgColor = layer?.backgroundColor {
@@ -38,15 +34,11 @@ public extension NSView {
     
     var app_layerBorderColor: NSColor? {
         set {
-            if let newValue, newValue.appearanceIdentifier != nil {
-                cache(
-                    valA: newValue,
-                    identifier: .layerBorderColor,
-                    action: __setLayerBorderColor(_:)
-                )
-            } else {
-                __setLayerBorderColor(nil)
-            }
+            cache(
+                valA: newValue,
+                identifier: .layerBorderColor,
+                action: __setLayerBorderColor(_:)
+            )
         }
         get {
             if let cgColor = layer?.borderColor {

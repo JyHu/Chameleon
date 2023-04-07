@@ -43,25 +43,29 @@ public extension Callable {
     }
     
     /// 判断给定数据的类型
-    private static func clsTypeOf(obj: Any) -> ClsType {
-        if obj is NSUIAppearanceColor { return .color }
-        if obj is NSUIAppearanceImage { return .image }
+    private static func clsTypeOf(obj: Any) -> (ClsType, Any?) {
+        if obj is NSUIAppearanceColor { return (.color, nil) }
+        if obj is NSUIAppearanceImage { return (.image, nil) }
         
-        if obj is Int { return .numeric(.int) }
-        if obj is Int8 { return .numeric(.int8)}
-        if obj is Int16 { return .numeric(.int16)}
-        if obj is Int32 { return .numeric(.int32)}
-        if obj is Int64 { return .numeric(.int64)}
-        if obj is UInt { return .numeric(.uint)}
-        if obj is UInt8 { return .numeric(.uint8)}
-        if obj is UInt16 { return .numeric(.uint16)}
-        if obj is UInt32 { return .numeric(.uint32)}
-        if obj is UInt64 { return .numeric(.uing64)}
-        if obj is Double { return .numeric(.double)}
-        if obj is CGFloat { return .numeric(.cgfloat)}
-        if obj is NSNumber { return .numeric(.number)}
+        if let elements = (obj as? NSAttributedString)?.colorAppearancedElements() {
+            return (.attributedString, elements)
+        }
         
-        return .other
+        if obj is Int { return (.numeric(.int), nil) }
+        if obj is Int8 { return (.numeric(.int8), nil) }
+        if obj is Int16 { return (.numeric(.int16), nil) }
+        if obj is Int32 { return (.numeric(.int32), nil) }
+        if obj is Int64 { return (.numeric(.int64), nil) }
+        if obj is UInt { return (.numeric(.uint), nil) }
+        if obj is UInt8 { return (.numeric(.uint8), nil) }
+        if obj is UInt16 { return (.numeric(.uint16), nil) }
+        if obj is UInt32 { return (.numeric(.uint32), nil) }
+        if obj is UInt64 { return (.numeric(.uing64), nil) }
+        if obj is Double { return (.numeric(.double), nil) }
+        if obj is CGFloat { return (.numeric(.cgfloat), nil) }
+        if obj is NSNumber { return (.numeric(.number), nil) }
+        
+        return (.other, nil)
     }
     
     /// 对单个换肤参数的更高一层的包装，用于记录当前入参的一些通用属性
@@ -75,19 +79,33 @@ public extension Callable {
         /// 附加的参数
         public let extra: Any?
         
+        public var isAppearanced: Bool {
+            if identifier != nil {
+                return true
+            }
+            
+            switch clsType {
+            case .attributedString: return true
+            default: return false
+            }
+        }
+        
         /// 初始化方法
         /// - Parameter original: 原始的参数值
         public init(original: T) {
             self.original = original
             self.identifier = (original as? AppearancedParamProtocol)?.appearanceIdentifier
-            self.clsType = Callable.clsTypeOf(obj: original)
-            self.extra = nil
+            (self.clsType, self.extra) = Callable.clsTypeOf(obj: original)
         }
         
         public init(original: T, identifier: AppearanceCallableIdentifier?, clsType: ClsType? = nil, extra: Any? = nil) {
             self.original = original
             self.identifier = identifier
-            self.clsType = clsType ?? Callable.clsTypeOf(obj: original)
+            if let clsType = clsType {
+                self.clsType = clsType
+            } else {
+                (self.clsType, _) = Callable.clsTypeOf(obj: original)
+            }
             self.extra = extra
         }
         

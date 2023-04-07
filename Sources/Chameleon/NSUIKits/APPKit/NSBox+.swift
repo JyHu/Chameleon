@@ -70,27 +70,19 @@ private extension NSBox {
     }
     
     @objc func swizzled_setFillColor(_ fillColor: NSColor) {
-        if fillColor.appearanceIdentifier != nil {
-            cache(
-                valA: fillColor,
-                identifier: .fillColor,
-                action: __setFillColor(_:)
-            )
-        } else {
-            __setFillColor(fillColor)
-        }
+        cache(
+            valA: fillColor,
+            identifier: .fillColor,
+            action: __setFillColor(_:)
+        )
     }
     
     @objc func swizzled_setBorderColor(_ borderColor: NSColor) {
-        if borderColor.appearanceIdentifier != nil {
-            cache(
-                valA: borderColor,
-                identifier: .borderColor,
-                action: __setBorderColor(_:)
-            )
-        } else {
-            __setBorderColor(borderColor)
-        }
+        cache(
+            valA: borderColor,
+            identifier: .borderColor,
+            action: __setBorderColor(_:)
+        )
     }
 }
 

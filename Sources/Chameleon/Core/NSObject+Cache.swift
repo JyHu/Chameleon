@@ -47,7 +47,7 @@ public extension NSObject {
 /// 提供方便的缓存执行换肤方法的各项参数
 ///
 /// - Parameters:
-///   - valX: 缓存各个设置换肤属性方法的参数值，当前最多支持6个参数
+///   - valX: 缓存各个设置换肤属性方法的参数值，当前最多支持6个参数，再多也没啥意义
 ///   - identifier: 当前换肤执行对象的唯一值，为了唯一的区分一个换肤操作
 ///   - action: 执行换肤的时候执行的方法，用于设置正确的皮肤属性
 ///   - category: 当前方法的二级分类，比如UIButton可以用一个方法通过设置属性为不同的状态设
@@ -61,6 +61,7 @@ public extension NSObject {
         action: @escaping ((A) -> Void),
         category: String = AppearanceDefaultCallableCategory
     ) -> Callable.One<A> {
+        
         return cache(appearanceCallable: Callable.One(
             firstParam: valA,
             identifier: identifier,
@@ -153,7 +154,7 @@ public extension NSObject {
     /// - Returns: 缓存的原始值
     @discardableResult
     func cache<T>(appearanceCallable: T) -> T where T: CallableProtocol {
-        if cacher.disableChameleon {
+        if cacher.disableChameleon || !appearanceCallable.isAppearanced {
             appearanceCallable.execute()
             return appearanceCallable
         }

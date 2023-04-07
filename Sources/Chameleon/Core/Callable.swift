@@ -18,6 +18,8 @@ public protocol CallableProtocol {
     
     /// 在执行换肤的时候由框架内统一调用的方法，用于通知所有需要换肤的组件执行换肤的操作
     func execute()
+    
+    var isAppearanced: Bool { get }
 }
 
 /// 可执行换肤方法对象的默认分组
@@ -33,6 +35,7 @@ public extension Callable {
         public let firstParam: Appearanced<A>
         public let action: (A) -> Void
         public let category: AppearanceCallableCategory
+        public var isAppearanced: Bool { return firstParam.isAppearanced }
         
         public init(
             firstParam: A,
@@ -70,6 +73,7 @@ public extension Callable {
         public let secondParam: Appearanced<B>
         public let action: (A, B) -> Void
         public let category: AppearanceCallableCategory
+        public var isAppearanced: Bool { firstParam.isAppearanced || secondParam.isAppearanced }
         
         public init(
             firstParam: A, secondParam: B,
@@ -111,6 +115,11 @@ public extension Callable {
         public let thirdParam: Appearanced<C>
         public let action: (A, B, C) -> Void
         public var category: AppearanceCallableCategory
+        public var isAppearanced: Bool {
+            firstParam.isAppearanced ||
+            secondParam.isAppearanced ||
+            thirdParam.isAppearanced
+        }
         
         public init(
             firstParam: A, secondParam: B, thirdParam: C,
@@ -160,6 +169,12 @@ public extension Callable {
         public let fourthParam: Appearanced<D>
         public let action: (A, B, C, D) -> Void
         public var category: AppearanceCallableCategory
+        public var isAppearanced: Bool {
+            firstParam.isAppearanced ||
+            secondParam.isAppearanced ||
+            thirdParam.isAppearanced ||
+            fourthParam.isAppearanced
+        }
         
         public init(
             firstParam: A, secondParam: B, thirdParam: C, fourthParam: D,
@@ -214,6 +229,13 @@ public extension Callable {
         public let fifthParam: Appearanced<E>
         public let action: (A, B, C, D, E) -> Void
         public var category: AppearanceCallableCategory
+        public var isAppearanced: Bool {
+            firstParam.isAppearanced ||
+            secondParam.isAppearanced ||
+            thirdParam.isAppearanced ||
+            fourthParam.isAppearanced ||
+            fifthParam.isAppearanced
+        }
         
         public init(
             firstParam: A, secondParam: B, thirdParam: C, fourthParam: D, fifthParam: E,

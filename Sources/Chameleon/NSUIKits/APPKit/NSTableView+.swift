@@ -93,40 +93,28 @@ private extension NSTableView {
     
     
     @objc func swizzled_setBackgroundColor(_ backgroundColor: NSColor) {
-        if backgroundColor.appearanceIdentifier != nil {
-            cache(
-                valA: backgroundColor,
-                identifier: .backgroundColor,
-                action: __setBackgroundColor(_:)
-            )
-        } else {
-            __setBackgroundColor(backgroundColor)
-        }
+        cache(
+            valA: backgroundColor,
+            identifier: .backgroundColor,
+            action: __setBackgroundColor(_:)
+        )
     }
     
     @objc func swizzled_setGridColor(_ gridColor: NSColor) {
-        if gridColor.appearanceIdentifier != nil {
-            cache(
-                valA: gridColor,
-                identifier: .gridColor,
-                action: __setGridColor(_:)
-            )
-        } else {
-            __setGridColor(gridColor)
-        }
+        cache(
+            valA: gridColor,
+            identifier: .gridColor,
+            action: __setGridColor(_:)
+        )
     }
     
     @objc func swizzled_setIndicatorImage(_ image: NSImage, in tableColumn: NSTableColumn) {
-        if image.appearanceIdentifier != nil {
-            cache(
-                valA: image,
-                valB: tableColumn,
-                identifier: .setIndicatorImageInTableColumn,
-                action: __setIndicatorImage(_:in:)
-            )
-        } else {
-            __setIndicatorImage(image, in: tableColumn)
-        }
+        cache(
+            valA: image,
+            valB: tableColumn,
+            identifier: .setIndicatorImageInTableColumn,
+            action: __setIndicatorImage(_:in:)
+        )
     }
 }
 

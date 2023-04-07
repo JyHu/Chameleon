@@ -96,39 +96,27 @@ private extension NSTextField {
     }
     
     @objc func swizzled_setBackGroundColor(_ backgroundColor: NSColor?) {
-        if let backgroundColor, backgroundColor.appearanceIdentifier != nil {
-            cache(
-                valA: backgroundColor,
-                identifier: .backgroundColor,
-                action: __setBackGroundColor(_:)
-            )
-        } else {
-            __setBackGroundColor(backgroundColor)
-        }
+        cache(
+            valA: backgroundColor,
+            identifier: .backgroundColor,
+            action: __setBackGroundColor(_:)
+        )
     }
     
     @objc func swizzled_setTextColor(_ textColor: NSColor?) {
-        if let textColor, textColor.appearanceIdentifier != nil {
-            cache(
-                valA: textColor,
-                identifier: .textColor,
-                action: __setTextColor(_:)
-            )
-        } else {
-            __setTextColor(textColor)
-        }
+        cache(
+            valA: textColor,
+            identifier: .textColor,
+            action: __setTextColor(_:)
+        )
     }
     
     @objc func swizzled_setAttributedStringValue(_ attributedStringValue: NSAttributedString) {
-        if let param = Callable.Appearanced.appearanced(attributedString: attributedStringValue) {
-            cache(appearanceCallable: Callable.One(
-                firstParam: param,
-                identifier: .attributedStringValue,
-                action: __setAttributedStringValue(_:)
-            ))
-        } else {
-            __setAttributedStringValue(attributedStringValue)
-        }
+        cache(appearanceCallable: Callable.One(
+            firstParam: attributedStringValue,
+            identifier: .attributedStringValue,
+            action: __setAttributedStringValue(_:)
+        ))
     }
 }
 

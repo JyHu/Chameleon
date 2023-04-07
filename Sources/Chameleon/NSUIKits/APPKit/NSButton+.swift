@@ -120,51 +120,35 @@ private extension NSButton {
     }
     
     @objc func swizzled_setBezelColor(_ bezelColor: NSColor?) {
-        if let bezelColor, bezelColor.appearanceIdentifier != nil {
-            cache(
-                valA: bezelColor,
-                identifier: .bezelColor,
-                action: __setBezelColor(_:)
-            )
-        } else {
-            __setBezelColor(bezelColor)
-        }
+        cache(
+            valA: bezelColor,
+            identifier: .bezelColor,
+            action: __setBezelColor(_:)
+        )
     }
     
     @objc func swizzled_setContentTintColor(_ contentTintColor: NSColor?) {
-        if let contentTintColor, contentTintColor.appearanceIdentifier != nil {
-            cache(
-                valA: contentTintColor,
-                identifier: .contentTintColor,
-                action: __setContentTintColor(_:)
-            )
-        } else {
-            __setContentTintColor(contentTintColor)
-        }
+        cache(
+            valA: contentTintColor,
+            identifier: .contentTintColor,
+            action: __setContentTintColor(_:)
+        )
     }
     
     @objc func swizzled_setImage(_ image: NSImage?) {
-        if let image, image.appearanceIdentifier != nil {
-            cache(
-                valA: image,
-                identifier: .image,
-                action: __setImage(_:)
-            )
-        } else {
-            __setImage(image)
-        }
+        cache(
+            valA: image,
+            identifier: .image,
+            action: __setImage(_:)
+        )
     }
     
     @objc func swizzled_setAlternateImage(_ alternateImage: NSImage?) {
-        if let alternateImage, alternateImage.appearanceIdentifier != nil {
-            cache(
-                valA: alternateImage,
-                identifier: .alternateImage,
-                action: __setAlternateImage(_:)
-            )
-        } else {
-            __setAlternateImage(alternateImage)
-        }
+        cache(
+            valA: alternateImage,
+            identifier: .alternateImage,
+            action: __setAlternateImage(_:)
+        )
     }
 }
 

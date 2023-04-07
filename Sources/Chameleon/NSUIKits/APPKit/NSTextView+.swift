@@ -97,39 +97,27 @@ private extension NSTextView {
     }
     
     @objc func swizzled_setInsertionPointColor(_ insertionPointColor: NSColor) {
-        if insertionPointColor.appearanceIdentifier != nil {
-            cache(
-                valA: insertionPointColor,
-                identifier: .insertionPointColor,
-                action: __setInsertionPointColor(_:)
-            )
-        } else {
-            __setInsertionPointColor(insertionPointColor)
-        }
+        cache(
+            valA: insertionPointColor,
+            identifier: .insertionPointColor,
+            action: __setInsertionPointColor(_:)
+        )
     }
     
     @objc func swizzled_setBackgroundColor(_ backgroundColor: NSColor) {
-        if backgroundColor.appearanceIdentifier != nil {
-            cache(
-                valA: backgroundColor,
-                identifier: .backgroundColor,
-                action: __setBackgroundColor(_:)
-            )
-        } else {
-            __setBackgroundColor(backgroundColor)
-        }
+        cache(
+            valA: backgroundColor,
+            identifier: .backgroundColor,
+            action: __setBackgroundColor(_:)
+        )
     }
     
     @objc func swizzled_setTextColor(_ textColor: NSColor?) {
-        if let textColor, textColor.appearanceIdentifier != nil {
-            cache(
-                valA: textColor,
-                identifier: .textColor,
-                action: __setTextColor(_:)
-            )
-        } else {
-            __setTextColor(textColor)
-        }
+        cache(
+            valA: textColor,
+            identifier: .textColor,
+            action: __setTextColor(_:)
+        )
     }
 }
 

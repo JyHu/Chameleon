@@ -45,15 +45,11 @@ private extension UILabel {
     }
     
     @objc func swizzled_setTextColor(_ textColor: UIColor) {
-        if textColor.appearanceIdentifier != nil {
-            cache(
-                valA: textColor,
-                identifier: .textColor,
-                action: __setTextColor(_:)
-            )
-        } else {
-            __setTextColor(textColor)
-        }
+        cache(
+            valA: textColor,
+            identifier: .textColor,
+            action: __setTextColor(_:)
+        )
     }
 }
 
