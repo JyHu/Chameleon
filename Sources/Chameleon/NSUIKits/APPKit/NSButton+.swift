@@ -14,6 +14,8 @@ private extension AppearanceCallableIdentifier {
     static let contentTintColor = "NSButton.__setContentTintColor(_:)"
     static let image = "NSButton.__setImage(_:)"
     static let alternateImage = "NSButton.__setAlternateImage(_:)"
+    static let attributedTitle = "NSButton.__setAttributedTitle(_:)"
+    static let attributedAlternateTitle = "NSButton.__setAttributedAlternateTitle(_:)"
 }
 
 public extension NSButton {
@@ -60,6 +62,28 @@ public extension NSButton {
             }
         }
     }
+    
+    var app_attributedTitle: NSAttributedString {
+        get { attributedTitle }
+        set {
+            if __USING_APPEARANCED_SWIZZING__ {
+                attributedTitle = newValue
+            } else {
+                swizzled_setAttributedTitle(newValue)
+            }
+        }
+    }
+    
+    var app_attributedAlternateTitle: NSAttributedString {
+        get { attributedAlternateTitle }
+        set {
+            if __USING_APPEARANCED_SWIZZING__ {
+                attributedAlternateTitle = newValue
+            } else {
+                swizzled_setAttributedAlternateTitle(newValue)
+            }
+        }
+    }
 }
 
 internal extension NSButton {
@@ -82,6 +106,16 @@ internal extension NSButton {
         app_swizzing(
             originalSelector: #selector(setter: alternateImage),
             newSelector: #selector(swizzled_setAlternateImage(_:))
+        )
+        
+        app_swizzing(
+            originalSelector: #selector(setter: attributedTitle),
+            newSelector: #selector(swizzled_setAttributedTitle(_:))
+        )
+        
+        app_swizzing(
+            originalSelector: #selector(setter: attributedAlternateTitle),
+            newSelector: #selector(swizzled_setAttributedAlternateTitle(_:))
         )
     }
 }
@@ -119,6 +153,22 @@ private extension NSButton {
         }
     }
     
+    func __setAttributedTitle(_ attributedTitle: NSAttributedString) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            swizzled_setAttributedTitle(attributedTitle)
+        } else {
+            self.attributedTitle = attributedTitle
+        }
+    }
+    
+    func __setAttributedAlternateTitle(_ attributedAlternateTitle: NSAttributedString) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            swizzled_setAttributedAlternateTitle(attributedAlternateTitle)
+        } else {
+            self.attributedAlternateTitle = attributedAlternateTitle
+        }
+    }
+    
     @objc func swizzled_setBezelColor(_ bezelColor: NSColor?) {
         cache(
             valA: bezelColor,
@@ -148,6 +198,22 @@ private extension NSButton {
             valA: alternateImage,
             identifier: .alternateImage,
             action: __setAlternateImage(_:)
+        )
+    }
+    
+    @objc func swizzled_setAttributedTitle(_ attributedTitle: NSAttributedString) {
+        cache(
+            valA: attributedTitle,
+            identifier: .attributedTitle,
+            action: __setAttributedTitle(_:)
+        )
+    }
+    
+    @objc func swizzled_setAttributedAlternateTitle(_ attributedAlternateTitle: NSAttributedString) {
+        cache(
+            valA: attributedAlternateTitle,
+            identifier: .attributedAlternateTitle,
+            action: __setAttributedAlternateTitle(_:)
         )
     }
 }

@@ -16,12 +16,11 @@ public protocol AppearancedParamProtocol {
     var appearanceIdentifier: AppearanceCallableIdentifier? { get }
 }
 
-extension NSObject: AppearancedParamProtocol {
-    
+extension NSUIAppearanceColor: AppearancedParamProtocol {
     private struct AssociationKey {
         static var appearanceIdentifierKey = "com.auu.chameleon.association.appearanceIdentifier"
     }
-    
+
     /// 当前对象的唯一标识符，用于在主题文件中找到对应的唯一属性值
     public private(set) var appearanceIdentifier: AppearanceCallableIdentifier? {
         set {
@@ -31,17 +30,41 @@ extension NSObject: AppearancedParamProtocol {
             return objc_getAssociatedObject(self, &AssociationKey.appearanceIdentifierKey) as? AppearanceCallableIdentifier
         }
     }
-    
+
     /// 一个中转方法，用于给一个对象添加一个标识符
     /// - Parameter identifier: 换肤的标识符
     /// - Returns: 原对象
     public func withAppearanceIdentifier(_ identifier: AppearanceCallableIdentifier) -> Self {
-        if self is NSUIAppearanceColor, let obj = NSUIAppearanceColor.colorWith(appearanceIdentifier: identifier) {
+        if let obj = NSUIAppearanceColor.colorWith(appearanceIdentifier: identifier) {
             obj.appearanceIdentifier = identifier
             return obj as! Self
         }
         
-        if self is NSUIAppearanceImage, let obj = NSUIAppearanceImage.imageWith(appearanceIdentifier: identifier) {
+        appearanceIdentifier = identifier
+        return self
+    }
+}
+
+extension NSUIAppearanceImage: AppearancedParamProtocol {
+    private struct AssociationKey {
+        static var appearanceIdentifierKey = "com.auu.chameleon.association.appearanceIdentifier"
+    }
+
+    /// 当前对象的唯一标识符，用于在主题文件中找到对应的唯一属性值
+    public private(set) var appearanceIdentifier: AppearanceCallableIdentifier? {
+        set {
+            objc_setAssociatedObject(self, &AssociationKey.appearanceIdentifierKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        get {
+            return objc_getAssociatedObject(self, &AssociationKey.appearanceIdentifierKey) as? AppearanceCallableIdentifier
+        }
+    }
+
+    /// 一个中转方法，用于给一个对象添加一个标识符
+    /// - Parameter identifier: 换肤的标识符
+    /// - Returns: 原对象
+    public func withAppearanceIdentifier(_ identifier: AppearanceCallableIdentifier) -> Self {
+        if let obj = NSUIAppearanceImage.imageWith(appearanceIdentifier: identifier) {
             obj.appearanceIdentifier = identifier
             return obj as! Self
         }

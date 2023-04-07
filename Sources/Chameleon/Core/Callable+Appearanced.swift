@@ -78,7 +78,7 @@ public extension Callable {
         public let clsType: ClsType
         /// 附加的参数
         public let extra: Any?
-        
+        /// 是否是支持换肤的属性
         public var isAppearanced: Bool {
             if identifier != nil {
                 return true
@@ -136,15 +136,5 @@ public extension Callable {
         public static func appearanced(_ original: T, identifier: AppearanceCallableIdentifier?, clsType: ClsType? = nil, extra: Any? = nil) -> Appearanced<T> {
             return Appearanced(original: original, identifier: identifier, clsType: clsType, extra: extra)
         }
-    }
-}
-
-extension Callable.Appearanced where T == NSAttributedString {
-    public static func appearanced(attributedString: NSAttributedString) -> Callable.Appearanced<NSAttributedString>? {
-        guard let elements = attributedString.colorAppearancedElements() else {
-            return nil
-        }
-
-        return .appearanced(attributedString, identifier: nil, clsType: .attributedString, extra: elements)
     }
 }

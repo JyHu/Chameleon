@@ -19,6 +19,8 @@ public protocol CallableProtocol {
     /// 在执行换肤的时候由框架内统一调用的方法，用于通知所有需要换肤的组件执行换肤的操作
     func execute()
     
+    /// 当前缓存的换肤方法执行对象是否支持换肤，只要缓存的参数中有一个属性支持换肤，那么即算是支持
+    /// 对于不支持换肤的执行对象，就没必要缓存
     var isAppearanced: Bool { get }
 }
 
