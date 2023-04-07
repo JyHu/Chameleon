@@ -31,10 +31,29 @@ private extension NSObject {
     }
 }
 
+public extension NSObject {
+    
+    /// 对当前组件禁止掉换肤支持
+    var disableChameleon: Bool {
+        set {
+            cacher.disableChameleon = newValue
+        }
+        get {
+            cacher.disableChameleon
+        }
+    }
+}
+
 /// 提供方便的缓存执行换肤方法的各项参数
 ///
-/// 目前最多支持6个入参
+/// - Parameters:
+///   - valX: 缓存各个设置换肤属性方法的参数值，当前最多支持6个参数
+///   - identifier: 当前换肤执行对象的唯一值，为了唯一的区分一个换肤操作
+///   - action: 执行换肤的时候执行的方法，用于设置正确的皮肤属性
+///   - category: 当前方法的二级分类，比如UIButton可以用一个方法通过设置属性为不同的状态设
+///       置图片，那么可以为每一个状态设置一个类别，在换肤的时候就不会乱
 public extension NSObject {
+    
     @discardableResult
     func cache<A>(
         valA: A,
@@ -122,12 +141,16 @@ public extension NSObject {
 }
 
 public extension NSObject {
-    func removeCallable(with identifier: AppearanceCallableIdentifier, category: String? = nil) {
-        cacher.cachedMethods[category ?? AppearanceDefaultCallableCategory]?.removeValue(forKey: identifier)
+    func removeCallable(with identifier: AppearanceCallableIdentifier, category: AppearanceCallableCategory = AppearanceDefaultCallableCategory) {
+        cacher.cachedMethods[category]?.removeValue(forKey: identifier)
     }
 }
 
 public extension NSObject {
+    
+    /// 缓存一个换肤方法执行对象，缓存的同时会执行一次用于设置初始的皮肤属性
+    /// - Parameter appearanceCallable: 换肤方法执行对象
+    /// - Returns: 缓存的原始值
     @discardableResult
     func cache<T>(appearanceCallable: T) -> T where T: CallableProtocol {
         if cacher.disableChameleon {

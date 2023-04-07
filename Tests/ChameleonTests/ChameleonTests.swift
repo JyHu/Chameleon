@@ -21,7 +21,7 @@ final class ChameleonTests: XCTestCase {
         
 //        RunTimeKit.changeExchangeImplementations()
         
-        Chameleon.exchangeImplementations()
+        AppearanceManager.exchangeImplementations()
         
         let color = NSColor.red
         print(color)
@@ -65,8 +65,6 @@ struct Cacher<T> {
     let callback: ((T) -> Void)
     
     func execute() {
-        let a: Any = ""
-        a as? T
         callback(param)
     }
 }

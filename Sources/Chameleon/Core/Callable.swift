@@ -38,7 +38,7 @@ public extension Callable {
             firstParam: A,
             identifier: AppearanceCallableIdentifier,
             action: @escaping (A) -> Void,
-            category: String = AppearanceDefaultCallableCategory
+            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = Appearanced(original: firstParam)
             self.identifier = identifier
@@ -50,7 +50,7 @@ public extension Callable {
             firstParam: Appearanced<A>,
             identifier: AppearanceCallableIdentifier,
             action: @escaping (A) -> Void,
-            category: String = AppearanceDefaultCallableCategory
+            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = firstParam
             self.identifier = identifier
@@ -72,11 +72,10 @@ public extension Callable {
         public let category: AppearanceCallableCategory
         
         public init(
-            firstParam: A,
-            secondParam: B,
+            firstParam: A, secondParam: B,
             identifier: AppearanceCallableIdentifier,
             action: @escaping (A, B) -> Void,
-            category: String = AppearanceDefaultCallableCategory
+            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = Appearanced(original: firstParam)
             self.secondParam = Appearanced(original: secondParam)
@@ -90,7 +89,7 @@ public extension Callable {
             secondParam: Appearanced<B>,
             identifier: AppearanceCallableIdentifier,
             action: @escaping (A, B) -> Void,
-            category: String = AppearanceDefaultCallableCategory
+            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = firstParam
             self.secondParam = secondParam
@@ -113,13 +112,11 @@ public extension Callable {
         public let action: (A, B, C) -> Void
         public var category: AppearanceCallableCategory
         
-        init(
-            firstParam: A,
-            secondParam: B,
-            thirdParam: C,
+        public init(
+            firstParam: A, secondParam: B, thirdParam: C,
             identifier: AppearanceCallableIdentifier,
             action: @escaping (A, B, C) -> Void,
-            category: String = AppearanceDefaultCallableCategory
+            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = Appearanced(original: firstParam)
             self.secondParam = Appearanced(original: secondParam)
@@ -129,13 +126,13 @@ public extension Callable {
             self.category = category
         }
         
-        init(
+        public init(
             firstParam: Appearanced<A>,
             secondParam: Appearanced<B>,
             thirdParam: Appearanced<C>,
             identifier: AppearanceCallableIdentifier,
             action: @escaping (A, B, C) -> Void,
-            category: String = AppearanceDefaultCallableCategory
+            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = firstParam
             self.secondParam = secondParam
@@ -164,14 +161,11 @@ public extension Callable {
         public let action: (A, B, C, D) -> Void
         public var category: AppearanceCallableCategory
         
-        init(
-            firstParam: A,
-            secondParam: B,
-            thirdParam: C,
-            fourthParam: D,
+        public init(
+            firstParam: A, secondParam: B, thirdParam: C, fourthParam: D,
             identifier: AppearanceCallableIdentifier,
             action: @escaping (A, B, C, D) -> Void,
-            category: String = AppearanceDefaultCallableCategory
+            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = Appearanced(original: firstParam)
             self.secondParam = Appearanced(original: secondParam)
@@ -182,14 +176,14 @@ public extension Callable {
             self.category = category
         }
         
-        init(
+        public init(
             firstParam: Appearanced<A>,
             secondParam: Appearanced<B>,
             thirdParam: Appearanced<C>,
             fourthParam: Appearanced<D>,
             identifier: AppearanceCallableIdentifier,
             action: @escaping (A, B, C, D) -> Void,
-            category: String = AppearanceDefaultCallableCategory
+            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = firstParam
             self.secondParam = secondParam
@@ -221,11 +215,11 @@ public extension Callable {
         public let action: (A, B, C, D, E) -> Void
         public var category: AppearanceCallableCategory
         
-        init(
+        public init(
             firstParam: A, secondParam: B, thirdParam: C, fourthParam: D, fifthParam: E,
             identifier: AppearanceCallableIdentifier,
             action: @escaping (A, B, C, D, E) -> Void,
-            category: String = AppearanceDefaultCallableCategory
+            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = Appearanced(original: firstParam)
             self.secondParam = Appearanced(original: secondParam)
@@ -237,7 +231,7 @@ public extension Callable {
             self.category = category
         }
         
-        init(
+        public init(
             firstParam: Appearanced<A>,
             secondParam: Appearanced<B>,
             thirdParam: Appearanced<C>,
@@ -245,7 +239,7 @@ public extension Callable {
             fifthParam: Appearanced<E>,
             identifier: AppearanceCallableIdentifier,
             action: @escaping (A, B, C, D, E) -> Void,
-            category: String = AppearanceDefaultCallableCategory
+            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = firstParam
             self.secondParam = secondParam
