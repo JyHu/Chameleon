@@ -15,19 +15,13 @@ private extension AppearanceCallableIdentifier {
 
 public extension UILabel {
     var app_textColor: UIColor {
+        get { textColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 textColor = newValue
             } else {
-                cache(
-                    valA: newValue,
-                    identifier: .textColor,
-                    action: __setTextColor(_:)
-                )
+                swizzled_setTextColor(newValue)
             }
-        }
-        get {
-            textColor
         }
     }
 }
@@ -58,7 +52,7 @@ private extension UILabel {
                 action: __setTextColor(_:)
             )
         } else {
-            swizzled_setTextColor(textColor)
+            __setTextColor(textColor)
         }
     }
 }

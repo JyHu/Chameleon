@@ -21,5 +21,5 @@ class InfosViewController: NSViewController {
         // Do view setup here.
         
         outlineView.focusRingType = .none
-    }    
+    }
 }

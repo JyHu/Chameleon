@@ -18,80 +18,46 @@ private extension AppearanceCallableIdentifier {
 
 public extension NSButton {
     var app_bezelColor: NSColor? {
+        get { bezelColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 bezelColor = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .bezelColor,
-                        action: __setBezelColor(_:)
-                    )
-                } else {
-                    __setBezelColor(nil)
-                }
+                swizzled_setBezelColor(newValue)
             }
         }
-        get { bezelColor }
     }
     
     var app_contentTintColor: NSColor? {
+        get { contentTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 contentTintColor = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .contentTintColor,
-                        action: __setContentTintColor(_:)
-                    )
-                } else {
-                    __setContentTintColor(nil)
-                }
+                swizzled_setContentTintColor(newValue)
             }
         }
-        get { contentTintColor }
     }
     
     var app_image: NSImage? {
+        get { image }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 image = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .image,
-                        action: __setImage(_:)
-                    )
-                } else {
-                    __setImage(nil)
-                }
+                swizzled_setImage(newValue)
             }
         }
-        get { image }
     }
     
     var app_alternateImage: NSImage? {
+        get { alternateImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 alternateImage = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .alternateImage,
-                        action: __setAlternateImage(_:)
-                    )
-                } else {
-                    __setAlternateImage(nil)
-                }
+                swizzled_setAlternateImage(newValue)
             }
-        }
-        get {
-            alternateImage
         }
     }
 }
@@ -161,7 +127,7 @@ private extension NSButton {
                 action: __setBezelColor(_:)
             )
         } else {
-            swizzled_setBezelColor(bezelColor)
+            __setBezelColor(bezelColor)
         }
     }
     
@@ -173,7 +139,7 @@ private extension NSButton {
                 action: __setContentTintColor(_:)
             )
         } else {
-            swizzled_setContentTintColor(contentTintColor)
+            __setContentTintColor(contentTintColor)
         }
     }
     
@@ -185,7 +151,7 @@ private extension NSButton {
                 action: __setImage(_:)
             )
         } else {
-            swizzled_setImage(image)
+            __setImage(image)
         }
     }
     
@@ -197,7 +163,7 @@ private extension NSButton {
                 action: __setAlternateImage(_:)
             )
         } else {
-            swizzled_setAlternateImage(alternateImage)
+            __setAlternateImage(alternateImage)
         }
     }
 }

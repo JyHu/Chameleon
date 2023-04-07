@@ -16,36 +16,24 @@ private extension AppearanceCallableIdentifier {
 
 public extension NSDatePicker {
     var app_textColor: NSColor {
+        get { textColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 textColor = newValue
             } else {
-                cache(
-                    valA: newValue,
-                    identifier: .textColor,
-                    action: __setTextColor(_:)
-                )
+                swizzled_setTextColor(newValue)
             }
-        }
-        get {
-            textColor
         }
     }
     
     var app_backgroundColor: NSColor {
+        get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 backgroundColor = newValue
             } else {
-                cache(
-                    valA: backgroundColor,
-                    identifier: .backgroundColor,
-                    action: __setBackgroundColor(_:)
-                )
+                swizzled_setBackgroundColor(newValue)
             }
-        }
-        get {
-            backgroundColor
         }
     }
 }
@@ -89,7 +77,7 @@ private extension NSDatePicker {
                 action: __setTextColor(_:)
             )
         } else {
-            swizzled_setTextColor(textColor)
+            __setTextColor(textColor)
         }
     }
     
@@ -101,7 +89,7 @@ private extension NSDatePicker {
                 action: __setBackgroundColor(_:)
             )
         } else {
-            swizzled_setBackgroundColor(backgroundColor)
+            __setBackgroundColor(backgroundColor)
         }
     }
 }

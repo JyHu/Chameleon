@@ -36,6 +36,8 @@ public extension Callable {
         case image
         /// 数值类型
         case numeric(NumType)
+        /// 富文本类型
+        case attributedString
         /// 其他类型参数
         case other
     }
@@ -70,6 +72,8 @@ public extension Callable {
         public let identifier: AppearanceCallableIdentifier?
         /// 参数类型
         public let clsType: ClsType
+        /// 附加的参数
+        public let extra: Any?
         
         /// 初始化方法
         /// - Parameter original: 原始的参数值
@@ -77,16 +81,22 @@ public extension Callable {
             self.original = original
             self.identifier = (original as? AppearancedParamProtocol)?.appearanceIdentifier
             self.clsType = Callable.clsTypeOf(obj: original)
+            self.extra = nil
         }
         
-        public init(original: T, identifier: AppearanceCallableIdentifier?, clsType: ClsType? = nil) {
+        public init(original: T, identifier: AppearanceCallableIdentifier?, clsType: ClsType? = nil, extra: Any? = nil) {
             self.original = original
             self.identifier = identifier
             self.clsType = clsType ?? Callable.clsTypeOf(obj: original)
+            self.extra = extra
         }
         
         /// 根据当前参数数据从换肤资源中获取对应有效的换肤数据
         public var correct: T {
+            switch clsType {
+            case .attributedString: return ((original as? NSAttributedString)?.updateAppearancedValues(extra) as? T) ?? original
+            default: break
+            }
             /// 如果不支持换肤，返回原始值
             guard let identifier = identifier else { return original }
             
@@ -96,6 +106,7 @@ public extension Callable {
             case .numeric(let numType):
                 let numVal = (try? AppearanceManager.shared.appearanceInfo(with: identifier))
                 return matchedAppearancedNumValue(from: numVal, of: numType) ?? original
+            case .attributedString: return ((original as? NSAttributedString)?.updateAppearancedValues(extra) as? T) ?? original
             case .other: return (try? AppearanceManager.shared.appearanceInfo(with: identifier)) as? T ?? original
             }
         }
@@ -104,8 +115,18 @@ public extension Callable {
             return Appearanced(original: original)
         }
         
-        public static func appearanced(_ original: T, identifier: AppearanceCallableIdentifier?, clsType: ClsType? = nil) -> Appearanced<T> {
-            return Appearanced(original: original, identifier: identifier, clsType: clsType)
+        public static func appearanced(_ original: T, identifier: AppearanceCallableIdentifier?, clsType: ClsType? = nil, extra: Any? = nil) -> Appearanced<T> {
+            return Appearanced(original: original, identifier: identifier, clsType: clsType, extra: extra)
         }
+    }
+}
+
+extension Callable.Appearanced where T == NSAttributedString {
+    public static func appearanced(attributedString: NSAttributedString) -> Callable.Appearanced<NSAttributedString>? {
+        guard let elements = attributedString.colorAppearancedElements() else {
+            return nil
+        }
+
+        return .appearanced(attributedString, identifier: nil, clsType: .attributedString, extra: elements)
     }
 }

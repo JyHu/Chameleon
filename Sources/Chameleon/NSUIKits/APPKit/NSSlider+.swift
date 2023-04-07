@@ -15,23 +15,13 @@ private extension AppearanceCallableIdentifier {
 
 public extension NSSlider {
     var app_trackFillColor: NSColor? {
+        get { trackFillColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 trackFillColor = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .trackFillColor,
-                        action: __setTrackFillColor(_:)
-                    )
-                } else {
-                    __setTrackFillColor(nil)
-                }
+                swizzled_setTrackFillColor(newValue)
             }
-        }
-        get {
-            trackFillColor
         }
     }
 }
@@ -63,7 +53,7 @@ private extension NSSlider {
                 action: __setTrackFillColor(_:)
             )
         } else {
-            swizzled_setTrackFillColor(trackFillColor)
+            __setTrackFillColor(trackFillColor)
         }
     }
 }

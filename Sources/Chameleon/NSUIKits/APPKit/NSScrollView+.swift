@@ -15,19 +15,13 @@ private extension AppearanceCallableIdentifier {
 
 public extension NSScrollView {
     var app_backgroundColor: NSColor {
+        get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 backgroundColor = newValue
             } else {
-                cache(
-                    valA: newValue,
-                    identifier: .backgroundColor,
-                    action: __setBackgroundColor(_:)
-                )
+                swizzled_setBackgroundColor(newValue)
             }
-        }
-        get {
-            backgroundColor
         }
     }
 }
@@ -58,7 +52,7 @@ private extension NSScrollView {
                 action: __setBackgroundColor(_:)
             )
         } else {
-            swizzled_setBackgroundColor(backgroundColor)
+            __setBackgroundColor(backgroundColor)
         }
     }
 }

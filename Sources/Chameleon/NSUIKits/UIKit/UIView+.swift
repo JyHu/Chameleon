@@ -15,23 +15,13 @@ private extension AppearanceCallableIdentifier {
 
 public extension UIView {
     var app_backgroundColor: UIColor? {
+        get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 backgroundColor = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .backgroundColor,
-                        action: __setBackgroundColor(_:)
-                    )
-                } else {
-                    __setBackgroundColor(nil)
-                }
+                swizzled_setBackgroundColor(newValue)
             }
-        }
-        get {
-            backgroundColor
         }
     }
 }
@@ -62,7 +52,7 @@ private extension UIView {
                 action: __setBackgroundColor(_:)
             )
         } else {
-            swizzled_setBackgroundColor(backgroundColor)
+            __setBackgroundColor(backgroundColor)
         }
     }
 }

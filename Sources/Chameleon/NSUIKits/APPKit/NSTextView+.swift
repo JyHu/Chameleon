@@ -18,58 +18,35 @@ private extension AppearanceCallableIdentifier {
 
 public extension NSTextView {
     var app_insertionPointColor: NSColor {
+        get { insertionPointColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 insertionPointColor = newValue
-            } else {            
-                cache(
-                    valA: newValue,
-                    identifier: .insertionPointColor,
-                    action: __setInsertionPointColor(_:)
-                )
+            } else {
+                swizzled_setInsertionPointColor(newValue)
             }
-        }
-        get {
-            return insertionPointColor
         }
     }
     
     var app_backgroundColor: NSColor {
+        get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 backgroundColor = newValue
             } else {
-                cache(
-                    valA: newValue,
-                    identifier: .backgroundColor,
-                    action: __setBackgroundColor(_:)
-                )
+                swizzled_setBackgroundColor(newValue)
             }
-        }
-        
-        get {
-            backgroundColor
         }
     }
     
     var app_textColor: NSColor? {
+        get { textColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 textColor = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .textColor,
-                        action: __setTextColor(_:)
-                    )
-                } else {
-                    __setTextColor(nil)
-                }
+                swizzled_setTextColor(newValue)
             }
-        }
-        get {
-            textColor
         }
     }
 }
@@ -127,7 +104,7 @@ private extension NSTextView {
                 action: __setInsertionPointColor(_:)
             )
         } else {
-            swizzled_setInsertionPointColor(insertionPointColor)
+            __setInsertionPointColor(insertionPointColor)
         }
     }
     
@@ -139,7 +116,7 @@ private extension NSTextView {
                 action: __setBackgroundColor(_:)
             )
         } else {
-            swizzled_setBackgroundColor(backgroundColor)
+            __setBackgroundColor(backgroundColor)
         }
     }
     
@@ -151,7 +128,7 @@ private extension NSTextView {
                 action: __setTextColor(_:)
             )
         } else {
-            swizzled_setTextColor(textColor)
+            __setTextColor(textColor)
         }
     }
 }

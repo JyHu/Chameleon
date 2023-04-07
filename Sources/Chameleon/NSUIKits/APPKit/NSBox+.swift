@@ -16,37 +16,24 @@ private extension AppearanceCallableIdentifier {
 
 public extension NSBox {
     var app_fillColor: NSColor {
+        get { fillColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 fillColor = newValue
             } else {
-                cache(
-                    valA: newValue,
-                    identifier: .fillColor,
-                    action: __setFillColor(_:)
-                )
+                swizzled_setFillColor(newValue)
             }
-        }
-        
-        get {
-            return fillColor
         }
     }
     
     var app_borderColor: NSColor {
+        get { borderColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 borderColor = newValue
             } else {
-                cache(
-                    valA: newValue,
-                    identifier: .borderColor,
-                    action: __setBorderColor(_:)
-                )
+                swizzled_setBorderColor(newValue)
             }
-        }
-        get {
-            return borderColor
         }
     }
 }
@@ -90,7 +77,7 @@ private extension NSBox {
                 action: __setFillColor(_:)
             )
         } else {
-            swizzled_setFillColor(fillColor)
+            __setFillColor(fillColor)
         }
     }
     
@@ -102,7 +89,7 @@ private extension NSBox {
                 action: __setBorderColor(_:)
             )
         } else {
-            swizzled_setBorderColor(borderColor)
+            __setBorderColor(borderColor)
         }
     }
 }

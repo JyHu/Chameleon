@@ -13,48 +13,40 @@ import Cocoa
 private extension AppearanceCallableIdentifier {
     static let backgroundColor = "NSTextField.__setBackGroundColor(_:)"
     static let textColor = "NSTextField.__setTextColor(_:)"
+    static let attributedStringValue = "NSTextField.__setAttributedStringValue(_:)"
 }
 
 public extension NSTextField {
     var app_backgroundColor: NSColor? {
+        get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 backgroundColor = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .backgroundColor,
-                        action: __setBackGroundColor(_:)
-                    )
-                } else {
-                    __setBackGroundColor(nil)
-                }
+                swizzled_setBackGroundColor(newValue)
             }
-        }
-        get {
-            return backgroundColor
         }
     }
     
     var app_textColor: NSColor? {
+        get { textColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 textColor = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .textColor,
-                        action: __setTextColor(_:)
-                    )
-                } else {
-                    __setTextColor(nil)
-                }
+                swizzled_setTextColor(newValue)
             }
         }
-        get {
-            return textColor
+    }
+    
+    var app_attributedStringValue: NSAttributedString {
+        get { attributedStringValue }
+        set {
+            if __USING_APPEARANCED_SWIZZING__ {
+                attributedStringValue = newValue
+            } else {
+                swizzled_setAttributedStringValue(newValue)
+            }
         }
     }
 }
@@ -69,6 +61,11 @@ internal extension NSTextField {
         app_swizzing(
             originalSelector: #selector(setter: textColor),
             newSelector: #selector(swizzled_setTextColor(_:))
+        )
+        
+        app_swizzing(
+            originalSelector: #selector(setter: attributedStringValue),
+            newSelector: #selector(swizzled_setAttributedStringValue(_:))
         )
     }
 }
@@ -90,6 +87,14 @@ private extension NSTextField {
         }
     }
     
+    func __setAttributedStringValue(_ attributedStringValue: NSAttributedString) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            swizzled_setAttributedStringValue(attributedStringValue)
+        } else {
+            self.attributedStringValue = attributedStringValue
+        }
+    }
+    
     @objc func swizzled_setBackGroundColor(_ backgroundColor: NSColor?) {
         if let backgroundColor, backgroundColor.appearanceIdentifier != nil {
             cache(
@@ -98,7 +103,7 @@ private extension NSTextField {
                 action: __setBackGroundColor(_:)
             )
         } else {
-            swizzled_setBackGroundColor(backgroundColor)
+            __setBackGroundColor(backgroundColor)
         }
     }
     
@@ -110,7 +115,19 @@ private extension NSTextField {
                 action: __setTextColor(_:)
             )
         } else {
-            swizzled_setTextColor(textColor)
+            __setTextColor(textColor)
+        }
+    }
+    
+    @objc func swizzled_setAttributedStringValue(_ attributedStringValue: NSAttributedString) {
+        if let param = Callable.Appearanced.appearanced(attributedString: attributedStringValue) {
+            cache(appearanceCallable: Callable.One(
+                firstParam: param,
+                identifier: .attributedStringValue,
+                action: __setAttributedStringValue(_:)
+            ))
+        } else {
+            __setAttributedStringValue(attributedStringValue)
         }
     }
 }

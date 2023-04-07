@@ -21,20 +21,10 @@ private extension UIControl.State {
 
 public extension UIButton {
     func app_setTitleColor(_ titleColor: UIColor?, for controlState: State) {
-        if __USING_APPEARANCED_SWIZZING__ || titleColor?.appearanceIdentifier == nil {
+        if __USING_APPEARANCED_SWIZZING__ {
             setTitleColor(titleColor, for: controlState)
         } else {
-            if let titleColor {
-                cache(
-                    valA: titleColor,
-                    valB: controlState,
-                    identifier: .setTitleColorForControlState,
-                    action: __setTitleColor(_:for:),
-                    category: controlState.appearancedCategory
-                )
-            } else {
-                __setTitleColor(nil, for: controlState)
-            }
+            swizzled_setTitleColor(titleColor, for: controlState)
         }
     }
 }
@@ -67,7 +57,7 @@ private extension UIButton {
                 category: controlState.appearancedCategory
             )
         } else {
-            swizzled_setTitleColor(titleColor, for: controlState)
+            __setTitleColor(titleColor, for: controlState)
         }
     }
 }

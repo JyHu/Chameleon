@@ -15,23 +15,13 @@ private extension AppearanceCallableIdentifier {
 
 public extension NSImageView {
     var app_image: NSImage? {
+        get { image }
         set {
-            if __USING_APPEARANCED_SWIZZING__, newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 image = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .image,
-                        action: __setImage(_:)
-                    )
-                } else {
-                    __setImage(nil)
-                }
+                swizzled_setImage(newValue)
             }
-        }
-        get {
-            image
         }
     }
 }
@@ -62,6 +52,8 @@ private extension NSImageView {
                 identifier: .image,
                 action: __setImage(_:)
             )
+        } else {
+            __setImage(image)
         }
     }
 }

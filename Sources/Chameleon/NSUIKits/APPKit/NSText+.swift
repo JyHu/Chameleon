@@ -16,57 +16,32 @@ private extension AppearanceCallableIdentifier {
 
 public extension NSText {
     var app_text_textColor: NSColor? {
+        get { textColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 textColor = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .textColor,
-                        action: __text_setTextColor(_:)
-                    )
-                } else {
-                    __text_setTextColor(nil)
-                }
+                swizzled_text_setTextColor(newValue)
             }
         }
-        get { textColor }
     }
     
     var app_text_backgroundColor: NSColor? {
+        get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue?.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 backgroundColor = newValue
             } else {
-                if let newValue {
-                    cache(
-                        valA: newValue,
-                        identifier: .backgroundColor,
-                        action: __text_setBackgroundColor(_:)
-                    )
-                } else {
-                    __text_setBackgroundColor(nil)
-                }
+                swizzled_text_setBackgroundColor(newValue)
             }
         }
-        get { backgroundColor }
     }
     
     func app_setTextColor(_ color: NSColor?, range: NSRange) {
-        if __USING_APPEARANCED_SWIZZING__ || color?.appearanceIdentifier == nil {
+        if __USING_APPEARANCED_SWIZZING__ {
             setTextColor(color, range: range)
         } else {
-            if let color {
-                cache(
-                    valA: color,
-                    valB: range,
-                    identifier: .textColorRange,
-                    action: __setTextColor(_:range:)
-                )
-            } else {
-                __setTextColor(nil, range: range)
-            }
+            swizzled_setTextColor(color, range: range)
         }
     }
     
@@ -126,7 +101,7 @@ private extension NSText {
                 action: __text_setTextColor(_:)
             )
         } else {
-            swizzled_text_setTextColor(textColor)
+            __text_setTextColor(textColor)
         }
     }
     
@@ -138,7 +113,7 @@ private extension NSText {
                 action: __text_setBackgroundColor(_:)
             )
         } else {
-            swizzled_text_setBackgroundColor(backgroundColor)
+            __text_setBackgroundColor(backgroundColor)
         }
     }
     
@@ -151,7 +126,7 @@ private extension NSText {
                 action: __setTextColor(_:range:)
             )
         } else {
-            swizzled_setTextColor(color, range: range)
+            __setTextColor(color, range: range)
         }
     }
 }

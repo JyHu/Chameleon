@@ -18,6 +18,8 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var testTextField: NSTextField!
     
+    @IBOutlet weak var multilineLabel: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,6 +42,11 @@ class ViewController: NSViewController {
         testTextField.app_backgroundColor = .C107
         testTextField.app_textColor = .C005
         
+        let attributedString = NSMutableAttributedString(string: "Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.")
+        attributedString.addAttributes([.foregroundColor: NSColor.C002], range: NSMakeRange(0, 4))
+        attributedString.addAttributes([.foregroundColor: NSColor.C006], range: NSMakeRange(8, 5))
+        attributedString.addAttributes([.font: NSFont.systemFont(ofSize: 18)], range: NSMakeRange(2, 10))
+        multilineLabel.app_attributedStringValue = attributedString
         
 //        testBox.borderColor = .c002
 //        testBox.fillColor = .priceColor

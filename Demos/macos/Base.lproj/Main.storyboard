@@ -800,21 +800,36 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4r6-KZ-Cy3">
+                                <rect key="frame" x="230" y="66" width="198" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="mdN-Ma-71v"/>
+                                    <constraint firstAttribute="width" constant="194" id="wVo-tf-bOs"/>
+                                </constraints>
+                                <textFieldCell key="cell" selectable="YES" title="Multiline Label" id="lCf-Dy-tD0">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="8Mk-u7-XE2" firstAttribute="top" secondItem="mXm-d6-z4p" secondAttribute="bottom" constant="20" id="2Ek-M9-cxL"/>
                             <constraint firstItem="bV2-Za-gzQ" firstAttribute="top" secondItem="xSq-a1-6PH" secondAttribute="bottom" constant="8" symbolic="YES" id="9El-5H-NhI"/>
                             <constraint firstItem="mXm-d6-z4p" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="43" id="9I5-IP-L9j"/>
+                            <constraint firstItem="4r6-KZ-Cy3" firstAttribute="leading" secondItem="dgB-jP-oln" secondAttribute="trailing" constant="26" id="K44-0P-IyD"/>
                             <constraint firstItem="8Mk-u7-XE2" firstAttribute="leading" secondItem="dgB-jP-oln" secondAttribute="trailing" constant="24" id="LcK-Qy-f6O"/>
                             <constraint firstItem="dgB-jP-oln" firstAttribute="top" secondItem="bV2-Za-gzQ" secondAttribute="bottom" constant="20" id="O3M-FY-p96"/>
                             <constraint firstItem="dgB-jP-oln" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="OoB-hi-DS2"/>
                             <constraint firstItem="xSq-a1-6PH" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="PXi-9M-q90"/>
                             <constraint firstItem="xSq-a1-6PH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="iWO-5Z-I3P"/>
+                            <constraint firstItem="4r6-KZ-Cy3" firstAttribute="top" secondItem="8Mk-u7-XE2" secondAttribute="bottom" constant="8" symbolic="YES" id="j6w-Ph-pEQ"/>
                             <constraint firstItem="mXm-d6-z4p" firstAttribute="leading" secondItem="bV2-Za-gzQ" secondAttribute="trailing" constant="24" id="mht-2c-oaw"/>
                             <constraint firstItem="bV2-Za-gzQ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="oxB-YH-7Ui"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="multilineLabel" destination="4r6-KZ-Cy3" id="1Hn-Ye-mFk"/>
                         <outlet property="testBox" destination="mXm-d6-z4p" id="vE8-RA-cG0"/>
                         <outlet property="testTextField" destination="8Mk-u7-XE2" id="zxd-qY-0oY"/>
                         <outlet property="testTextView" destination="zjq-hS-zoI" id="cm6-go-zCk"/>

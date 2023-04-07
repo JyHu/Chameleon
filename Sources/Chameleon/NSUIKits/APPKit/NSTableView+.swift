@@ -17,49 +17,32 @@ private extension AppearanceCallableIdentifier {
 
 public extension NSTableView {
     var app_backgroundColor: NSColor {
+        get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 backgroundColor = newValue
             } else {
-                cache(
-                    valA: newValue,
-                    identifier: .backgroundColor,
-                    action: __setBackgroundColor(_:)
-                )
+                swizzled_setBackgroundColor(newValue)
             }
-        }
-        get {
-            backgroundColor
         }
     }
     
     var app_gridColor: NSColor {
+        get { gridColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ || newValue.appearanceIdentifier == nil {
+            if __USING_APPEARANCED_SWIZZING__ {
                 gridColor = newValue
             } else {
-                cache(
-                    valA: newValue,
-                    identifier: .gridColor,
-                    action: __setGridColor(_:)
-                )
+                swizzled_setGridColor(newValue)
             }
-        }
-        get {
-            gridColor
         }
     }
     
     func app_setIndicatorImage(_ image: NSImage, in tableColumn: NSTableColumn) {
-        if __USING_APPEARANCED_SWIZZING__ || image.appearanceIdentifier == nil {
+        if __USING_APPEARANCED_SWIZZING__ {
             setIndicatorImage(image, in: tableColumn)
         } else {
-            cache(
-                valA: image,
-                valB: tableColumn,
-                identifier: .setIndicatorImageInTableColumn,
-                action: __setIndicatorImage(_:in:)
-            )
+            swizzled_setIndicatorImage(image, in: tableColumn)
         }
     }
 }
@@ -117,7 +100,7 @@ private extension NSTableView {
                 action: __setBackgroundColor(_:)
             )
         } else {
-            swizzled_setBackgroundColor(backgroundColor)
+            __setBackgroundColor(backgroundColor)
         }
     }
     
@@ -129,7 +112,7 @@ private extension NSTableView {
                 action: __setGridColor(_:)
             )
         } else {
-            swizzled_setGridColor(gridColor)
+            __setGridColor(gridColor)
         }
     }
     
@@ -142,7 +125,7 @@ private extension NSTableView {
                 action: __setIndicatorImage(_:in:)
             )
         } else {
-            swizzled_setIndicatorImage(image, in: tableColumn)
+            __setIndicatorImage(image, in: tableColumn)
         }
     }
 }
