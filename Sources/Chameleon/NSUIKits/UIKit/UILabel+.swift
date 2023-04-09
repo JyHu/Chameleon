@@ -11,6 +11,7 @@ import UIKit
 
 private extension AppearanceCallableIdentifier {
     static let textColor = "UILabel.__setTextColor(_:)"
+    static let attributedText = "UILabel.__setAttributedText(_:)"
 }
 
 public extension UILabel {
@@ -21,6 +22,17 @@ public extension UILabel {
                 textColor = newValue
             } else {
                 swizzled_setTextColor(newValue)
+            }
+        }
+    }
+    
+    var app_attributedText: NSAttributedString? {
+        get { attributedText }
+        set {
+            if __USING_APPEARANCED_SWIZZING__ {
+                attributedText = newValue
+            } else {
+                swizzled_setAttributedTitle(newValue)
             }
         }
     }
@@ -44,11 +56,27 @@ private extension UILabel {
         }
     }
     
+    func __setAttributedText(_ attributedText: NSAttributedString?) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            swizzled_setAttributedTitle(attributedText)
+        } else {
+            self.attributedText = attributedText
+        }
+    }
+    
     @objc func swizzled_setTextColor(_ textColor: UIColor) {
         cache(
             valA: textColor,
             identifier: .textColor,
             action: __setTextColor(_:)
+        )
+    }
+    
+    @objc func swizzled_setAttributedTitle(_ attributedText: NSAttributedString?) {
+        cache(
+            valA: attributedText,
+            identifier: .attributedText,
+            action: __setAttributedText(_:)
         )
     }
 }

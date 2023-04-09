@@ -10,7 +10,9 @@
 import UIKit
 
 private extension AppearanceCallableIdentifier {
-    static let setTitleColorForControlState = "UIButton.__setTitleColor(_:for:)"
+    static let setTitleColorForState = "UIButton.__setTitleColor(_:for:)"
+    static let setImageForState = "UIButton.__setImage(_:for:)"
+    static let setAttributedTitleForState = "UIButton.__setAttributedTitle(_:for:)"
 }
 
 private extension UIControl.State {
@@ -20,11 +22,27 @@ private extension UIControl.State {
 }
 
 public extension UIButton {
-    func app_setTitleColor(_ titleColor: UIColor?, for controlState: State) {
+    func app_setTitleColor(_ titleColor: UIColor?, for state: State) {
         if __USING_APPEARANCED_SWIZZING__ {
-            setTitleColor(titleColor, for: controlState)
+            setTitleColor(titleColor, for: state)
         } else {
-            swizzled_setTitleColor(titleColor, for: controlState)
+            swizzled_setTitleColor(titleColor, for: state)
+        }
+    }
+    
+    func app_setImage(_ image: UIImage?, for state: State) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            setImage(image, for: state)
+        } else {
+            swizzled_setImage(image, for: state)
+        }
+    }
+    
+    func app_setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            setAttributedTitle(attributedTitle, for: state)
+        } else {
+            swizzled_setAttributedTitle(attributedTitle, for: state)
         }
     }
 }
@@ -35,25 +53,71 @@ internal extension UIButton {
             originalSelector: #selector(setTitleColor(_:for:)),
             newSelector: #selector(swizzled_setTitleColor(_:for:))
         )
+        
+        app_swizzing(
+            originalSelector: #selector(setImage(_:for:)),
+            newSelector: #selector(swizzled_setImage(_:for:))
+        )
+        
+        app_swizzing(
+            originalSelector: #selector(setAttributedTitle(_:for:)),
+            newSelector: #selector(swizzled_setAttributedTitle(_:for:))
+        )
     }
 }
 
 private extension UIButton {
-    func __setTitleColor(_ titleColor: UIColor?, for controlState: State) {
+    func __setTitleColor(_ titleColor: UIColor?, for state: State) {
         if __USING_APPEARANCED_SWIZZING__ {
-            swizzled_setTitleColor(titleColor, for: controlState)
+            swizzled_setTitleColor(titleColor, for: state)
         } else {
-            setTitleColor(titleColor, for: controlState)
+            setTitleColor(titleColor, for: state)
         }
     }
     
-    @objc func swizzled_setTitleColor(_ titleColor: UIColor?, for controlState: State) {
+    func __setImage(_ image: UIImage?, for state: State) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            swizzled_setImage(image, for: state)
+        } else {
+            setImage(image, for: state)
+        }
+    }
+    
+    func __setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            swizzled_setAttributedTitle(attributedTitle, for: state)
+        } else {
+            setAttributedTitle(attributedTitle, for: state)
+        }
+    }
+    
+    @objc func swizzled_setTitleColor(_ titleColor: UIColor?, for state: State) {
         cache(
             valA: titleColor,
-            valB: controlState,
-            identifier: .setTitleColorForControlState,
+            valB: state,
+            identifier: .setTitleColorForState,
             action: __setTitleColor(_:for:),
-            category: controlState.appearancedCategory
+            category: state.appearancedCategory
+        )
+    }
+    
+    @objc func swizzled_setImage(_ image: UIImage?, for state: State) {
+        cache(
+            valA: image,
+            valB: state,
+            identifier: .setImageForState,
+            action: __setImage(_:for:),
+            category: state.appearancedCategory
+        )
+    }
+    
+    @objc func swizzled_setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
+        cache(
+            valA: attributedTitle,
+            valB: state,
+            identifier: .setAttributedTitleForState,
+            action: __setAttributedTitle(_:for:),
+            category: state.appearancedCategory
         )
     }
 }

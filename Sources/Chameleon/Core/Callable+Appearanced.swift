@@ -112,7 +112,10 @@ public extension Callable {
         /// 根据当前参数数据从换肤资源中获取对应有效的换肤数据
         public var correct: T {
             switch clsType {
-            case .attributedString: return ((original as? NSAttributedString)?.updateAppearancedValues(extra) as? T) ?? original
+            case .attributedString:
+                guard let elements = (extra as? [NSAttributedString.ColorElement]) else { return original }
+                guard let attributedString = original as? NSAttributedString else { return original }
+                return attributedString.updateAppearancedValues(elements) as? T ?? original
             default: break
             }
             /// 如果不支持换肤，返回原始值
@@ -124,7 +127,7 @@ public extension Callable {
             case .numeric(let numType):
                 let numVal = (try? AppearanceManager.shared.appearanceInfo(with: identifier))
                 return matchedAppearancedNumValue(from: numVal, of: numType) ?? original
-            case .attributedString: return ((original as? NSAttributedString)?.updateAppearancedValues(extra) as? T) ?? original
+            case .attributedString: return original /// 这里不会走，会在上面直接跳过
             case .other: return (try? AppearanceManager.shared.appearanceInfo(with: identifier)) as? T ?? original
             }
         }

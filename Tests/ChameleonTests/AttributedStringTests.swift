@@ -25,6 +25,7 @@ final class AttributedStringTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
         
+        #if os(macOS)
         let attributedString = NSMutableAttributedString(string: "Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.")
         attributedString.addAttributes([.foregroundColor: NSColor.red], range: NSMakeRange(0, 4))
         attributedString.addAttributes([.foregroundColor: NSColor.blue], range: NSMakeRange(8, 5))
@@ -45,6 +46,7 @@ final class AttributedStringTests: XCTestCase {
         attributedString.addAttributes([.foregroundColor: NSColor.cyan], range: NSMakeRange(8, 5))
         
         enumerated()
+        #endif
     }
 
     func testPerformanceExample() throws {
