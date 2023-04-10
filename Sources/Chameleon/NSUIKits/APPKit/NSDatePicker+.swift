@@ -71,7 +71,7 @@ private extension NSDatePicker {
     
     @objc func swizzled_setTextColor(_ textColor: NSColor) {
         cache(
-            valA: textColor,
+            firstParam: Callable.Appearanced(textColor),
             identifier: .textColor,
             action: __setTextColor(_:)
         )
@@ -79,7 +79,7 @@ private extension NSDatePicker {
     
     @objc func swizzled_setBackgroundColor(_ backgroundColor: NSColor) {
         cache(
-            valA: backgroundColor,
+            firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
             action: __setBackgroundColor(_:)
         )

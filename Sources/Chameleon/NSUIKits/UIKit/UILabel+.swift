@@ -66,7 +66,7 @@ private extension UILabel {
     
     @objc func swizzled_setTextColor(_ textColor: UIColor) {
         cache(
-            valA: textColor,
+            firstParam: Callable.Appearanced(textColor),
             identifier: .textColor,
             action: __setTextColor(_:)
         )
@@ -74,7 +74,7 @@ private extension UILabel {
     
     @objc func swizzled_setAttributedTitle(_ attributedText: NSAttributedString?) {
         cache(
-            valA: attributedText,
+            firstParam: Callable.Appearanced(attributedText),
             identifier: .attributedText,
             action: __setAttributedText(_:)
         )

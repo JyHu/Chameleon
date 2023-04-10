@@ -94,7 +94,7 @@ private extension NSTableView {
     
     @objc func swizzled_setBackgroundColor(_ backgroundColor: NSColor) {
         cache(
-            valA: backgroundColor,
+            firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
             action: __setBackgroundColor(_:)
         )
@@ -102,7 +102,7 @@ private extension NSTableView {
     
     @objc func swizzled_setGridColor(_ gridColor: NSColor) {
         cache(
-            valA: gridColor,
+            firstParam: Callable.Appearanced(gridColor),
             identifier: .gridColor,
             action: __setGridColor(_:)
         )
@@ -110,8 +110,8 @@ private extension NSTableView {
     
     @objc func swizzled_setIndicatorImage(_ image: NSImage, in tableColumn: NSTableColumn) {
         cache(
-            valA: image,
-            valB: tableColumn,
+            firstParam: Callable.Appearanced(image),
+            secondParam: Callable.Mediator(tableColumn),
             identifier: .setIndicatorImageInTableColumn,
             action: __setIndicatorImage(_:in:)
         )

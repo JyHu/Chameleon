@@ -98,7 +98,7 @@ private extension NSTextView {
     
     @objc func swizzled_setInsertionPointColor(_ insertionPointColor: NSColor) {
         cache(
-            valA: insertionPointColor,
+            firstParam: Callable.Appearanced(insertionPointColor),
             identifier: .insertionPointColor,
             action: __setInsertionPointColor(_:)
         )
@@ -106,7 +106,7 @@ private extension NSTextView {
     
     @objc func swizzled_setBackgroundColor(_ backgroundColor: NSColor) {
         cache(
-            valA: backgroundColor,
+            firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
             action: __setBackgroundColor(_:)
         )
@@ -114,7 +114,7 @@ private extension NSTextView {
     
     @objc func swizzled_setTextColor(_ textColor: NSColor?) {
         cache(
-            valA: textColor,
+            firstParam: Callable.Appearanced(textColor),
             identifier: .textColor,
             action: __setTextColor(_:)
         )

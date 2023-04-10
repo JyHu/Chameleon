@@ -93,8 +93,8 @@ private extension UIButton {
     
     @objc func swizzled_setTitleColor(_ titleColor: UIColor?, for state: State) {
         cache(
-            valA: titleColor,
-            valB: state,
+            firstParam: Callable.Appearanced(titleColor),
+            secondParam: Callable.Mediator(state),
             identifier: .setTitleColorForState,
             action: __setTitleColor(_:for:),
             category: state.appearancedCategory
@@ -103,8 +103,8 @@ private extension UIButton {
     
     @objc func swizzled_setImage(_ image: UIImage?, for state: State) {
         cache(
-            valA: image,
-            valB: state,
+            firstParam: Callable.Appearanced(image),
+            secondParam: Callable.Mediator(state),
             identifier: .setImageForState,
             action: __setImage(_:for:),
             category: state.appearancedCategory
@@ -113,8 +113,8 @@ private extension UIButton {
     
     @objc func swizzled_setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
         cache(
-            valA: attributedTitle,
-            valB: state,
+            firstParam: Callable.Appearanced(attributedTitle),
+            secondParam: Callable.Mediator(state),
             identifier: .setAttributedTitleForState,
             action: __setAttributedTitle(_:for:),
             category: state.appearancedCategory

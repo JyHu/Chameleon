@@ -97,7 +97,7 @@ private extension NSTextField {
     
     @objc func swizzled_setBackGroundColor(_ backgroundColor: NSColor?) {
         cache(
-            valA: backgroundColor,
+            firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
             action: __setBackGroundColor(_:)
         )
@@ -105,18 +105,18 @@ private extension NSTextField {
     
     @objc func swizzled_setTextColor(_ textColor: NSColor?) {
         cache(
-            valA: textColor,
+            firstParam: Callable.Appearanced(textColor),
             identifier: .textColor,
             action: __setTextColor(_:)
         )
     }
     
     @objc func swizzled_setAttributedStringValue(_ attributedStringValue: NSAttributedString) {
-        cache(appearanceCallable: Callable.One(
-            firstParam: attributedStringValue,
+        cache(
+            firstParam: Callable.Attributed(attributedStringValue),
             identifier: .attributedStringValue,
             action: __setAttributedStringValue(_:)
-        ))
+        )
     }
 }
 

@@ -71,7 +71,7 @@ private extension NSBox {
     
     @objc func swizzled_setFillColor(_ fillColor: NSColor) {
         cache(
-            valA: fillColor,
+            firstParam: Callable.Appearanced(fillColor),
             identifier: .fillColor,
             action: __setFillColor(_:)
         )
@@ -79,7 +79,7 @@ private extension NSBox {
     
     @objc func swizzled_setBorderColor(_ borderColor: NSColor) {
         cache(
-            valA: borderColor,
+            firstParam: Callable.Appearanced(borderColor),
             identifier: .borderColor,
             action: __setBorderColor(_:)
         )

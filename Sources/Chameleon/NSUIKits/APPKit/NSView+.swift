@@ -18,7 +18,7 @@ public extension NSView {
     var app_layerBackgroundColor: NSColor? {
         set {
             cache(
-                valA: newValue,
+                firstParam: Callable.Appearanced(newValue),
                 identifier: .layerBackgroundColor,
                 action: __setLayerBackgroundColor(_:)
             )
@@ -35,7 +35,7 @@ public extension NSView {
     var app_layerBorderColor: NSColor? {
         set {
             cache(
-                valA: newValue,
+                firstParam: Callable.Appearanced(newValue),
                 identifier: .layerBorderColor,
                 action: __setLayerBorderColor(_:)
             )

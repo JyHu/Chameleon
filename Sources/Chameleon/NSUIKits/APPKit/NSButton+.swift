@@ -171,7 +171,7 @@ private extension NSButton {
     
     @objc func swizzled_setBezelColor(_ bezelColor: NSColor?) {
         cache(
-            valA: bezelColor,
+            firstParam: Callable.Appearanced(bezelColor),
             identifier: .bezelColor,
             action: __setBezelColor(_:)
         )
@@ -179,7 +179,7 @@ private extension NSButton {
     
     @objc func swizzled_setContentTintColor(_ contentTintColor: NSColor?) {
         cache(
-            valA: contentTintColor,
+            firstParam: Callable.Appearanced(contentTintColor),
             identifier: .contentTintColor,
             action: __setContentTintColor(_:)
         )
@@ -187,7 +187,7 @@ private extension NSButton {
     
     @objc func swizzled_setImage(_ image: NSImage?) {
         cache(
-            valA: image,
+            firstParam: Callable.Appearanced(image),
             identifier: .image,
             action: __setImage(_:)
         )
@@ -195,7 +195,7 @@ private extension NSButton {
     
     @objc func swizzled_setAlternateImage(_ alternateImage: NSImage?) {
         cache(
-            valA: alternateImage,
+            firstParam: Callable.Appearanced(alternateImage),
             identifier: .alternateImage,
             action: __setAlternateImage(_:)
         )
@@ -203,7 +203,7 @@ private extension NSButton {
     
     @objc func swizzled_setAttributedTitle(_ attributedTitle: NSAttributedString) {
         cache(
-            valA: attributedTitle,
+            firstParam: Callable.Attributed(attributedTitle),
             identifier: .attributedTitle,
             action: __setAttributedTitle(_:)
         )
@@ -211,7 +211,7 @@ private extension NSButton {
     
     @objc func swizzled_setAttributedAlternateTitle(_ attributedAlternateTitle: NSAttributedString) {
         cache(
-            valA: attributedAlternateTitle,
+            firstParam: Callable.Attributed(attributedAlternateTitle),
             identifier: .attributedAlternateTitle,
             action: __setAttributedAlternateTitle(_:)
         )

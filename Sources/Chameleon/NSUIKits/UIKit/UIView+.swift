@@ -46,7 +46,7 @@ private extension UIView {
     
     @objc func swizzled_setBackgroundColor(_ backgroundColor: UIColor?) {
         cache(
-            valA: backgroundColor,
+            firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
             action: __setBackgroundColor(_:)
         )

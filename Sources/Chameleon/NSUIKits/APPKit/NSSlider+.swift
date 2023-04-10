@@ -47,7 +47,7 @@ private extension NSSlider {
     
     @objc func swizzled_setTrackFillColor(_ trackFillColor: NSColor?) {
         cache(
-            valA: trackFillColor,
+            firstParam: Callable.Appearanced(trackFillColor),
             identifier: .trackFillColor,
             action: __setTrackFillColor(_:)
         )

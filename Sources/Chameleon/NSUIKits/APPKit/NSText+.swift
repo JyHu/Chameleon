@@ -95,7 +95,7 @@ private extension NSText {
     
     @objc func swizzled_text_setTextColor(_ textColor: NSColor?) {
         cache(
-            valA: textColor,
+            firstParam: Callable.Appearanced(textColor),
             identifier: .textColor,
             action: __text_setTextColor(_:)
         )
@@ -103,7 +103,7 @@ private extension NSText {
     
     @objc func swizzled_text_setBackgroundColor(_ backgroundColor: NSColor?) {
         cache(
-            valA: backgroundColor,
+            firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
             action: __text_setBackgroundColor(_:)
         )
@@ -111,8 +111,8 @@ private extension NSText {
     
     @objc func swizzled_setTextColor(_ color: NSColor?, range: NSRange) {
         cache(
-            valA: color,
-            valB: range,
+            firstParam: Callable.Appearanced(color),
+            secondParam: Callable.Mediator(range),
             identifier: .textColorRange,
             action: __setTextColor(_:range:)
         )

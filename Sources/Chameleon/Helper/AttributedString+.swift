@@ -19,7 +19,7 @@ public extension NSAttributedString {
     }
     
     /// 获取当前富文本的所有颜色属性的位置信息
-    func colorAppearancedElements() -> [ColorElement]? {
+    func colorAppearancedElements() -> [ColorElement] {
         var elements: [ColorElement] = []
         
         /// 枚举所有有效的颜色属性信息
@@ -29,7 +29,7 @@ public extension NSAttributedString {
             elements.append(ColorElement(color: color, identifier: appearanceIdentifier, range: range))
         }
         
-        return elements.count == 0 ? nil : elements
+        return elements
     }
     
     ///

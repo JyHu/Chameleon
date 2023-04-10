@@ -11,7 +11,11 @@ import Chameleon
 extension NSBox {
     var app_borderWidth: CGFloat {
         set {
-            cache(appearanceCallable: Callable.One(firstParam: .appearanced(newValue, identifier: "others/border/width"), identifier: "NSBox.__setBorderWidth(_:)", action: __setBorderWidth(_:)))
+            cache(appearanceCallable: Callable.One(
+                firstParam: Callable.Appearanced(newValue, identifier: "others/border/width"),
+                identifier: "NSBox.__setBorderWidth(_:)",
+                action: __setBorderWidth(_:))
+            )
         }
         get {
             borderWidth
@@ -21,8 +25,8 @@ extension NSBox {
     func customized(color1: NSColor, color2: NSColor) {
         cache(appearanceCallable:
                 Callable.Two(
-                    firstParam: .appearanced(color1, identifier: color1.appearanceIdentifier, clsType: .other),
-                    secondParam: .appearanced(color2, identifier: color2.appearanceIdentifier, clsType: .other),
+                    firstParam: Callable.Appearanced(color1, identifier: color1.appearanceIdentifier, clsType: .other),
+                    secondParam: Callable.Appearanced(color2, identifier: color2.appearanceIdentifier, clsType: .other),
                     identifier: "NSBox.__customized(color1:color2:)",
                     action: __customized(color1:color2:)
                 )

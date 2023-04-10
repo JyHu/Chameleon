@@ -47,7 +47,7 @@ private extension NSImageView {
     
     @objc func swizzled_setImage(_ image: NSImage?) {
         cache(
-            valA: image,
+            firstParam: Callable.Appearanced(image),
             identifier: .image,
             action: __setImage(_:)
         )

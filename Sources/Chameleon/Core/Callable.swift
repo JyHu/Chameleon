@@ -32,29 +32,17 @@ public struct Callable { }
 public extension Callable {
     
     /// 只有一个入参的换肤方法
-    struct One<A>: CallableProtocol {
+    struct One<A>: CallableProtocol where A: AppearancedProtocol {
         public let identifier: AppearanceCallableIdentifier
-        public let firstParam: Appearanced<A>
-        public let action: (A) -> Void
+        public let firstParam: A
+        public let action: (A.InputType) -> Void
         public let category: AppearanceCallableCategory
         public var isAppearanced: Bool { return firstParam.isAppearanced }
         
         public init(
             firstParam: A,
             identifier: AppearanceCallableIdentifier,
-            action: @escaping (A) -> Void,
-            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
-        ) {
-            self.firstParam = Appearanced(original: firstParam)
-            self.identifier = identifier
-            self.action = action
-            self.category = category
-        }
-        
-        public init(
-            firstParam: Appearanced<A>,
-            identifier: AppearanceCallableIdentifier,
-            action: @escaping (A) -> Void,
+            action: @escaping (A.InputType) -> Void,
             category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = firstParam
@@ -69,32 +57,18 @@ public extension Callable {
     }
     
     /// 有两个入参的换肤方法
-    struct Two<A, B>: CallableProtocol {
+    struct Two<A, B>: CallableProtocol where A: AppearancedProtocol, B: AppearancedProtocol {
         public let identifier: AppearanceCallableIdentifier
-        public let firstParam: Appearanced<A>
-        public let secondParam: Appearanced<B>
-        public let action: (A, B) -> Void
+        public let firstParam: A
+        public let secondParam: B
+        public let action: (A.InputType, B.InputType) -> Void
         public let category: AppearanceCallableCategory
         public var isAppearanced: Bool { firstParam.isAppearanced || secondParam.isAppearanced }
         
         public init(
             firstParam: A, secondParam: B,
             identifier: AppearanceCallableIdentifier,
-            action: @escaping (A, B) -> Void,
-            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
-        ) {
-            self.firstParam = Appearanced(original: firstParam)
-            self.secondParam = Appearanced(original: secondParam)
-            self.identifier = identifier
-            self.action = action
-            self.category = category
-        }
-        
-        public init(
-            firstParam: Appearanced<A>,
-            secondParam: Appearanced<B>,
-            identifier: AppearanceCallableIdentifier,
-            action: @escaping (A, B) -> Void,
+            action: @escaping (A.InputType, B.InputType) -> Void,
             category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = firstParam
@@ -110,12 +84,12 @@ public extension Callable {
     }
     
     /// 有三个入参的换肤方法
-    struct Three<A, B, C>: CallableProtocol {
+    struct Three<A, B, C>: CallableProtocol where A: AppearancedProtocol, B: AppearancedProtocol, C: AppearancedProtocol {
         public let identifier: AppearanceCallableIdentifier
-        public let firstParam: Appearanced<A>
-        public let secondParam: Appearanced<B>
-        public let thirdParam: Appearanced<C>
-        public let action: (A, B, C) -> Void
+        public let firstParam: A
+        public let secondParam: B
+        public let thirdParam: C
+        public let action: (A.InputType, B.InputType, C.InputType) -> Void
         public var category: AppearanceCallableCategory
         public var isAppearanced: Bool {
             firstParam.isAppearanced ||
@@ -126,23 +100,7 @@ public extension Callable {
         public init(
             firstParam: A, secondParam: B, thirdParam: C,
             identifier: AppearanceCallableIdentifier,
-            action: @escaping (A, B, C) -> Void,
-            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
-        ) {
-            self.firstParam = Appearanced(original: firstParam)
-            self.secondParam = Appearanced(original: secondParam)
-            self.thirdParam = Appearanced(original: thirdParam)
-            self.identifier = identifier
-            self.action = action
-            self.category = category
-        }
-        
-        public init(
-            firstParam: Appearanced<A>,
-            secondParam: Appearanced<B>,
-            thirdParam: Appearanced<C>,
-            identifier: AppearanceCallableIdentifier,
-            action: @escaping (A, B, C) -> Void,
+            action: @escaping (A.InputType, B.InputType, C.InputType) -> Void,
             category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = firstParam
@@ -163,13 +121,13 @@ public extension Callable {
     }
     
     /// 有四个入参的换肤方法
-    struct Four<A, B, C, D>: CallableProtocol {
+    struct Four<A, B, C, D>: CallableProtocol where A: AppearancedProtocol, B: AppearancedProtocol, C: AppearancedProtocol, D: AppearancedProtocol {
         public let identifier: AppearanceCallableIdentifier
-        public let firstParam: Appearanced<A>
-        public let secondParam: Appearanced<B>
-        public let thirdParam: Appearanced<C>
-        public let fourthParam: Appearanced<D>
-        public let action: (A, B, C, D) -> Void
+        public let firstParam: A
+        public let secondParam: B
+        public let thirdParam: C
+        public let fourthParam: D
+        public let action: (A.InputType, B.InputType, C.InputType, D.InputType) -> Void
         public var category: AppearanceCallableCategory
         public var isAppearanced: Bool {
             firstParam.isAppearanced ||
@@ -181,25 +139,7 @@ public extension Callable {
         public init(
             firstParam: A, secondParam: B, thirdParam: C, fourthParam: D,
             identifier: AppearanceCallableIdentifier,
-            action: @escaping (A, B, C, D) -> Void,
-            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
-        ) {
-            self.firstParam = Appearanced(original: firstParam)
-            self.secondParam = Appearanced(original: secondParam)
-            self.thirdParam = Appearanced(original: thirdParam)
-            self.fourthParam = Appearanced(original: fourthParam)
-            self.identifier = identifier
-            self.action = action
-            self.category = category
-        }
-        
-        public init(
-            firstParam: Appearanced<A>,
-            secondParam: Appearanced<B>,
-            thirdParam: Appearanced<C>,
-            fourthParam: Appearanced<D>,
-            identifier: AppearanceCallableIdentifier,
-            action: @escaping (A, B, C, D) -> Void,
+            action: @escaping (A.InputType, B.InputType, C.InputType, D.InputType) -> Void,
             category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = firstParam
@@ -222,14 +162,14 @@ public extension Callable {
     }
     
     /// 有五个入参的换肤方法
-    struct Five<A, B, C, D, E>: CallableProtocol {
+    struct Five<A, B, C, D, E>: CallableProtocol where A: AppearancedProtocol, B: AppearancedProtocol, C: AppearancedProtocol, D: AppearancedProtocol, E: AppearancedProtocol {
         public let identifier: AppearanceCallableIdentifier
-        public let firstParam: Appearanced<A>
-        public let secondParam: Appearanced<B>
-        public let thirdParam: Appearanced<C>
-        public let fourthParam: Appearanced<D>
-        public let fifthParam: Appearanced<E>
-        public let action: (A, B, C, D, E) -> Void
+        public let firstParam: A
+        public let secondParam: B
+        public let thirdParam: C
+        public let fourthParam: D
+        public let fifthParam: E
+        public let action: (A.InputType, B.InputType, C.InputType, D.InputType, E.InputType) -> Void
         public var category: AppearanceCallableCategory
         public var isAppearanced: Bool {
             firstParam.isAppearanced ||
@@ -242,27 +182,7 @@ public extension Callable {
         public init(
             firstParam: A, secondParam: B, thirdParam: C, fourthParam: D, fifthParam: E,
             identifier: AppearanceCallableIdentifier,
-            action: @escaping (A, B, C, D, E) -> Void,
-            category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
-        ) {
-            self.firstParam = Appearanced(original: firstParam)
-            self.secondParam = Appearanced(original: secondParam)
-            self.thirdParam = Appearanced(original: thirdParam)
-            self.fourthParam = Appearanced(original: fourthParam)
-            self.fifthParam = Appearanced(original: fifthParam)
-            self.identifier = identifier
-            self.action = action
-            self.category = category
-        }
-        
-        public init(
-            firstParam: Appearanced<A>,
-            secondParam: Appearanced<B>,
-            thirdParam: Appearanced<C>,
-            fourthParam: Appearanced<D>,
-            fifthParam: Appearanced<E>,
-            identifier: AppearanceCallableIdentifier,
-            action: @escaping (A, B, C, D, E) -> Void,
+            action: @escaping (A.InputType, B.InputType, C.InputType, D.InputType, E.InputType) -> Void,
             category: AppearanceCallableCategory = AppearanceDefaultCallableCategory
         ) {
             self.firstParam = firstParam

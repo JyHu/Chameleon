@@ -46,7 +46,7 @@ private extension NSWindow {
     
     @objc func swizzled_setBackgroundColor(_ backgroundColor: NSColor) {
         cache(
-            valA: backgroundColor,
+            firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
             action: __setBackgroundColor(_:)
         )
