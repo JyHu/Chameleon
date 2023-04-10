@@ -143,6 +143,10 @@ public extension NSObject {
     func removeCallable(with identifier: AppearanceCallableIdentifier, category: AppearanceCallableCategory = AppearanceDefaultCallableCategory) {
         cacher.cachedMethods[category]?.removeValue(forKey: identifier)
     }
+    
+    func findCallable(with identifier: AppearanceCallableIdentifier, category: AppearanceCallableCategory = AppearanceDefaultCallableCategory) -> CallableProtocol? {
+        return cacher.cachedMethods[category]?[identifier]
+    }
 }
 
 public extension NSObject {

@@ -22,11 +22,11 @@ extension NSBox {
         }
     }
     
-    func customized(color1: NSColor, color2: NSColor) {
+    func customized(color1: NSColor, color2: NSColor?) {
         cache(appearanceCallable:
                 Callable.Two(
-                    firstParam: Callable.Appearanced(color1, identifier: color1.appearanceIdentifier, clsType: .other),
-                    secondParam: Callable.Appearanced(color2, identifier: color2.appearanceIdentifier, clsType: .other),
+                    firstParam: Callable.Customized(color1, identifier: color1.appearanceIdentifier, converter: __colorConverter(_:)),
+                    secondParam: Callable.Customized(color2, identifier: color2?.appearanceIdentifier, converter: __colorConverter(_:)),
                     identifier: "NSBox.__customized(color1:color2:)",
                     action: __customized(color1:color2:)
                 )
@@ -39,7 +39,15 @@ private extension NSBox {
         self.borderWidth = borderWidth
     }
     
-    func __customized(color1: Any, color2: Any) {
-        print("--> \(color1), \(color2)")
+    func __customized(color1: NSColor, color2: NSColor?) {
+        print("--> \(color1), \(String(describing: color2))")
+    }
+    
+    func __colorConverter(_ appearanceInfo: Any?) -> NSColor? {
+        let callable = findCallable(with: "NSBox.__customized(color1:color2:)") as? Callable.Two<Callable.Customized<NSColor>, Callable.Customized<NSColor?>>
+        let p1 = callable?.firstParam.original
+        let p2 = callable?.secondParam.original
+        print("--> \(String(describing: appearanceInfo)) \(String(describing: p1)) \(String(describing: p2))")
+        return nil
     }
 }
