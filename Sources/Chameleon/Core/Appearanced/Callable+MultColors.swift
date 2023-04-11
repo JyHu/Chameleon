@@ -28,7 +28,7 @@ public extension Callable {
             self.original = original
             
             appearancedColors = original.map { Appearanced($0) }
-            isAppearanced = appearancedColors.contains(where: { $0.isAppearanced })
+            isAppearanced = appearancedColors.contains { $0.isAppearanced }
         }
     }
 }

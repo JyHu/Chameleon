@@ -10,8 +10,10 @@
 import UIKit
 
 private extension AppearanceCallableIdentifier {
+    static let tintColor = "UIButton.__setTintColor(_:)"
     static let setTitleColorForState = "UIButton.__setTitleColor(_:for:)"
     static let setImageForState = "UIButton.__setImage(_:for:)"
+    static let setBackgroundImageForState = "UIButton.__setBackgroundImage(_:for:)"
     static let setAttributedTitleForState = "UIButton.__setAttributedTitle(_:for:)"
 }
 
@@ -22,6 +24,17 @@ private extension UIControl.State {
 }
 
 public extension UIButton {
+    var app_tintColor: UIColor {
+        get { tintColor }
+        set {
+            if __USING_APPEARANCED_SWIZZING__ {
+                self.tintColor = newValue
+            } else {
+                swizzled_setTintColor(newValue)
+            }
+        }
+    }
+    
     func app_setTitleColor(_ titleColor: UIColor?, for state: State) {
         if __USING_APPEARANCED_SWIZZING__ {
             setTitleColor(titleColor, for: state)
@@ -38,6 +51,12 @@ public extension UIButton {
         }
     }
     
+    func app_setBackgroundImage(_ backgroundImage: UIImage?, for state: State) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            setBackgroundImage(backgroundImage, for: state)
+        }
+    }
+    
     func app_setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
         if __USING_APPEARANCED_SWIZZING__ {
             setAttributedTitle(attributedTitle, for: state)
@@ -50,6 +69,11 @@ public extension UIButton {
 internal extension UIButton {
     static func silenceExchangeButtonImplementation() {
         app_swizzing(
+            originalSelector: #selector(setter: tintColor),
+            newSelector: #selector(swizzled_setTintColor(_:))
+        )
+        
+        app_swizzing(
             originalSelector: #selector(setTitleColor(_:for:)),
             newSelector: #selector(swizzled_setTitleColor(_:for:))
         )
@@ -60,6 +84,11 @@ internal extension UIButton {
         )
         
         app_swizzing(
+            originalSelector: #selector(setBackgroundImage(_:for:)),
+            newSelector: #selector(swizzled_setBackgroundImage(_:for:))
+        )
+        
+        app_swizzing(
             originalSelector: #selector(setAttributedTitle(_:for:)),
             newSelector: #selector(swizzled_setAttributedTitle(_:for:))
         )
@@ -67,6 +96,14 @@ internal extension UIButton {
 }
 
 private extension UIButton {
+    func __setTintColor(_ tintColor: UIColor) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            swizzled_setTintColor(tintColor)
+        } else {
+            self.tintColor = tintColor
+        }
+    }
+    
     func __setTitleColor(_ titleColor: UIColor?, for state: State) {
         if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setTitleColor(titleColor, for: state)
@@ -83,12 +120,28 @@ private extension UIButton {
         }
     }
     
+    func __setBackgroundImage(_ backgroundImage: UIImage?, for state: State) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            swizzled_setBackgroundImage(backgroundImage, for: state)
+        } else {
+            setBackgroundImage(backgroundImage, for: state)
+        }
+    }
+    
     func __setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
         if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setAttributedTitle(attributedTitle, for: state)
         } else {
             setAttributedTitle(attributedTitle, for: state)
         }
+    }
+    
+    @objc func swizzled_setTintColor(_ tintColor: UIColor) {
+        cache(
+            firstParam: Callable.Appearanced(tintColor),
+            identifier: .tintColor,
+            action: __setTintColor(_:)
+        )
     }
     
     @objc func swizzled_setTitleColor(_ titleColor: UIColor?, for state: State) {
@@ -111,9 +164,24 @@ private extension UIButton {
         )
     }
     
-    @objc func swizzled_setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
+    @objc func swizzled_setBackgroundImage(_ backgroundImage: UIImage?, for state: State) {
         cache(
-            firstParam: Callable.Appearanced(attributedTitle),
+            firstParam: Callable.Appearanced(backgroundImage),
+            secondParam: Callable.Mediator(state),
+            identifier: .setBackgroundImageForState,
+            action: __setBackgroundImage(_:for:),
+            category: state.appearancedCategory
+        )
+    }
+    
+    @objc func swizzled_setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
+        guard let attributedTitle else {
+            __setAttributedTitle(attributedTitle, for: state)
+            return
+        }
+        
+        cache(
+            firstParam: Callable.Attributed(attributedTitle),
             secondParam: Callable.Mediator(state),
             identifier: .setAttributedTitleForState,
             action: __setAttributedTitle(_:for:),

@@ -14,6 +14,7 @@ private extension AppearanceCallableIdentifier {
     static let backgroundColor = "NSTextField.__setBackGroundColor(_:)"
     static let textColor = "NSTextField.__setTextColor(_:)"
     static let attributedStringValue = "NSTextField.__setAttributedStringValue(_:)"
+    static let placeholderAttributedString = "NSTextField.__setPlaceholderAttributedString(_:)"
 }
 
 public extension NSTextField {
@@ -49,6 +50,17 @@ public extension NSTextField {
             }
         }
     }
+    
+    var app_placeholderAttributedString: NSAttributedString? {
+        get { placeholderAttributedString }
+        set {
+            if __USING_APPEARANCED_SWIZZING__ {
+                placeholderAttributedString = newValue
+            } else {
+                swizzled_setPlaceholderAttributedString(newValue)
+            }
+        }
+    }
 }
 
 internal extension NSTextField {
@@ -66,6 +78,11 @@ internal extension NSTextField {
         app_swizzing(
             originalSelector: #selector(setter: attributedStringValue),
             newSelector: #selector(swizzled_setAttributedStringValue(_:))
+        )
+        
+        app_swizzing(
+            originalSelector: #selector(setter: placeholderAttributedString),
+            newSelector: #selector(swizzled_setPlaceholderAttributedString(_:))
         )
     }
 }
@@ -95,6 +112,14 @@ private extension NSTextField {
         }
     }
     
+    func __setPlaceholderAttributedString(_ placeholderAttributedString: NSAttributedString?) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            swizzled_setPlaceholderAttributedString(placeholderAttributedString)
+        } else {
+            self.placeholderAttributedString = placeholderAttributedString
+        }
+    }
+    
     @objc func swizzled_setBackGroundColor(_ backgroundColor: NSColor?) {
         cache(
             firstParam: Callable.Appearanced(backgroundColor),
@@ -116,6 +141,19 @@ private extension NSTextField {
             firstParam: Callable.Attributed(attributedStringValue),
             identifier: .attributedStringValue,
             action: __setAttributedStringValue(_:)
+        )
+    }
+    
+    @objc func swizzled_setPlaceholderAttributedString(_ placeholderAttributedString: NSAttributedString?) {
+        guard let placeholderAttributedString = placeholderAttributedString else {
+            __setPlaceholderAttributedString(placeholderAttributedString)
+            return
+        }
+        
+        cache(
+            firstParam: Callable.Attributed(placeholderAttributedString),
+            identifier: .placeholderAttributedString,
+            action: __setPlaceholderAttributedString(_:)
         )
     }
 }

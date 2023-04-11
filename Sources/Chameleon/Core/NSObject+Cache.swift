@@ -120,12 +120,12 @@ public extension NSObject {
     }
     
     @discardableResult
-    func cache<A, B, C, D, E>(firstParam: A, secondParam: B, thirdParam: C, fourthParam: D, fifthParam: E,
-                              identifier: AppearanceCallableIdentifier,
-                              action: @escaping ((A.InputType, B.InputType, C.InputType, D.InputType, E.InputType) -> Void),
-                              category: String = AppearanceDefaultCallableCategory
+    func cache<A, B, C, D, E>(
+        firstParam: A, secondParam: B, thirdParam: C, fourthParam: D, fifthParam: E,
+        identifier: AppearanceCallableIdentifier,
+        action: @escaping ((A.InputType, B.InputType, C.InputType, D.InputType, E.InputType) -> Void),
+        category: String = AppearanceDefaultCallableCategory
     ) -> Callable.Five<A, B, C, D, E> where A: AppearancedProtocol, B: AppearancedProtocol, C: AppearancedProtocol, D: AppearancedProtocol, E: AppearancedProtocol {
-        
         return cache(appearanceCallable:Callable.Five(
             firstParam: firstParam,
             secondParam: secondParam,
@@ -140,10 +140,20 @@ public extension NSObject {
 }
 
 public extension NSObject {
+    
+    /// 移除一个换肤方法执行对象
+    /// - Parameters:
+    ///   - identifier: 执行对象的唯一标识符
+    ///   - category: 所属的分类
     func removeCallable(with identifier: AppearanceCallableIdentifier, category: AppearanceCallableCategory = AppearanceDefaultCallableCategory) {
         cacher.cachedMethods[category]?.removeValue(forKey: identifier)
     }
     
+    /// 获取缓存的换肤方法执行对象
+    /// - Parameters:
+    ///   - identifier: 执行对象的唯一标识符
+    ///   - category: 所属的分类
+    /// - Returns: 查找到的缓存的对象
     func findCallable(with identifier: AppearanceCallableIdentifier, category: AppearanceCallableCategory = AppearanceDefaultCallableCategory) -> CallableProtocol? {
         return cacher.cachedMethods[category]?[identifier]
     }

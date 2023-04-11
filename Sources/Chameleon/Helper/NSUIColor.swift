@@ -13,10 +13,12 @@ import UIKit
 
 
 public extension NSUIAppearanceColor {
+    /// 使用颜色属性标识符，从换肤资源中找到对应的有效的颜色值
     static func colorWith(appearanceIdentifier: AppearanceCallableIdentifier) -> NSUIAppearanceColor? {
         return AppearanceManager.shared.color(with: appearanceIdentifier)
     }
     
+    /// 将颜色资源信息转换为有效的颜色值
     static func colorWith(appearancedValue: String) -> NSUIAppearanceColor? {
         if appearancedValue == "random" {
             return app_random()
@@ -44,6 +46,7 @@ public extension NSUIAppearanceColor {
 }
 
 internal extension NSUIAppearanceColor {
+    /// 生成随机颜色
     static func app_random() -> NSUIAppearanceColor {
         return app_colorWith(
             red: CGFloat(arc4random_uniform(256)),
@@ -52,6 +55,7 @@ internal extension NSUIAppearanceColor {
         )
     }
     
+    /// RGBA 颜色
     static func app_colorWith(hexAString: String) -> NSUIAppearanceColor? {
         let components = hexAString.components(separatedBy: " ")
         if components.count <= 1 {
@@ -76,6 +80,7 @@ internal extension NSUIAppearanceColor {
         return color.withAlphaComponent(alpha)
     }
     
+    /// 16进制色值字符串转换为颜色对象
     static func app_colorWith(hexString: String) -> NSUIAppearanceColor? {
         if hexString.isEmpty { return nil }
         var hexValue: UInt64 = 0
@@ -84,6 +89,7 @@ internal extension NSUIAppearanceColor {
         return app_colorWith(hexValue: hexValue)
     }
     
+    /// 16进制颜色值转换为颜色对象
     static func app_colorWith(hexValue: UInt64) -> NSUIAppearanceColor {
         return app_colorWith(
             red: CGFloat((hexValue & 0xFF0000) >> 16),
@@ -92,6 +98,7 @@ internal extension NSUIAppearanceColor {
         )
     }
     
+    /// 将RGBA转换为颜色对象
     static func app_colorWith(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1) -> NSUIAppearanceColor {
         return NSUIAppearanceColor(red: red / 255, green: green / 255, blue: blue / 255, alpha: alpha)
     }

@@ -295,6 +295,7 @@ extension String {
     var app_numberValue: NSNumber? { return NSDecimalNumber(string: self) }
 }
 
+/// 转换数值对象到匹配的类型
 internal func matchedAppearancedNumValue<T>(from numValue: Any?, of type: Callable.NumType) -> T? {
     if let numValue = numValue as? T {
         return numValue

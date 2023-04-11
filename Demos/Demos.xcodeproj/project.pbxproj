@@ -22,6 +22,7 @@
 		C85036EC29DBF1DE00374D58 /* ThemeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85036EB29DBF1DE00374D58 /* ThemeInfo.swift */; };
 		C85036ED29DBF1DE00374D58 /* ThemeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85036EB29DBF1DE00374D58 /* ThemeInfo.swift */; };
 		C85036EF29DBF3FD00374D58 /* TestColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85036EE29DBF3FD00374D58 /* TestColors.swift */; };
+		C8BD67BB29E4343600F0ED03 /* TestAppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BD67BA29E4343600F0ED03 /* TestAppearanceManager.swift */; };
 		C8E2D9E929DC4EE800275D08 /* TestColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85036EE29DBF3FD00374D58 /* TestColors.swift */; };
 		C8E2D9EB29DC816C00275D08 /* NSBox+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E2D9EA29DC816C00275D08 /* NSBox+.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		C85036E529DBF0C200374D58 /* Chameleon */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Chameleon; path = ..; sourceTree = "<group>"; };
 		C85036EB29DBF1DE00374D58 /* ThemeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInfo.swift; sourceTree = "<group>"; };
 		C85036EE29DBF3FD00374D58 /* TestColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestColors.swift; sourceTree = "<group>"; };
+		C8BD67BA29E4343600F0ED03 /* TestAppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppearanceManager.swift; sourceTree = "<group>"; };
 		C8E2D9EA29DC816C00275D08 /* NSBox+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBox+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 				C85036BE29DBF09900374D58 /* AppDelegate.swift */,
 				C85036C029DBF09900374D58 /* ViewController.swift */,
 				C8E2D9EA29DC816C00275D08 /* NSBox+.swift */,
+				C8BD67BA29E4343600F0ED03 /* TestAppearanceManager.swift */,
 				C85036C229DBF09A00374D58 /* Assets.xcassets */,
 				C85036C429DBF09A00374D58 /* Main.storyboard */,
 				C85036C729DBF09A00374D58 /* macos.entitlements */,
@@ -251,6 +254,7 @@
 				C85036EC29DBF1DE00374D58 /* ThemeInfo.swift in Sources */,
 				C85036BF29DBF09900374D58 /* AppDelegate.swift in Sources */,
 				C8E2D9EB29DC816C00275D08 /* NSBox+.swift in Sources */,
+				C8BD67BB29E4343600F0ED03 /* TestAppearanceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,9 @@ import UIKit
 
 private extension AppearanceCallableIdentifier {
     static let textColor = "UILabel.__setTextColor(_:)"
+    static let shadowColor = "UILabel.__setShadowColor(_:)"
     static let attributedText = "UILabel.__setAttributedText(_:)"
+    static let highlightedTextColor = "UILabel.__setHighlightedTextColor(_:)"
 }
 
 public extension UILabel {
@@ -19,9 +21,20 @@ public extension UILabel {
         get { textColor }
         set {
             if __USING_APPEARANCED_SWIZZING__ {
-                textColor = newValue
+                self.textColor = newValue
             } else {
                 swizzled_setTextColor(newValue)
+            }
+        }
+    }
+    
+    var app_shadowColor: UIColor? {
+        get { shadowColor }
+        set {
+            if __USING_APPEARANCED_SWIZZING__ {
+                self.shadowColor = newValue
+            } else {
+                swizzled_setShadowColor(newValue)
             }
         }
     }
@@ -30,9 +43,20 @@ public extension UILabel {
         get { attributedText }
         set {
             if __USING_APPEARANCED_SWIZZING__ {
-                attributedText = newValue
+                self.attributedText = newValue
             } else {
                 swizzled_setAttributedTitle(newValue)
+            }
+        }
+    }
+    
+    var app_highlightedTextColor: UIColor? {
+        get { highlightedTextColor }
+        set {
+            if __USING_APPEARANCED_SWIZZING__ {
+                self.highlightedTextColor = newValue
+            } else {
+                swizzled_setHighlightedTextColor(newValue)
             }
         }
     }
@@ -43,6 +67,21 @@ internal extension UILabel {
         app_swizzing(
             originalSelector: #selector(setter: textColor),
             newSelector: #selector(swizzled_setTextColor(_:))
+        )
+        
+        app_swizzing(
+            originalSelector: #selector(setter: shadowColor),
+            newSelector: #selector(swizzled_setShadowColor(_:))
+        )
+        
+        app_swizzing(
+            originalSelector: #selector(setter: attributedText),
+            newSelector: #selector(swizzled_setAttributedTitle(_:))
+        )
+        
+        app_swizzing(
+            originalSelector: #selector(setter: highlightedTextColor),
+            newSelector: #selector(swizzled_setHighlightedTextColor(_:))
         )
     }
 }
@@ -56,11 +95,27 @@ private extension UILabel {
         }
     }
     
+    func __setShadowColor(_ shadowColor: UIColor?) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            swizzled_setShadowColor(shadowColor)
+        } else {
+            self.shadowColor = shadowColor
+        }
+    }
+    
     func __setAttributedText(_ attributedText: NSAttributedString?) {
         if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setAttributedTitle(attributedText)
         } else {
             self.attributedText = attributedText
+        }
+    }
+    
+    func __setHighlightedTextColor(_ highlightedTextColor: UIColor?) {
+        if __USING_APPEARANCED_SWIZZING__ {
+            swizzled_setHighlightedTextColor(highlightedTextColor)
+        } else {
+            self.highlightedTextColor = highlightedTextColor
         }
     }
     
@@ -72,11 +127,27 @@ private extension UILabel {
         )
     }
     
+    @objc func swizzled_setShadowColor(_ shadowColor: UIColor?) {
+        cache(
+            firstParam: Callable.Appearanced(shadowColor),
+            identifier: .shadowColor,
+            action: __setShadowColor(_:)
+        )
+    }
+    
     @objc func swizzled_setAttributedTitle(_ attributedText: NSAttributedString?) {
         cache(
             firstParam: Callable.Appearanced(attributedText),
             identifier: .attributedText,
             action: __setAttributedText(_:)
+        )
+    }
+    
+    @objc func swizzled_setHighlightedTextColor(_ highlightedTextColor: UIColor?) {
+        cache(
+            firstParam: Callable.Appearanced(highlightedTextColor),
+            identifier: .highlightedTextColor,
+            action: __setHighlightedTextColor(_:)
         )
     }
 }

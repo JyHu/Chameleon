@@ -32,7 +32,7 @@ public extension NSAttributedString {
         return elements
     }
     
-    ///
+    /// 使用缓存的颜色属性位置信息来更新富文本
     func updateAppearancedValues(_ elements: [ColorElement]) -> NSAttributedString {        
         func getMutableAttributedString() -> NSMutableAttributedString {
             if let target = self as? NSMutableAttributedString {

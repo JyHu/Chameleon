@@ -8,6 +8,13 @@
 import Cocoa
 import Chameleon
 
+///
+///
+///
+/// 测试自定义换肤属性
+///
+///
+///
 extension NSBox {
     var app_borderWidth: CGFloat {
         set {
@@ -21,6 +28,19 @@ extension NSBox {
             borderWidth
         }
     }
+    
+//    var optionalAttributedString: NSAttributedString? {
+//        set {
+//            cache(
+//                firstParam: Callable.Attributed(newValue),
+//                identifier: "NSBox.__setOptionalAttributedString(_:)") { val in
+//                    print("--> \(val)")
+//                }
+//        }
+//        get {
+//            return nil
+//        }
+//    }
     
     func customized(color1: NSColor, color2: NSColor?) {
         cache(appearanceCallable:

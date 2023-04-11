@@ -17,6 +17,7 @@ public extension AppearanceManager {
     static func exchangeImplementations() {
         shared.useSwizzing()
         
+        
 #if os(macOS)
         NSBox.silenceExchangeBoxImplementation()
         NSButton.silenceExchangeButtonImplementation()
@@ -30,10 +31,37 @@ public extension AppearanceManager {
         NSTextView.silenceExchangeTextViewImplementation()
         /// NSView
         NSWindow.silenceExchangeWindowImplementation()
+        NSButtonTouchBarItem.silenceExchangeButtonTouchBarItemImplementation()
+        NSClipView.silenceExchangeClipViewImplementation()
+        NSPathControl.silenceExchangePathControlImplementation()
+        NSPathControlItem.silenceExchangePathControlItemImplementation()
+        NSTableRowView.silenceExchangeTableRowViewImplementation()
+        NSSegmentedControl.silenceExchangeSegmentedControlImplementation()
 #elseif canImport(UIKit)
         UIButton.silenceExchangeButtonImplementation()
         UILabel.silenceExchangeLabelImplementation()
         UIView.silenceExchangeViewImplementation()
+        UIActivityIndicatorView.silenceExchangeActivityIndicatorViewImplementation()
+        UIBarItem.silenceExchangeBarItemImplementation()
+        UIImageView.silenceExchangeImageViewImplementation()
+        UINavigationBar.silenceExchangeViewImplementation()
+        UIPageControl.silenceExchangePageControlImplementation()
+        UIProgressView.silenceExchangeProgressViewImplementation()
+        UIRefreshControl.silenceExchangeRefreshControlImplementation()
+        UISearchBar.silenceExchangeSearchBarImplementation()
+        UISegmentedControl.silenceExchangeSegmentedControlImplementation()
+        UISlider.silenceExchangeSliderImplementation()
+        UIStepper.silenceExchangeStepperImplementation()
+        UISwitch.silenceExchangeSwitchImplementation()
+        UITabBar.silenceExchangeTabBarImplementation()
+        UITableView.silenceExchangeTableViewImplementation()
+        UITextField.silenceExchangeTextFieldImplementation()
+        UITextView.silenceExchangeTextViewImplementation()
+        UIToolbar.silenceExchangeToolbarImplementation()
+        
+        if #available(iOS 13.0, *) {
+            UISearchTextField.silenceExchangeSearchTextFieldImplementation()
+        }
 #endif
     }
 }
