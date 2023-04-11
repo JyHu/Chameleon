@@ -175,11 +175,6 @@ private extension UIButton {
     }
     
     @objc func swizzled_setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
-        guard let attributedTitle else {
-            __setAttributedTitle(attributedTitle, for: state)
-            return
-        }
-        
         cache(
             firstParam: Callable.Attributed(attributedTitle),
             secondParam: Callable.Mediator(state),

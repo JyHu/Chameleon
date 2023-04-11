@@ -79,7 +79,6 @@ private extension NSPathControl {
     }
     
     @objc func swizzled_setPlaceholderAttributedString(_ placeholderAttributedString: NSAttributedString?) {
-        guard let placeholderAttributedString = placeholderAttributedString else { return }
         cache(
             firstParam: Callable.Attributed(placeholderAttributedString),
             identifier: .placeholderAttributedString,

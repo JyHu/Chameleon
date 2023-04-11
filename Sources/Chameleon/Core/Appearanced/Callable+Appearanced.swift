@@ -60,6 +60,11 @@ public extension Callable {
     }
     
     /// 对单个换肤参数的更高一层的包装，用于记录当前入参的一些通用属性
+    ///
+    ///
+    /// 该类支持Color、Image、常用数值类型的换肤属性支持
+    ///
+    ///
     struct Appearanced<T>: AppearancedProtocol {
         public typealias InputType = T
         

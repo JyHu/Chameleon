@@ -8,21 +8,38 @@
 import Foundation
 
 public extension Callable {
-    struct Attributed: AppearancedProtocol {
+    
+    ///
+    ///
+    ///
+    /// 该类支持富文本换肤属性的换肤支持
+    ///
+    ///
+    struct Attributed<T>: AppearancedProtocol {
+        public typealias InputType = T
         
-        public let original: NSAttributedString
+        public let original: T
         
         private let elements: [NSAttributedString.ColorElement]
         
         public var isAppearanced: Bool { elements.count > 0 }
         
-        public var correct: NSAttributedString {
-            original.updateAppearancedValues(elements)
+        public var correct: T {
+            ((original as? NSAttributedString)?.updateAppearancedValues(elements) as? T) ?? original
         }
-        
-        public init(_ original: NSAttributedString) {
-            self.original = original
-            self.elements = original.colorAppearancedElements()
-        }
+    }
+}
+
+public extension Callable.Attributed where T == NSAttributedString {
+    init(_ original: T) {
+        self.original = original
+        self.elements = original.colorAppearancedElements()
+    }
+}
+
+public extension Callable.Attributed where T == NSAttributedString? {
+    init(_ original: T) {
+        self.original = original
+        self.elements = original?.colorAppearancedElements() ?? []
     }
 }

@@ -46,7 +46,7 @@ public extension NSLevelIndicator {
     }
 }
 
-indirect extension NSLevelIndicator {
+internal extension NSLevelIndicator {
     
 }
 

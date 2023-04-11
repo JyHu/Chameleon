@@ -145,11 +145,6 @@ private extension NSTextField {
     }
     
     @objc func swizzled_setPlaceholderAttributedString(_ placeholderAttributedString: NSAttributedString?) {
-        guard let placeholderAttributedString = placeholderAttributedString else {
-            __setPlaceholderAttributedString(placeholderAttributedString)
-            return
-        }
-        
         cache(
             firstParam: Callable.Attributed(placeholderAttributedString),
             identifier: .placeholderAttributedString,

@@ -45,7 +45,7 @@ private extension NSCollectionView {
     
     @objc func swizzled_setBackgroundColors(_ backgroundColors: [NSColor]) {
         cache(
-            firstParam: Callable.MultColors(backgroundColors),
+            firstParam: Callable.Collection(backgroundColors),
             identifier: .backgroundColors,
             action: __setBackgroundColors(_:)
         )

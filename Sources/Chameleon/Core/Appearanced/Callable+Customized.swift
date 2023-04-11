@@ -8,6 +8,15 @@
 import Foundation
 
 public extension Callable {
+    ///
+    ///
+    ///
+    ///
+    /// 用于处理自定义的数据类型
+    ///
+    ///
+    ///
+    /// 
     struct Customized<T>: AppearancedProtocol {
         
         public typealias InputType = T

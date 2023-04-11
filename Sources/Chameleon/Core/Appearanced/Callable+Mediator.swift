@@ -8,6 +8,13 @@
 import Foundation
 
 public extension Callable {
+    ///
+    ///
+    ///
+    /// 过渡的中间类，不需要执行换肤操作的
+    ///
+    ///
+    ///
     struct Mediator<T>: AppearancedProtocol {
         public typealias InputType = T
 

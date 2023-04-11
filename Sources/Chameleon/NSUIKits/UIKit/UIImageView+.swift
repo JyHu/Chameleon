@@ -211,26 +211,16 @@ private extension UIImageView {
     }
     
     @objc func swizzled_setAnimationImages(_ animationImages: [UIImage]?) {
-        guard let animationImages else {
-            __setAnimationImages(animationImages)
-            return
-        }
-        
         cache(
-            firstParam: Callable.MultImages(original: animationImages),
+            firstParam: Callable.Collection(animationImages),
             identifier: .animationImages,
             action: __setAnimationImages(_:)
         )
     }
     
     @objc func swizzled_setHighlightedAnimationImages(_ highlightedAnimationImages: [UIImage]?) {
-        guard let highlightedAnimationImages else {
-            __setHighlightedAnimationImages(highlightedAnimationImages)
-            return
-        }
-        
         cache(
-            firstParam: Callable.MultImages(original: highlightedAnimationImages),
+            firstParam: Callable.Collection(highlightedAnimationImages),
             identifier: .highlightedAnimationImages,
             action: __setHighlightedAnimationImages(_:)
         )
