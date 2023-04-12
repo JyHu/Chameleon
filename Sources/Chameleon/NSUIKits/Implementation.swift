@@ -37,6 +37,7 @@ public extension AppearanceManager {
         NSPathControlItem.silenceExchangePathControlItemImplementation()
         NSTableRowView.silenceExchangeTableRowViewImplementation()
         NSSegmentedControl.silenceExchangeSegmentedControlImplementation()
+        NSLevelIndicator.silenceExchangeLevelIndicatorImplementation()
 #elseif canImport(UIKit)
         UIButton.silenceExchangeButtonImplementation()
         UILabel.silenceExchangeLabelImplementation()
