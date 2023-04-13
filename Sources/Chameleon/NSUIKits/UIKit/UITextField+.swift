@@ -201,7 +201,7 @@ private extension UITextField {
         cache(
             firstParam: Callable.Attributed(attributedText),
             identifier: .attributedText,
-            action: __setAttributedText(_:)
+            action: { [weak self] va in self?.__setAttributedText(va) }
         )
     }
     
@@ -209,7 +209,7 @@ private extension UITextField {
         cache(
             firstParam: Callable.Appearanced(textColor),
             identifier: .textColor,
-            action: __setTextColor(_:)
+            action: { [weak self] va in self?.__setTextColor(va) }
         )
     }
     
@@ -217,7 +217,7 @@ private extension UITextField {
         cache(
             firstParam: Callable.Collection(defaultTextAttributes),
             identifier: .defaultTextAttributes,
-            action: __setDefaultTextAttributes(_:)
+            action: { [weak self] va in self?.__setDefaultTextAttributes(va) }
         )
     }
     
@@ -225,7 +225,7 @@ private extension UITextField {
         cache(
             firstParam: Callable.Attributed(attributedPlaceholder),
             identifier: .attributedPlaceholder,
-            action: __setAttributedPlaceholder(_:)
+            action: { [weak self] va in self?.__setAttributedPlaceholder(va) }
         )
     }
     
@@ -233,7 +233,7 @@ private extension UITextField {
         cache(
             firstParam: Callable.Appearanced(background),
             identifier: .background,
-            action: __setBackground(_:)
+            action: { [weak self] va in self?.__setBackground(va) }
         )
     }
     
@@ -241,7 +241,7 @@ private extension UITextField {
         cache(
             firstParam: Callable.Appearanced(disabledBackground),
             identifier: .disabledBackground,
-            action: __setDisabledBackground(_:)
+            action: { [weak self] va in self?.__setDisabledBackground(va) }
         )
     }
     
@@ -249,7 +249,7 @@ private extension UITextField {
         cache(
             firstParam: Callable.Collection(typingAttributes),
             identifier: .typingAttributes,
-            action: __setTypingAttributes(_:)
+            action: { [weak self] va in self?.__setTypingAttributes(va) }
         )
     }
 }

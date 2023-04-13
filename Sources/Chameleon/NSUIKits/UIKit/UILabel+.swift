@@ -123,7 +123,7 @@ private extension UILabel {
         cache(
             firstParam: Callable.Appearanced(textColor),
             identifier: .textColor,
-            action: __setTextColor(_:)
+            action: { [weak self] va in self?.__setTextColor(va) }
         )
     }
     
@@ -131,7 +131,7 @@ private extension UILabel {
         cache(
             firstParam: Callable.Appearanced(shadowColor),
             identifier: .shadowColor,
-            action: __setShadowColor(_:)
+            action: { [weak self] va in self?.__setShadowColor(va) }
         )
     }
     
@@ -139,7 +139,7 @@ private extension UILabel {
         cache(
             firstParam: Callable.Appearanced(attributedText),
             identifier: .attributedText,
-            action: __setAttributedText(_:)
+            action: { [weak self] va in self?.__setAttributedText(va) }
         )
     }
     
@@ -147,7 +147,7 @@ private extension UILabel {
         cache(
             firstParam: Callable.Appearanced(highlightedTextColor),
             identifier: .highlightedTextColor,
-            action: __setHighlightedTextColor(_:)
+            action: { [weak self] va in self?.__setHighlightedTextColor(va) }
         )
     }
 }

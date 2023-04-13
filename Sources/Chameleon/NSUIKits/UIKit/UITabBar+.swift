@@ -174,7 +174,7 @@ private extension UITabBar {
         cache(
             firstParam: Callable.Appearanced(tintColor),
             identifier: .tintColor,
-            action: __setTintColor(_:)
+            action: { [weak self] va in self?.__setTintColor(va) }
         )
     }
     
@@ -182,7 +182,7 @@ private extension UITabBar {
         cache(
             firstParam: Callable.Appearanced(barTintColor),
             identifier: .barTintColor,
-            action: __setBarTintColor(_:)
+            action: { [weak self] va in self?.__setBarTintColor(va) }
         )
     }
     
@@ -190,7 +190,7 @@ private extension UITabBar {
         cache(
             firstParam: Callable.Appearanced(unselectedItemTintColor),
             identifier: .unselectedItemTintColor,
-            action: __setUnselectedItemTintColor(_:)
+            action: { [weak self] va in self?.__setUnselectedItemTintColor(va) }
         )
     }
     
@@ -198,7 +198,7 @@ private extension UITabBar {
         cache(
             firstParam: Callable.Appearanced(backgroundImage),
             identifier: .backgroundImage,
-            action: __setBackgroundImage(_:)
+            action: { [weak self] va in self?.__setBackgroundImage(va) }
         )
     }
     
@@ -206,7 +206,7 @@ private extension UITabBar {
         cache(
             firstParam: Callable.Appearanced(selectionIndicatorImage),
             identifier: .selectionIndicatorImage,
-            action: __setSelectionIndicatorImage(_:)
+            action: { [weak self] va in self?.__setSelectionIndicatorImage(va) }
         )
     }
     
@@ -214,7 +214,7 @@ private extension UITabBar {
         cache(
             firstParam: Callable.Appearanced(shadowImage),
             identifier: .shadowImage,
-            action: __setShadowImage(_:)
+            action: { [weak self] va in self?.__setShadowImage(va) }
         )
     }
 }

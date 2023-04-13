@@ -70,7 +70,7 @@ private extension NSSegmentedControl {
         cache(
             firstParam: Callable.Appearanced(selectedSegmentBezelColor),
             identifier: .selectedSegmentBezelColor,
-            action: __setSelectedSegmentBezelColor(_:)
+            action: { [weak self] va in self?.__setSelectedSegmentBezelColor(va) }
         )
     }
     
@@ -79,7 +79,7 @@ private extension NSSegmentedControl {
             firstParam: Callable.Appearanced(image),
             secondParam: Callable.Original(segment),
             identifier: .setImageForSegment,
-            action: __setImage(_:forSegment:)
+            action: { [weak self] va, vb in self?.__setImage(va, forSegment: vb) }
         )
     }
 }

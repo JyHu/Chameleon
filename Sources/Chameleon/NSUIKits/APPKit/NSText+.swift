@@ -97,7 +97,7 @@ private extension NSText {
         cache(
             firstParam: Callable.Appearanced(textColor),
             identifier: .textColor,
-            action: __text_setTextColor(_:)
+            action: { [weak self] va in self?.__text_setTextColor(va) }
         )
     }
     
@@ -105,7 +105,7 @@ private extension NSText {
         cache(
             firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
-            action: __text_setBackgroundColor(_:)
+            action: { [weak self] va in self?.__text_setBackgroundColor(va) }
         )
     }
     
@@ -114,7 +114,7 @@ private extension NSText {
             firstParam: Callable.Appearanced(color),
             secondParam: Callable.Original(range),
             identifier: .textColorRange,
-            action: __setTextColor(_:range:)
+            action: { [weak self] va, vb in self?.__setTextColor(va, range: vb) }
         )
     }
 }

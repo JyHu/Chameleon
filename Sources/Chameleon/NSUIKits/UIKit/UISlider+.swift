@@ -220,7 +220,7 @@ private extension UISlider {
         cache(
             firstParam: Callable.Appearanced(minimumValueImage),
             identifier: .minimumValueImage,
-            action: __setMinimumValueImage(_:)
+            action: { [weak self] va in self?.__setMinimumValueImage(va) }
         )
     }
     
@@ -228,7 +228,7 @@ private extension UISlider {
         cache(
             firstParam: Callable.Appearanced(maximumValueImage),
             identifier: .maximumValueImage,
-            action: __setMaximumValueImage(_:)
+            action: { [weak self] va in self?.__setMaximumValueImage(va) }
         )
     }
     
@@ -236,7 +236,7 @@ private extension UISlider {
         cache(
             firstParam: Callable.Appearanced(minimumTrackTintColor),
             identifier: .minimumTrackTintColor,
-            action: __setMinimumTrackTintColor(_:)
+            action: { [weak self] va in self?.__setMinimumTrackTintColor(va) }
         )
     }
     
@@ -244,7 +244,7 @@ private extension UISlider {
         cache(
             firstParam: Callable.Appearanced(maximumTrackTintColor),
             identifier: .maximumTrackTintColor,
-            action: __setMaximumTrackTintColor(_:)
+            action: { [weak self] va in self?.__setMaximumTrackTintColor(va) }
         )
     }
     
@@ -252,7 +252,7 @@ private extension UISlider {
         cache(
             firstParam: Callable.Appearanced(thumbTintColor),
             identifier: .thumbTintColor,
-            action: __setThumbTintColor(_:)
+            action: { [weak self] va in self?.__setThumbTintColor(va) }
         )
     }
     
@@ -261,7 +261,7 @@ private extension UISlider {
             firstParam: Callable.Appearanced(image),
             secondParam: Callable.Original(state),
             identifier: .setThumbImageFor,
-            action: __setThumbImage(_:for:),
+            action: { [weak self] va, vb in self?.__setThumbImage(va, for: vb) },
             category: "UISlider.state:\(state.rawValue)"
         )
     }
@@ -271,7 +271,7 @@ private extension UISlider {
             firstParam: Callable.Appearanced(image),
             secondParam: Callable.Original(state),
             identifier: .setMinimumTrackImageFor,
-            action: __setMaximumTrackImage(_:for:),
+            action: { [weak self] va, vb in self?.__setMaximumTrackImage(va, for: vb) },
             category: "UISlider.state:\(state.rawValue)"
         )
     }
@@ -281,7 +281,7 @@ private extension UISlider {
             firstParam: Callable.Appearanced(image),
             secondParam: Callable.Original(state),
             identifier: .setMaximumTrackImageFor,
-            action: __setMaximumTrackImage(_:for:),
+            action: { [weak self] va, vb in self?.__setMaximumTrackImage(va, for: vb) },
             category: "UISlider.state:\(state.rawValue)"
         )
     }

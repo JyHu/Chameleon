@@ -74,7 +74,7 @@ private extension UIRefreshControl {
         cache(
             firstParam: Callable.Appearanced(tintColor),
             identifier: .tintColor,
-            action: __setTintColor(_:)
+            action: { [weak self] va in self?.__setTintColor(va) }
         )
     }
     
@@ -82,7 +82,7 @@ private extension UIRefreshControl {
         cache(
             firstParam: Callable.Appearanced(attributedTitle),
             identifier: .attributedTitle,
-            action: __setAttributedTitle(_:)
+            action: { [weak self] va in self?.__setAttributedTitle(va) }
         )
     }
 }

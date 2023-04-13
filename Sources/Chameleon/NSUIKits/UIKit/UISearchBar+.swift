@@ -256,7 +256,7 @@ private extension UISearchBar {
         cache(
             firstParam: Callable.Appearanced(tintColor),
             identifier: .tintColor,
-            action: __setTintColor(_:)
+            action: { [weak self] va in self?.__setTintColor(va) }
         )
     }
     
@@ -264,7 +264,7 @@ private extension UISearchBar {
         cache(
             firstParam: Callable.Appearanced(barTintColor),
             identifier: .barTintColor,
-            action: __setBarTintColor(_:)
+            action: { [weak self] va in self?.__setBarTintColor(va) }
         )
     }
     
@@ -272,7 +272,7 @@ private extension UISearchBar {
         cache(
             firstParam: Callable.Appearanced(backgroundImage),
             identifier: .backgroundImage,
-            action: __setBackgroundImage(_:)
+            action: { [weak self] va in self?.__setBackgroundImage(va) }
         )
     }
     
@@ -280,7 +280,7 @@ private extension UISearchBar {
         cache(
             firstParam: Callable.Appearanced(scopeBarBackgroundImage),
             identifier: .scopeBarBackgroundImage,
-            action: __setScopeBarBackgroundImage(_:)
+            action: { [weak self] va in self?.__setScopeBarBackgroundImage(va) }
         )
     }
     
@@ -290,7 +290,7 @@ private extension UISearchBar {
             secondParam: Callable.Original(barPosition),
             thirdParam: Callable.Original(barMetrics),
             identifier: .setBackgroundImageForBarPositionBarMetrics,
-            action: __setBackgroundImage(_:for:barMetrics:),
+            action: { [weak self] va, vb, vc in self?.__setBackgroundImage(va, for: vb, barMetrics: vc) },
             category: "UISearchBar.position:\(barPosition.rawValue).metrics:\(barMetrics.rawValue)"
         )
     }
@@ -300,7 +300,7 @@ private extension UISearchBar {
             firstParam: Callable.Appearanced(backgroundImage),
             secondParam: Callable.Original(state),
             identifier: .setSearchFieldBackgroundImageForState,
-            action: __setSearchFieldBackgroundImage(_:for:),
+            action: { [weak self] va, vb in self?.__setSearchFieldBackgroundImage(va, for: vb) },
             category: "UISearchBar.state:\(state.rawValue)"
         )
     }
@@ -313,7 +313,7 @@ private extension UISearchBar {
             secondParam: Callable.Original(icon),
             thirdParam: Callable.Original(state),
             identifier: .setImageForIconState,
-            action: __setImage(_:for:state:),
+            action: { [weak self] va, vb, vc in self?.__setImage(va, for: vb, state: vc) },
             category: category
         )
     }
@@ -323,7 +323,7 @@ private extension UISearchBar {
             firstParam: Callable.Appearanced(backgroundImage),
             secondParam: Callable.Original(state),
             identifier: .setScopeBarButtonBackgroundImageForState,
-            action: __setScopeBarButtonBackgroundImage(_:for:),
+            action: { [weak self] va, vb in self?.__setScopeBarButtonBackgroundImage(va, for: vb) },
             category: "UISearchBar.state:\(state.rawValue)"
         )
     }
@@ -334,7 +334,7 @@ private extension UISearchBar {
             secondParam: Callable.Original(leftSegmentState),
             thirdParam: Callable.Original(rightSegmentState),
             identifier: .setScopeBarButtonDividerImageForLeftRight,
-            action: __setScopeBarButtonDividerImage(_:forLeftSegmentState:rightSegmentState:),
+            action: { [weak self] va, vb, vc in self?.__setScopeBarButtonDividerImage(va, forLeftSegmentState: vb, rightSegmentState: vc) },
             category: "UISearchBar.left:\(leftSegmentState.rawValue).right:\(rightSegmentState.rawValue)"
         )
     }
@@ -344,7 +344,7 @@ private extension UISearchBar {
             firstParam: Callable.Collection(attributes),
             secondParam: Callable.Original(state),
             identifier: .setScopeBarButtonTitleTextAttributesForState,
-            action: __setScopeBarButtonTitleTextAttributes(_:for:),
+            action: { [weak self] va, vb in self?.__setScopeBarButtonTitleTextAttributes(va, for: vb) },
             category: "UISearchBar.state:\(state.rawValue)"
         )
     }

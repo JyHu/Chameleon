@@ -48,7 +48,7 @@ private extension UIActivityIndicatorView {
         cache(
             firstParam: Callable.Appearanced(color),
             identifier: .color,
-            action: __setColor(_:)
+            action: { [weak self] va in self?.__setColor(va) }
         )
     }
 }

@@ -112,7 +112,7 @@ private extension UISegmentedControl {
             firstParam: Callable.Appearanced(image),
             secondParam: Callable.Original(index),
             identifier: .setImageForSegmentAt,
-            action: __setImage(_:forSegmentAt:),
+            action: { [weak self] va, vb in self?.__setImage(va, forSegmentAt: vb) },
             category: "UISegmentedControl.index:\(index)"
         )
     }
@@ -123,7 +123,7 @@ private extension UISegmentedControl {
             secondParam: Callable.Original(state),
             thirdParam: Callable.Original(barMetrics),
             identifier: .setBackgroundImageForBarMetrics,
-            action: __setBackgroundImage(_:for:barMetrics:),
+            action: { [weak self] va, vb, vc in self?.__setBackgroundImage(va, for: vb, barMetrics: vc) },
             category: "UISegmentedControl.state:\(state.rawValue).metrics:\(barMetrics.rawValue)"
         )
     }
@@ -135,7 +135,7 @@ private extension UISegmentedControl {
             thirdParam: Callable.Original(rightSegmentState),
             fourthParam: Callable.Original(barMetrics),
             identifier: .setDividerImageForLeftRightBarMetrics,
-            action: __setDividerImage(_:forLeftSegmentState:rightSegmentState:barMetrics:),
+            action: { [weak self] va, vb, vc, vd in self?.__setDividerImage(va, forLeftSegmentState: vb, rightSegmentState: vc, barMetrics: vd) },
             category: "UISegmentedControl.left:\(leftSegmentState.rawValue).right:\(rightSegmentState.rawValue).metrics:\(barMetrics.rawValue)"
         )
     }
@@ -145,7 +145,7 @@ private extension UISegmentedControl {
             firstParam: Callable.Collection(attributes),
             secondParam: Callable.Original(state),
             identifier: .setTitleAttributesFor,
-            action: __setTitleTextAttributes(_:for:),
+            action: { [weak self] va, vb in self?.__setTitleTextAttributes(va, for: vb) },
             category: "UISegmentedControl.state:\(state.rawValue)"
         )
     }

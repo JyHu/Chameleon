@@ -124,7 +124,7 @@ private extension UIProgressView {
         cache(
             firstParam: Callable.Appearanced(progressTintColor),
             identifier: .progressTintColor,
-            action: __setProgressTintColor(_:)
+            action: { [weak self] va in self?.__setProgressTintColor(va) }
         )
     }
     
@@ -132,7 +132,7 @@ private extension UIProgressView {
         cache(
             firstParam: Callable.Appearanced(trackTintColor),
             identifier: .trackTintColor,
-            action: __setTrackTintColor(_:)
+            action: { [weak self] va in self?.__setTrackTintColor(va) }
         )
     }
     
@@ -140,7 +140,7 @@ private extension UIProgressView {
         cache(
             firstParam: Callable.Appearanced(progressImage),
             identifier: .progressImage,
-            action: __setProgressImage(_:)
+            action: { [weak self] va in self?.__setProgressImage(va) }
         )
     }
     
@@ -148,7 +148,7 @@ private extension UIProgressView {
         cache(
             firstParam: Callable.Appearanced(trackImage),
             identifier: .trackImage,
-            action: __setTrackImage(_:)
+            action: { [weak self] va in self?.__setTrackImage(va) }
         )
     }
 }

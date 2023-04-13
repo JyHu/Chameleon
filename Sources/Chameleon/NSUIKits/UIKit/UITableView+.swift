@@ -124,7 +124,7 @@ private extension UITableView {
         cache(
             firstParam: Callable.Appearanced(sectionIndexColor),
             identifier: .sectionIndexColor,
-            action: __setSectionIndexColor(_:)
+            action: { [weak self] va in self?.__setSectionIndexColor(va) }
         )
     }
     
@@ -132,7 +132,7 @@ private extension UITableView {
         cache(
             firstParam: Callable.Appearanced(sectionIndexBackgroundColor),
             identifier: .sectionIndexBackgroundColor,
-            action: __setSectionIndexBackgroundColor(_:)
+            action: { [weak self] va in self?.__setSectionIndexBackgroundColor(va) }
         )
     }
     
@@ -140,7 +140,7 @@ private extension UITableView {
         cache(
             firstParam: Callable.Appearanced(sectionIndexTrackingBackgroundColor),
             identifier: .sectionIndexTrackingBackgroundColor,
-            action: __setSectionIndexTrackingBackgroundColor(_:)
+            action: { [weak self] va in self?.__setSectionIndexTrackingBackgroundColor(va) }
         )
     }
     
@@ -148,7 +148,7 @@ private extension UITableView {
         cache(
             firstParam: Callable.Appearanced(separatorColor),
             identifier: .separatorColor,
-            action: __setSeparatorColor(_:)
+            action: { [weak self] va in self?.__setSeparatorColor(va) }
         )
     }
     

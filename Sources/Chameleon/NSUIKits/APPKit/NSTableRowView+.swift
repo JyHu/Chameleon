@@ -48,7 +48,7 @@ private extension NSTableRowView {
         cache(
             firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
-            action: __setBackgroundColor(_:)
+            action: { [weak self] va in self?.__setBackgroundColor(va) }
         )
     }
 }

@@ -180,7 +180,7 @@ private extension UIPageControl {
         cache(
             firstParam: Callable.Appearanced(pageIndicatorTintColor),
             identifier: .pageIndicatorTintColor,
-            action: __setPageIndicatorTintColor(_:)
+            action: { [weak self] va in self?.__setPageIndicatorTintColor(va) }
         )
     }
     
@@ -188,7 +188,7 @@ private extension UIPageControl {
         cache(
             firstParam: Callable.Appearanced(currentPageIndicatorTintColor),
             identifier: .currentPageIndicatorTintColor,
-            action: __setCurrentPageIndicatorTintColor(_:)
+            action: { [weak self] va in self?.__setCurrentPageIndicatorTintColor(va) }
         )
     }
     
@@ -197,7 +197,7 @@ private extension UIPageControl {
         cache(
             firstParam: Callable.Appearanced(preferredIndicatorImage),
             identifier: .preferredIndicatorImage,
-            action: __setPreferredIndicatorImage(_:)
+            action: { [weak self] va in self?.__setPreferredIndicatorImage(va) }
         )
     }
     
@@ -207,7 +207,7 @@ private extension UIPageControl {
             firstParam: Callable.Appearanced(indicatorImage),
             secondParam: Callable.Original(page),
             identifier: .setIndicatorImageForPage,
-            action: __setIndicatorImage(_:forPage:)
+            action: { [weak self] va, vb in self?.__setIndicatorImage(va, forPage: vb) }
         )
     }
     
@@ -216,7 +216,7 @@ private extension UIPageControl {
         cache(
             firstParam: Callable.Appearanced(preferredCurrentPageIndicatorImage),
             identifier: .preferredCurrentPageIndicatorImage,
-            action: __setPreferredCurrentPageIndicatorImage(_:)
+            action: { [weak self] va in self?.__setPreferredCurrentPageIndicatorImage(va) }
         )
     }
     
@@ -226,7 +226,7 @@ private extension UIPageControl {
             firstParam: Callable.Appearanced(indicatorImage),
             secondParam: Callable.Original(page),
             identifier: .setCurrentPageIndicatorImageForPage,
-            action: __setCurrentPageIndicatorImage(_:forPage:)
+            action: { [weak self] va, vb in self?.__setCurrentPageIndicatorImage(va, forPage: vb) }
         )
     }
 }

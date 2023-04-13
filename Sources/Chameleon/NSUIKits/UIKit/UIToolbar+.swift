@@ -118,7 +118,7 @@ private extension UIToolbar {
         cache(
             firstParam: Callable.Appearanced(tintColor),
             identifier: .tintColor,
-            action: __setTintColor(_:)
+            action: { [weak self] va in self?.__setTintColor(va) }
         )
     }
     
@@ -126,7 +126,7 @@ private extension UIToolbar {
         cache(
             firstParam: Callable.Appearanced(barTintColor),
             identifier: .barTintColor,
-            action: __setBarTintColor(_:)
+            action: { [weak self] va in self?.__setBarTintColor(va) }
         )
     }
     
@@ -136,7 +136,7 @@ private extension UIToolbar {
             secondParam: Callable.Original(position),
             thirdParam: Callable.Original(barMetrics),
             identifier: .setBackgroundImageForPositionMetrics,
-            action: __setBackgroundImage(_:forToolbarPosition:barMetrics:),
+            action: { [weak self] va, vb, vc in self?.__setBackgroundImage(va, forToolbarPosition: vb, barMetrics: vc) },
             category: "UIToolBar.position:\(position.rawValue).metrics:\(barMetrics.rawValue)"
         )
     }
@@ -146,7 +146,7 @@ private extension UIToolbar {
             firstParam: Callable.Appearanced(shadowImage),
             secondParam: Callable.Original(position),
             identifier: .setShadowImageFor,
-            action: __setShadowImage(_:forToolbarPosition:),
+            action: { [weak self] va, vb in self?.__setShadowImage(va, forToolbarPosition: vb) },
             category: "UIToolBar.position:\(position.rawValue)"
         )
     }

@@ -121,7 +121,7 @@ private extension UISwitch {
         cache(
             firstParam: Callable.Appearanced(onTintColor),
             identifier: .onTintColor,
-            action: __setOnTintColor(_:)
+            action: { [weak self] va in self?.__setOnTintColor(va) }
         )
     }
     
@@ -129,7 +129,7 @@ private extension UISwitch {
         cache(
             firstParam: Callable.Appearanced(thumbTintColor),
             identifier: .thumbTintColor,
-            action: __setThumbTintColor(_:)
+            action: { [weak self] va in self?.__setThumbTintColor(va) }
         )
     }
     
@@ -137,7 +137,7 @@ private extension UISwitch {
         cache(
             firstParam: Callable.Appearanced(onImage),
             identifier: .onImage,
-            action: __setOnImage(_:)
+            action: { [weak self] va in self?.__setOnImage(va) }
         )
     }
     
@@ -145,7 +145,7 @@ private extension UISwitch {
         cache(
             firstParam: Callable.Appearanced(offImage),
             identifier: .offImage,
-            action: __setOffImage(_:)
+            action: { [weak self] va in self?.__setOffImage(va) }
         )
     }
 }

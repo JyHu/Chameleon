@@ -21,7 +21,7 @@ extension NSBox {
             cache(appearanceCallable: Callable.One(
                 firstParam: Callable.Appearanced(newValue, identifier: "others/border/width"),
                 identifier: "NSBox.__setBorderWidth(_:)",
-                action: __setBorderWidth(_:))
+                action: { [weak self] va in self?.__setBorderWidth(va) })
             )
         }
         get {
@@ -48,7 +48,7 @@ extension NSBox {
                     firstParam: Callable.Customized(color1, identifier: color1.appearanceIdentifier, converter: __colorConverter(_:)),
                     secondParam: Callable.Customized(color2, identifier: color2?.appearanceIdentifier, converter: __colorConverter(_:)),
                     identifier: "NSBox.__customized(color1:color2:)",
-                    action: __customized(color1:color2:)
+                    action: { [weak self] va, vb in { self?.__customized(color1: va, color2: vb) }}
                 )
         )
     }

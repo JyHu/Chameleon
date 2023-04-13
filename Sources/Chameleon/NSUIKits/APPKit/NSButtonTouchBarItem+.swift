@@ -73,7 +73,7 @@ private extension NSButtonTouchBarItem {
         cache(
             firstParam: Callable.Appearanced(image),
             identifier: .image,
-            action: __setImage(_:)
+            action: { [weak self] va in self?.__setImage(va) }
         )
     }
     
@@ -81,7 +81,7 @@ private extension NSButtonTouchBarItem {
         cache(
             firstParam: Callable.Appearanced(bezelColor),
             identifier: .bezelColor,
-            action: __setBezelColor(_:)
+            action: { [weak self] va in self?.__setBezelColor(va) }
         )
     }
 }

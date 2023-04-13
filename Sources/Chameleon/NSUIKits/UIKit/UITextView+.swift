@@ -124,7 +124,7 @@ private extension UITextView {
         cache(
             firstParam: Callable.Appearanced(textColor),
             identifier: .textColor,
-            action: __setTextColor(_:)
+            action: { [weak self] va in self?.__setTextColor(va) }
         )
     }
     
@@ -132,7 +132,7 @@ private extension UITextView {
         cache(
             firstParam: Callable.Attributed(attributedText),
             identifier: .attributedText,
-            action: __setAttributedText(_:)
+            action: { [weak self] va in self?.__setAttributedText(va) }
         )
     }
     
@@ -140,7 +140,7 @@ private extension UITextView {
         cache(
             firstParam: Callable.Collection(typingAttributes),
             identifier: .typingAttributes,
-            action: __setTypingAttributes(_:)
+            action: { [weak self] va in self?.__setTypingAttributes(va) }
         )
     }
     
@@ -148,7 +148,7 @@ private extension UITextView {
         cache(
             firstParam: Callable.Collection(linkTextAttributes),
             identifier: .linkTextAttributes,
-            action: __setLinkTextAttributes(_:)
+            action: { [weak self] va in self?.__setLinkTextAttributes(va) }
         )
     }
 }

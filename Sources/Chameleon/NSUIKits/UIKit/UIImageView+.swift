@@ -79,7 +79,7 @@ public extension UIImageView {
         cache(
             firstParam: Callable.Appearanced(animationDuration, identifier: identifier),
             identifier: .animationDuration,
-            action: __setAnimationDuration(_:)
+            action: { [weak self] va in self?.__setAnimationDuration(va) }
         )
     }
     
@@ -87,7 +87,7 @@ public extension UIImageView {
         cache(
             firstParam: Callable.Appearanced(animationRepeatCount, identifier: identifier),
             identifier: .animationRepeatCount,
-            action: __setAnimationRepeatCount(_:)
+            action: { [weak self] va in self?.__setAnimationRepeatCount(va) }
         )
     }
 }
@@ -174,7 +174,7 @@ private extension UIImageView {
         cache(
             firstParam: Callable.Appearanced(image),
             identifier: .image,
-            action: __setImage(_:)
+            action: { [weak self] va in self?.__setImage(va) }
         )
     }
     
@@ -182,7 +182,7 @@ private extension UIImageView {
         cache(
             firstParam: Callable.Appearanced(highlightedImage),
             identifier: .highlightedImage,
-            action: __setHighlightedImage(_:)
+            action: { [weak self] va in self?.__setHighlightedImage(va) }
         )
     }
     
@@ -190,7 +190,7 @@ private extension UIImageView {
         cache(
             firstParam: Callable.Collection(animationImages),
             identifier: .animationImages,
-            action: __setAnimationImages(_:)
+            action: { [weak self] va in self?.__setAnimationImages(va) }
         )
     }
     
@@ -198,7 +198,7 @@ private extension UIImageView {
         cache(
             firstParam: Callable.Collection(highlightedAnimationImages),
             identifier: .highlightedAnimationImages,
-            action: __setHighlightedAnimationImages(_:)
+            action: { [weak self] va in self?.__setHighlightedAnimationImages(va) }
         )
     }
     
@@ -206,7 +206,7 @@ private extension UIImageView {
         cache(
             firstParam: Callable.Appearanced(tintColor),
             identifier: .tintColor,
-            action: __setTintColor(_:)
+            action: { [weak self] va in self?.__setTintColor(va) }
         )
     }
 }

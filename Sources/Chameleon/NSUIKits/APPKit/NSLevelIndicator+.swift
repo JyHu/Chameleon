@@ -150,7 +150,7 @@ private extension NSLevelIndicator {
         cache(
             firstParam: Callable.Appearanced(fillColor),
             identifier: .fillColor,
-            action: __setFillColor(_:)
+            action: { [weak self] va in self?.__setFillColor(va) }
         )
     }
     
@@ -158,7 +158,7 @@ private extension NSLevelIndicator {
         cache(
             firstParam: Callable.Appearanced(warningFillColor),
             identifier: .warningFillColor,
-            action: __setWarningFillColor(_:)
+            action: { [weak self] va in self?.__setWarningFillColor(va) }
         )
     }
     
@@ -166,7 +166,7 @@ private extension NSLevelIndicator {
         cache(
             firstParam: Callable.Appearanced(criticalFillColor),
             identifier: .criticalFillColor,
-            action: __setCriticalFillColor(_:)
+            action: { [weak self] va in self?.__setCriticalFillColor(va) }
         )
     }
     
@@ -174,7 +174,7 @@ private extension NSLevelIndicator {
         cache(
             firstParam: Callable.Appearanced(ratingImage),
             identifier: .ratingImage,
-            action: __setRatingImage(_:)
+            action: { [weak self] va in self?.__setRatingImage(va) }
         )
     }
     
@@ -182,7 +182,7 @@ private extension NSLevelIndicator {
         cache(
             firstParam: Callable.Appearanced(ratingPlaceholderImage),
             identifier: .ratingPlaceholderImage,
-            action: __setRatingPlaceholderImage(_:)
+            action: { [weak self] va in self?.__setRatingPlaceholderImage(va) }
         )
     }
 }

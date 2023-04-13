@@ -173,7 +173,7 @@ private extension NSButton {
         cache(
             firstParam: Callable.Appearanced(bezelColor),
             identifier: .bezelColor,
-            action: __setBezelColor(_:)
+            action: { [weak self] va in self?.__setBezelColor(va) }
         )
     }
     
@@ -181,7 +181,7 @@ private extension NSButton {
         cache(
             firstParam: Callable.Appearanced(contentTintColor),
             identifier: .contentTintColor,
-            action: __setContentTintColor(_:)
+            action: { [weak self] va in self?.__setContentTintColor(va) }
         )
     }
     
@@ -189,7 +189,7 @@ private extension NSButton {
         cache(
             firstParam: Callable.Appearanced(image),
             identifier: .image,
-            action: __setImage(_:)
+            action: { [weak self] va in self?.__setImage(va) }
         )
     }
     
@@ -197,7 +197,7 @@ private extension NSButton {
         cache(
             firstParam: Callable.Appearanced(alternateImage),
             identifier: .alternateImage,
-            action: __setAlternateImage(_:)
+            action: { [weak self] va in self?.__setAlternateImage(va) }
         )
     }
     
@@ -205,7 +205,7 @@ private extension NSButton {
         cache(
             firstParam: Callable.Attributed(attributedTitle),
             identifier: .attributedTitle,
-            action: __setAttributedTitle(_:)
+            action: { [weak self] va in self?.__setAttributedTitle(va) }
         )
     }
     
@@ -213,7 +213,7 @@ private extension NSButton {
         cache(
             firstParam: Callable.Attributed(attributedAlternateTitle),
             identifier: .attributedAlternateTitle,
-            action: __setAttributedAlternateTitle(_:)
+            action: { [weak self] va in self?.__setAttributedAlternateTitle(va) }
         )
     }
 }

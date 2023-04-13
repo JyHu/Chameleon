@@ -51,7 +51,7 @@ private extension UISearchTextField {
         cache(
             firstParam: Callable.Appearanced(tokenBackgroundColor),
             identifier: .tokenBackgroundColor,
-            action: __setTokenBackgroundColor(_:)
+            action: { [weak self] va in self?.__setTokenBackgroundColor(va) }
         )
     }
 }

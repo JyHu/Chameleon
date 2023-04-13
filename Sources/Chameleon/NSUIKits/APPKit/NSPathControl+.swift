@@ -74,7 +74,7 @@ private extension NSPathControl {
         cache(
             firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
-            action: __setBackgroundColor(_:)
+            action: { [weak self] va in self?.__setBackgroundColor(va) }
         )
     }
     
@@ -82,7 +82,7 @@ private extension NSPathControl {
         cache(
             firstParam: Callable.Attributed(placeholderAttributedString),
             identifier: .placeholderAttributedString,
-            action: __setPlaceholderAttributedString(_:)
+            action: { [weak self] va in self?.__setPlaceholderAttributedString(va) }
         )
     }
 }

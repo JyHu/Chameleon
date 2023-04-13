@@ -124,7 +124,7 @@ private extension NSTextField {
         cache(
             firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
-            action: __setBackGroundColor(_:)
+            action: { [weak self] va in self?.__setBackGroundColor(va) }
         )
     }
     
@@ -132,7 +132,7 @@ private extension NSTextField {
         cache(
             firstParam: Callable.Appearanced(textColor),
             identifier: .textColor,
-            action: __setTextColor(_:)
+            action: { [weak self] va in self?.__setTextColor(va) }
         )
     }
     
@@ -140,7 +140,7 @@ private extension NSTextField {
         cache(
             firstParam: Callable.Attributed(attributedStringValue),
             identifier: .attributedStringValue,
-            action: __setAttributedStringValue(_:)
+            action: { [weak self] va in self?.__setAttributedStringValue(va) }
         )
     }
     
@@ -148,7 +148,7 @@ private extension NSTextField {
         cache(
             firstParam: Callable.Attributed(placeholderAttributedString),
             identifier: .placeholderAttributedString,
-            action: __setPlaceholderAttributedString(_:)
+            action: { [weak self] va in self?.__setPlaceholderAttributedString(va) }
         )
     }
 }

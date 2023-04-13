@@ -73,7 +73,7 @@ private extension NSBox {
         cache(
             firstParam: Callable.Appearanced(fillColor),
             identifier: .fillColor,
-            action: __setFillColor(_:)
+            action: { [weak self] va in self?.__setFillColor(va) }
         )
     }
     
@@ -81,7 +81,7 @@ private extension NSBox {
         cache(
             firstParam: Callable.Appearanced(borderColor),
             identifier: .borderColor,
-            action: __setBorderColor(_:)
+            action: { [weak self] va in self?.__setBorderColor(va) }
         )
     }
 }

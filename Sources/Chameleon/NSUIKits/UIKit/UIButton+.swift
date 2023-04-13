@@ -134,7 +134,7 @@ private extension UIButton {
         cache(
             firstParam: Callable.Appearanced(tintColor),
             identifier: .tintColor,
-            action: __setTintColor(_:)
+            action: { [weak self] va in self?.__setTintColor(va) }
         )
     }
     
@@ -143,7 +143,7 @@ private extension UIButton {
             firstParam: Callable.Appearanced(titleColor),
             secondParam: Callable.Original(state),
             identifier: .setTitleColorForState,
-            action: __setTitleColor(_:for:),
+            action: { [weak self] va, vb in self?.__setTitleColor(va, for: vb) },
             category: "UIButton.state:\(state.rawValue)"
         )
     }
@@ -153,7 +153,7 @@ private extension UIButton {
             firstParam: Callable.Appearanced(image),
             secondParam: Callable.Original(state),
             identifier: .setImageForState,
-            action: __setImage(_:for:),
+            action: { [weak self] va, vb in self?.__setImage(va, for: vb) },
             category: "UIButton.state:\(state.rawValue)"
         )
     }
@@ -163,7 +163,7 @@ private extension UIButton {
             firstParam: Callable.Appearanced(backgroundImage),
             secondParam: Callable.Original(state),
             identifier: .setBackgroundImageForState,
-            action: __setBackgroundImage(_:for:),
+            action: { [weak self] va, vb in self?.__setBackgroundImage(va, for: vb) },
             category: "UIButton.state:\(state.rawValue)"
         )
     }
@@ -173,7 +173,7 @@ private extension UIButton {
             firstParam: Callable.Attributed(attributedTitle),
             secondParam: Callable.Original(state),
             identifier: .setAttributedTitleForState,
-            action: __setAttributedTitle(_:for:),
+            action: { [weak self] va, vb in self?.__setAttributedTitle(va, for: vb) },
             category: "UIButton.state:\(state.rawValue)"
         )
     }

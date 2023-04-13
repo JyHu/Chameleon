@@ -49,7 +49,7 @@ private extension NSSlider {
         cache(
             firstParam: Callable.Appearanced(trackFillColor),
             identifier: .trackFillColor,
-            action: __setTrackFillColor(_:)
+            action: { [weak self] va in self?.__setTrackFillColor(va) }
         )
     }
 }

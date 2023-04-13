@@ -73,7 +73,7 @@ private extension NSDatePicker {
         cache(
             firstParam: Callable.Appearanced(textColor),
             identifier: .textColor,
-            action: __setTextColor(_:)
+            action: { [weak self] va in self?.__setTextColor(va) }
         )
     }
     
@@ -81,7 +81,7 @@ private extension NSDatePicker {
         cache(
             firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
-            action: __setBackgroundColor(_:)
+            action: { [weak self] va in self?.__setBackgroundColor(va) }
         )
     }
 }

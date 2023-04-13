@@ -96,7 +96,7 @@ private extension NSTableView {
         cache(
             firstParam: Callable.Appearanced(backgroundColor),
             identifier: .backgroundColor,
-            action: __setBackgroundColor(_:)
+            action: { [weak self] va in self?.__setBackgroundColor(va) }
         )
     }
     
@@ -104,7 +104,7 @@ private extension NSTableView {
         cache(
             firstParam: Callable.Appearanced(gridColor),
             identifier: .gridColor,
-            action: __setGridColor(_:)
+            action: { [weak self] va in self?.__setGridColor(va) }
         )
     }
     
@@ -113,7 +113,7 @@ private extension NSTableView {
             firstParam: Callable.Appearanced(image),
             secondParam: Callable.Original(tableColumn),
             identifier: .setIndicatorImageInTableColumn,
-            action: __setIndicatorImage(_:in:)
+            action: { [weak self] va, vb in self?.__setIndicatorImage(va, in: vb) }
         )
     }
 }

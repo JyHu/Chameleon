@@ -244,7 +244,7 @@ private extension UINavigationBar {
         cache(
             firstParam: Callable.Appearanced(tintColor),
             identifier: .tintColor,
-            action: __setTintColor(_:)
+            action: { [weak self] va in self?.__setTintColor(va) }
         )
     }
     
@@ -252,7 +252,7 @@ private extension UINavigationBar {
         cache(
             firstParam: Callable.Appearanced(barTintColor),
             identifier: .barTintColor,
-            action: __setBarTintColor(_:)
+            action: { [weak self] va in self?.__setBarTintColor(va) }
         )
     }
     
@@ -260,7 +260,7 @@ private extension UINavigationBar {
         cache(
             firstParam: Callable.Appearanced(shadowImage),
             identifier: .shadowImage,
-            action: __setShadowImage(_:)
+            action: { [weak self] va in self?.__setShadowImage(va) }
         )
     }
     
@@ -268,7 +268,7 @@ private extension UINavigationBar {
         cache(
             firstParam: Callable.Collection(titleTextAttributes),
             identifier: .titleTextAttributes,
-            action: __setTitleTextAttributes(_:)
+            action: { [weak self] va in self?.__setTitleTextAttributes(va) }
         )
     }
     
@@ -276,7 +276,7 @@ private extension UINavigationBar {
         cache(
             firstParam: Callable.Collection(largeTitleTextAttributes),
             identifier: .largeTitleTextAttributes,
-            action: __setLargeTitleTextAttributes(_:)
+            action: { [weak self] va in self?.__setLargeTitleTextAttributes(va) }
         )
     }
     
@@ -284,7 +284,7 @@ private extension UINavigationBar {
         cache(
             firstParam: Callable.Appearanced(backIndicatorImage),
             identifier: .backIndicatorImage,
-            action: __setBackIndicatorImage(_:)
+            action: { [weak self] va in self?.__setBackIndicatorImage(va) }
         )
     }
     
@@ -292,7 +292,7 @@ private extension UINavigationBar {
         cache(
             firstParam: Callable.Appearanced(backIndicatorTransitionMaskImage),
             identifier: .backIndicatorTransitionMaskImage,
-            action: __setBackIndicatorTransitionMaskImage(_:)
+            action: { [weak self] va in self?.__setBackIndicatorTransitionMaskImage(va) }
         )
     }
     
@@ -304,7 +304,7 @@ private extension UINavigationBar {
             secondParam: Callable.Original(barPosition),
             thirdParam: Callable.Original(barMetrics),
             identifier: .setBackgroundImageForBarPositionBarMetrics,
-            action: __setBackgroundImage(_:for:barMetrics:),
+            action: { [weak self] va, vb, vc in self?.__setBackgroundImage(va, for: vb, barMetrics: vc) },
             category: category
         )
     }
@@ -316,7 +316,7 @@ private extension UINavigationBar {
             firstParam: Callable.Appearanced(backgroundImage),
             secondParam: Callable.Original(barMetrics),
             identifier: .setBackgroundImageForBarMetrics,
-            action: __setBackgroundImage(_:for:),
+            action: { [weak self] va, vb in self?.setBackgroundImage(va, for: vb) },
             category: category
         )
     }

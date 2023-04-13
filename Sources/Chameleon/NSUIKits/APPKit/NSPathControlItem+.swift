@@ -74,7 +74,7 @@ private extension NSPathControlItem {
         cache(
             firstParam: Callable.Attributed(attributedTitle),
             identifier: .attributedTitle,
-            action: __setAttributedTitle(_:)
+            action: { [weak self] va in self?.__setAttributedTitle(va) }
         )
     }
     
@@ -82,7 +82,7 @@ private extension NSPathControlItem {
         cache(
             firstParam: Callable.Appearanced(image),
             identifier: .image,
-            action: __setImage(_:)
+            action: { [weak self] va in self?.__setImage(va) }
         )
     }
 }

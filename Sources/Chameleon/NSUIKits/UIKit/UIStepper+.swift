@@ -112,7 +112,7 @@ private extension UIStepper {
             firstParam: Callable.Appearanced(image),
             secondParam: Callable.Original(state),
             identifier: .setBackgroundImageForState,
-            action: __setBackgroundImage(_:for:),
+            action: { [weak self] va, vb in self?.__setBackgroundImage(va, for: vb) },
             category: "UIStepper.state:\(state.rawValue)"
         )
     }
@@ -123,7 +123,7 @@ private extension UIStepper {
             secondParam: Callable.Original(leftState),
             thirdParam: Callable.Original(rightState),
             identifier: .setDividerImageForLeftRightState,
-            action: __setDividerImage(_:forLeftSegmentState:rightSegmentState:),
+            action: { [weak self] va, vb, vc in self?.__setDividerImage(va, forLeftSegmentState: vb, rightSegmentState: vc) },
             category: "UIStepper.left:\(leftState.rawValue).right:\(rightState.rawValue)"
         )
     }
@@ -133,7 +133,7 @@ private extension UIStepper {
             firstParam: Callable.Appearanced(image),
             secondParam: Callable.Original(state),
             identifier: .setIncrementImageForState,
-            action: __setIncrementImage(_:for:),
+            action: { [weak self] va, vb in self?.__setIncrementImage(va, for: vb) },
             category: "UIStepper.state:\(state.rawValue)"
         )
     }
@@ -143,7 +143,7 @@ private extension UIStepper {
             firstParam: Callable.Appearanced(image),
             secondParam: Callable.Original(state),
             identifier: .setDecrementImageForState,
-            action: __setDecrementImage(_:for:),
+            action: { [weak self] va, vb in self?.__setDecrementImage(va, for: vb) },
             category: "UIStepper.state:\(state.rawValue)"
         )
     }

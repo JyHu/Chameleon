@@ -20,7 +20,7 @@ public extension NSView {
             cache(
                 firstParam: Callable.Appearanced(newValue),
                 identifier: .layerBackgroundColor,
-                action: __setLayerBackgroundColor(_:)
+                action: { [weak self] va in self?.__setLayerBackgroundColor(va) }
             )
         }
         get {
@@ -37,7 +37,7 @@ public extension NSView {
             cache(
                 firstParam: Callable.Appearanced(newValue),
                 identifier: .layerBorderColor,
-                action: __setLayerBorderColor(_:)
+                action: { [weak self] va in self?.__setLayerBorderColor(va) }
             )
         }
         get {

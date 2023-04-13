@@ -98,7 +98,7 @@ private extension UIBarItem {
         cache(
             firstParam: Callable.Appearanced(image),
             identifier: .image,
-            action: __setImage(_:)
+            action: { [weak self] va in self?.__setImage(va) }
         )
     }
     
@@ -106,7 +106,7 @@ private extension UIBarItem {
         cache(
             firstParam: Callable.Appearanced(landscapeImagePhone),
             identifier: .landscapeImagePhone,
-            action: __setLandscapeImagePhone(_:)
+            action: { [weak self] va in self?.__setLandscapeImagePhone(va) }
         )
     }
     
@@ -114,7 +114,7 @@ private extension UIBarItem {
         cache(
             firstParam: Callable.Appearanced(largeContentSizeImage),
             identifier: .largeContentSizeImage,
-            action: __setLargeContentSizeImage(_:)
+            action: { [weak self] va in self?.__setLargeContentSizeImage(va) }
         )
     }
 }

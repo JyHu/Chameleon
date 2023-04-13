@@ -47,7 +47,7 @@ private extension NSCollectionView {
         cache(
             firstParam: Callable.Collection(backgroundColors),
             identifier: .backgroundColors,
-            action: __setBackgroundColors(_:)
+            action: { [weak self] va in self?.__setBackgroundColors(va) }
         )
     }
 }
