@@ -77,7 +77,7 @@ private extension NSSegmentedControl {
     @objc func swizzled_setImage(_ image: NSImage?, forSegment segment: Int) {
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(segment),
+            secondParam: Callable.Original(segment),
             identifier: .setImageForSegment,
             action: __setImage(_:forSegment:)
         )

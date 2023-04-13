@@ -259,7 +259,7 @@ private extension UISlider {
     @objc func swizzled_setThumbImage(_ image: UIImage?, for state: UIControl.State) {
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setThumbImageFor,
             action: __setThumbImage(_:for:),
             category: "UISlider.state:\(state.rawValue)"
@@ -269,7 +269,7 @@ private extension UISlider {
     @objc func swizzled_setMinimumTrackImage(_ image: UIImage?, for state: UIControl.State) {
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setMinimumTrackImageFor,
             action: __setMaximumTrackImage(_:for:),
             category: "UISlider.state:\(state.rawValue)"
@@ -279,7 +279,7 @@ private extension UISlider {
     @objc func swizzled_setMaximumTrackImage(_ image: UIImage?, for state: UIControl.State) {
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setMaximumTrackImageFor,
             action: __setMaximumTrackImage(_:for:),
             category: "UISlider.state:\(state.rawValue)"

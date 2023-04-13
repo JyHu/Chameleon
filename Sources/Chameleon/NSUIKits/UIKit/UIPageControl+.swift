@@ -205,7 +205,7 @@ private extension UIPageControl {
     @objc func swizzled_setIndicatorImage(_ indicatorImage: UIImage?, forPage page: Int) {
         cache(
             firstParam: Callable.Appearanced(indicatorImage),
-            secondParam: Callable.Mediator(page),
+            secondParam: Callable.Original(page),
             identifier: .setIndicatorImageForPage,
             action: __setIndicatorImage(_:forPage:)
         )
@@ -224,7 +224,7 @@ private extension UIPageControl {
     @objc func swizzled_setCurrentPageIndicatorImage(_ indicatorImage: UIImage?, forPage page: Int) {
         cache(
             firstParam: Callable.Appearanced(indicatorImage),
-            secondParam: Callable.Mediator(page),
+            secondParam: Callable.Original(page),
             identifier: .setCurrentPageIndicatorImageForPage,
             action: __setCurrentPageIndicatorImage(_:forPage:)
         )

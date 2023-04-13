@@ -15,7 +15,7 @@ public extension Callable {
     ///
     ///
     ///
-    struct Mediator<T>: AppearancedProtocol {
+    struct Original<T>: AppearancedProtocol {
         public typealias InputType = T
 
         public var original: InputType

@@ -110,7 +110,7 @@ private extension UISegmentedControl {
     @objc func swizzled_setImage(_ image: UIImage?, forSegmentAt index: Int) {
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(index),
+            secondParam: Callable.Original(index),
             identifier: .setImageForSegmentAt,
             action: __setImage(_:forSegmentAt:),
             category: "UISegmentedControl.index:\(index)"
@@ -120,8 +120,8 @@ private extension UISegmentedControl {
     @objc func swizzled_setBackgroundImage(_ backgroundImage: UIImage?, for state: UIControl.State, barMetrics: UIBarMetrics) {
         cache(
             firstParam: Callable.Appearanced(backgroundImage),
-            secondParam: Callable.Mediator(state),
-            thirdParam: Callable.Mediator(barMetrics),
+            secondParam: Callable.Original(state),
+            thirdParam: Callable.Original(barMetrics),
             identifier: .setBackgroundImageForBarMetrics,
             action: __setBackgroundImage(_:for:barMetrics:),
             category: "UISegmentedControl.state:\(state.rawValue).metrics:\(barMetrics.rawValue)"
@@ -131,9 +131,9 @@ private extension UISegmentedControl {
     @objc func swizzled_setDividerImage(_ dividerImage: UIImage?, forLeftSegmentState leftSegmentState: UIControl.State, rightSegmentState: UIControl.State, barMetrics: UIBarMetrics) {
         cache(
             firstParam: Callable.Appearanced(dividerImage),
-            secondParam: Callable.Mediator(leftSegmentState),
-            thirdParam: Callable.Mediator(rightSegmentState),
-            fourthParam: Callable.Mediator(barMetrics),
+            secondParam: Callable.Original(leftSegmentState),
+            thirdParam: Callable.Original(rightSegmentState),
+            fourthParam: Callable.Original(barMetrics),
             identifier: .setDividerImageForLeftRightBarMetrics,
             action: __setDividerImage(_:forLeftSegmentState:rightSegmentState:barMetrics:),
             category: "UISegmentedControl.left:\(leftSegmentState.rawValue).right:\(rightSegmentState.rawValue).metrics:\(barMetrics.rawValue)"
@@ -143,7 +143,7 @@ private extension UISegmentedControl {
     @objc func swizzled_setTitleTextAttributes(_ attributes: [NSAttributedString.Key: Any]?, for state: UIControl.State) {
         cache(
             firstParam: Callable.Collection(attributes),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setTitleAttributesFor,
             action: __setTitleTextAttributes(_:for:),
             category: "UISegmentedControl.state:\(state.rawValue)"

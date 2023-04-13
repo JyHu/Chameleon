@@ -287,8 +287,8 @@ private extension UISearchBar {
     @objc func swizzled_setBackgroundImage(_ backgroundImage: UIImage?, for barPosition: UIBarPosition, barMetrics: UIBarMetrics) {
         cache(
             firstParam: Callable.Appearanced(backgroundImage),
-            secondParam: Callable.Mediator(barPosition),
-            thirdParam: Callable.Mediator(barMetrics),
+            secondParam: Callable.Original(barPosition),
+            thirdParam: Callable.Original(barMetrics),
             identifier: .setBackgroundImageForBarPositionBarMetrics,
             action: __setBackgroundImage(_:for:barMetrics:),
             category: "UISearchBar.position:\(barPosition.rawValue).metrics:\(barMetrics.rawValue)"
@@ -298,7 +298,7 @@ private extension UISearchBar {
     @objc func swizzled_setSearchFieldBackgroundImage(_ backgroundImage: UIImage?, for state: UIControl.State) {
         cache(
             firstParam: Callable.Appearanced(backgroundImage),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setSearchFieldBackgroundImageForState,
             action: __setSearchFieldBackgroundImage(_:for:),
             category: "UISearchBar.state:\(state.rawValue)"
@@ -310,8 +310,8 @@ private extension UISearchBar {
         
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(icon),
-            thirdParam: Callable.Mediator(state),
+            secondParam: Callable.Original(icon),
+            thirdParam: Callable.Original(state),
             identifier: .setImageForIconState,
             action: __setImage(_:for:state:),
             category: category
@@ -321,7 +321,7 @@ private extension UISearchBar {
     @objc func swizzled_setScopeBarButtonBackgroundImage(_ backgroundImage: UIImage?, for state: UIControl.State) {
         cache(
             firstParam: Callable.Appearanced(backgroundImage),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setScopeBarButtonBackgroundImageForState,
             action: __setScopeBarButtonBackgroundImage(_:for:),
             category: "UISearchBar.state:\(state.rawValue)"
@@ -331,8 +331,8 @@ private extension UISearchBar {
     @objc func swizzled_setScopeBarButtonDividerImage(_ dividerImage: UIImage?, forLeftSegmentState leftSegmentState: UIControl.State, rightSegmentState: UIControl.State) {
         cache(
             firstParam: Callable.Appearanced(dividerImage),
-            secondParam: Callable.Mediator(leftSegmentState),
-            thirdParam: Callable.Mediator(rightSegmentState),
+            secondParam: Callable.Original(leftSegmentState),
+            thirdParam: Callable.Original(rightSegmentState),
             identifier: .setScopeBarButtonDividerImageForLeftRight,
             action: __setScopeBarButtonDividerImage(_:forLeftSegmentState:rightSegmentState:),
             category: "UISearchBar.left:\(leftSegmentState.rawValue).right:\(rightSegmentState.rawValue)"
@@ -342,7 +342,7 @@ private extension UISearchBar {
     @objc func swizzled_setScopeBarButtonTitleTextAttributes(_ attributes: [NSAttributedString.Key: Any]?, for state: UIControl.State) {
         cache(
             firstParam: Callable.Collection(attributes),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setScopeBarButtonTitleTextAttributesForState,
             action: __setScopeBarButtonTitleTextAttributes(_:for:),
             category: "UISearchBar.state:\(state.rawValue)"

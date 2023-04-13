@@ -141,7 +141,7 @@ private extension UIButton {
     @objc func swizzled_setTitleColor(_ titleColor: UIColor?, for state: State) {
         cache(
             firstParam: Callable.Appearanced(titleColor),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setTitleColorForState,
             action: __setTitleColor(_:for:),
             category: "UIButton.state:\(state.rawValue)"
@@ -151,7 +151,7 @@ private extension UIButton {
     @objc func swizzled_setImage(_ image: UIImage?, for state: State) {
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setImageForState,
             action: __setImage(_:for:),
             category: "UIButton.state:\(state.rawValue)"
@@ -161,7 +161,7 @@ private extension UIButton {
     @objc func swizzled_setBackgroundImage(_ backgroundImage: UIImage?, for state: State) {
         cache(
             firstParam: Callable.Appearanced(backgroundImage),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setBackgroundImageForState,
             action: __setBackgroundImage(_:for:),
             category: "UIButton.state:\(state.rawValue)"
@@ -171,7 +171,7 @@ private extension UIButton {
     @objc func swizzled_setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
         cache(
             firstParam: Callable.Attributed(attributedTitle),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setAttributedTitleForState,
             action: __setAttributedTitle(_:for:),
             category: "UIButton.state:\(state.rawValue)"

@@ -301,8 +301,8 @@ private extension UINavigationBar {
         
         cache(
             firstParam: Callable.Appearanced(backgroundImage),
-            secondParam: Callable.Mediator(barPosition),
-            thirdParam: Callable.Mediator(barMetrics),
+            secondParam: Callable.Original(barPosition),
+            thirdParam: Callable.Original(barMetrics),
             identifier: .setBackgroundImageForBarPositionBarMetrics,
             action: __setBackgroundImage(_:for:barMetrics:),
             category: category
@@ -314,7 +314,7 @@ private extension UINavigationBar {
         
         cache(
             firstParam: Callable.Appearanced(backgroundImage),
-            secondParam: Callable.Mediator(barMetrics),
+            secondParam: Callable.Original(barMetrics),
             identifier: .setBackgroundImageForBarMetrics,
             action: __setBackgroundImage(_:for:),
             category: category

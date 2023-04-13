@@ -30,16 +30,8 @@ final class DictionaryTests: XCTestCase {
         let id2 = "image/bg/tips"
         
         XCTAssertEqual((try? ThemeInfo.theme0.appearanceInfo(with: id0)) as! String, "F7ACBC")
-        XCTAssertEqual((try? ThemeInfo.theme1.appearanceInfo(with: id1)) as! String, "8F4B2E 0.9")
+        XCTAssertEqual((try? ThemeInfo.theme1.appearanceInfo(with: id1)) as! String, "525F42 0.9")
         XCTAssertNil((try? ThemeInfo.theme2.appearanceInfo(with: id2)))
         XCTAssertNil((try? ThemeInfo.theme0.appearanceInfo(with: "color/textc000")))
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

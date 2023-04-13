@@ -111,7 +111,7 @@ private extension NSTableView {
     @objc func swizzled_setIndicatorImage(_ image: NSImage, in tableColumn: NSTableColumn) {
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(tableColumn),
+            secondParam: Callable.Original(tableColumn),
             identifier: .setIndicatorImageInTableColumn,
             action: __setIndicatorImage(_:in:)
         )

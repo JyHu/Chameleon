@@ -110,7 +110,7 @@ private extension UIStepper {
     @objc func swizzled_setBackgroundImage(_ image: UIImage?, for state: UIControl.State) {
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setBackgroundImageForState,
             action: __setBackgroundImage(_:for:),
             category: "UIStepper.state:\(state.rawValue)"
@@ -120,8 +120,8 @@ private extension UIStepper {
     @objc func swizzled_setDividerImage(_ image: UIImage?, forLeftSegmentState leftState: UIControl.State, rightSegmentState rightState: UIControl.State) {
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(leftState),
-            thirdParam: Callable.Mediator(rightState),
+            secondParam: Callable.Original(leftState),
+            thirdParam: Callable.Original(rightState),
             identifier: .setDividerImageForLeftRightState,
             action: __setDividerImage(_:forLeftSegmentState:rightSegmentState:),
             category: "UIStepper.left:\(leftState.rawValue).right:\(rightState.rawValue)"
@@ -131,7 +131,7 @@ private extension UIStepper {
     @objc func swizzled_setIncrementImage(_ image: UIImage?, for state: UIControl.State) {
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setIncrementImageForState,
             action: __setIncrementImage(_:for:),
             category: "UIStepper.state:\(state.rawValue)"
@@ -141,7 +141,7 @@ private extension UIStepper {
     @objc func swizzled_setDecrementImage(_ image: UIImage?, for state: UIControl.State) {
         cache(
             firstParam: Callable.Appearanced(image),
-            secondParam: Callable.Mediator(state),
+            secondParam: Callable.Original(state),
             identifier: .setDecrementImageForState,
             action: __setDecrementImage(_:for:),
             category: "UIStepper.state:\(state.rawValue)"

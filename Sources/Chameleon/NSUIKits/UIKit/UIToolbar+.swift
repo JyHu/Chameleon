@@ -133,8 +133,8 @@ private extension UIToolbar {
     @objc func swizzled_setBackgroundImage(_ backgroundImage: UIImage?, forToolbarPosition position: UIBarPosition, barMetrics: UIBarMetrics) {
         cache(
             firstParam: Callable.Appearanced(backgroundImage),
-            secondParam: Callable.Mediator(position),
-            thirdParam: Callable.Mediator(barMetrics),
+            secondParam: Callable.Original(position),
+            thirdParam: Callable.Original(barMetrics),
             identifier: .setBackgroundImageForPositionMetrics,
             action: __setBackgroundImage(_:forToolbarPosition:barMetrics:),
             category: "UIToolBar.position:\(position.rawValue).metrics:\(barMetrics.rawValue)"
@@ -144,7 +144,7 @@ private extension UIToolbar {
     @objc func swizzled_setShadowImage(_ shadowImage: UIImage?, forToolbarPosition position: UIBarPosition) {
         cache(
             firstParam: Callable.Appearanced(shadowImage),
-            secondParam: Callable.Mediator(position),
+            secondParam: Callable.Original(position),
             identifier: .setShadowImageFor,
             action: __setShadowImage(_:forToolbarPosition:),
             category: "UIToolBar.position:\(position.rawValue)"

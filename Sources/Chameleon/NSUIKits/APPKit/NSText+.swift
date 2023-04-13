@@ -112,7 +112,7 @@ private extension NSText {
     @objc func swizzled_setTextColor(_ color: NSColor?, range: NSRange) {
         cache(
             firstParam: Callable.Appearanced(color),
-            secondParam: Callable.Mediator(range),
+            secondParam: Callable.Original(range),
             identifier: .textColorRange,
             action: __setTextColor(_:range:)
         )
