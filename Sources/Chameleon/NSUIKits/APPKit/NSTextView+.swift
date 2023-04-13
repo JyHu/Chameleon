@@ -53,6 +53,7 @@ public extension NSTextView {
 
 internal extension NSTextView {
     static func silenceExchangeTextViewImplementation() {
+
         app_swizzing(
             originalSelector: #selector(setter: insertionPointColor),
             newSelector: #selector(swizzled_setInsertionPointColor(_:))

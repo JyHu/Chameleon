@@ -46,7 +46,7 @@ public extension NSAttributedString {
         
         /// 遍历所有的缓存信息，用换肤资源中有效的值来替换
         for element in elements {
-            guard element.range.upperBound < self.length else { continue }
+            guard element.range.upperBound <= self.length else { continue }
             let color = NSUIAppearanceColor.colorWith(appearanceIdentifier: element.identifier) ?? element.color
             mutableAttributedString.addAttributes([.foregroundColor: color], range: element.range)
         }

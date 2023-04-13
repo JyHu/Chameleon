@@ -17,12 +17,6 @@ private extension AppearanceCallableIdentifier {
     static let setAttributedTitleForState = "UIButton.__setAttributedTitle(_:for:)"
 }
 
-private extension UIControl.State {
-    var appearancedCategory: String {
-        return "\(rawValue)"
-    }
-}
-
 public extension UIButton {
     var app_tintColor: UIColor {
         get { tintColor }
@@ -150,7 +144,7 @@ private extension UIButton {
             secondParam: Callable.Mediator(state),
             identifier: .setTitleColorForState,
             action: __setTitleColor(_:for:),
-            category: state.appearancedCategory
+            category: "UIButton.state:\(state.rawValue)"
         )
     }
     
@@ -160,7 +154,7 @@ private extension UIButton {
             secondParam: Callable.Mediator(state),
             identifier: .setImageForState,
             action: __setImage(_:for:),
-            category: state.appearancedCategory
+            category: "UIButton.state:\(state.rawValue)"
         )
     }
     
@@ -170,7 +164,7 @@ private extension UIButton {
             secondParam: Callable.Mediator(state),
             identifier: .setBackgroundImageForState,
             action: __setBackgroundImage(_:for:),
-            category: state.appearancedCategory
+            category: "UIButton.state:\(state.rawValue)"
         )
     }
     
@@ -180,7 +174,7 @@ private extension UIButton {
             secondParam: Callable.Mediator(state),
             identifier: .setAttributedTitleForState,
             action: __setAttributedTitle(_:for:),
-            category: state.appearancedCategory
+            category: "UIButton.state:\(state.rawValue)"
         )
     }
 }

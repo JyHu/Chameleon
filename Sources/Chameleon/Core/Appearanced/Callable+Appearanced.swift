@@ -102,13 +102,19 @@ public extension Callable {
             /// 如果不支持换肤，返回原始值
             guard let identifier = identifier else { return original }
             
+            func pickup(_ object: Any?) -> T {
+                guard let object = object else { return original }
+                return (object as? T) ?? original
+            }
+            
             switch clsType {
-            case .color: return AppearanceManager.shared.color(with: identifier) as? T ?? original
-            case .image: return AppearanceManager.shared.image(with: identifier) as? T ?? original
+            case .color: return pickup(AppearanceManager.shared.color(with: identifier))
+            case .image: return pickup(AppearanceManager.shared.image(with: identifier))
             case .numeric(let numType):
                 let numVal = (try? AppearanceManager.shared.appearanceInfo(with: identifier))
-                return matchedAppearancedNumValue(from: numVal, of: numType) ?? original
-            case .other: return (try? AppearanceManager.shared.appearanceInfo(with: identifier)) as? T ?? original
+                let matchedRes: T? = matchedAppearancedNumValue(from: numVal, of: numType)
+                return matchedRes ?? original
+            case .other: return pickup(try? AppearanceManager.shared.appearanceInfo(with: identifier))
             }
         }
     }

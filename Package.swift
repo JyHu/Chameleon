@@ -25,6 +25,8 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "ChameleonTests",
-            dependencies: ["Chameleon"])
+            dependencies: ["Chameleon"],
+            resources: [.process("Resources")]
+        )
     ]
 )

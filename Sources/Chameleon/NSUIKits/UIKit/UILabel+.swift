@@ -45,7 +45,7 @@ public extension UILabel {
             if __USING_APPEARANCED_SWIZZING__ {
                 self.attributedText = newValue
             } else {
-                swizzled_setAttributedTitle(newValue)
+                swizzled_setAttributedText(newValue)
             }
         }
     }
@@ -76,7 +76,7 @@ internal extension UILabel {
         
         app_swizzing(
             originalSelector: #selector(setter: attributedText),
-            newSelector: #selector(swizzled_setAttributedTitle(_:))
+            newSelector: #selector(swizzled_setAttributedText(_:))
         )
         
         app_swizzing(
@@ -105,7 +105,7 @@ private extension UILabel {
     
     func __setAttributedText(_ attributedText: NSAttributedString?) {
         if __USING_APPEARANCED_SWIZZING__ {
-            swizzled_setAttributedTitle(attributedText)
+            swizzled_setAttributedText(attributedText)
         } else {
             self.attributedText = attributedText
         }
@@ -135,7 +135,7 @@ private extension UILabel {
         )
     }
     
-    @objc func swizzled_setAttributedTitle(_ attributedText: NSAttributedString?) {
+    @objc func swizzled_setAttributedText(_ attributedText: NSAttributedString?) {
         cache(
             firstParam: Callable.Appearanced(attributedText),
             identifier: .attributedText,

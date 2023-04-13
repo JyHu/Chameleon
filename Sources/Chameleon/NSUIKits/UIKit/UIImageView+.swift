@@ -75,26 +75,20 @@ public extension UIImageView {
         }
     }
     
-    var app_animationDuration: TimeInterval {
-        get { animationDuration }
-        set {
-            if __USING_APPEARANCED_SWIZZING__ {
-                self.animationDuration = newValue
-            } else {
-                swizzled_setAnimationDuration(newValue)
-            }
-        }
+    func setAnimationDuration(_ animationDuration: TimeInterval, identifier: String) {
+        cache(
+            firstParam: Callable.Appearanced(animationDuration, identifier: identifier),
+            identifier: .animationDuration,
+            action: __setAnimationDuration(_:)
+        )
     }
     
-    var app_animationRepeatCount: Int {
-        get { animationRepeatCount }
-        set {
-            if __USING_APPEARANCED_SWIZZING__ {
-                self.animationRepeatCount = newValue
-            } else {
-                swizzled_setAnimationRepeatCount(newValue)
-            }
-        }
+    func setAnimationRepeatCount(_ animationRepeatCount: Int, identifier: String) {
+        cache(
+            firstParam: Callable.Appearanced(animationRepeatCount, identifier: identifier),
+            identifier: .animationRepeatCount,
+            action: __setAnimationRepeatCount(_:)
+        )
     }
 }
 
@@ -123,16 +117,6 @@ internal extension UIImageView {
         app_swizzing(
             originalSelector: #selector(setter: tintColor),
             newSelector: #selector(swizzled_setTintColor(_:))
-        )
-        
-        app_swizzing(
-            originalSelector: #selector(setter: animationDuration),
-            newSelector: #selector(swizzled_setAnimationDuration(_:))
-        )
-        
-        app_swizzing(
-            originalSelector: #selector(setter: animationRepeatCount),
-            newSelector: #selector(swizzled_setAnimationRepeatCount(_:))
         )
     }
 }
@@ -179,19 +163,11 @@ private extension UIImageView {
     }
     
     func __setAnimationDuration(_ animationDuration: TimeInterval) {
-        if __USING_APPEARANCED_SWIZZING__ {
-            swizzled_setAnimationDuration(animationDuration)
-        } else {
-            self.animationDuration = animationDuration
-        }
+        self.animationDuration = animationDuration
     }
     
     func __setAnimationRepeatCount(_ animationRepeatCount: Int) {
-        if __USING_APPEARANCED_SWIZZING__ {
-            swizzled_setAnimationRepeatCount(animationRepeatCount)
-        } else {
-            self.animationRepeatCount = animationRepeatCount
-        }
+        self.animationRepeatCount = animationRepeatCount
     }
     
     @objc func swizzled_setImage(_ image: UIImage?) {
@@ -231,22 +207,6 @@ private extension UIImageView {
             firstParam: Callable.Appearanced(tintColor),
             identifier: .tintColor,
             action: __setTintColor(_:)
-        )
-    }
-    
-    @objc func swizzled_setAnimationDuration(_ animationDuration: TimeInterval) {
-        cache(
-            firstParam: Callable.Appearanced(animationDuration),
-            identifier: .animationDuration,
-            action: __setAnimationDuration(_:)
-        )
-    }
-    
-    @objc func swizzled_setAnimationRepeatCount(_ animationRepeatCount: Int) {
-        cache(
-            firstParam: Callable.Appearanced(animationRepeatCount),
-            identifier: .animationRepeatCount,
-            action: __setAnimationRepeatCount(_:)
         )
     }
 }

@@ -43,6 +43,20 @@ public protocol CustomizedAppearanceProtocol: NSObjectProtocol {
     func customizedAppearancedImage(of appearanceInfo: Any, identifier: AppearanceCallableIdentifier) -> CustomizedAppearanceResult<NSUIAppearanceImage>
 }
 
+/// 提供默认实现，将协议方法变为可选方法
+public extension CustomizedAppearanceProtocol {
+    func customizedAppearancedColor(of appearanceInfo: Any, identifier: AppearanceCallableIdentifier) -> CustomizedAppearanceResult<NSUIAppearanceColor> {
+        guard let colorInfo = appearanceInfo as? String else { return .ignored }
+        guard let color = NSUIAppearanceColor.colorWith(appearancedValue: colorInfo) else { return .ignored }
+        return .result(color, true)
+    }
+    
+    func customizedAppearancedImage(of appearanceInfo: Any, identifier: AppearanceCallableIdentifier) -> CustomizedAppearanceResult<NSUIAppearanceImage> {
+        guard let image = try? NSUIAppearanceImage.imageWith(appearancedValue: appearanceInfo) else { return .ignored }
+        return .result(image, true)
+    }
+}
+
 /// 换肤框架的资源管理类，用于资源、状态、数据的管理
 public class AppearanceManager: NSObject {
     /// 获取单例

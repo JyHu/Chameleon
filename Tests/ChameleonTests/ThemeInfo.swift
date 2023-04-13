@@ -31,9 +31,18 @@ struct ThemeInfo {
                 "C108": "C85D44",
             ]
         ],
+        "image": [
+            "no01": "bullseye_icon_252137",
+            "no02": "dinosaur_icon_252012",
+            "no03": "heart_love_icon_251954"
+        ],
         "others": [
             "border": [
                 "width": 5
+            ],
+            "imageView": [
+                "animationDuration": 1,
+                "animationRepeatCount": 3
             ]
         ]
     ]
@@ -61,9 +70,18 @@ struct ThemeInfo {
                 "C108": "FFE600 0.9",
             ]
         ],
+        "image": [
+            "no01": "home_house_icon_251952",
+            "no02": "human_handsup_icon_251948",
+            "no03": "mood_happy_icon_251870"
+        ],
         "others": [
             "border": [
                 "width": 2
+            ],
+            "imageView": [
+                "animationDuration": 3,
+                "animationRepeatCount": 5
             ]
         ]
     ]
@@ -91,9 +109,18 @@ struct ThemeInfo {
                 "C108": "6C4C49 0.8",
             ]
         ],
+        "image": [
+            "no01": "trash_delete_remove_icon_251766",
+            "no02": "visible_eye_icon_251745",
+            "no03": "zap_icon_251733"
+        ],
         "others": [
             "border": [
                 "width": 10
+            ],
+            "imageView": [
+                "animationDuration": 5,
+                "animationRepeatCount": 7
             ]
         ]
     ]
