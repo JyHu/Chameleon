@@ -9,11 +9,13 @@
 #if os(macOS)
 import Cocoa
 
+@available(macOS 10.15, *)
 private extension AppearanceCallableIdentifier {
     static let image = "NSButtonTouchBarItem.__setImage(_:)"
     static let bezelColor = "NSButtonTouchBarItem.__setBezelColor(_:)"
 }
 
+@available(macOS 10.15, *)
 public extension NSButtonTouchBarItem {
     var app_image: NSUIAppearanceImage? {
         get { image }
@@ -38,6 +40,7 @@ public extension NSButtonTouchBarItem {
     }
 }
 
+@available(macOS 10.15, *)
 internal extension NSButtonTouchBarItem {
     static func silenceExchangeButtonTouchBarItemImplementation() {
         app_swizzing(
@@ -52,6 +55,7 @@ internal extension NSButtonTouchBarItem {
     }
 }
 
+@available(macOS 10.15, *)
 private extension NSButtonTouchBarItem {
     func __setImage(_ image: NSUIAppearanceImage?) {
         if __USING_APPEARANCED_SWIZZING__ {

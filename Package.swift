@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "Chameleon",
-    platforms: [ .macOS(.v11), .iOS(.v11) ],
+    platforms: [ .macOS(.v10_13), .iOS(.v11) ],
     products: [
         .library(
             name: "Chameleon",

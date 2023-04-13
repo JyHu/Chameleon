@@ -334,7 +334,7 @@ final class AppearancedTests: XCTestCase {
     func testUnit() throws {
         AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme0)
         
-        let theme0 = ThemeInfos.Theme0.self
+//        let theme0 = ThemeInfos.Theme0.self
         
 //        let label = UILabel()
 //        label.app_textColor = theme0.C001

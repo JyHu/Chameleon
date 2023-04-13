@@ -30,6 +30,7 @@ public extension NSButton {
         }
     }
     
+    @available(macOS 10.14, *)
     var app_contentTintColor: NSColor? {
         get { contentTintColor }
         set {
@@ -93,10 +94,12 @@ internal extension NSButton {
             newSelector: #selector(swizzled_setBezelColor(_:))
         )
         
-        app_swizzing(
-            originalSelector: #selector(setter: contentTintColor),
-            newSelector: #selector(swizzled_setContentTintColor(_:))
-        )
+        if #available(macOS 10.14, *) {        
+            app_swizzing(
+                originalSelector: #selector(setter: contentTintColor),
+                newSelector: #selector(swizzled_setContentTintColor(_:))
+            )
+        }
         
         app_swizzing(
             originalSelector: #selector(setter: image),
@@ -129,6 +132,7 @@ private extension NSButton {
         }
     }
     
+    @available(macOS 10.14, *)
     func __setContentTintColor(_ contentTintColor: NSColor?) {
         if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setContentTintColor(contentTintColor)
@@ -177,6 +181,7 @@ private extension NSButton {
         )
     }
     
+    @available(macOS 10.14, *)
     @objc func swizzled_setContentTintColor(_ contentTintColor: NSColor?) {
         cache(
             firstParam: Callable.Appearanced(contentTintColor),

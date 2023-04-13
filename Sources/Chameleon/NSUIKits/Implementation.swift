@@ -31,13 +31,16 @@ public extension AppearanceManager {
         NSTextView.silenceExchangeTextViewImplementation()
         /// NSView
         NSWindow.silenceExchangeWindowImplementation()
-        NSButtonTouchBarItem.silenceExchangeButtonTouchBarItemImplementation()
         NSClipView.silenceExchangeClipViewImplementation()
         NSPathControl.silenceExchangePathControlImplementation()
         NSPathControlItem.silenceExchangePathControlItemImplementation()
         NSTableRowView.silenceExchangeTableRowViewImplementation()
         NSSegmentedControl.silenceExchangeSegmentedControlImplementation()
         NSLevelIndicator.silenceExchangeLevelIndicatorImplementation()
+        
+        if #available(macOS 10.15, *) {
+            NSButtonTouchBarItem.silenceExchangeButtonTouchBarItemImplementation()        
+        }
 #elseif canImport(UIKit)
         UIButton.silenceExchangeButtonImplementation()
         UILabel.silenceExchangeLabelImplementation()
