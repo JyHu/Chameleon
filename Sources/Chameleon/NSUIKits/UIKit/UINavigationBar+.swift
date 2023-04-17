@@ -10,7 +10,6 @@
 import UIKit
 
 private extension AppearanceCallableIdentifier {
-    static let tintColor = "UINavigationBar.__setTintColor(_:)"
     static let barTintColor = "UINavigationBar.__setBarTintColor(_:)"
     static let shadowImage = "UINavigationBar.__setShadowImage(_:)"
     static let titleTextAttributes = "UINavigationBar.__setTitleTextAttributes(_:)"
@@ -22,17 +21,6 @@ private extension AppearanceCallableIdentifier {
 }
 
 public extension UINavigationBar {
-    var app_tintColor: UIColor {
-        get { tintColor }
-        set {
-            if __USING_APPEARANCED_SWIZZING__ {
-                self.tintColor = newValue
-            } else {
-                swizzled_setTintColor(newValue)
-            }
-        }
-    }
-    
     var app_barTintColor: UIColor? {
         get { barTintColor }
         set {
@@ -119,11 +107,6 @@ public extension UINavigationBar {
 internal extension UINavigationBar {
     static func silenceExchangeNavigationBarImplementation() {
         app_swizzing(
-            originalSelector: #selector(setter: tintColor),
-            newSelector: #selector(swizzled_setTintColor(_:))
-        )
-        
-        app_swizzing(
             originalSelector: #selector(setter: barTintColor),
             newSelector: #selector(swizzled_setBarTintColor(_:))
         )
@@ -166,14 +149,6 @@ internal extension UINavigationBar {
 }
 
 private extension UINavigationBar {
-    func __setTintColor(_ tintColor: UIColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
-            swizzled_setTintColor(tintColor)
-        } else {
-            self.tintColor = tintColor
-        }
-    }
-    
     func __setBarTintColor(_ barTintColor: UIColor?) {
         if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setBarTintColor(barTintColor)
@@ -236,16 +211,6 @@ private extension UINavigationBar {
         } else {
             self.setBackgroundImage(backgroundImage, for: barMetrics)
         }
-    }
-    
-    
-    
-    @objc func swizzled_setTintColor(_ tintColor: UIColor) {
-        cache(
-            firstParam: Callable.Appearanced(tintColor),
-            identifier: .tintColor,
-            action: { [weak self] va in self?.__setTintColor(va) }
-        )
     }
     
     @objc func swizzled_setBarTintColor(_ barTintColor: UIColor?) {

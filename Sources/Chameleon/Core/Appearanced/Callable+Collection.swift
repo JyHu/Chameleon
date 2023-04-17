@@ -13,8 +13,8 @@ private protocol __CollectionAppearanceConvert {
     var isAppearanced: Bool { get }
 }
 
-public extension Callable {
-    private struct __ArrayHolder<V>: __CollectionAppearanceConvert {
+private extension Callable {
+    struct __ArrayHolder<V>: __CollectionAppearanceConvert {
         typealias OutPut = [V]
         
         private let arrayAppearanced: [Appearanced<V>]
@@ -30,7 +30,7 @@ public extension Callable {
         }
     }
     
-    private struct __DictionaryHolder<K, V>: __CollectionAppearanceConvert where K: Hashable {
+    struct __DictionaryHolder<K, V>: __CollectionAppearanceConvert where K: Hashable {
         typealias OutPut = [K: V]
         
         private let dictionaryAppearanced: [K: Appearanced<V>]
@@ -57,7 +57,9 @@ public extension Callable {
         }
     }
     
-    
+}
+
+public extension Callable {
     ///
     ///
     ///

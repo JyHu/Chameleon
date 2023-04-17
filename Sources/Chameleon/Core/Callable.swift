@@ -17,7 +17,7 @@ public protocol CallableProtocol {
     var identifier: AppearanceCallableIdentifier { get }
     
     /// 在执行换肤的时候由框架内统一调用的方法，用于通知所有需要换肤的组件执行换肤的操作
-    func execute()
+    func execute(withoutChameleon: Bool)
     
     /// 当前缓存的换肤方法执行对象是否支持换肤，只要缓存的参数中有一个属性支持换肤，那么即算是支持
     /// 对于不支持换肤的执行对象，就没必要缓存
@@ -51,8 +51,12 @@ public extension Callable {
             self.category = category
         }
         
-        public func execute() {
-            action(firstParam.correct)
+        public func execute(withoutChameleon: Bool) {
+            if withoutChameleon {
+                action(firstParam.original)
+            } else {
+                action(firstParam.correct)
+            }
         }
     }
     
@@ -78,8 +82,12 @@ public extension Callable {
             self.category = category
         }
         
-        public func execute() {
-            action(firstParam.correct, secondParam.correct)
+        public func execute(withoutChameleon: Bool) {
+            if withoutChameleon {
+                action(firstParam.original, secondParam.original)
+            } else {
+                action(firstParam.correct, secondParam.correct)
+            }
         }
     }
     
@@ -111,12 +119,20 @@ public extension Callable {
             self.category = category
         }
         
-        public func execute() {
-            action(
-                firstParam.correct,
-                secondParam.correct,
-                thirdParam.correct
-            )
+        public func execute(withoutChameleon: Bool) {
+            if withoutChameleon {
+                action(
+                    firstParam.original,
+                    secondParam.original,
+                    thirdParam.original
+                )
+            } else {
+                action(
+                    firstParam.correct,
+                    secondParam.correct,
+                    thirdParam.correct
+                )
+            }
         }
     }
     
@@ -151,13 +167,22 @@ public extension Callable {
             self.category = category
         }
         
-        public func execute() {
-            action(
-                firstParam.correct,
-                secondParam.correct,
-                thirdParam.correct,
-                fourthParam.correct
-            )
+        public func execute(withoutChameleon: Bool) {
+            if withoutChameleon {
+                action(
+                    firstParam.original,
+                    secondParam.original,
+                    thirdParam.original,
+                    fourthParam.original
+                )
+            } else {
+                action(
+                    firstParam.correct,
+                    secondParam.correct,
+                    thirdParam.correct,
+                    fourthParam.correct
+                )
+            }
         }
     }
     
@@ -195,14 +220,24 @@ public extension Callable {
             self.category = category
         }
         
-        public func execute() {
-            action(
-                firstParam.correct,
-                secondParam.correct,
-                thirdParam.correct,
-                fourthParam.correct,
-                fifthParam.correct
-            )
+        public func execute(withoutChameleon: Bool) {
+            if withoutChameleon {
+                action(
+                    firstParam.original,
+                    secondParam.original,
+                    thirdParam.original,
+                    fourthParam.original,
+                    fifthParam.original
+                )
+            } else {            
+                action(
+                    firstParam.correct,
+                    secondParam.correct,
+                    thirdParam.correct,
+                    fourthParam.correct,
+                    fifthParam.correct
+                )
+            }
         }
     }
 }

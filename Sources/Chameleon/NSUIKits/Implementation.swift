@@ -13,11 +13,8 @@ import UIKit
 
 var __USING_APPEARANCED_SWIZZING__: Bool { AppearanceManager.shared.usingSwizzing }
 
-public extension AppearanceManager {
+internal extension AppearanceManager {
     static func exchangeImplementations() {
-        shared.useSwizzing()
-        
-        
 #if os(macOS)
         NSBox.silenceExchangeBoxImplementation()
         NSButton.silenceExchangeButtonImplementation()
@@ -37,6 +34,7 @@ public extension AppearanceManager {
         NSTableRowView.silenceExchangeTableRowViewImplementation()
         NSSegmentedControl.silenceExchangeSegmentedControlImplementation()
         NSLevelIndicator.silenceExchangeLevelIndicatorImplementation()
+        NSCollectionView.silenceExchangeCollectionViewImplementation()
         
         if #available(macOS 10.15, *) {
             NSButtonTouchBarItem.silenceExchangeButtonTouchBarItemImplementation()        
@@ -48,7 +46,7 @@ public extension AppearanceManager {
         UIActivityIndicatorView.silenceExchangeActivityIndicatorViewImplementation()
         UIBarItem.silenceExchangeBarItemImplementation()
         UIImageView.silenceExchangeImageViewImplementation()
-        UINavigationBar.silenceExchangeViewImplementation()
+        UINavigationBar.silenceExchangeNavigationBarImplementation()
         UIPageControl.silenceExchangePageControlImplementation()
         UIProgressView.silenceExchangeProgressViewImplementation()
         UIRefreshControl.silenceExchangeRefreshControlImplementation()

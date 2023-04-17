@@ -8,6 +8,8 @@
 import Foundation
 
 public protocol AppearancedProtocol {
+    
+    /// 缓存当前入参的数据类型
     associatedtype InputType
     
     /// 缓存的原始参数值

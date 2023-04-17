@@ -10,7 +10,6 @@
 import UIKit
 
 private extension AppearanceCallableIdentifier {
-    static let tintColor = "UIButton.__setTintColor(_:)"
     static let setTitleColorForState = "UIButton.__setTitleColor(_:for:)"
     static let setImageForState = "UIButton.__setImage(_:for:)"
     static let setBackgroundImageForState = "UIButton.__setBackgroundImage(_:for:)"
@@ -18,17 +17,6 @@ private extension AppearanceCallableIdentifier {
 }
 
 public extension UIButton {
-    var app_tintColor: UIColor {
-        get { tintColor }
-        set {
-            if __USING_APPEARANCED_SWIZZING__ {
-                self.tintColor = newValue
-            } else {
-                swizzled_setTintColor(newValue)
-            }
-        }
-    }
-    
     func app_setTitleColor(_ titleColor: UIColor?, for state: State) {
         if __USING_APPEARANCED_SWIZZING__ {
             setTitleColor(titleColor, for: state)
@@ -63,11 +51,6 @@ public extension UIButton {
 internal extension UIButton {
     static func silenceExchangeButtonImplementation() {
         app_swizzing(
-            originalSelector: #selector(setter: tintColor),
-            newSelector: #selector(swizzled_setTintColor(_:))
-        )
-        
-        app_swizzing(
             originalSelector: #selector(setTitleColor(_:for:)),
             newSelector: #selector(swizzled_setTitleColor(_:for:))
         )
@@ -90,14 +73,6 @@ internal extension UIButton {
 }
 
 private extension UIButton {
-    func __setTintColor(_ tintColor: UIColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
-            swizzled_setTintColor(tintColor)
-        } else {
-            self.tintColor = tintColor
-        }
-    }
-    
     func __setTitleColor(_ titleColor: UIColor?, for state: State) {
         if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setTitleColor(titleColor, for: state)
@@ -128,14 +103,6 @@ private extension UIButton {
         } else {
             setAttributedTitle(attributedTitle, for: state)
         }
-    }
-    
-    @objc func swizzled_setTintColor(_ tintColor: UIColor) {
-        cache(
-            firstParam: Callable.Appearanced(tintColor),
-            identifier: .tintColor,
-            action: { [weak self] va in self?.__setTintColor(va) }
-        )
     }
     
     @objc func swizzled_setTitleColor(_ titleColor: UIColor?, for state: State) {

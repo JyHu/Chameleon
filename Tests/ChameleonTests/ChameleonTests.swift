@@ -35,6 +35,43 @@ final class ChameleonTests: XCTestCase {
         #endif
     }
     
+    func testRepeatSet() {
+        #if os(macOS)
+        AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme0)
+        
+        let label = NSTextField(labelWithString: "hello world")
+        
+        label.app_textColor = ThemeInfos.Theme0.C001
+        
+        AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme1)
+        
+        XCTAssertEqual(label.textColor, ThemeInfos.Theme1.C001)
+        
+        AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme2)
+        
+        XCTAssertEqual(label.textColor, ThemeInfos.Theme2.C001)
+        
+        label.app_textColor = ThemeInfos.Theme0.C002
+        label.app_textColor = ThemeInfos.Theme0.C003
+        
+        AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme0)
+        
+        XCTAssertEqual(label.textColor, ThemeInfos.Theme0.C003)
+        XCTAssertNotEqual(label.textColor, ThemeInfos.Theme0.C001)
+        
+        AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme1)
+        
+        XCTAssertEqual(label.textColor, ThemeInfos.Theme1.C003)
+        XCTAssertNotEqual(label.textColor, ThemeInfos.Theme1.C001)
+        
+        AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme2)
+        
+        XCTAssertEqual(label.textColor, ThemeInfos.Theme2.C003)
+        XCTAssertNotEqual(label.textColor, ThemeInfos.Theme2.C001)
+        
+        #endif
+    }
+    
     func testExecution() {
         let color1 = NSUIAppearanceColor.red
         let color2 = NSUIAppearanceColor.red

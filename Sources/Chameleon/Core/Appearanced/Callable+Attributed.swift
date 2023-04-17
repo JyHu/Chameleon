@@ -20,6 +20,7 @@ public extension Callable {
         
         public let original: T
         
+        /// 缓存的当前富文本中所有颜色属性的位置信息
         private let elements: [NSAttributedString.ColorElement]
         
         public var isAppearanced: Bool { elements.count > 0 }

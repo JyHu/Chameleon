@@ -102,14 +102,15 @@ public class AppearanceManager: NSObject {
         /// 发送通知给所有订阅者
         postThemeChangeNotification()
     }
+    
+    /// 启用swizzing
+    public static func useSwizzing() {
+        shared.usingSwizzing = true
+        exchangeImplementations()
+    }
 }
 
 internal extension AppearanceManager {
-    /// 启用swizzing
-    func useSwizzing() {
-        self.usingSwizzing = true
-    }
-    
     /// 通过颜色的资源id获取到对应的有效的颜色资源
     /// - Parameter identifier: 资源id
     /// - Returns: 颜色对象

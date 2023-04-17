@@ -58,7 +58,9 @@ public extension Callable {
             else { self = .other }
         }
     }
-    
+}
+
+public extension Callable {
     /// 对单个换肤参数的更高一层的包装，用于记录当前入参的一些通用属性
     ///
     ///

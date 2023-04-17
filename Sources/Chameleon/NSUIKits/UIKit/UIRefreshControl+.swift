@@ -10,22 +10,10 @@
 import UIKit
 
 private extension AppearanceCallableIdentifier {
-    static let tintColor = "UIRefreshControl.__setTintColor(_:)"
     static let attributedTitle = "UIRefreshControl.__setAttributedTitle(_:)"
 }
 
 public extension UIRefreshControl {
-    var app_tintColor: UIColor {
-        get { tintColor }
-        set {
-            if __USING_APPEARANCED_SWIZZING__ {
-                self.tintColor = newValue
-            } else {
-                swizzled_setTintColor(newValue)
-            }
-        }
-    }
-    
     var app_attributedTitle: NSAttributedString? {
         get { attributedTitle }
         set {
@@ -41,11 +29,6 @@ public extension UIRefreshControl {
 internal extension UIRefreshControl {
     static func silenceExchangeRefreshControlImplementation() {
         app_swizzing(
-            originalSelector: #selector(setter: tintColor),
-            newSelector: #selector(swizzled_setTintColor(_:))
-        )
-        
-        app_swizzing(
             originalSelector: #selector(setter: attributedTitle),
             newSelector: #selector(swizzled_setAttributedTitle(_:))
         )
@@ -54,14 +37,6 @@ internal extension UIRefreshControl {
 
 
 private extension UIRefreshControl {
-    func __setTintColor(_ tintColor: UIColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
-            swizzled_setTintColor(tintColor)
-        } else {
-            self.tintColor = tintColor
-        }
-    }
-    
     func __setAttributedTitle(_ attributedTitle: NSAttributedString?) {
         if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setAttributedTitle(attributedTitle)
@@ -70,17 +45,9 @@ private extension UIRefreshControl {
         }
     }
     
-    @objc func swizzled_setTintColor(_ tintColor: UIColor) {
-        cache(
-            firstParam: Callable.Appearanced(tintColor),
-            identifier: .tintColor,
-            action: { [weak self] va in self?.__setTintColor(va) }
-        )
-    }
-    
     @objc func swizzled_setAttributedTitle(_ attributedTitle: NSAttributedString?) {
         cache(
-            firstParam: Callable.Appearanced(attributedTitle),
+            firstParam: Callable.Attributed(attributedTitle),
             identifier: .attributedTitle,
             action: { [weak self] va in self?.__setAttributedTitle(va) }
         )

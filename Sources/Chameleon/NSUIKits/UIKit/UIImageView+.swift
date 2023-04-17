@@ -14,7 +14,6 @@ private extension AppearanceCallableIdentifier {
     static let highlightedImage = "UIImageView.__setHighlightedImage(_:)"
     static let animationImages = "UIImageView.__setAnimationImages(_:)"
     static let highlightedAnimationImages = "UIImageView.__setHighlightedAnimationImages(_:)"
-    static let tintColor = "UIImageView.__setTintColor(_:)"
     static let animationDuration = "UIImageView.__setAnimationDuration(_:)"
     static let animationRepeatCount = "UIImageView.__setAnimationRepeatCount(_:)"
 }
@@ -64,17 +63,6 @@ public extension UIImageView {
         }
     }
     
-    var app_tintColor: UIColor {
-        get { tintColor }
-        set {
-            if __USING_APPEARANCED_SWIZZING__ {
-                self.tintColor = newValue
-            } else {
-                swizzled_setTintColor(newValue)
-            }
-        }
-    }
-    
     func setAnimationDuration(_ animationDuration: TimeInterval, identifier: String) {
         cache(
             firstParam: Callable.Appearanced(animationDuration, identifier: identifier),
@@ -113,11 +101,6 @@ internal extension UIImageView {
             originalSelector: #selector(setter: highlightedAnimationImages),
             newSelector: #selector(swizzled_setHighlightedAnimationImages(_:))
         )
-        
-        app_swizzing(
-            originalSelector: #selector(setter: tintColor),
-            newSelector: #selector(swizzled_setTintColor(_:))
-        )
     }
 }
 
@@ -151,14 +134,6 @@ private extension UIImageView {
             swizzled_setHighlightedAnimationImages(highlightedAnimationImages)
         } else {
             self.highlightedAnimationImages = highlightedAnimationImages
-        }
-    }
-    
-    func __setTintColor(_ tintColor: UIColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
-            swizzled_setTintColor(tintColor)
-        } else {
-            self.tintColor = tintColor
         }
     }
     
@@ -199,14 +174,6 @@ private extension UIImageView {
             firstParam: Callable.Collection(highlightedAnimationImages),
             identifier: .highlightedAnimationImages,
             action: { [weak self] va in self?.__setHighlightedAnimationImages(va) }
-        )
-    }
-    
-    @objc func swizzled_setTintColor(_ tintColor: UIColor) {
-        cache(
-            firstParam: Callable.Appearanced(tintColor),
-            identifier: .tintColor,
-            action: { [weak self] va in self?.__setTintColor(va) }
         )
     }
 }

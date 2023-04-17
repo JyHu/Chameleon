@@ -24,11 +24,8 @@ public extension NSView {
             )
         }
         get {
-            if let cgColor = layer?.backgroundColor {
-                return NSColor(cgColor: cgColor)
-            }
-            
-            return nil
+            guard let cgColor = layer?.backgroundColor else { return nil }
+            return NSColor(cgColor: cgColor)
         }
     }
     

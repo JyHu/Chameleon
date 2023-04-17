@@ -166,21 +166,22 @@ public extension NSObject {
     /// - Returns: 缓存的原始值
     @discardableResult
     func cache<T>(appearanceCallable: T) -> T where T: CallableProtocol {
+#if DEBUG
+        assert(Thread.current.isMainThread, "当前保存数据时不是在主线程")
+#endif
+        
         /// 如果当前不支持换肤，或者当前缓存的执行对象不支持换肤，那么就不执行缓存操作，
         /// 但是需要执行一下设置方法用于初始化UI显示
         if cacher.disableChameleon || !appearanceCallable.isAppearanced {
-            appearanceCallable.execute()
+            appearanceCallable.execute(withoutChameleon: true)
             return appearanceCallable
         }
         
         var callables = cacher.cachedMethods[appearanceCallable.category] ?? [:]
-        
-        if callables[appearanceCallable.identifier] == nil {
-            callables[appearanceCallable.identifier] = appearanceCallable
-            cacher.cachedMethods[appearanceCallable.category] = callables
-        }
-        
-        appearanceCallable.execute()
+        callables[appearanceCallable.identifier] = appearanceCallable
+        cacher.cachedMethods[appearanceCallable.category] = callables
+       
+        appearanceCallable.execute(withoutChameleon: false)
         
         AppearanceManager.shared.registerAppearanceObserver(self, action: #selector(performThemeChangedAction))
         
@@ -192,7 +193,7 @@ private extension NSObject {
     @objc func performThemeChangedAction(_ notification: Notification) {
         for (_, callables) in cacher.cachedMethods {
             for (_, callable) in callables {
-                callable.execute()
+                callable.execute(withoutChameleon: false)
             }
         }
     }

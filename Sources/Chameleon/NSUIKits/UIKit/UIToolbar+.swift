@@ -10,24 +10,12 @@
 import UIKit
 
 private extension AppearanceCallableIdentifier {
-    static let tintColor = "__setTintColor(_:)"
     static let barTintColor = "__setBarTintColor(_:)"
     static let setBackgroundImageForPositionMetrics = "__setBackgroundImage(_:forToolbarPosition:barMetrics:)"
     static let setShadowImageFor = "__setShadowImage(_:forToolbarPosition:)"
 }
 
 public extension UIToolbar {
-    var app_tintColor: UIColor {
-        get { tintColor }
-        set {
-            if __USING_APPEARANCED_SWIZZING__ {
-                self.tintColor = newValue
-            } else {
-                swizzled_setTintColor(newValue)
-            }
-        }
-    }
-    
     var app_barTintColor: UIColor? {
         get { barTintColor }
         set {
@@ -59,11 +47,6 @@ public extension UIToolbar {
 internal extension UIToolbar {
     static func silenceExchangeToolbarImplementation() {
         app_swizzing(
-            originalSelector: #selector(setter: tintColor),
-            newSelector: #selector(swizzled_setTintColor(_:))
-        )
-        
-        app_swizzing(
             originalSelector: #selector(setter: barTintColor),
             newSelector: #selector(swizzled_setBarTintColor(_:))
         )
@@ -81,14 +64,6 @@ internal extension UIToolbar {
 }
 
 private extension UIToolbar {
-    func __setTintColor(_ tintColor: UIColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
-            swizzled_setTintColor(tintColor)
-        } else {
-            self.tintColor = tintColor
-        }
-    }
-    
     func __setBarTintColor(_ barTintColor: UIColor?) {
         if __USING_APPEARANCED_SWIZZING__ {
             swizzled_setBarTintColor(barTintColor)
@@ -111,15 +86,6 @@ private extension UIToolbar {
         } else {
             setShadowImage(shadowImage, forToolbarPosition: position)
         }
-    }
-    
-    
-    @objc func swizzled_setTintColor(_ tintColor: UIColor) {
-        cache(
-            firstParam: Callable.Appearanced(tintColor),
-            identifier: .tintColor,
-            action: { [weak self] va in self?.__setTintColor(va) }
-        )
     }
     
     @objc func swizzled_setBarTintColor(_ barTintColor: UIColor?) {
