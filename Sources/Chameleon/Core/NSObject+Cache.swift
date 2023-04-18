@@ -13,7 +13,7 @@ private extension NSObject {
     }
     
     class Cacher {
-        var cachedMethods: [AppearanceCallableCategory: Dictionary<AppearanceCallableIdentifier, CallableProtocol>] = [:]
+        var callablesMap: [AppearanceCallableCategory: Dictionary<AppearanceCallableIdentifier, CallableProtocol>] = [:]
         var disableChameleon: Bool = false
         var hadRegisterNotification: Bool = false
     }
@@ -147,7 +147,7 @@ public extension NSObject {
     ///   - identifier: 执行对象的唯一标识符
     ///   - category: 所属的分类
     func removeCallable(with identifier: AppearanceCallableIdentifier, category: AppearanceCallableCategory = AppearanceDefaultCallableCategory) {
-        cacher.cachedMethods[category]?.removeValue(forKey: identifier)
+        cacher.callablesMap[category]?.removeValue(forKey: identifier)
     }
     
     /// 获取缓存的换肤方法执行对象
@@ -156,7 +156,7 @@ public extension NSObject {
     ///   - category: 所属的分类
     /// - Returns: 查找到的缓存的对象
     func findCallable(with identifier: AppearanceCallableIdentifier, category: AppearanceCallableCategory = AppearanceDefaultCallableCategory) -> CallableProtocol? {
-        return cacher.cachedMethods[category]?[identifier]
+        return cacher.callablesMap[category]?[identifier]
     }
 }
 
@@ -178,9 +178,9 @@ public extension NSObject {
             return appearanceCallable
         }
         
-        var callables = cacher.cachedMethods[appearanceCallable.category] ?? [:]
+        var callables = cacher.callablesMap[appearanceCallable.category] ?? [:]
         callables[appearanceCallable.identifier] = appearanceCallable
-        cacher.cachedMethods[appearanceCallable.category] = callables
+        cacher.callablesMap[appearanceCallable.category] = callables
        
         appearanceCallable.execute(withoutChameleon: false)
         
@@ -195,7 +195,7 @@ public extension NSObject {
 
 private extension NSObject {
     @objc func performThemeChangedAction(_ notification: Notification) {
-        for (_, callables) in cacher.cachedMethods {
+        for (_, callables) in cacher.callablesMap {
             for (_, callable) in callables {
                 callable.execute(withoutChameleon: false)
             }
