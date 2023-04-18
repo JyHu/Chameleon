@@ -26,7 +26,7 @@ public extension UISearchBar {
     var app_barTintColor: UIColor? {
         get { barTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.barTintColor = newValue
             } else {
                 swizzled_setBarTintColor(newValue)
@@ -37,7 +37,7 @@ public extension UISearchBar {
     var app_backgroundImage: UIImage? {
         get { backgroundImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.backgroundImage = newValue
             } else {
                 swizzled_setBackgroundImage(newValue)
@@ -48,7 +48,7 @@ public extension UISearchBar {
     var app_scopeBarBackgroundImage: UIImage? {
         get { scopeBarBackgroundImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.scopeBarBackgroundImage = newValue
             } else {
                 swizzled_setScopeBarBackgroundImage(newValue)
@@ -57,7 +57,7 @@ public extension UISearchBar {
     }
     
     func app_setBackgroundImage(_ backgroundImage: UIImage?, for barPosition: UIBarPosition, barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setBackgroundImage(backgroundImage, for: barPosition, barMetrics: barMetrics)
         } else {
             swizzled_setBackgroundImage(backgroundImage, for: barPosition, barMetrics: barMetrics)
@@ -65,7 +65,7 @@ public extension UISearchBar {
     }
     
     func app_setSearchFieldBackgroundImage(_ backgroundImage: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setSearchFieldBackgroundImage(backgroundImage, for: state)
         } else {
             swizzled_setSearchFieldBackgroundImage(backgroundImage, for: state)
@@ -73,7 +73,7 @@ public extension UISearchBar {
     }
     
     func app_setImage(_ image: UIImage?, for icon: Icon, state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setImage(image, for: icon, state: state)
         } else {
             swizzled_setImage(image, for: icon, state: state)
@@ -81,7 +81,7 @@ public extension UISearchBar {
     }
     
     func app_setScopeBarButtonBackgroundImage(_ backgroundImage: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setScopeBarButtonBackgroundImage(backgroundImage, for: state)
         } else {
             swizzled_setScopeBarButtonBackgroundImage(backgroundImage, for: state)
@@ -89,7 +89,7 @@ public extension UISearchBar {
     }
     
     func app_setScopeBarButtonDividerImage(_ dividerImage: UIImage?, forLeftSegmentState leftSegmentState: UIControl.State, rightSegmentState: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setScopeBarButtonDividerImage(dividerImage, forLeftSegmentState: leftSegmentState, rightSegmentState: rightSegmentState)
         } else {
             swizzled_setScopeBarButtonDividerImage(dividerImage, forLeftSegmentState: leftSegmentState, rightSegmentState: rightSegmentState)
@@ -97,7 +97,7 @@ public extension UISearchBar {
     }
     
     func app_setScopeBarButtonTitleTextAttributes(_ attributes: [NSAttributedString.Key: Any]?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setScopeBarButtonTitleTextAttributes(attributes, for: state)
         } else {
             swizzled_setScopeBarButtonTitleTextAttributes(attributes, for: state)
@@ -107,47 +107,47 @@ public extension UISearchBar {
 
 internal extension UISearchBar {
     static func silenceExchangeSearchBarImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: barTintColor),
             newSelector: #selector(swizzled_setBarTintColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backgroundImage),
             newSelector: #selector(swizzled_setBackgroundImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: scopeBarBackgroundImage),
             newSelector: #selector(swizzled_setScopeBarBackgroundImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setBackgroundImage(_:for:barMetrics:)),
             newSelector: #selector(swizzled_setBackgroundImage(_:for:barMetrics:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setSearchFieldBackgroundImage(_:for:)),
             newSelector: #selector(swizzled_setSearchFieldBackgroundImage(_:for:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setImage(_:for:state:)),
             newSelector: #selector(swizzled_setImage(_:for:state:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setScopeBarButtonBackgroundImage(_:for:)),
             newSelector: #selector(swizzled_setScopeBarButtonBackgroundImage(_:for:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setScopeBarButtonDividerImage(_:forLeftSegmentState:rightSegmentState:)),
             newSelector: #selector(swizzled_setScopeBarButtonDividerImage(_:forLeftSegmentState:rightSegmentState:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setScopeBarButtonTitleTextAttributes(_:for:)),
             newSelector: #selector(swizzled_setScopeBarButtonTitleTextAttributes(_:for:))
         )
@@ -156,7 +156,7 @@ internal extension UISearchBar {
 
 private extension UISearchBar {
     func __setBarTintColor(_ barTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBarTintColor(barTintColor)
         } else {
             self.barTintColor = barTintColor
@@ -164,7 +164,7 @@ private extension UISearchBar {
     }
     
     func __setBackgroundImage(_ backgroundImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundImage(backgroundImage)
         } else {
             self.backgroundImage = backgroundImage
@@ -172,7 +172,7 @@ private extension UISearchBar {
     }
     
     func __setScopeBarBackgroundImage(_ scopeBarBackgroundImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setScopeBarBackgroundImage(scopeBarBackgroundImage)
         } else {
             self.scopeBarBackgroundImage = scopeBarBackgroundImage
@@ -180,7 +180,7 @@ private extension UISearchBar {
     }
     
     func __setBackgroundImage(_ backgroundImage: UIImage?, for barPosition: UIBarPosition, barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundImage(backgroundImage, for: barPosition, barMetrics: barMetrics)
         } else {
             setBackgroundImage(backgroundImage, for: barPosition, barMetrics: barMetrics)
@@ -188,7 +188,7 @@ private extension UISearchBar {
     }
     
     func __setSearchFieldBackgroundImage(_ backgroundImage: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setSearchFieldBackgroundImage(backgroundImage, for: state)
         } else {
             setSearchFieldBackgroundImage(backgroundImage, for: state)
@@ -196,7 +196,7 @@ private extension UISearchBar {
     }
     
     func __setImage(_ image: UIImage?, for icon: Icon, state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setImage(image, for: icon, state: state)
         } else {
             setImage(image, for: icon, state: state)
@@ -204,7 +204,7 @@ private extension UISearchBar {
     }
     
     func __setScopeBarButtonBackgroundImage(_ backgroundImage: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setScopeBarButtonBackgroundImage(backgroundImage, for: state)
         } else {
             setScopeBarButtonBackgroundImage(backgroundImage, for: state)
@@ -212,7 +212,7 @@ private extension UISearchBar {
     }
     
     func __setScopeBarButtonDividerImage(_ dividerImage: UIImage?, forLeftSegmentState leftSegmentState: UIControl.State, rightSegmentState: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setScopeBarButtonDividerImage(dividerImage, forLeftSegmentState: leftSegmentState, rightSegmentState: rightSegmentState)
         } else {
             setScopeBarButtonDividerImage(dividerImage, forLeftSegmentState: leftSegmentState, rightSegmentState: rightSegmentState)
@@ -220,7 +220,7 @@ private extension UISearchBar {
     }
     
     func __setScopeBarButtonTitleTextAttributes(_ attributes: [NSAttributedString.Key: Any]?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setScopeBarButtonTitleTextAttributes(attributes, for: state)
         } else {
             setScopeBarButtonTitleTextAttributes(attributes, for: state)

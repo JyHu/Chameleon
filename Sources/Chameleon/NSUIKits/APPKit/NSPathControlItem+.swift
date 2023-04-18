@@ -19,7 +19,7 @@ public extension NSPathControlItem {
     var app_attributedTitle: NSAttributedString {
         get { attributedTitle }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 attributedTitle = newValue
             } else {
                 swizzled_setAttributedTitle(newValue)
@@ -30,7 +30,7 @@ public extension NSPathControlItem {
     var app_image: NSImage? {
         get { image }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 image = newValue
             } else {
                 swizzled_setImage(newValue)
@@ -41,12 +41,12 @@ public extension NSPathControlItem {
 
 internal extension NSPathControlItem {
     static func silenceExchangePathControlItemImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: attributedTitle),
             newSelector: #selector(swizzled_setAttributedTitle(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: image),
             newSelector: #selector(swizzled_setImage(_:))
         )
@@ -55,7 +55,7 @@ internal extension NSPathControlItem {
 
 private extension NSPathControlItem {
     func __setAttributedTitle(_ attributedTitle: NSAttributedString) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAttributedTitle(attributedTitle)
         } else {
             self.attributedTitle = attributedTitle
@@ -63,7 +63,7 @@ private extension NSPathControlItem {
     }
     
     func __setImage(_ image: NSImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setImage(image)
         } else {
             self.image = image

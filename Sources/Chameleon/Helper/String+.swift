@@ -16,7 +16,7 @@ internal extension String {
             return nil
         }
         
-        return nsstring.substring(with: range).replacingOccurrences(of: " ", with: "")
+        return nsstring.substring(with: range)
     }
     
     /// 获取从指定位置起的字符串

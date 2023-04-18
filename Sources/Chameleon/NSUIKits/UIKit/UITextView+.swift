@@ -20,7 +20,7 @@ public extension UITextView {
     var app_textColor: UIColor? {
         get { textColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.textColor = newValue
             } else {
                 swizzled_setTextColor(newValue)
@@ -31,7 +31,7 @@ public extension UITextView {
     var app_attributedText: NSAttributedString {
         get { attributedText }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.attributedText = newValue
             } else {
                 swizzled_setAttributedText(newValue)
@@ -42,7 +42,7 @@ public extension UITextView {
     var app_typingAttributes: [NSAttributedString.Key: Any] {
         get { typingAttributes }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.typingAttributes = newValue
             } else {
                 swizzled_setTypingAttributes(newValue)
@@ -53,7 +53,7 @@ public extension UITextView {
     var app_linkTextAttributes: [NSAttributedString.Key: Any] {
         get { linkTextAttributes }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.linkTextAttributes = newValue
             } else {
                 swizzled_setLinkTextAttributes(newValue)
@@ -64,22 +64,22 @@ public extension UITextView {
 
 internal extension UITextView {
     static func silenceExchangeTextViewImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: textColor),
             newSelector: #selector(swizzled_setTextColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: attributedText),
             newSelector: #selector(swizzled_setAttributedText(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: typingAttributes),
             newSelector: #selector(swizzled_setTypingAttributes(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: linkTextAttributes),
             newSelector: #selector(swizzled_setLinkTextAttributes(_:))
         )
@@ -88,7 +88,7 @@ internal extension UITextView {
 
 private extension UITextView {
     func __setTextColor(_ textColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTextColor(textColor)
         } else {
             self.textColor = textColor
@@ -96,7 +96,7 @@ private extension UITextView {
     }
     
     func __setAttributedText(_ attributedText: NSAttributedString) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAttributedText(attributedText)
         } else {
             self.attributedText = attributedText
@@ -104,7 +104,7 @@ private extension UITextView {
     }
     
     func __setTypingAttributes(_ typingAttributes: [NSAttributedString.Key: Any]) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTypingAttributes(typingAttributes)
         } else {
             self.typingAttributes = typingAttributes
@@ -112,7 +112,7 @@ private extension UITextView {
     }
     
     func __setLinkTextAttributes(_ linkTextAttributes: [NSAttributedString.Key: Any]) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setLinkTextAttributes(linkTextAttributes)
         } else {
             self.linkTextAttributes = linkTextAttributes

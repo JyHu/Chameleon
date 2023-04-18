@@ -20,7 +20,7 @@ public extension UILabel {
     var app_textColor: UIColor {
         get { textColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.textColor = newValue
             } else {
                 swizzled_setTextColor(newValue)
@@ -31,7 +31,7 @@ public extension UILabel {
     var app_shadowColor: UIColor? {
         get { shadowColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.shadowColor = newValue
             } else {
                 swizzled_setShadowColor(newValue)
@@ -42,7 +42,7 @@ public extension UILabel {
     var app_attributedText: NSAttributedString? {
         get { attributedText }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.attributedText = newValue
             } else {
                 swizzled_setAttributedText(newValue)
@@ -53,7 +53,7 @@ public extension UILabel {
     var app_highlightedTextColor: UIColor? {
         get { highlightedTextColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.highlightedTextColor = newValue
             } else {
                 swizzled_setHighlightedTextColor(newValue)
@@ -64,22 +64,22 @@ public extension UILabel {
 
 internal extension UILabel {
     static func silenceExchangeLabelImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: textColor),
             newSelector: #selector(swizzled_setTextColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: shadowColor),
             newSelector: #selector(swizzled_setShadowColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: attributedText),
             newSelector: #selector(swizzled_setAttributedText(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: highlightedTextColor),
             newSelector: #selector(swizzled_setHighlightedTextColor(_:))
         )
@@ -88,7 +88,7 @@ internal extension UILabel {
 
 private extension UILabel {
     func __setTextColor(_ textColor: UIColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTextColor(textColor)
         } else {
             self.textColor = textColor
@@ -96,7 +96,7 @@ private extension UILabel {
     }
     
     func __setShadowColor(_ shadowColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setShadowColor(shadowColor)
         } else {
             self.shadowColor = shadowColor
@@ -104,7 +104,7 @@ private extension UILabel {
     }
     
     func __setAttributedText(_ attributedText: NSAttributedString?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAttributedText(attributedText)
         } else {
             self.attributedText = attributedText
@@ -112,7 +112,7 @@ private extension UILabel {
     }
     
     func __setHighlightedTextColor(_ highlightedTextColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setHighlightedTextColor(highlightedTextColor)
         } else {
             self.highlightedTextColor = highlightedTextColor

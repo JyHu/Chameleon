@@ -15,6 +15,7 @@ private extension NSObject {
     class Cacher {
         var cachedMethods: [AppearanceCallableCategory: Dictionary<AppearanceCallableIdentifier, CallableProtocol>] = [:]
         var disableChameleon: Bool = false
+        var hadRegisterNotification: Bool = false
     }
     
     var cacher: Cacher {
@@ -183,7 +184,10 @@ public extension NSObject {
        
         appearanceCallable.execute(withoutChameleon: false)
         
-        AppearanceManager.shared.registerAppearanceObserver(self, action: #selector(performThemeChangedAction))
+        if !cacher.hadRegisterNotification {
+            AppearanceManager.shared.registerAppearanceObserver(self, action: #selector(performThemeChangedAction))
+            cacher.hadRegisterNotification = true
+        }
         
         return appearanceCallable
     }

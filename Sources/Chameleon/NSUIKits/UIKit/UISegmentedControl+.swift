@@ -18,7 +18,7 @@ private extension AppearanceCallableIdentifier {
 
 public extension UISegmentedControl {
     func app_setImage(_ image: UIImage?, forSegmentAt index: Int) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setImage(image, forSegmentAt: index)
         } else {
             swizzled_setImage(image, forSegmentAt: index)
@@ -26,7 +26,7 @@ public extension UISegmentedControl {
     }
     
     func app_setBackgroundImage(_ backgroundImage: UIImage?, for state: UIControl.State, barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setBackgroundImage(backgroundImage, for: state, barMetrics: barMetrics)
         } else {
             swizzled_setBackgroundImage(backgroundImage, for: state, barMetrics: barMetrics)
@@ -34,7 +34,7 @@ public extension UISegmentedControl {
     }
     
     func app_setDividerImage(_ dividerImage: UIImage?, forLeftSegmentState leftSegmentState: UIControl.State, rightSegmentState: UIControl.State, barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setDividerImage(dividerImage, forLeftSegmentState: leftSegmentState, rightSegmentState: rightSegmentState, barMetrics: barMetrics)
         } else {
             swizzled_setDividerImage(dividerImage, forLeftSegmentState: leftSegmentState, rightSegmentState: rightSegmentState, barMetrics: barMetrics)
@@ -42,7 +42,7 @@ public extension UISegmentedControl {
     }
     
     func app_setTitleTextAttributes(_ attributes: [NSAttributedString.Key: Any]?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setTitleTextAttributes(attributes, for: state)
         } else {
             swizzled_setTitleTextAttributes(attributes, for: state)
@@ -52,22 +52,22 @@ public extension UISegmentedControl {
 
 internal extension UISegmentedControl {
     static func silenceExchangeSegmentedControlImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setImage(_:forSegmentAt:)),
             newSelector: #selector(swizzled_setImage(_:forSegmentAt:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setBackgroundImage(_:for:barMetrics:)),
             newSelector: #selector(swizzled_setBackgroundImage(_:for:barMetrics:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setDividerImage(_:forLeftSegmentState:rightSegmentState:barMetrics:)),
             newSelector: #selector(swizzled_setDividerImage(_:forLeftSegmentState:rightSegmentState:barMetrics:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setTitleTextAttributes(_:for:)),
             newSelector: #selector(swizzled_setTitleTextAttributes(_:for:))
         )
@@ -76,7 +76,7 @@ internal extension UISegmentedControl {
 
 private extension UISegmentedControl {
     func __setImage(_ image: UIImage?, forSegmentAt index: Int) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setImage(image, forSegmentAt: index)
         } else {
             setImage(image, forSegmentAt: index)
@@ -84,7 +84,7 @@ private extension UISegmentedControl {
     }
     
     func __setBackgroundImage(_ backgroundImage: UIImage?, for state: UIControl.State, barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundImage(backgroundImage, for: state, barMetrics: barMetrics)
         } else {
             setBackgroundImage(backgroundImage, for: state, barMetrics: barMetrics)
@@ -92,7 +92,7 @@ private extension UISegmentedControl {
     }
     
     func __setDividerImage(_ dividerImage: UIImage?, forLeftSegmentState leftSegmentState: UIControl.State, rightSegmentState: UIControl.State, barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setDividerImage(dividerImage, forLeftSegmentState: leftSegmentState, rightSegmentState: rightSegmentState, barMetrics: barMetrics)
         } else {
             setDividerImage(dividerImage, forLeftSegmentState: leftSegmentState, rightSegmentState: rightSegmentState, barMetrics: barMetrics)
@@ -100,7 +100,7 @@ private extension UISegmentedControl {
     }
     
     func __setTitleTextAttributes(_ attributes: [NSAttributedString.Key: Any]?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTitleTextAttributes(attributes, for: state)
         } else {
             setTitleTextAttributes(attributes, for: state)

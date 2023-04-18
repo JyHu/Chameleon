@@ -1,5 +1,5 @@
 //
-//  SwizzingTests.swift
+//  SwizzlingTests.swift
 //  
 //
 //  Created by Jo on 2023/4/14.
@@ -15,10 +15,10 @@ import UIKit
 
 @testable import Chameleon
 
-final class SwizzingTests: XCTestCase {
+final class SwizzlingTests: XCTestCase {
 
     func testExample() throws {
-        AppearanceManager.useSwizzing()
+        AppearanceManager.activeSwizzling()
         AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme0)
         
         let theme0 = ThemeInfos.Theme0.self

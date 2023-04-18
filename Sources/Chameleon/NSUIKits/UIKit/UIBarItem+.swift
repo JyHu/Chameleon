@@ -19,7 +19,7 @@ public extension UIBarItem {
     var app_image: UIImage? {
         get { image }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.image = newValue
             } else {
                 swizzled_setImage(newValue)
@@ -30,7 +30,7 @@ public extension UIBarItem {
     var app_landscapeImagePhone: UIImage? {
         get { landscapeImagePhone }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.landscapeImagePhone = newValue
             } else {
                 swizzled_setLandscapeImagePhone(newValue)
@@ -41,7 +41,7 @@ public extension UIBarItem {
     var app_largeContentSizeImage: UIImage? {
         get { largeContentSizeImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.largeContentSizeImage = newValue
             } else {
                 swizzled_setLargeContentSizeImage(newValue)
@@ -52,17 +52,17 @@ public extension UIBarItem {
 
 internal extension UIBarItem {
     static func silenceExchangeBarItemImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: image),
             newSelector: #selector(swizzled_setImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: landscapeImagePhone),
             newSelector: #selector(swizzled_setLandscapeImagePhone(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: largeContentSizeImage),
             newSelector: #selector(swizzled_setLargeContentSizeImage(_:))
         )
@@ -71,7 +71,7 @@ internal extension UIBarItem {
 
 private extension UIBarItem {
     func __setImage(_ image: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setImage(image)
         } else {
             self.image = image
@@ -79,7 +79,7 @@ private extension UIBarItem {
     }
     
     func __setLandscapeImagePhone(_ landscapeImagePhone: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setLandscapeImagePhone(landscapeImagePhone)
         } else {
             self.landscapeImagePhone = landscapeImagePhone
@@ -87,7 +87,7 @@ private extension UIBarItem {
     }
     
     func __setLargeContentSizeImage(_ largeContentSizeImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setLargeContentSizeImage(largeContentSizeImage)
         } else {
             self.largeContentSizeImage = largeContentSizeImage

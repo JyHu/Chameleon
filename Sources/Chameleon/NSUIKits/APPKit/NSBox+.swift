@@ -18,7 +18,7 @@ public extension NSBox {
     var app_fillColor: NSColor {
         get { fillColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 fillColor = newValue
             } else {
                 swizzled_setFillColor(newValue)
@@ -29,7 +29,7 @@ public extension NSBox {
     var app_borderColor: NSColor {
         get { borderColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 borderColor = newValue
             } else {
                 swizzled_setBorderColor(newValue)
@@ -40,12 +40,12 @@ public extension NSBox {
 
 internal extension NSBox {
     static func silenceExchangeBoxImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: fillColor),
             newSelector: #selector(swizzled_setFillColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: borderColor),
             newSelector: #selector(swizzled_setBorderColor(_:))
         )
@@ -54,7 +54,7 @@ internal extension NSBox {
 
 private extension NSBox {
     func __setFillColor(_ fillColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setFillColor(fillColor)
         } else {
             self.fillColor = fillColor
@@ -62,7 +62,7 @@ private extension NSBox {
     }
     
     func __setBorderColor(_ borderColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBorderColor(borderColor)
         } else {
             self.borderColor = borderColor

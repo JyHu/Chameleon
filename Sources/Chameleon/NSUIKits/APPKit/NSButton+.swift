@@ -22,7 +22,7 @@ public extension NSButton {
     var app_bezelColor: NSColor? {
         get { bezelColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 bezelColor = newValue
             } else {
                 swizzled_setBezelColor(newValue)
@@ -34,7 +34,7 @@ public extension NSButton {
     var app_contentTintColor: NSColor? {
         get { contentTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 contentTintColor = newValue
             } else {
                 swizzled_setContentTintColor(newValue)
@@ -45,7 +45,7 @@ public extension NSButton {
     var app_image: NSImage? {
         get { image }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 image = newValue
             } else {
                 swizzled_setImage(newValue)
@@ -56,7 +56,7 @@ public extension NSButton {
     var app_alternateImage: NSImage? {
         get { alternateImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 alternateImage = newValue
             } else {
                 swizzled_setAlternateImage(newValue)
@@ -67,7 +67,7 @@ public extension NSButton {
     var app_attributedTitle: NSAttributedString {
         get { attributedTitle }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 attributedTitle = newValue
             } else {
                 swizzled_setAttributedTitle(newValue)
@@ -78,7 +78,7 @@ public extension NSButton {
     var app_attributedAlternateTitle: NSAttributedString {
         get { attributedAlternateTitle }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 attributedAlternateTitle = newValue
             } else {
                 swizzled_setAttributedAlternateTitle(newValue)
@@ -89,34 +89,34 @@ public extension NSButton {
 
 internal extension NSButton {
     static func silenceExchangeButtonImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: bezelColor),
             newSelector: #selector(swizzled_setBezelColor(_:))
         )
         
         if #available(macOS 10.14, *) {        
-            app_swizzing(
+            app_swizzling(
                 originalSelector: #selector(setter: contentTintColor),
                 newSelector: #selector(swizzled_setContentTintColor(_:))
             )
         }
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: image),
             newSelector: #selector(swizzled_setImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: alternateImage),
             newSelector: #selector(swizzled_setAlternateImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: attributedTitle),
             newSelector: #selector(swizzled_setAttributedTitle(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: attributedAlternateTitle),
             newSelector: #selector(swizzled_setAttributedAlternateTitle(_:))
         )
@@ -125,7 +125,7 @@ internal extension NSButton {
 
 private extension NSButton {
     func __setBezelColor(_ bezelColor: NSColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBezelColor(bezelColor)
         } else {
             self.bezelColor = bezelColor
@@ -134,7 +134,7 @@ private extension NSButton {
     
     @available(macOS 10.14, *)
     func __setContentTintColor(_ contentTintColor: NSColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setContentTintColor(contentTintColor)
         } else {
             self.contentTintColor = contentTintColor
@@ -142,7 +142,7 @@ private extension NSButton {
     }
     
     func __setImage(_ image: NSImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setImage(image)
         } else {
             self.image = image
@@ -150,7 +150,7 @@ private extension NSButton {
     }
     
     func __setAlternateImage(_ alternateImage: NSImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAlternateImage(alternateImage)
         } else {
             self.alternateImage = alternateImage
@@ -158,7 +158,7 @@ private extension NSButton {
     }
     
     func __setAttributedTitle(_ attributedTitle: NSAttributedString) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAttributedTitle(attributedTitle)
         } else {
             self.attributedTitle = attributedTitle
@@ -166,7 +166,7 @@ private extension NSButton {
     }
     
     func __setAttributedAlternateTitle(_ attributedAlternateTitle: NSAttributedString) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAttributedAlternateTitle(attributedAlternateTitle)
         } else {
             self.attributedAlternateTitle = attributedAlternateTitle

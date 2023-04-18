@@ -24,7 +24,7 @@ public extension UISlider {
     var app_minimumValueImage: UIImage? {
         get { minimumValueImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.minimumValueImage = newValue
             } else {
                 swizzled_setMinimumValueImage(newValue)
@@ -35,7 +35,7 @@ public extension UISlider {
     var app_maximumValueImage: UIImage? {
         get { maximumValueImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.maximumValueImage = newValue
             } else {
                 swizzled_setMaximumValueImage(newValue)
@@ -46,7 +46,7 @@ public extension UISlider {
     var app_minimumTrackTintColor: UIColor? {
         get { minimumTrackTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.minimumTrackTintColor = newValue
             } else {
                 swizzled_setMinimumTrackTintColor(newValue)
@@ -57,7 +57,7 @@ public extension UISlider {
     var app_maximumTrackTintColor: UIColor? {
         get { maximumTrackTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.maximumTrackTintColor = newValue
             } else {
                 swizzled_setMaximumTrackTintColor(newValue)
@@ -68,7 +68,7 @@ public extension UISlider {
     var app_thumbTintColor: UIColor? {
         get { thumbTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.thumbTintColor = newValue
             } else {
                 swizzled_setThumbTintColor(newValue)
@@ -77,7 +77,7 @@ public extension UISlider {
     }
     
     func app_setThumbImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setThumbImage(image, for: state)
         } else {
             swizzled_setThumbImage(image, for: state)
@@ -85,7 +85,7 @@ public extension UISlider {
     }
 
     func app_setMinimumTrackImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setMinimumTrackImage(image, for: state)
         } else {
             swizzled_setMinimumTrackImage(image, for: state)
@@ -93,7 +93,7 @@ public extension UISlider {
     }
 
     func app_setMaximumTrackImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setMaximumTrackImage(image, for: state)
         } else {
             swizzled_setMaximumTrackImage(image, for: state)
@@ -104,42 +104,42 @@ public extension UISlider {
 
 internal extension UISlider {
     static func silenceExchangeSliderImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: minimumValueImage),
             newSelector: #selector(swizzled_setMinimumValueImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: maximumValueImage),
             newSelector: #selector(swizzled_setMaximumValueImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: minimumTrackTintColor),
             newSelector: #selector(swizzled_setMinimumTrackTintColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: maximumTrackTintColor),
             newSelector: #selector(swizzled_setMaximumTrackTintColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: thumbTintColor),
             newSelector: #selector(swizzled_setThumbTintColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setThumbImage(_:for:)),
             newSelector: #selector(swizzled_setThumbImage(_:for:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setMinimumTrackImage(_:for:)),
             newSelector: #selector(swizzled_setMinimumTrackImage(_:for:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setMaximumTrackImage(_:for:)),
             newSelector: #selector(swizzled_setMaximumTrackImage(_:for:))
         )
@@ -148,7 +148,7 @@ internal extension UISlider {
 
 private extension UISlider {
     func __setMinimumValueImage(_ minimumValueImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setMinimumValueImage(minimumValueImage)
         } else {
             self.minimumValueImage = minimumValueImage
@@ -156,7 +156,7 @@ private extension UISlider {
     }
     
     func __setMaximumValueImage(_ maximumValueImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setMaximumValueImage(maximumValueImage)
         } else {
             self.maximumValueImage = maximumValueImage
@@ -164,7 +164,7 @@ private extension UISlider {
     }
     
     func __setMinimumTrackTintColor(_ minimumTrackTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setMinimumTrackTintColor(minimumTrackTintColor)
         } else {
             self.minimumTrackTintColor = minimumTrackTintColor
@@ -172,7 +172,7 @@ private extension UISlider {
     }
     
     func __setMaximumTrackTintColor(_ maximumTrackTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setMaximumTrackTintColor(maximumTrackTintColor)
         } else {
             self.maximumTrackTintColor = maximumTrackTintColor
@@ -180,7 +180,7 @@ private extension UISlider {
     }
     
     func __setThumbTintColor(_ thumbTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setThumbTintColor(thumbTintColor)
         } else {
             self.thumbTintColor = thumbTintColor
@@ -188,7 +188,7 @@ private extension UISlider {
     }
     
     func __setThumbImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setThumbImage(image, for: state)
         } else {
             setThumbImage(image, for: state)
@@ -196,7 +196,7 @@ private extension UISlider {
     }
 
     func __setMinimumTrackImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setMinimumTrackImage(image, for: state)
         } else {
             setMinimumTrackImage(image, for: state)
@@ -204,7 +204,7 @@ private extension UISlider {
     }
 
     func __setMaximumTrackImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setMaximumTrackImage(image, for: state)
         } else {
             setMaximumTrackImage(image, for: state)

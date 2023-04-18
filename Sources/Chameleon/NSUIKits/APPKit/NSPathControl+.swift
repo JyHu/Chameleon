@@ -19,7 +19,7 @@ public extension NSPathControl {
     var app_placeholderAttributedString: NSAttributedString? {
         get { placeholderAttributedString }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 placeholderAttributedString = newValue
             } else {
                 swizzled_setPlaceholderAttributedString(newValue)
@@ -30,7 +30,7 @@ public extension NSPathControl {
     var app_backgroundColor: NSColor? {
         get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 backgroundColor = newValue
             } else {
                 swizzled_setBackgroundColor(newValue)
@@ -41,12 +41,12 @@ public extension NSPathControl {
 
 internal extension NSPathControl {
     static func silenceExchangePathControlImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: placeholderAttributedString),
             newSelector: #selector(swizzled_setPlaceholderAttributedString(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backgroundColor),
             newSelector: #selector(swizzled_setBackgroundColor(_:))
         )
@@ -55,7 +55,7 @@ internal extension NSPathControl {
 
 private extension NSPathControl {
     func __setBackgroundColor(_ backgroundColor: NSColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundColor(backgroundColor)
         } else {
             self.backgroundColor = backgroundColor
@@ -63,7 +63,7 @@ private extension NSPathControl {
     }
     
     func __setPlaceholderAttributedString(_ placeholderAttributedString: NSAttributedString?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setPlaceholderAttributedString(placeholderAttributedString)
         } else {
             self.placeholderAttributedString = placeholderAttributedString

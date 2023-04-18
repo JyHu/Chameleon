@@ -21,7 +21,7 @@ public extension UITabBar {
     var app_barTintColor: UIColor? {
         get { barTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.barTintColor = newValue
             } else {
                 swizzled_setBarTintColor(newValue)
@@ -32,7 +32,7 @@ public extension UITabBar {
     var app_unselectedItemTintColor: UIColor? {
         get { unselectedItemTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.unselectedItemTintColor = newValue
             } else {
                 swizzled_setUnselectedItemTintColor(newValue)
@@ -43,7 +43,7 @@ public extension UITabBar {
     var app_backgroundImage: UIImage? {
         get { backgroundImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.backgroundImage = newValue
             } else {
                 swizzled_setBackgroundImage(newValue)
@@ -54,7 +54,7 @@ public extension UITabBar {
     var app_selectionIndicatorImage: UIImage? {
         get { selectionIndicatorImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.selectionIndicatorImage = newValue
             } else {
                 swizzled_setSelectionIndicatorImage(newValue)
@@ -65,7 +65,7 @@ public extension UITabBar {
     var app_shadowImage: UIImage? {
         get { shadowImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.shadowImage = newValue
             } else {
                 swizzled_setShadowImage(newValue)
@@ -76,27 +76,27 @@ public extension UITabBar {
 
 internal extension UITabBar {
     static func silenceExchangeTabBarImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: barTintColor),
             newSelector: #selector(swizzled_setBarTintColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: unselectedItemTintColor),
             newSelector: #selector(swizzled_setUnselectedItemTintColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backgroundImage),
             newSelector: #selector(swizzled_setBackgroundImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: selectionIndicatorImage),
             newSelector: #selector(swizzled_setSelectionIndicatorImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: shadowImage),
             newSelector: #selector(swizzled_setShadowImage(_:))
         )
@@ -105,7 +105,7 @@ internal extension UITabBar {
 
 private extension UITabBar {
     func __setBarTintColor(_ barTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBarTintColor(barTintColor)
         } else {
             self.barTintColor = barTintColor
@@ -113,7 +113,7 @@ private extension UITabBar {
     }
     
     func __setUnselectedItemTintColor(_ unselectedItemTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setUnselectedItemTintColor(unselectedItemTintColor)
         } else {
             self.unselectedItemTintColor = unselectedItemTintColor
@@ -121,7 +121,7 @@ private extension UITabBar {
     }
     
     func __setBackgroundImage(_ backgroundImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundImage(backgroundImage)
         } else {
             self.backgroundImage = backgroundImage
@@ -129,7 +129,7 @@ private extension UITabBar {
     }
     
     func __setSelectionIndicatorImage(_ selectionIndicatorImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setSelectionIndicatorImage(selectionIndicatorImage)
         } else {
             self.selectionIndicatorImage = selectionIndicatorImage
@@ -137,7 +137,7 @@ private extension UITabBar {
     }
     
     func __setShadowImage(_ shadowImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setShadowImage(shadowImage)
         } else {
             self.shadowImage = shadowImage

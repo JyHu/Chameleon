@@ -19,7 +19,7 @@ public extension UIToolbar {
     var app_barTintColor: UIColor? {
         get { barTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.barTintColor = newValue
             } else {
                 swizzled_setBarTintColor(newValue)
@@ -28,7 +28,7 @@ public extension UIToolbar {
     }
     
     func app_setBackgroundImage(_ backgroundImage: UIImage?, forToolbarPosition position: UIBarPosition, barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setBackgroundImage(backgroundImage, forToolbarPosition: position, barMetrics: barMetrics)
         } else {
             swizzled_setBackgroundImage(backgroundImage, forToolbarPosition: position, barMetrics: barMetrics)
@@ -36,7 +36,7 @@ public extension UIToolbar {
     }
     
     func app_setShadowImage(_ shadowImage: UIImage?, forToolbarPosition position: UIBarPosition) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setShadowImage(shadowImage, forToolbarPosition: position)
         } else {
             swizzled_setShadowImage(shadowImage, forToolbarPosition: position)
@@ -46,17 +46,17 @@ public extension UIToolbar {
 
 internal extension UIToolbar {
     static func silenceExchangeToolbarImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: barTintColor),
             newSelector: #selector(swizzled_setBarTintColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setBackgroundImage(_:forToolbarPosition:barMetrics:)),
             newSelector: #selector(swizzled_setBackgroundImage(_:forToolbarPosition:barMetrics:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setShadowImage(_:forToolbarPosition:)),
             newSelector: #selector(swizzled_setShadowImage(_:forToolbarPosition:))
         )
@@ -65,7 +65,7 @@ internal extension UIToolbar {
 
 private extension UIToolbar {
     func __setBarTintColor(_ barTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBarTintColor(barTintColor)
         } else {
             self.barTintColor = barTintColor
@@ -73,7 +73,7 @@ private extension UIToolbar {
     }
     
     func __setBackgroundImage(_ backgroundImage: UIImage?, forToolbarPosition position: UIBarPosition, barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundImage(backgroundImage, forToolbarPosition: position, barMetrics: barMetrics)
         } else {
             setBackgroundImage(backgroundImage, forToolbarPosition: position, barMetrics: barMetrics)
@@ -81,7 +81,7 @@ private extension UIToolbar {
     }
     
     func __setShadowImage(_ shadowImage: UIImage?, forToolbarPosition position: UIBarPosition) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setShadowImage(shadowImage, forToolbarPosition: position)
         } else {
             setShadowImage(shadowImage, forToolbarPosition: position)

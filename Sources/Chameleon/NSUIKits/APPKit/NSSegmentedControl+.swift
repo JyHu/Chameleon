@@ -18,7 +18,7 @@ public extension NSSegmentedControl {
     var app_selectedSegmentBezelColor: NSColor? {
         get { selectedSegmentBezelColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.selectedSegmentBezelColor = newValue
             } else {
                 swizzled_setSelectedSegmentBezelColor(newValue)
@@ -27,7 +27,7 @@ public extension NSSegmentedControl {
     }
     
     func app_setImage(_ image: NSImage?, forSegment segment: Int) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setImage(image, forSegment: segment)
         } else {
             swizzled_setImage(image, forSegment: segment)
@@ -37,12 +37,12 @@ public extension NSSegmentedControl {
 
 internal extension NSSegmentedControl {
     static func silenceExchangeSegmentedControlImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: selectedSegmentBezelColor),
             newSelector: #selector(swizzled_setSelectedSegmentBezelColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setImage(_:forSegment:)),
             newSelector: #selector(swizzled_setImage(_:forSegment:))
         )
@@ -51,7 +51,7 @@ internal extension NSSegmentedControl {
 
 private extension NSSegmentedControl {
     func __setSelectedSegmentBezelColor(_ selectedSegmentBezelColor: NSColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setSelectedSegmentBezelColor(selectedSegmentBezelColor)
         } else {
             self.selectedSegmentBezelColor = selectedSegmentBezelColor
@@ -59,7 +59,7 @@ private extension NSSegmentedControl {
     }
     
     func __setImage(_ image: NSImage?, forSegment segment: Int) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setImage(image, forSegment: segment)
         } else {
             setImage(image, forSegment: segment)

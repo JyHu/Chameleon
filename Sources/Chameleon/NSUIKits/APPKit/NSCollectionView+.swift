@@ -17,7 +17,7 @@ public extension NSCollectionView {
     var app_backgroundColors: [NSColor] {
         get { backgroundColors }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 backgroundColors = newValue
             } else {
                 swizzled_setBackgroundColors(newValue)
@@ -28,7 +28,7 @@ public extension NSCollectionView {
 
 internal extension NSCollectionView {
     static func silenceExchangeCollectionViewImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backgroundColors),
             newSelector: #selector(swizzled_setBackgroundColors(_:)))
     }
@@ -36,7 +36,7 @@ internal extension NSCollectionView {
 
 private extension NSCollectionView {
     func __setBackgroundColors(_ backgroundColors: [NSColor]) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundColors(backgroundColors)
         } else {
             self.backgroundColors = backgroundColors

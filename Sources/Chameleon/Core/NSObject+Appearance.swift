@@ -34,12 +34,7 @@ extension NSUIAppearanceColor: AppearancedParamProtocol {
     /// 一个中转方法，用于给一个对象添加一个标识符
     /// - Parameter identifier: 换肤的标识符
     /// - Returns: 原对象
-    public func withAppearanceIdentifier(_ identifier: AppearanceCallableIdentifier) -> Self {
-        if let obj = NSUIAppearanceColor.colorWith(appearanceIdentifier: identifier) {
-            obj.appearanceIdentifier = identifier
-            return obj as! Self
-        }
-        
+    public func withAppearanceIdentifier(_ identifier: AppearanceCallableIdentifier) -> NSUIAppearanceColor {
         appearanceIdentifier = identifier
         return self
     }

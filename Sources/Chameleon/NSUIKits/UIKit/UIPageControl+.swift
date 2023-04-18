@@ -22,7 +22,7 @@ public extension UIPageControl {
     var app_pageIndicatorTintColor: UIColor? {
         get { pageIndicatorTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.pageIndicatorTintColor = newValue
             } else {
                 swizzled_setPageIndicatorTintColor(newValue)
@@ -33,7 +33,7 @@ public extension UIPageControl {
     var app_currentPageIndicatorTintColor: UIColor? {
         get { currentPageIndicatorTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.currentPageIndicatorTintColor = newValue
             } else {
                 swizzled_setCurrentPageIndicatorTintColor(newValue)
@@ -45,7 +45,7 @@ public extension UIPageControl {
     var app_preferredIndicatorImage: UIImage? {
         get { preferredIndicatorImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.preferredIndicatorImage = newValue
             } else {
                 swizzled_setPreferredIndicatorImage(newValue)
@@ -57,7 +57,7 @@ public extension UIPageControl {
     var app_preferredCurrentPageIndicatorImage: UIImage? {
         get { preferredCurrentPageIndicatorImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.preferredCurrentPageIndicatorImage = newValue
             } else {
                 swizzled_setPreferredCurrentPageIndicatorImage(newValue)
@@ -67,7 +67,7 @@ public extension UIPageControl {
     
     @available(iOS 14.0, *)
     func app_setIndicatorImage(_ indicatorImage: UIImage?, forPage page: Int) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             self.setIndicatorImage(indicatorImage, forPage: page)
         } else {
             swizzled_setIndicatorImage(indicatorImage, forPage: page)
@@ -76,7 +76,7 @@ public extension UIPageControl {
     
     @available(iOS 16.0, *)
     func app_setCurrentPageIndicatorImage(_ indicatorImage: UIImage?, forPage page: Int) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             self.setCurrentPageIndicatorImage(indicatorImage, forPage: page)
         } else {
             swizzled_setCurrentPageIndicatorImage(indicatorImage, forPage: page)
@@ -86,23 +86,23 @@ public extension UIPageControl {
 
 internal extension UIPageControl {
     static func silenceExchangePageControlImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: pageIndicatorTintColor),
             newSelector: #selector(swizzled_setPageIndicatorTintColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: currentPageIndicatorTintColor),
             newSelector: #selector(swizzled_setCurrentPageIndicatorTintColor(_:))
         )
         
         if #available(iOS 14.0, *) {
-            app_swizzing(
+            app_swizzling(
                 originalSelector: #selector(setter: preferredIndicatorImage),
                 newSelector: #selector(swizzled_setPreferredIndicatorImage(_:))
             )
             
-            app_swizzing(
+            app_swizzling(
                 originalSelector: #selector(setIndicatorImage(_:forPage:)),
                 newSelector: #selector(swizzled_setIndicatorImage(_:forPage:))
             )
@@ -110,12 +110,12 @@ internal extension UIPageControl {
         
         
         if #available(iOS 16.0, *) {
-            app_swizzing(
+            app_swizzling(
                 originalSelector: #selector(setter: preferredCurrentPageIndicatorImage),
                 newSelector: #selector(swizzled_setPreferredCurrentPageIndicatorImage(_:))
             )
             
-            app_swizzing(
+            app_swizzling(
                 originalSelector: #selector(setCurrentPageIndicatorImage(_:forPage:)),
                 newSelector: #selector(swizzled_setCurrentPageIndicatorImage(_:forPage:))
             )
@@ -125,7 +125,7 @@ internal extension UIPageControl {
 
 private extension UIPageControl {
     func __setPageIndicatorTintColor(_ pageIndicatorTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setPageIndicatorTintColor(pageIndicatorTintColor)
         } else {
             self.pageIndicatorTintColor = pageIndicatorTintColor
@@ -133,7 +133,7 @@ private extension UIPageControl {
     }
     
     func __setCurrentPageIndicatorTintColor(_ currentPageIndicatorTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setCurrentPageIndicatorTintColor(currentPageIndicatorTintColor)
         } else {
             self.currentPageIndicatorTintColor = currentPageIndicatorTintColor
@@ -142,7 +142,7 @@ private extension UIPageControl {
     
     @available(iOS 14.0, *)
     func __setPreferredIndicatorImage(_ preferredIndicatorImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setPreferredIndicatorImage(preferredIndicatorImage)
         } else {
             self.preferredIndicatorImage = preferredIndicatorImage
@@ -151,7 +151,7 @@ private extension UIPageControl {
     
     @available(iOS 16.0, *)
     func __setPreferredCurrentPageIndicatorImage(_ preferredCurrentPageIndicatorImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setPreferredCurrentPageIndicatorImage(preferredCurrentPageIndicatorImage)
         } else {
             self.preferredCurrentPageIndicatorImage = preferredCurrentPageIndicatorImage
@@ -160,7 +160,7 @@ private extension UIPageControl {
     
     @available(iOS 14.0, *)
     func __setIndicatorImage(_ indicatorImage: UIImage?, forPage page: Int) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setIndicatorImage(indicatorImage, forPage: page)
         } else {
             self.setIndicatorImage(indicatorImage, forPage: page)
@@ -169,7 +169,7 @@ private extension UIPageControl {
     
     @available(iOS 16.0, *)
     func __setCurrentPageIndicatorImage(_ indicatorImage: UIImage?, forPage page: Int) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setCurrentPageIndicatorImage(indicatorImage, forPage: page)
         } else {
             self.setCurrentPageIndicatorImage(indicatorImage, forPage: page)

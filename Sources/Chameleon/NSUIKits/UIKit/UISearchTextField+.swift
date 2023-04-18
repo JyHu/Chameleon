@@ -18,7 +18,7 @@ public extension UISearchTextField {
     var app_tokenBackgroundColor: UIColor {
         get { tokenBackgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.tokenBackgroundColor = newValue
             } else {
                 swizzled_setTokenBackgroundColor(newValue)
@@ -30,7 +30,7 @@ public extension UISearchTextField {
 @available(iOS 13.0, *)
 internal extension UISearchTextField {
     static func silenceExchangeSearchTextFieldImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: tokenBackgroundColor),
             newSelector: #selector(swizzled_setTokenBackgroundColor(_:))
         )
@@ -40,7 +40,7 @@ internal extension UISearchTextField {
 @available(iOS 13.0, *)
 private extension UISearchTextField {
     func __setTokenBackgroundColor(_ tokenBackgroundColor: UIColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTokenBackgroundColor(tokenBackgroundColor)
         } else {
             self.tokenBackgroundColor = tokenBackgroundColor

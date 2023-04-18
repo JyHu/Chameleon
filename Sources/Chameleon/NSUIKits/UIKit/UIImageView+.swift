@@ -22,7 +22,7 @@ public extension UIImageView {
     var app_image: UIImage? {
         get { image }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.image = newValue
             } else {
                 swizzled_setImage(newValue)
@@ -33,7 +33,7 @@ public extension UIImageView {
     var app_highlightedImage: UIImage? {
         get { highlightedImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.highlightedImage = newValue
             } else {
                 swizzled_setHighlightedImage(newValue)
@@ -44,7 +44,7 @@ public extension UIImageView {
     var app_animationImages: [UIImage]? {
         get { animationImages }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.animationImages = newValue
             } else {
                 swizzled_setAnimationImages(newValue)
@@ -55,7 +55,7 @@ public extension UIImageView {
     var app_highlightedAnimationImages: [UIImage]? {
         get { highlightedAnimationImages }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.highlightedAnimationImages = newValue
             } else {
                 swizzled_setHighlightedAnimationImages(newValue)
@@ -82,22 +82,22 @@ public extension UIImageView {
 
 internal extension UIImageView {
     static func silenceExchangeImageViewImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: image),
             newSelector: #selector(swizzled_setImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: highlightedImage),
             newSelector: #selector(swizzled_setHighlightedImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: animationImages),
             newSelector: #selector(swizzled_setAnimationImages(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: highlightedAnimationImages),
             newSelector: #selector(swizzled_setHighlightedAnimationImages(_:))
         )
@@ -106,7 +106,7 @@ internal extension UIImageView {
 
 private extension UIImageView {
     func __setImage(_ image: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setImage(image)
         } else {
             self.image = image
@@ -114,7 +114,7 @@ private extension UIImageView {
     }
     
     func __setHighlightedImage(_ highlightedImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setHighlightedImage(highlightedImage)
         } else {
             self.highlightedImage = highlightedImage
@@ -122,7 +122,7 @@ private extension UIImageView {
     }
     
     func __setAnimationImages(_ animationImages: [UIImage]?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAnimationImages(animationImages)
         } else {
             self.animationImages = animationImages
@@ -130,7 +130,7 @@ private extension UIImageView {
     }
     
     func __setHighlightedAnimationImages(_ highlightedAnimationImages: [UIImage]?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setHighlightedAnimationImages(highlightedAnimationImages)
         } else {
             self.highlightedAnimationImages = highlightedAnimationImages

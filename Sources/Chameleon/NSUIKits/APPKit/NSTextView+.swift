@@ -20,7 +20,7 @@ public extension NSTextView {
     var app_insertionPointColor: NSColor {
         get { insertionPointColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 insertionPointColor = newValue
             } else {
                 swizzled_setInsertionPointColor(newValue)
@@ -31,7 +31,7 @@ public extension NSTextView {
     var app_backgroundColor: NSColor {
         get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 backgroundColor = newValue
             } else {
                 swizzled_setBackgroundColor(newValue)
@@ -42,7 +42,7 @@ public extension NSTextView {
     var app_textColor: NSColor? {
         get { textColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 textColor = newValue
             } else {
                 swizzled_setTextColor(newValue)
@@ -54,17 +54,17 @@ public extension NSTextView {
 internal extension NSTextView {
     static func silenceExchangeTextViewImplementation() {
 
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: insertionPointColor),
             newSelector: #selector(swizzled_setInsertionPointColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backgroundColor),
             newSelector: #selector(swizzled_setBackgroundColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: textColor),
             newSelector: #selector(swizzled_setTextColor(_:))
         )
@@ -74,7 +74,7 @@ internal extension NSTextView {
 
 private extension NSTextView {
     func __setInsertionPointColor(_ insertionPointColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setInsertionPointColor(insertionPointColor)
         } else {
             self.insertionPointColor = insertionPointColor
@@ -82,7 +82,7 @@ private extension NSTextView {
     }
     
     func __setBackgroundColor(_ backgroundColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundColor(backgroundColor)
         } else {
             self.backgroundColor = backgroundColor
@@ -90,7 +90,7 @@ private extension NSTextView {
     }
     
     func __setTextColor(_ textColor: NSColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTextColor(textColor)
         } else {
             self.textColor = textColor

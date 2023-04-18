@@ -20,7 +20,7 @@ public extension UISwitch {
     var app_onTintColor: UIColor? {
         get { onTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.onTintColor = newValue
             } else {
                 swizzled_setOnTintColor(newValue)
@@ -31,7 +31,7 @@ public extension UISwitch {
     var app_thumbTintColor: UIColor? {
         get { thumbTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.thumbTintColor = newValue
             } else {
                 swizzled_setThumbTintColor(newValue)
@@ -42,7 +42,7 @@ public extension UISwitch {
     var app_onImage: UIImage? {
         get { onImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.onImage = newValue
             } else {
                 swizzled_setOnImage(newValue)
@@ -53,7 +53,7 @@ public extension UISwitch {
     var app_offImage: UIImage? {
         get { offImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.offImage = newValue
             } else {
                 swizzled_setOffImage(newValue)
@@ -64,19 +64,19 @@ public extension UISwitch {
 
 internal extension UISwitch {
     static func silenceExchangeSwitchImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: onTintColor),
             newSelector: #selector(swizzled_setOnTintColor(_:))
         )
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: thumbTintColor),
             newSelector: #selector(swizzled_setThumbTintColor(_:))
         )
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: onImage),
             newSelector: #selector(swizzled_setOnImage(_:))
         )
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: offImage),
             newSelector: #selector(swizzled_setOffImage(_:))
         )
@@ -85,7 +85,7 @@ internal extension UISwitch {
 
 private extension UISwitch {
     func __setOnTintColor(_ onTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setOnTintColor(onTintColor)
         } else {
             self.onTintColor = onTintColor
@@ -93,7 +93,7 @@ private extension UISwitch {
     }
     
     func __setThumbTintColor(_ thumbTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setThumbTintColor(thumbTintColor)
         } else {
             self.thumbTintColor = thumbTintColor
@@ -101,7 +101,7 @@ private extension UISwitch {
     }
     
     func __setOnImage(_ onImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setOnImage(onImage)
         } else {
             self.onImage = onImage
@@ -109,7 +109,7 @@ private extension UISwitch {
     }
     
     func __setOffImage(_ offImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setOffImage(offImage)
         } else {
             self.offImage = offImage

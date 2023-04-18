@@ -17,7 +17,7 @@ public extension NSImageView {
     var app_image: NSImage? {
         get { image }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 image = newValue
             } else {
                 swizzled_setImage(newValue)
@@ -28,7 +28,7 @@ public extension NSImageView {
 
 internal extension NSImageView {
     static func silenceExchangeImageViewImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: image),
             newSelector: #selector(swizzled_setImage(_:))
         )
@@ -37,7 +37,7 @@ internal extension NSImageView {
 
 private extension NSImageView {
     func __setImage(_ image: NSImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setImage(image)
         } else {
             self.image = image

@@ -18,7 +18,7 @@ public extension UIView {
     var app_backgroundColor: UIColor? {
         get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 backgroundColor = newValue
             } else {
                 swizzled_setBackgroundColor(newValue)
@@ -29,7 +29,7 @@ public extension UIView {
     var app_tintColor: UIColor {
         get { tintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.tintColor = newValue
             } else {
                 swizzled_setTintColor(newValue)
@@ -40,12 +40,12 @@ public extension UIView {
 
 internal extension UIView {
     static func silenceExchangeViewImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backgroundColor),
             newSelector: #selector(swizzled_setBackgroundColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: tintColor),
             newSelector: #selector(swizzled_setTintColor(_:))
         )
@@ -54,7 +54,7 @@ internal extension UIView {
 
 private extension UIView {
     func __setBackgroundColor(_ backgroundColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundColor(backgroundColor)
         } else {
             self.backgroundColor = backgroundColor
@@ -62,7 +62,7 @@ private extension UIView {
     }
     
     func __setTintColor(_ tintColor: UIColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTintColor(tintColor)
         } else {
             self.tintColor = tintColor
@@ -81,7 +81,7 @@ private extension UIView {
         cache(
             firstParam: Callable.Appearanced(tintColor),
             identifier: .tintColor,
-            action: __setTintColor(_:)
+            action: { [weak self] va in self?.__setTintColor(va) }
         )
     }
 }

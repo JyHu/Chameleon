@@ -61,7 +61,7 @@ struct ThemeInfos {
         static let C005 = NSUIAppearanceColor(hex: 0xB2D235, alpha: 0.9).withAppearanceIdentifier("color/text/C005")
         static let C006 = NSUIAppearanceColor(hex: 0x5C7A29, alpha: 0.9).withAppearanceIdentifier("color/text/C006")
         static let C007 = NSUIAppearanceColor(hex: 0xA3CF62, alpha: 0.9).withAppearanceIdentifier("color/text/C007")
-        static let C008 = NSUIAppearanceColor(hex: 0x694D9F, alpha: 0.9).withAppearanceIdentifier("color/text/C008")
+        static let C008 = NSUIAppearanceColor(hex: 0x694D9F).withAppearanceIdentifier("color/text/C008")
         
 #if os(macOS)
         static let image01 = Bundle.module.image(forResource: "home_house_icon_251952")
@@ -81,7 +81,7 @@ struct ThemeInfos {
         static let C005 = NSUIAppearanceColor(hex: 0x1A2933, alpha: 0.8).withAppearanceIdentifier("color/text/C005")
         static let C006 = NSUIAppearanceColor(hex: 0x6A6DA9, alpha: 0.8).withAppearanceIdentifier("color/text/C006")
         static let C007 = NSUIAppearanceColor(hex: 0x494E8F, alpha: 0.8).withAppearanceIdentifier("color/text/C007")
-        static let C008 = NSUIAppearanceColor(hex: 0xFCAF17, alpha: 0.8).withAppearanceIdentifier("color/text/C008")
+        static let C008 = NSUIAppearanceColor(hex: 0xFCAF17).withAppearanceIdentifier("color/text/C008")
         
 #if os(macOS)
         static let image01 = Bundle.module.image(forResource: "trash_delete_remove_icon_251766")

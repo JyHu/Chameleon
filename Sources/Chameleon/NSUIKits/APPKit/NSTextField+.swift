@@ -21,7 +21,7 @@ public extension NSTextField {
     var app_backgroundColor: NSColor? {
         get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 backgroundColor = newValue
             } else {
                 swizzled_setBackGroundColor(newValue)
@@ -32,7 +32,7 @@ public extension NSTextField {
     var app_textColor: NSColor? {
         get { textColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 textColor = newValue
             } else {
                 swizzled_setTextColor(newValue)
@@ -43,7 +43,7 @@ public extension NSTextField {
     var app_attributedStringValue: NSAttributedString {
         get { attributedStringValue }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 attributedStringValue = newValue
             } else {
                 swizzled_setAttributedStringValue(newValue)
@@ -54,7 +54,7 @@ public extension NSTextField {
     var app_placeholderAttributedString: NSAttributedString? {
         get { placeholderAttributedString }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 placeholderAttributedString = newValue
             } else {
                 swizzled_setPlaceholderAttributedString(newValue)
@@ -65,22 +65,22 @@ public extension NSTextField {
 
 internal extension NSTextField {
     static func silenceExchangeTextFieldImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backgroundColor),
             newSelector: #selector(swizzled_setBackGroundColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: textColor),
             newSelector: #selector(swizzled_setTextColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: attributedStringValue),
             newSelector: #selector(swizzled_setAttributedStringValue(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: placeholderAttributedString),
             newSelector: #selector(swizzled_setPlaceholderAttributedString(_:))
         )
@@ -89,7 +89,7 @@ internal extension NSTextField {
 
 private extension NSTextField {
     func __setBackGroundColor(_ backgroundColor: NSColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackGroundColor(backgroundColor)
         } else {
             self.backgroundColor = backgroundColor
@@ -97,7 +97,7 @@ private extension NSTextField {
     }
     
     func __setTextColor(_ textColor: NSColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTextColor(textColor)
         } else {
             self.textColor = textColor
@@ -105,7 +105,7 @@ private extension NSTextField {
     }
     
     func __setAttributedStringValue(_ attributedStringValue: NSAttributedString) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAttributedStringValue(attributedStringValue)
         } else {
             self.attributedStringValue = attributedStringValue
@@ -113,7 +113,7 @@ private extension NSTextField {
     }
     
     func __setPlaceholderAttributedString(_ placeholderAttributedString: NSAttributedString?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setPlaceholderAttributedString(placeholderAttributedString)
         } else {
             self.placeholderAttributedString = placeholderAttributedString

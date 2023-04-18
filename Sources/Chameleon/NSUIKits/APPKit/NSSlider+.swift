@@ -17,7 +17,7 @@ public extension NSSlider {
     var app_trackFillColor: NSColor? {
         get { trackFillColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 trackFillColor = newValue
             } else {
                 swizzled_setTrackFillColor(newValue)
@@ -28,7 +28,7 @@ public extension NSSlider {
 
 internal extension NSSlider {
     static func silenceExchangeSliderImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: trackFillColor),
             newSelector: #selector(swizzled_setTrackFillColor(_:))
         )
@@ -37,7 +37,7 @@ internal extension NSSlider {
 
 private extension NSSlider {
     func __setTrackFillColor(_ trackFillColor: NSColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTrackFillColor(trackFillColor)
         } else {
             self.trackFillColor = trackFillColor

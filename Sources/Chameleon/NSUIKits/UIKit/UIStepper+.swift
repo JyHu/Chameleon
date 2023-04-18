@@ -18,7 +18,7 @@ private extension AppearanceCallableIdentifier {
 
 public extension UIStepper {
     func app_setBackgroundImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setBackgroundImage(image, for: state)
         } else {
             swizzled_setBackgroundImage(image, for: state)
@@ -26,7 +26,7 @@ public extension UIStepper {
     }
 
     func app_setDividerImage(_ image: UIImage?, forLeftSegmentState leftState: UIControl.State, rightSegmentState rightState: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setDividerImage(image, forLeftSegmentState: leftState, rightSegmentState: rightState)
         } else {
             swizzled_setDividerImage(image, forLeftSegmentState: leftState, rightSegmentState: rightState)
@@ -34,7 +34,7 @@ public extension UIStepper {
     }
 
     func app_setIncrementImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setIncrementImage(image, for: state)
         } else {
             swizzled_setIncrementImage(image, for: state)
@@ -42,7 +42,7 @@ public extension UIStepper {
     }
     
     func app_setDecrementImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setDecrementImage(image, for: state)
         } else {
             swizzled_setDecrementImage(image, for: state)
@@ -52,22 +52,22 @@ public extension UIStepper {
 
 internal extension UIStepper {
     static func silenceExchangeStepperImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setBackgroundImage(_:for:)),
             newSelector: #selector(swizzled_setBackgroundImage(_:for:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setDividerImage(_:forLeftSegmentState:rightSegmentState:)),
             newSelector: #selector(swizzled_setDividerImage(_:forLeftSegmentState:rightSegmentState:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setIncrementImage(_:for:)),
             newSelector: #selector(swizzled_setIncrementImage(_:for:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setDecrementImage(_:for:)),
             newSelector: #selector(swizzled_setDecrementImage(_:for:))
         )
@@ -76,7 +76,7 @@ internal extension UIStepper {
 
 private extension UIStepper {
     func __setBackgroundImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundImage(image, for: state)
         } else {
             setBackgroundImage(image, for: state)
@@ -84,7 +84,7 @@ private extension UIStepper {
     }
 
     func __setDividerImage(_ image: UIImage?, forLeftSegmentState leftState: UIControl.State, rightSegmentState rightState: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setDividerImage(image, forLeftSegmentState: leftState, rightSegmentState: rightState)
         } else {
             setDividerImage(image, forLeftSegmentState: leftState, rightSegmentState: rightState)
@@ -92,7 +92,7 @@ private extension UIStepper {
     }
 
     func __setIncrementImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setIncrementImage(image, for: state)
         } else {
             setIncrementImage(image, for: state)
@@ -100,7 +100,7 @@ private extension UIStepper {
     }
     
     func __setDecrementImage(_ image: UIImage?, for state: UIControl.State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setDecrementImage(image, for: state)
         } else {
             setDecrementImage(image, for: state)

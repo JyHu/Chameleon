@@ -23,7 +23,7 @@ public extension UITextField {
     var app_attributedText: NSAttributedString? {
         get { attributedText }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.attributedText = newValue
             } else {
                 swizzled_setAttributedText(newValue)
@@ -34,7 +34,7 @@ public extension UITextField {
     var app_textColor: UIColor? {
         get { textColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.textColor = newValue
             } else {
                 swizzled_setTextColor(newValue)
@@ -45,7 +45,7 @@ public extension UITextField {
     var app_defaultTextAttributes: [NSAttributedString.Key: Any] {
         get { defaultTextAttributes }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.defaultTextAttributes = newValue
             } else {
                 swizzled_setDefaultTextAttributes(newValue)
@@ -56,7 +56,7 @@ public extension UITextField {
     var app_attributedPlaceholder: NSAttributedString? {
         get { attributedPlaceholder }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.attributedPlaceholder = newValue
             } else {
                 swizzled_setAttributedPlaceholder(newValue)
@@ -67,7 +67,7 @@ public extension UITextField {
     var app_background: UIImage? {
         get { background }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.background = newValue
             } else {
                 swizzled_setBackground(newValue)
@@ -78,7 +78,7 @@ public extension UITextField {
     var app_disabledBackground: UIImage? {
         get { disabledBackground }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.disabledBackground = newValue
             } else {
                 swizzled_setDisabledBackground(newValue)
@@ -89,7 +89,7 @@ public extension UITextField {
     var app_typingAttributes: [NSAttributedString.Key: Any]? {
         get { typingAttributes }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.typingAttributes = newValue
             } else {
                 swizzled_setTypingAttributes(newValue)
@@ -100,37 +100,37 @@ public extension UITextField {
 
 internal extension UITextField {
     static func silenceExchangeTextFieldImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: attributedText),
             newSelector: #selector(swizzled_setAttributedText(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: textColor),
             newSelector: #selector(swizzled_setTextColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: defaultTextAttributes),
             newSelector: #selector(swizzled_setDefaultTextAttributes(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: attributedPlaceholder),
             newSelector: #selector(swizzled_setAttributedPlaceholder(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: background),
             newSelector: #selector(swizzled_setBackground(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: disabledBackground),
             newSelector: #selector(swizzled_setDisabledBackground(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: typingAttributes),
             newSelector: #selector(swizzled_setTypingAttributes(_:))
         )
@@ -140,7 +140,7 @@ internal extension UITextField {
 
 private extension UITextField {
     func __setAttributedText(_ attributedText: NSAttributedString?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAttributedText(attributedText)
         } else {
             self.attributedText = attributedText
@@ -148,7 +148,7 @@ private extension UITextField {
     }
     
     func __setTextColor(_ textColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTextColor(textColor)
         } else {
             self.textColor = textColor
@@ -156,7 +156,7 @@ private extension UITextField {
     }
     
     func __setDefaultTextAttributes(_ defaultTextAttributes: [NSAttributedString.Key: Any]) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setDefaultTextAttributes(defaultTextAttributes)
         } else {
             self.defaultTextAttributes = defaultTextAttributes
@@ -164,7 +164,7 @@ private extension UITextField {
     }
     
     func __setAttributedPlaceholder(_ attributedPlaceholder: NSAttributedString?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAttributedPlaceholder(attributedPlaceholder)
         } else {
             self.attributedPlaceholder = attributedPlaceholder
@@ -172,7 +172,7 @@ private extension UITextField {
     }
     
     func __setBackground(_ background: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackground(background)
         } else {
             self.background = background
@@ -180,7 +180,7 @@ private extension UITextField {
     }
     
     func __setDisabledBackground(_ disabledBackground: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setDisabledBackground(disabledBackground)
         } else {
             self.disabledBackground = disabledBackground
@@ -188,7 +188,7 @@ private extension UITextField {
     }
     
     func __setTypingAttributes(_ typingAttributes: [NSAttributedString.Key: Any]?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTypingAttributes(typingAttributes)
         } else {
             self.typingAttributes = typingAttributes

@@ -19,7 +19,7 @@ public extension NSTableView {
     var app_backgroundColor: NSColor {
         get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 backgroundColor = newValue
             } else {
                 swizzled_setBackgroundColor(newValue)
@@ -30,7 +30,7 @@ public extension NSTableView {
     var app_gridColor: NSColor {
         get { gridColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 gridColor = newValue
             } else {
                 swizzled_setGridColor(newValue)
@@ -39,7 +39,7 @@ public extension NSTableView {
     }
     
     func app_setIndicatorImage(_ image: NSImage, in tableColumn: NSTableColumn) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setIndicatorImage(image, in: tableColumn)
         } else {
             swizzled_setIndicatorImage(image, in: tableColumn)
@@ -49,17 +49,17 @@ public extension NSTableView {
 
 internal extension NSTableView {
     static func silenceExchangeTableViewImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backgroundColor),
             newSelector: #selector(swizzled_setBackgroundColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: gridColor),
             newSelector: #selector(swizzled_setGridColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setIndicatorImage(_:in:)),
             newSelector: #selector(swizzled_setIndicatorImage(_:in:))
         )
@@ -68,7 +68,7 @@ internal extension NSTableView {
 
 private extension NSTableView {
     func __setBackgroundColor(_ backgroundColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundColor(backgroundColor)
         } else {
             self.backgroundColor = backgroundColor
@@ -76,7 +76,7 @@ private extension NSTableView {
     }
     
     func __setGridColor(_ gridColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setGridColor(gridColor)
         } else {
             self.gridColor = gridColor
@@ -84,7 +84,7 @@ private extension NSTableView {
     }
     
     func __setIndicatorImage(_ image: NSImage, in tableColumn: NSTableColumn) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setIndicatorImage(image, in: tableColumn)
         } else {
             setIndicatorImage(image, in: tableColumn)

@@ -17,7 +17,7 @@ public extension UIRefreshControl {
     var app_attributedTitle: NSAttributedString? {
         get { attributedTitle }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.attributedTitle = newValue
             } else {
                 swizzled_setAttributedTitle(newValue)
@@ -28,7 +28,7 @@ public extension UIRefreshControl {
 
 internal extension UIRefreshControl {
     static func silenceExchangeRefreshControlImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: attributedTitle),
             newSelector: #selector(swizzled_setAttributedTitle(_:))
         )
@@ -38,7 +38,7 @@ internal extension UIRefreshControl {
 
 private extension UIRefreshControl {
     func __setAttributedTitle(_ attributedTitle: NSAttributedString?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAttributedTitle(attributedTitle)
         } else {
             self.attributedTitle = attributedTitle

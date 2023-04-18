@@ -11,6 +11,9 @@ import Cocoa
 import UIKit
 #endif
 
+/// 是否使用了swizzling
+public var __USING_APPEARANCED_SWIZZLING__: Bool { AppearanceManager.shared.usingSwizzling }
+
 /// 换肤资源管理协议，用于将资源管理放到外部
 public protocol AppearanceManagerProtocol: NSObjectProtocol {
     
@@ -81,8 +84,8 @@ public class AppearanceManager: NSObject {
     /// 换肤相关的通知中心
     public let notificationCenter = NotificationCenter()
     
-    /// 是否使用了swizzing
-    internal private(set) var usingSwizzing: Bool = false
+    /// 是否使用了swizzling
+    fileprivate var usingSwizzling: Bool = false
     
     /// 更换主题
     /// - Parameters:
@@ -103,9 +106,11 @@ public class AppearanceManager: NSObject {
         postThemeChangeNotification()
     }
     
-    /// 启用swizzing
-    public static func useSwizzing() {
-        shared.usingSwizzing = true
+    /// 启用swizzling
+    public static func activeSwizzling() {
+        /// 如果做了swizzling，就跳过不做了。
+        if shared.usingSwizzling { return }
+        shared.usingSwizzling = true
         exchangeImplementations()
     }
 }

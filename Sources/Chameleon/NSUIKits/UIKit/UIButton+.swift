@@ -18,7 +18,7 @@ private extension AppearanceCallableIdentifier {
 
 public extension UIButton {
     func app_setTitleColor(_ titleColor: UIColor?, for state: State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setTitleColor(titleColor, for: state)
         } else {
             swizzled_setTitleColor(titleColor, for: state)
@@ -26,7 +26,7 @@ public extension UIButton {
     }
     
     func app_setImage(_ image: UIImage?, for state: State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setImage(image, for: state)
         } else {
             swizzled_setImage(image, for: state)
@@ -34,13 +34,13 @@ public extension UIButton {
     }
     
     func app_setBackgroundImage(_ backgroundImage: UIImage?, for state: State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setBackgroundImage(backgroundImage, for: state)
         }
     }
     
     func app_setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setAttributedTitle(attributedTitle, for: state)
         } else {
             swizzled_setAttributedTitle(attributedTitle, for: state)
@@ -50,22 +50,22 @@ public extension UIButton {
 
 internal extension UIButton {
     static func silenceExchangeButtonImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setTitleColor(_:for:)),
             newSelector: #selector(swizzled_setTitleColor(_:for:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setImage(_:for:)),
             newSelector: #selector(swizzled_setImage(_:for:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setBackgroundImage(_:for:)),
             newSelector: #selector(swizzled_setBackgroundImage(_:for:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setAttributedTitle(_:for:)),
             newSelector: #selector(swizzled_setAttributedTitle(_:for:))
         )
@@ -74,7 +74,7 @@ internal extension UIButton {
 
 private extension UIButton {
     func __setTitleColor(_ titleColor: UIColor?, for state: State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTitleColor(titleColor, for: state)
         } else {
             setTitleColor(titleColor, for: state)
@@ -82,7 +82,7 @@ private extension UIButton {
     }
     
     func __setImage(_ image: UIImage?, for state: State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setImage(image, for: state)
         } else {
             setImage(image, for: state)
@@ -90,7 +90,7 @@ private extension UIButton {
     }
     
     func __setBackgroundImage(_ backgroundImage: UIImage?, for state: State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundImage(backgroundImage, for: state)
         } else {
             setBackgroundImage(backgroundImage, for: state)
@@ -98,7 +98,7 @@ private extension UIButton {
     }
     
     func __setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: State) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setAttributedTitle(attributedTitle, for: state)
         } else {
             setAttributedTitle(attributedTitle, for: state)

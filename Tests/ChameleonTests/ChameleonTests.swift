@@ -21,7 +21,7 @@ final class ChameleonTests: XCTestCase {
         
 //        RunTimeKit.changeExchangeImplementations()
         
-        AppearanceManager.exchangeImplementations()
+        AppearanceManager.activeSwizzling()
         
         let color = NSColor.red
         print(color)

@@ -17,7 +17,7 @@ public extension UIActivityIndicatorView {
     var app_color: UIColor {
         get { color }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 color = newValue
             } else {
                 swizzled_setColor(newValue)
@@ -28,7 +28,7 @@ public extension UIActivityIndicatorView {
 
 internal extension UIActivityIndicatorView {
     static func silenceExchangeActivityIndicatorViewImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: color),
             newSelector: #selector(swizzled_setColor(_:))
         )
@@ -37,7 +37,7 @@ internal extension UIActivityIndicatorView {
 
 private extension UIActivityIndicatorView {
     func __setColor(_ color: UIColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setColor(color)
         } else {
             self.color = color

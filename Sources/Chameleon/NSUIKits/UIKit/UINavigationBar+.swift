@@ -24,7 +24,7 @@ public extension UINavigationBar {
     var app_barTintColor: UIColor? {
         get { barTintColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.barTintColor = newValue
             } else {
                 swizzled_setBarTintColor(newValue)
@@ -35,7 +35,7 @@ public extension UINavigationBar {
     var app_shadowImage: UIImage? {
         get { shadowImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.shadowImage = newValue
             } else {
                 swizzled_setShadowImage(newValue)
@@ -46,7 +46,7 @@ public extension UINavigationBar {
     var app_titleTextAttributes: [NSAttributedString.Key: Any]? {
         get { titleTextAttributes }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.titleTextAttributes = newValue
             } else {
                 swizzled_setTitleTextAttributes(newValue)
@@ -57,7 +57,7 @@ public extension UINavigationBar {
     var app_largeTitleTextAttributes: [NSAttributedString.Key: Any]? {
         get { largeTitleTextAttributes }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.largeTitleTextAttributes = newValue
             } else {
                 swizzled_setLargeTitleTextAttributes(newValue)
@@ -68,7 +68,7 @@ public extension UINavigationBar {
     var app_backIndicatorImage: UIImage? {
         get { backIndicatorImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.backIndicatorImage = newValue
             } else {
                 swizzled_setBackIndicatorImage(newValue)
@@ -79,7 +79,7 @@ public extension UINavigationBar {
     var app_backIndicatorTransitionMaskImage: UIImage? {
         get { backIndicatorTransitionMaskImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.backIndicatorTransitionMaskImage = newValue
             } else {
                 swizzled_setBackIndicatorTransitionMaskImage(newValue)
@@ -88,7 +88,7 @@ public extension UINavigationBar {
     }
     
     func app_setBackgroundImage(_ backgroundImage: UIImage?, for barPosition: UIBarPosition, barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setBackgroundImage(backgroundImage, for: barPosition, barMetrics: barMetrics)
         } else {
             swizzled_setBackgroundImage(backgroundImage, for: barPosition, barMetrics: barMetrics)
@@ -96,7 +96,7 @@ public extension UINavigationBar {
     }
     
     func app_setBackgroundImage(_ backgroundImage: UIImage?, for barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             setBackgroundImage(backgroundImage, for: barMetrics)
         } else {
             swizzled_setBackgroundImage(backgroundImage, for: barMetrics)
@@ -106,42 +106,42 @@ public extension UINavigationBar {
 
 internal extension UINavigationBar {
     static func silenceExchangeNavigationBarImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: barTintColor),
             newSelector: #selector(swizzled_setBarTintColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: shadowImage),
             newSelector: #selector(swizzled_setShadowImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: titleTextAttributes),
             newSelector: #selector(swizzled_setTitleTextAttributes(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: largeTitleTextAttributes),
             newSelector: #selector(swizzled_setLargeTitleTextAttributes(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backIndicatorImage),
             newSelector: #selector(swizzled_setBackIndicatorImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backIndicatorTransitionMaskImage),
             newSelector: #selector(swizzled_setBackIndicatorTransitionMaskImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setBackgroundImage(_:for:barMetrics:)),
             newSelector: #selector(swizzled_setBackgroundImage(_:for:barMetrics:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setBackgroundImage(_:for:)),
             newSelector: #selector(swizzled_setBackgroundImage(_:for:))
         )
@@ -150,7 +150,7 @@ internal extension UINavigationBar {
 
 private extension UINavigationBar {
     func __setBarTintColor(_ barTintColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBarTintColor(barTintColor)
         } else {
             self.barTintColor = barTintColor
@@ -158,7 +158,7 @@ private extension UINavigationBar {
     }
     
     func __setShadowImage(_ shadowImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setShadowImage(shadowImage)
         } else {
             self.shadowImage = shadowImage
@@ -166,7 +166,7 @@ private extension UINavigationBar {
     }
     
     func __setTitleTextAttributes(_ titleTextAttributes: [NSAttributedString.Key: Any]?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTitleTextAttributes(titleTextAttributes)
         } else {
             self.titleTextAttributes = titleTextAttributes
@@ -174,7 +174,7 @@ private extension UINavigationBar {
     }
     
     func __setLargeTitleTextAttributes(_ largeTitleTextAttributes: [NSAttributedString.Key: Any]?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setLargeTitleTextAttributes(largeTitleTextAttributes)
         } else {
             self.largeTitleTextAttributes = largeTitleTextAttributes
@@ -182,7 +182,7 @@ private extension UINavigationBar {
     }
     
     func __setBackIndicatorImage(_ backIndicatorImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackIndicatorImage(backIndicatorImage)
         } else {
             self.backIndicatorImage = backIndicatorImage
@@ -190,7 +190,7 @@ private extension UINavigationBar {
     }
     
     func __setBackIndicatorTransitionMaskImage(_ backIndicatorTransitionMaskImage: UIImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackIndicatorTransitionMaskImage(backIndicatorTransitionMaskImage)
         } else {
             self.backIndicatorTransitionMaskImage = backIndicatorTransitionMaskImage
@@ -198,7 +198,7 @@ private extension UINavigationBar {
     }
     
     func __setBackgroundImage(_ backgroundImage: UIImage?, for barPosition: UIBarPosition, barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundImage(backgroundImage, for: barPosition, barMetrics: barMetrics)
         } else {
             self.setBackgroundImage(backgroundImage, for: barPosition, barMetrics: barMetrics)
@@ -206,7 +206,7 @@ private extension UINavigationBar {
     }
     
     func __setBackgroundImage(_ backgroundImage: UIImage?, for barMetrics: UIBarMetrics) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundImage(backgroundImage, for: barMetrics)
         } else {
             self.setBackgroundImage(backgroundImage, for: barMetrics)

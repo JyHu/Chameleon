@@ -21,7 +21,7 @@ public extension NSLevelIndicator {
     var app_fillColor: NSColor {
         get { fillColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.fillColor = newValue
             } else {
                 swizzled_setFillColor(newValue)
@@ -32,7 +32,7 @@ public extension NSLevelIndicator {
     var app_warningFillColor: NSColor {
         get { warningFillColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.warningFillColor = newValue
             } else {
                 swizzled_setWarningFillColor(newValue)
@@ -43,7 +43,7 @@ public extension NSLevelIndicator {
     var app_criticalFillColor: NSColor {
         get { criticalFillColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.criticalFillColor = newValue
             } else {
                 swizzled_setCriticalFillColor(newValue)
@@ -54,7 +54,7 @@ public extension NSLevelIndicator {
     var app_ratingImage: NSImage? {
         get { ratingImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.ratingImage = newValue
             } else {
                 swizzled_setRatingImage(newValue)
@@ -65,7 +65,7 @@ public extension NSLevelIndicator {
     var app_ratingPlaceholderImage: NSImage? {
         get { ratingPlaceholderImage }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.ratingPlaceholderImage = newValue
             } else {
                 swizzled_setRatingPlaceholderImage(newValue)
@@ -76,27 +76,27 @@ public extension NSLevelIndicator {
 
 internal extension NSLevelIndicator {
     static func silenceExchangeLevelIndicatorImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: fillColor),
             newSelector: #selector(swizzled_setFillColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: warningFillColor),
             newSelector: #selector(swizzled_setWarningFillColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: criticalFillColor),
             newSelector: #selector(swizzled_setCriticalFillColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: ratingImage),
             newSelector: #selector(swizzled_setRatingImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: ratingPlaceholderImage),
             newSelector: #selector(swizzled_setRatingPlaceholderImage(_:))
         )
@@ -105,7 +105,7 @@ internal extension NSLevelIndicator {
 
 private extension NSLevelIndicator {
     func __setFillColor(_ fillColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setFillColor(fillColor)
         } else {
             self.fillColor = fillColor
@@ -113,7 +113,7 @@ private extension NSLevelIndicator {
     }
     
     func __setWarningFillColor(_ warningFillColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setWarningFillColor(warningFillColor)
         } else {
             self.warningFillColor = warningFillColor
@@ -121,7 +121,7 @@ private extension NSLevelIndicator {
     }
     
     func __setCriticalFillColor(_ criticalFillColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setCriticalFillColor(criticalFillColor)
         } else {
             self.criticalFillColor = criticalFillColor
@@ -129,7 +129,7 @@ private extension NSLevelIndicator {
     }
     
     func __setRatingImage(_ ratingImage: NSImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setRatingImage(ratingImage)
         } else {
             self.ratingImage = ratingImage
@@ -137,7 +137,7 @@ private extension NSLevelIndicator {
     }
     
     func __setRatingPlaceholderImage(_ ratingPlaceholderImage: NSImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setRatingPlaceholderImage(ratingPlaceholderImage)
         } else {
             self.ratingPlaceholderImage = ratingPlaceholderImage

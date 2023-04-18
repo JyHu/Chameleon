@@ -20,7 +20,7 @@ public extension UITableView {
     var app_sectionIndexColor: UIColor? {
         get { sectionIndexColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.sectionIndexColor = newValue
             } else {
                 swizzled_setSectionIndexColor(newValue)
@@ -31,7 +31,7 @@ public extension UITableView {
     var app_sectionIndexBackgroundColor: UIColor? {
         get { sectionIndexBackgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.sectionIndexBackgroundColor = newValue
             } else {
                 swizzled_setSectionIndexBackgroundColor(newValue)
@@ -42,7 +42,7 @@ public extension UITableView {
     var app_sectionIndexTrackingBackgroundColor: UIColor? {
         get { sectionIndexTrackingBackgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.sectionIndexTrackingBackgroundColor = newValue
             } else {
                 swizzled_setSectionIndexTrackingBackgroundColor(newValue)
@@ -53,7 +53,7 @@ public extension UITableView {
     var app_separatorColor: UIColor? {
         get { separatorColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 self.separatorColor = newValue
             } else {
                 swizzled_setSeparatorColor(newValue)
@@ -64,22 +64,22 @@ public extension UITableView {
 
 internal extension UITableView {
     static func silenceExchangeTableViewImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: sectionIndexColor),
             newSelector: #selector(swizzled_setSectionIndexColor)
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: sectionIndexBackgroundColor),
             newSelector: #selector(swizzled_setSectionIndexBackgroundColor)
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: sectionIndexTrackingBackgroundColor),
             newSelector: #selector(swizzled_setSectionIndexTrackingBackgroundColor)
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: separatorColor),
             newSelector: #selector(swizzled_setSeparatorColor)
         )
@@ -88,7 +88,7 @@ internal extension UITableView {
 
 private extension UITableView {
     func __setSectionIndexColor(_ sectionIndexColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setSectionIndexColor(sectionIndexColor)
         } else {
             self.sectionIndexColor = sectionIndexColor
@@ -96,7 +96,7 @@ private extension UITableView {
     }
     
     func __setSectionIndexBackgroundColor(_ sectionIndexBackgroundColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setSectionIndexBackgroundColor(sectionIndexBackgroundColor)
         } else {
             self.sectionIndexBackgroundColor = sectionIndexBackgroundColor
@@ -104,7 +104,7 @@ private extension UITableView {
     }
     
     func __setSectionIndexTrackingBackgroundColor(_ sectionIndexTrackingBackgroundColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setSectionIndexTrackingBackgroundColor(sectionIndexTrackingBackgroundColor)
         } else {
             self.sectionIndexTrackingBackgroundColor = sectionIndexTrackingBackgroundColor
@@ -112,7 +112,7 @@ private extension UITableView {
     }
     
     func __setSeparatorColor(_ separatorColor: UIColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setSeparatorColor(separatorColor)
         } else {
             self.separatorColor = separatorColor

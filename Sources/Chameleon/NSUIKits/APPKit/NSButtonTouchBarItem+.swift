@@ -20,7 +20,7 @@ public extension NSButtonTouchBarItem {
     var app_image: NSUIAppearanceImage? {
         get { image }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 image = newValue
             } else {
                 swizzled_setImage(newValue)
@@ -31,7 +31,7 @@ public extension NSButtonTouchBarItem {
     var app_bezelColor: NSUIAppearanceColor? {
         get { bezelColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 bezelColor = newValue
             } else {
                 swizzled_setBezelColor(newValue)
@@ -43,12 +43,12 @@ public extension NSButtonTouchBarItem {
 @available(macOS 10.15, *)
 internal extension NSButtonTouchBarItem {
     static func silenceExchangeButtonTouchBarItemImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: image),
             newSelector: #selector(swizzled_setImage(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: bezelColor),
             newSelector: #selector(swizzled_setBezelColor(_:))
         )
@@ -58,7 +58,7 @@ internal extension NSButtonTouchBarItem {
 @available(macOS 10.15, *)
 private extension NSButtonTouchBarItem {
     func __setImage(_ image: NSUIAppearanceImage?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setImage(image)
         } else {
             self.image = image
@@ -66,7 +66,7 @@ private extension NSButtonTouchBarItem {
     }
     
     func __setBezelColor(_ bezelColor: NSUIAppearanceColor?) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBezelColor(bezelColor)
         } else {
             self.bezelColor = bezelColor

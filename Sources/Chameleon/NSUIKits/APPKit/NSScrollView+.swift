@@ -17,7 +17,7 @@ public extension NSScrollView {
     var app_backgroundColor: NSColor {
         get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 backgroundColor = newValue
             } else {
                 swizzled_setBackgroundColor(newValue)
@@ -28,7 +28,7 @@ public extension NSScrollView {
 
 internal extension NSScrollView {
     static func silenceExchangeScrollViewImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backgroundColor),
             newSelector: #selector(swizzled_setBackgroundColor(_:))
         )
@@ -37,7 +37,7 @@ internal extension NSScrollView {
 
 private extension NSScrollView {
     func __setBackgroundColor(_ backgroundColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundColor(backgroundColor)
         } else {
             self.backgroundColor = backgroundColor

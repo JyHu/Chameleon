@@ -11,8 +11,7 @@ import Cocoa
 import UIKit
 #endif
 
-var __USING_APPEARANCED_SWIZZING__: Bool { AppearanceManager.shared.usingSwizzing }
-
+/// 内部调用
 internal extension AppearanceManager {
     static func exchangeImplementations() {
 #if os(macOS)

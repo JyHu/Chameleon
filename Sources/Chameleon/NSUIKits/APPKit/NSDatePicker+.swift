@@ -18,7 +18,7 @@ public extension NSDatePicker {
     var app_textColor: NSColor {
         get { textColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 textColor = newValue
             } else {
                 swizzled_setTextColor(newValue)
@@ -29,7 +29,7 @@ public extension NSDatePicker {
     var app_backgroundColor: NSColor {
         get { backgroundColor }
         set {
-            if __USING_APPEARANCED_SWIZZING__ {
+            if __USING_APPEARANCED_SWIZZLING__ {
                 backgroundColor = newValue
             } else {
                 swizzled_setBackgroundColor(newValue)
@@ -40,12 +40,12 @@ public extension NSDatePicker {
 
 internal extension NSDatePicker {
     static func silenceExchangeDatePickerViewImplementation() {
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: textColor),
             newSelector: #selector(swizzled_setTextColor(_:))
         )
         
-        app_swizzing(
+        app_swizzling(
             originalSelector: #selector(setter: backgroundColor),
             newSelector: #selector(swizzled_setBackgroundColor(_:))
         )
@@ -54,7 +54,7 @@ internal extension NSDatePicker {
 
 private extension NSDatePicker {
     func __setTextColor(_ textColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setTextColor(textColor)
         } else {
             self.textColor = textColor
@@ -62,7 +62,7 @@ private extension NSDatePicker {
     }
     
     func __setBackgroundColor(_ backgroundColor: NSColor) {
-        if __USING_APPEARANCED_SWIZZING__ {
+        if __USING_APPEARANCED_SWIZZLING__ {
             swizzled_setBackgroundColor(backgroundColor)
         } else {
             self.backgroundColor = backgroundColor
