@@ -37,7 +37,7 @@ platform :ios, '11.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Chameleon', :git => 'https://github.com/JyHu/Chameleon.git', '~> 0.1.0'
+    pod 'Chameleon', :git => 'https://github.com/JyHu/Chameleon.git'
 end
 ```
 

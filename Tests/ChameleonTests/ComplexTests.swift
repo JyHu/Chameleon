@@ -19,7 +19,7 @@ final class ComplexTests: XCTestCase {
     }
 
     func testExample() throws {
-        
+        #if os(iOS)
         AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme0)
         
         let theme0 = ThemeInfos.Theme0.self
@@ -43,5 +43,6 @@ final class ComplexTests: XCTestCase {
         AppearanceManager.shared.changeThemeWith(themeInfo: ThemeInfo.theme2)
         
         XCTAssertEqual(view.backgroundColor, ThemeInfos.Theme2.C001)
+        #endif
     }
 }
