@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
   }
 
   s.platform     = :ios, "11.0"
+  s.platform     = :macos, "10.13"
   s.source       = { :git => "https://github.com/JyHu/Chameleon.git", :tag => s.version }
   s.requires_arc = true
 
