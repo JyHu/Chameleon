@@ -22,12 +22,19 @@ public extension NSAttributedString {
     func colorAppearancedElements() -> [ColorElement] {
         var elements: [ColorElement] = []
         
-        /// 枚举所有有效的颜色属性信息
-        enumerateAttribute(.foregroundColor, in: NSMakeRange(0, length)) { color, range, stop in
-            guard let color = color as? NSUIAppearanceColor else { return }
-            guard let appearanceIdentifier = color.appearanceIdentifier else { return }
-            elements.append(ColorElement(color: color, identifier: appearanceIdentifier, range: range))
+        func enumerate(_ key: NSAttributedString.Key) {
+            enumerateAttribute(key, in: NSMakeRange(0, length)) { color, range, stop in
+                guard let color = color as? NSUIAppearanceColor else { return }
+                guard let appearanceIdentifier = color.appearanceIdentifier else { return }
+                elements.append(ColorElement(color: color, identifier: appearanceIdentifier, range: range))
+            }
         }
+        
+        enumerate(.foregroundColor)
+        enumerate(.backgroundColor)
+        enumerate(.strokeColor)
+        enumerate(.underlineColor)
+        enumerate(.strikethroughColor)
         
         return elements
     }
