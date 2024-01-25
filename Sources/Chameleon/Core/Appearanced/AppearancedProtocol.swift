@@ -7,6 +7,9 @@
 
 import Foundation
 
+///
+/// 每一个换肤属性持有者都必须要遵守的协议
+///
 public protocol AppearancedProtocol {
     
     /// 缓存当前入参的数据类型

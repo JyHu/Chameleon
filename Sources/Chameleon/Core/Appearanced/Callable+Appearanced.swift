@@ -89,6 +89,11 @@ public extension Callable {
             self.clsType = ClsType(obj: original)
         }
         
+        /// 初始化方法
+        /// - Parameters:
+        ///   - original: 传入进来的原始值
+        ///   - identifier: 换肤标识
+        ///   - clsType: 原始值的类型，如果没有设定，框架内部会根据原始值自己判断
         public init(_ original: T, identifier: AppearanceCallableIdentifier?, clsType: ClsType? = nil) {
             self.original = original
             self.identifier = identifier

@@ -8,6 +8,9 @@
 import Foundation
 
 public extension NSObject {
+    ///
+    /// Runtime method swizzling
+    ///
     static func app_swizzling(originalSelector: Selector, newSelector: Selector) {
         if let originalMethod = class_getInstanceMethod(self, originalSelector),
            let swizedMethod = class_getInstanceMethod(self, newSelector) {

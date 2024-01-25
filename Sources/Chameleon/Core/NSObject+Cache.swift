@@ -12,8 +12,9 @@ private extension NSObject {
         static var cachedMethodsAssociationKey = "com.auu.chameleon.associationKey.cachedMethods"
     }
     
+    /// 一个数据缓存对象，用于统一的缓存一些额外附加的属性值，避免过于分散
     class Cacher {
-        var callablesMap: [AppearanceCallableCategory: Dictionary<AppearanceCallableIdentifier, CallableProtocol>] = [:]
+        var callablesMap: [AppearanceCallableCategory: [AppearanceCallableIdentifier: CallableProtocol]] = [:]
         var disableChameleon: Bool = false
         var hadRegisterNotification: Bool = false
     }
@@ -178,12 +179,15 @@ public extension NSObject {
             return appearanceCallable
         }
         
+        /// 获取一下缓存对象，然后将当前换肤执行对象缓存
         var callables = cacher.callablesMap[appearanceCallable.category] ?? [:]
         callables[appearanceCallable.identifier] = appearanceCallable
         cacher.callablesMap[appearanceCallable.category] = callables
        
+        /// 缓存的时候执行一下换肤方法，马上使用正确的UI属性做替换
         appearanceCallable.execute(withoutChameleon: false)
         
+        /// 如果没有添加过通知，需要注册一下，此处需要避免重复注册
         if !cacher.hadRegisterNotification {
             AppearanceManager.shared.registerAppearanceObserver(self, action: #selector(performThemeChangedAction))
             cacher.hadRegisterNotification = true
@@ -194,6 +198,7 @@ public extension NSObject {
 }
 
 private extension NSObject {
+    /// 接收到换肤通知后执行一下所有缓存的换肤方法
     @objc func performThemeChangedAction(_ notification: Notification) {
         for (_, callables) in cacher.callablesMap {
             for (_, callable) in callables {

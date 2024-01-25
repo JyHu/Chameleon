@@ -25,6 +25,7 @@ public extension Callable {
         public let identifier: AppearanceCallableIdentifier?
         public let isAppearanced: Bool = true
         
+        /// 获取有效的值
         public var correct: T {
             guard let identifier = identifier else { return original }
             return converter(try? AppearanceManager.shared.appearanceInfo(with: identifier)) ?? original

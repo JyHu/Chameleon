@@ -1,6 +1,6 @@
 # Chameleon
 
-Chameleon is a skin-changing (theme) framework for iOS/macOS that supports dynamic skin changing and custom attributes, and also supports non-invasive skin changing (swizzling).
+Chameleon is a theme framework designed for iOS/macOS, which allows for dynamic theme changes and customization of attributes. It also supports non-intrusive theme changes (swizzling) to alter the interface style. In other words, Chameleon provides a convenient way for developers to implement theme changes and custom attribute functionality in their applications without requiring extensive modifications to the existing codebase.
 
 ## Requirements
 

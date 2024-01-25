@@ -14,6 +14,8 @@ public extension Callable {
     ///
     /// 该类支持富文本换肤属性的换肤支持
     ///
+    /// 对于富文本换肤，暂时只支持颜色属性的换肤
+    ///
     ///
     struct Attributed<T>: AppearancedProtocol {
         public typealias InputType = T
