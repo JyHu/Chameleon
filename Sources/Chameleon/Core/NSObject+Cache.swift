@@ -9,7 +9,7 @@ import Foundation
 
 private extension NSObject {
     struct AssociationKey {
-        static var cachedMethodsAssociationKey = "com.auu.chameleon.associationKey.cachedMethods"
+        static var cachedMethodsAssociationKey: Int = 0
     }
     
     /// 一个数据缓存对象，用于统一的缓存一些额外附加的属性值，避免过于分散
@@ -180,7 +180,7 @@ public extension NSObject {
         }
         
         /// 获取一下缓存对象，然后将当前换肤执行对象缓存
-        var callables = cacher.callablesMap[appearanceCallable.category] ?? [:]
+        var callables = cacher.callablesMap[appearanceCallable.category, default: [:]]
         callables[appearanceCallable.identifier] = appearanceCallable
         cacher.callablesMap[appearanceCallable.category] = callables
        

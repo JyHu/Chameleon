@@ -1,0 +1,33 @@
+{
+  "originHash" : "9f789cf87e2e113c016cd3856f340acd6bea6b3a49a1017bd727838f7dd28514",
+  "pins" : [
+    {
+      "identity" : "sfsymbols",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JyHu/SFSymbols",
+      "state" : {
+        "branch" : "main",
+        "revision" : "03a2972438de2151f859e053d6d29d1c11131a02"
+      }
+    },
+    {
+      "identity" : "swiftextensions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JyHu/SwiftExtensions",
+      "state" : {
+        "branch" : "main",
+        "revision" : "e90172a320d68c26b013d0546b01bb7309cb8588"
+      }
+    },
+    {
+      "identity" : "swiftuiextension",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JyHu/SwiftUIExtension",
+      "state" : {
+        "branch" : "main",
+        "revision" : "7fc701a2341c8c3e0e8a9652a4451d723e7bb408"
+      }
+    }
+  ],
+  "version" : 3
+}

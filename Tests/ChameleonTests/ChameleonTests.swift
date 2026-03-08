@@ -80,6 +80,18 @@ final class ChameleonTests: XCTestCase {
         testFunc2(color2)
     }
     
+    func testCacheKey() {
+        let color1 = NSColor(red: 0.1, green: 0.2, blue: 0.3, alpha: 1).withAppearanceIdentifier("com.test.color1")
+        let color2 = NSColor(red: 0.1, green: 0.2, blue: 0.3, alpha: 1)
+        let color3 = NSColor(red: 0.1, green: 0.2, blue: 0.3, alpha: 1).withAppearanceIdentifier("com.test.color3")
+        
+        print(color1.appearanceIdentifier)
+        print(color2.appearanceIdentifier)
+        print(color3.appearanceIdentifier)
+        
+        print("")
+    }
+    
     func testFunc1(_ color: NSUIAppearanceColor) {
         Cacher(param: color, callback: callback1(_:)).execute()
     }
